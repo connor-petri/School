@@ -1,0 +1,8 @@
+# ninja log v5
+0	37	1680068369188717974	build.ninja	5ff028b6806e89f1
+2	286	1680059603046300309	CMakeFiles/untitled.dir/main.cpp.o	94455ce080b0e662
+1	229	1680059346771903848	CMakeFiles/untitled.dir/expression.cpp.o	891cc40feae59dff
+286	333	1680059603094990748	untitled	2c4ab901e3e15aaf
+2	343	1680068609815506883	CMakeFiles/untitled.dir/expression.cpp.o	5079f29e802c4ca2
+1	372	1680068609842577305	CMakeFiles/untitled.dir/main.cpp.o	f181c0e84fe7f517
+372	430	1680068609905658999	untitled	2c4ab901e3e15aaf

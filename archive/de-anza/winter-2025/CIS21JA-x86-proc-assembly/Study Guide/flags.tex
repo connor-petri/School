@@ -1,0 +1,27 @@
+\subsubsection*{Flags}
+\begin{description}
+    \item[CF] Carry Flag - Set if there is a carry out of the most significant bit
+    \item[ZF] Zero Flag - Set if the result is zero
+    \item[SF] Sign Flag - Set if the most significant bit of the result is set
+    \item[OF] Overflow Flag - Set if there is an overflow in signed arithmetic operations
+\end{description}
+
+\subsubsection*{Flag Instructions}
+\begin{description}
+    \item[clc] Clear Carry Flag
+    \item[stc] Set Carry Flag
+    \item[clz] Clear Zero Flag
+    \item[setz] Set Zero Flag
+    \item[sets] Set Sign Flag
+    \item[cls] Clear Sign Flag
+    \item[seto] Set Overflow Flag
+    \item[clo] Clear Overflow Flag
+    \item[pushf] Push the flags register onto the stack
+    \item[popf] Pop the stack into the flags register
+\end{description}
+
+\subsubsection*{Instructions that Set Flags}
+\begin{description}
+    \item[add/sub] zf, sf, of, cf
+    \item[inc/dec] zf, sf, of  
+\end{description}

@@ -1,0 +1,3 @@
+/Users/connor/School/Intro to C++/OrcSlayer/cmake-build-debug/CMakeFiles/OrcSlayer.dir
+/Users/connor/School/Intro to C++/OrcSlayer/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/connor/School/Intro to C++/OrcSlayer/cmake-build-debug/CMakeFiles/rebuild_cache.dir

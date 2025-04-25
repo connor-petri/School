@@ -1,0 +1,57 @@
+\subsection{Electric Potential}
+\hrulefill
+
+\paragraph*{Definition}
+Electric potential is the amount of work needed to move a unit charge from a reference point to a specific point in space.
+It is measured in volts. The electric potential at a point in space is given by the following equation.
+
+\begin{equation*}
+    V = \frac{U_e}{q} = \frac{k_eq}{r}
+\end{equation*}
+
+Where $V$ is the electric potential in volts, $U_e$ is the electric potential energy in joules, and $q$ is the charge in coulombs.
+
+\paragraph*{Electric Potential Energy}
+Electric potential energy is the energy stored in a system of charges. It is measured in joules. The electric potential energy of a 
+system of 2 charges is given by the following equation.
+
+\begin{equation*}
+    U_e = q_1V = k_e\frac{q_1q_2}{r}
+\end{equation*}
+
+Where $U_e$ is the electric potential energy in joules, $k_e$ is Coulomb's constant, $q_1$ and $q_2$ are the charges in coulombs, and $r$ is the distance between the charges in meters.
+
+\paragraph*{Forces are Derivatives of Potentials}
+and the electric force is no different. The electric force is the derivative of the electric potential energy with respect to the distance between the charges. 
+We can derive this relationship as follows.
+
+\begin{align*}
+    &\quad \vec{F}_e = -\frac{dU_e}{\vec{d\ell}} \quad \Rightarrow \quad \vec{F}_e \cdot \vec{d\ell} = -dU_e \quad \Rightarrow \quad \int \vec{F}_e \vec{d\ell} = -\int dU_e\\
+    \Rightarrow& \quad \int \vec{F}_e \vec{d\ell} = -\Delta U_e \quad \Rightarrow \quad W = -\Delta U_e
+\end{align*}
+
+Where $\vec{F}_e$ is the electric force in newtons, $\vec{\ell}$ is radial distance from the charge in meters, $\Delta{U_e}$ is the change
+in electric potential energy in joules, and $W$ is the work done in joules.
+
+\subsubsection*{Voltage}
+Voltage $(\Delta V)$ is the electric potential difference between two points in space. It is measured in volts. The voltage between two points in space is given by the following equation.
+
+\begin{equation*}
+    \Delta V = V_b - V_a = \int \vec{E} \cdot \vec{d\ell}
+\end{equation*}
+
+Where $\Delta V$ is the voltage in volts, $V_b$ and $V_a$ are the electric potentials at points $b$ and $a$ respectively, $\vec{E}$ is the electric field in newtons per coulomb, 
+and $\vec{\ell}$ is the distance between the points in meters.
+
+\paragraph*{Electric Field as a function of Voltage}
+The electric field is the derivative of the electric potential with respect to the distance between the charges. We can derive this relationship as follows.
+
+\begin{align*}
+    \vec{E} &= \vec{\nabla}V
+    \Longrightarrow
+    \begin{cases}
+        Ex = \frac{\partial V}{\partial x}\\
+        Ey = \frac{\partial V}{\partial y}\\
+        Ez = \frac{\partial V}{\partial z}
+    \end{cases}
+\end{align*}

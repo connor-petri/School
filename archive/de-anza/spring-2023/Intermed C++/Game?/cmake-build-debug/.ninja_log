@@ -1,0 +1,7 @@
+# ninja log v5
+1	495	1687590195837549351	CMakeFiles/Game_.dir/dice.cpp.o	c409fb48cd92f610
+379	420	1687596014848882140	Game_	f3d41630bcf8492a
+2	318	1687596014744331239	CMakeFiles/Game_.dir/Dice.cpp.o	7b6818b5bd856dfa
+2	366	1687596014793114759	CMakeFiles/Game_.dir/Entity.cpp.o	23c983baab8a38be
+1	379	1687596014805443034	CMakeFiles/Game_.dir/main.cpp.o	71ae1ce8dcd72368
+0	49	1687662553757418263	build.ninja	2440dd5bbbe7ca82

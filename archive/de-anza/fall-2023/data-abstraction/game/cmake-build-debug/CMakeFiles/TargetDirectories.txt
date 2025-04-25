@@ -1,0 +1,3 @@
+/Users/connor/School/Fall 2023/data-abstraction/game/cmake-build-debug/CMakeFiles/game.dir
+/Users/connor/School/Fall 2023/data-abstraction/game/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/connor/School/Fall 2023/data-abstraction/game/cmake-build-debug/CMakeFiles/rebuild_cache.dir

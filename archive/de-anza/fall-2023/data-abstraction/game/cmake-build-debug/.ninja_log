@@ -1,0 +1,5 @@
+# ninja log v5
+1	229	1696050466718386939	CMakeFiles/game.dir/Entities/Entity.cpp.o	c3c332445df0b677
+1	299	1696051622925983811	CMakeFiles/game.dir/main.cpp.o	8b7ad43879704bcb
+1	241	1696051633777143817	CMakeFiles/game.dir/Entities/EntityTests.cpp.o	70de354d88f5960
+241	272	1696051633809315560	game	e6fdb8f2856264a1

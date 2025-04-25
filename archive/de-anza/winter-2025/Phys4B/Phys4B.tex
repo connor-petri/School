@@ -1,0 +1,69 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{{./images/}}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{circuitikz, subcaption}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{titlesec, wrapfig}
+
+
+\titleformat{\section}
+[block]
+{\huge\bfseries\center}
+{\thesection.\ }
+{0pt}
+{}
+
+\titleformat{\subsection}
+[block]
+{\Huge\center}
+{}
+{0pt}
+{}
+
+\titleformat{\subsubsection}
+[block]
+{\large\bfseries\center}
+{}
+{0pt}
+{}
+
+
+
+\title{PHYS4B:\@ Electromagnitism for \\Scientists and Engineers}
+\author{Connor Petri}
+\date{Winter 2025}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\section{Electrostatics}
+\input{electrostatics/intro_to_electrostatics}
+\include{electrostatics/electric_fields}
+\include{electrostatics/flux}
+\include{electrostatics/potential}
+
+\section{Circuits}
+\input{circuits/capacitors}
+\include{circuits/current_resistance}
+\include{circuits/dc_circuits}
+\include{circuits/rc_circuits}
+
+\section{Magnetism}
+\input{magnetism/magnetic_fields}
+\include{magnetism/sources_of_fields}
+\include{magnetism/induction}
+\include{magnetism/inductance}
+\include{magnetism/em_waves}
+
+\end{document}

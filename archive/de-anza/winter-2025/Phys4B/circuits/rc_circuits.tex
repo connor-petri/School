@@ -1,0 +1,44 @@
+\subsection{RC Circuits}
+\hrulefill
+
+\paragraph*{Definition}
+An RC circuit is a circuit that contains a resistor and a capacitor. The capacitor stores energy in the form of an electric field, 
+while the resistor dissipates energy in the form of heat. The time constant $\tau$ of an RC circuit is given by the product of the 
+total resistance and capacitance in the circuit.
+
+\begin{equation*}
+    \tau = RC
+\end{equation*}
+
+Where $\tau$ is the time constant in seconds, $R$ is the resistance in ohms, and $C$ is the capacitance in farads. 
+
+\paragraph*{Charging a Capacitor}
+First, we must update our max charge equation to account for emf.
+
+\begin{equation*}
+    Q_{max} = C\varepsilon
+\end{equation*}
+
+Where $Q_{max}$ is the max charge the capacitor can hold in Coulombs, C is the capacitance of the capacitor in Farads, and $\varepsilon$
+is the electromotive force in volts.\\
+
+We can then find the charge and current of the capacitor as a function of time.
+
+\begin{align*}
+    q(t) \quad &= \quad C\varepsilon(1-e^{-t/\tau}) \quad = \quad Q_{max}(1-e^{-t/\tau})\\
+    I(t) \quad &= \quad \frac{dq}{dt} \quad = \quad \frac{\varepsilon}{R}e^{-t/\tau} \quad = \quad \frac{q(t) - Q_{max}}{\tau}\\
+\end{align*}
+
+Where $q(t)$ is the charge on the capacitor at time $t$ in Coulombs, $I(t)$ is the current through the capacitor at time $t$ in Amps,
+$C$ is the capacitance of the capacitor in Farads, $\varepsilon$ is the electromotive force in volts, $R$ is the resistance in ohms,
+and $\tau$ is the time constant of the circuit in seconds.
+
+\paragraph*{Discharging a Capacitor}
+We can also find the charge and current of a capacitor as it discharges as a function of time.
+
+\begin{align*}
+    q(t) &= Q_ie^{-t/\tau}\\
+    I(t) &= -\frac{Q_i}{\tau}e^{-t/\tau}\\
+\end{align*}
+
+Where $Q_i$ is the initial charge on the capacitor in Coulombs, and the rest of teh variables having the same definition as above.

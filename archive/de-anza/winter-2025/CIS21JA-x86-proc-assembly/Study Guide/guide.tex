@@ -1,0 +1,38 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{graphicx, listings, titlesec}
+\graphicspath{{./images/}}
+
+\titleformat{\section}
+[block]
+{\huge\bfseries\center}
+{\thesection.\ }
+{0pt}
+{}
+
+\titleformat{\subsection}
+[block]
+{\Huge\center}
+{}
+{0pt}
+{}
+
+\titleformat{\subsubsection}
+[block]
+{\large\bfseries\center}
+{}
+{0pt}
+{}
+
+
+\title{CIS21JA - Intro to x86 Processor Assembly Study Guide}
+\author{Connor Petri}
+
+\begin{document}
+\maketitle
+
+\include{math.tex}
+\include{flags.tex}
+\include{stack.tex}
+
+
+\end{document}

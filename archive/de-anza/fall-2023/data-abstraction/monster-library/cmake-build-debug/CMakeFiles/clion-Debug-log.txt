@@ -1,0 +1,5 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S "/Users/connor/School/Fall 2023/data-abstraction/monster-library" -B "/Users/connor/School/Fall 2023/data-abstraction/monster-library/cmake-build-debug"
+LIBRARIES: /opt/homebrew/Cellar/jsoncpp/1.9.5/lib/libjsoncpp.25.dylib;/opt/homebrew/Cellar/jsoncpp/1.9.5/lib/libjsoncpp.dylib
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/connor/School/Fall 2023/data-abstraction/monster-library/cmake-build-debug

@@ -1,0 +1,116 @@
+\subsection{Current and Resistance}
+
+\hrulefill
+
+\subsubsection*{Current}
+
+\paragraph*{Definition}
+Current is defined as the time rate of change of charge through an object. It is measured in amps.
+
+\begin{equation*}
+    I=\frac{dQ}{dt} \Rightarrow I = nqv_dA
+\end{equation*}
+
+Where $I$ is the current in amps $[A] = [\frac{C}{s}]$, $n$ is the free electron density in electrons/$m^3$, 
+$v_d$ is the drift velocity in $m/s$, and $A$ is the cross-sectional area of the conductor in $m^2$.
+
+
+\paragraph*{Drift Velocity}
+Electrons are bouncing around randomly. When an electric field is applied, the bouncing is directed 
+in a direction, but it is still chaotic. This bouncing results in heat being generated. Heat is defined 
+as the kinetic energy of a particle. The speed of the drift of the electrons is called the drift velocity $(v_d)$.
+
+\begin{equation*}
+    v_d = \frac{I_{avg}}{nqA} = \frac{I}{nqA}
+\end{equation*}
+
+Where $v_d$ is the drift current, $n$ is the free electron density in $\frac{g}{m^2}$, $q$ is the charge of the current carrier 
+(usually an electron) in $C$, and A is the cross-sectional area of the conductor in $m^2$.
+
+
+\paragraph*{Current Density}
+Current density is the current per unit area. It can be calculated using the following formula:
+
+\begin{equation*}
+    J = \frac{I}{A} = \sigma A = nqv_d
+\end{equation*}
+
+Where $J$ is the current density in $Amps/m^2$, $I$ is the current in amps, $A$ is the cross-sectional 
+area of the conductor in $m^2$, $\sigma$ is the conductivity of the material, and $n$ is the free electron 
+density in electrons/$m^3$.
+
+\pagebreak
+
+Voltage can be calculated as a function of current density and conductivity as follows:
+
+\begin{equation*}
+    \Delta V = E\ell = \frac{\ell J}{\sigma}
+\end{equation*}
+
+Where $\Delta V$ is the voltage in volts, $E$ is the electric field in volts per meter, $\ell$ is the length of the conductor in meters,
+
+
+\hrulefill
+
+
+\subsubsection*{Resistance}
+
+\paragraph*{Definition}
+Resistance is defined as the ratio of voltage to current, also known as Ohm's law. It is measured in ohms.
+
+\begin{equation*}
+    R = \frac{\Delta V}{I}
+\end{equation*}
+
+Where $R$ is the resistance in $\Omega$, $\Delta V$ is the voltage in volts, and $I$ is the current in $A$.
+
+
+\paragraph*{Resistivity}
+Resistivity is the fundimental property of a material that determines how much it resists the flow of current. 
+It is measured in ohm-meters $[\Omega m]$.
+
+\begin{equation*}
+    \rho = \frac{1}{\sigma} = \frac{RA}{\ell} \Longrightarrow R = \rho \frac{\ell}{A}
+\end{equation*}
+
+Where $\rho$ is resistivity in $\Omega m$, $\sigma$ is conductivity in $S/m$, $R$ is resistance in $\Omega$, $A$ is the cross-sectional area of the 
+conductor in $m^2$, and $\ell$ is the length of the conductor in meters.\\
+
+\paragraph*{Conductivity}
+Conductivity is the inverse of resistivity. It is measured in Siemens per meter $[\frac{S}{m}]$. $[S] = [\frac{1}{\Omega}]$
+
+\begin{equation*}
+    \sigma = \frac{1}{\rho} = \frac{\ell}{RA} \Longrightarrow R = \frac{\ell}{\sigma A}
+\end{equation*}
+
+Where $\rho$ is resistivity, $\sigma$ is conductivity, R is resistance in $\Omega$, and $\ell$ is the length of the conductor in meters.
+
+\paragraph*{Ohmic vs. Non-Ohmic devices}
+Ohmic devices are devices that have a Voltage vs Current slope of $\frac{1}{R}$. Non-ohmic devices have a slope that changes with voltage or current.
+
+\paragraph*{Resistivity and Temperature}
+The resistivity of a material changes with the temperature of the material. The equation for resistivity as a function of temperature is given by:
+
+\begin{align*}
+    \rho_t = \rho_0[1+\alpha\Delta T]\\
+    \alpha = \frac{\Delta \rho/\rho_0}{\Delta T}
+\end{align*}
+
+Where $\rho_t$ is the resistivity of the material at a given temperature in $\Omega m$, $\rho_0$ is the resistivity of the material at a reference temperature in $\Omega m$, 
+$\alpha$ is the temperature coefficient in $\degree C^{-1}$ (a material constant, much like $\kappa$), $\Delta \rho$ is the change in resistivity in $\Omega m$, 
+and $\Delta T$ is the change in temperature in $\degree C$.
+
+\hrulefill
+
+\subsubsection*{Electrical Power}
+
+
+\paragraph*{Definition}
+Power is defined as the rate at which energy is transferred or converted. It is measured in watts.
+
+\begin{align*}
+    P = \frac{dU_e}{dt} = I^2R = \frac{(\Delta V)^2}{R} = IV
+\end{align*}
+
+Where $P$ is power in watts, $U_e$ is electric potential energy in Joules, $\Delta V$ is voltage in volts, and $I$ is current in amps.
+

@@ -1,0 +1,180 @@
+\subsection{Direct Current Circuits}
+\hrulefill
+
+\subsubsection*{Electromotive Force}
+
+\begin{figure*}[h]
+    \centering
+    \begin{circuitikz}
+        \draw (0,0) node[circ]{} node[label=above:$-$]{} -- (1,0)
+            (2,0) to[battery, l=$\varepsilon$] (1,0) 
+            (2,0) to[short, i>=$I$] (3,0) to[R, l=$r$] (4,0) -- (5,0) node[circ]{} node[label=above:$+$]{}
+            ;
+    \end{circuitikz}
+    \caption*{Circuit Diagram of a Simple Battery}
+\end{figure*}
+
+
+\paragraph*{Definition}
+Electromotive force (emf) is the voltage produced by a battery or other voltage source. It is measured in volts. 
+A simple battery consists of a source of emf and a resistor to represent the internal resistance of the battery.
+Unless the battery is ideal, $\Delta V_{terminal} \neq \varepsilon$. In this case, we can find the voltage at the terminals of 
+the battery using the following equation.
+
+\begin{align*}
+    \Delta V_{terminal} &= \varepsilon - Ir\\
+    \varepsilon &= \Delta V_{terminal} + Ir
+\end{align*}
+
+Where $\Delta V_{terminal}$ is the voltage at the terminals of the battery, $\varepsilon$ is the emf of the battery,
+I is the current through, and $r$ is the internal resistance of the battery.\\
+
+When a non-ideal battery is in use, we need to represent the current in terms of the emf and the resistors in the circuit.
+The current and emf in the circuit can be found using the following equations.
+
+\begin{align*}
+    I &= \frac{\varepsilon}{R+r}\\
+    \varepsilon &= IR + Ir
+\end{align*}
+
+Where $\varepsilon$ is the emf in volts, $I$ is the current in amps, $r$ is the internal resistance of the battery in ohms,
+and $R$ is the resistance of the resistor in ohms.
+
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}
+        \draw (0,0) node[circ]{} node[label=above:$-$]{} -- (1,0)
+            (2,0) to[battery, l=$\varepsilon$] (1,0) 
+            (2,0) -- (3,0) to[R, l=$r$] (4,0) -- (5,0) node[circ]{} node[label=above:$+$]{}
+            to[short, i>=$I$] (5, -2) -- (3, -2) to[R, l=$R$] (2, -2) -- (0, -2) to[short, i>=$I$] (0, 0)
+            ;
+    \end{circuitikz}
+    \caption*{A Simple Battery wired to a resistor}
+\end{figure}
+
+\paragraph*{Power}
+The internal resistance also affects power delivery. The power delevered to each of the resistors in the above circuit is given 
+by the following equations.
+
+\begin{align*}
+    P &= P_R + P_r\\
+    P_R &= I^2R\\
+    P_r &= I^2r
+\end{align*}
+
+Note that the specific current value used will depend on how the resistors in the circuit are connected.
+
+\pagebreak
+
+\subsubsection*{Equivilant Resistance}
+\paragraph*{Definition} 
+Much like capacitors, multiple resistors can be represented by a single resistor with an equivilant resistance. 
+How the resistors are connected will determine how the equivilant resistance is calculated and how the current
+and voltage change across them.
+
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{circuitikz}
+            \draw
+            (0,0) node[circ]{} node[label=above:$a$]{} -- (1,0) to[R, l=$R_1$] (2,0) 
+            -- (3,0) to[R, l=$R_2$] (4,0) -- (5,0) node[label=above:$b$]{} node[circ]{}
+            ;
+        \end{circuitikz}
+        \caption*{Two resistors in series}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{circuitikz}
+            \draw
+            (0,0) node[circ]{} node[label=above:$a$]{} -- (0.5,0)
+            (0.5,0) -- (0.5, 1) to[R, l=$R_1$] (2.5, 1) -- (2.5, 0) -- (3,0) node[label=above:$b$]{} node[circ]{}
+            (0.5,0) -- (0.5, -1) to[R, l=$R_2$] (2.5, -1) -- (2.5, 0)
+            ;
+        \end{circuitikz}
+        \caption*{Two resistors in parallel}
+    \end{subfigure}
+\end{figure}
+
+
+\paragraph*{In Series}
+Resistors in series can be combined into a single resistor with a resistance equal to the sum of the individual resistances.
+The current through each resistor in series is the same, but the voltage across each resistor is different.
+
+\begin{align*}
+    R_{eq(s)} &= \sum_{i=1}^{n} R_i\\
+    I_{eq(s)} &= I_1 = I_2 = \cdots = I_n\\
+    \Delta V_{eq(s)} &= \sum_{i=1}^{n} \Delta V_i
+\end{align*}
+
+\pagebreak
+
+\paragraph*{In Parallel}
+Resistors in parallel can be combined into a single resistor with a resistance equal to the reciprocal of the sum of the reciprocals 
+of the individual resistances. The voltage across each resistor in parallel is the same, but the current through each resistor is different.
+
+
+\begin{align*}
+    \frac{1}{R_{eq(\parallel)}} &= \sum_{i=1}^{n} \frac{1}{R_i}\\
+    I_{eq(\parallel)} &= \sum_{i=1}^{n} I_i\\
+    \Delta V_{eq(\parallel)} &= \Delta V_1 = \Delta V_2 = \cdots = \Delta V_n
+\end{align*}
+
+\hrulefill
+
+
+\subsubsection*{Kirchhoff's Laws}
+
+Kirchhoff's Laws are fundamental tools used to analyze electrical circuits. They consist of two rules: the Junction Rule and the Loop Rule. These laws help us determine the current and voltage at different points in a circuit.
+
+\paragraph*{Junction Rule}
+The Junction Rule states that at any junction (or node) in a circuit, the sum of the currents entering the junction must equal the sum of the currents leaving the junction. This is a consequence of the conservation of charge.
+
+\begin{equation*}
+    \sum_{junction} I = 0 \quad \Longrightarrow \quad \sum_{junction} I_{in} = \sum_{junction} I_{out}
+\end{equation*}\\
+
+\paragraph*{To apply the Junction Rule:}
+\begin{enumerate}
+    \item Identify all junctions in the circuit.
+    \item Write an equation for each junction, setting the sum of currents entering the junction equal to the sum of currents leaving the junction.
+    \item Solve the system of equations to find the unknown currents.
+\end{enumerate}
+
+\paragraph*{Loop Rule}
+The Loop Rule states that the sum of the voltages around any closed loop in a circuit must equal zero. This is a consequence of the conservation of energy.
+
+\begin{equation*}
+    \sum_{closed loop} \Delta V = 0
+\end{equation*}\\
+
+\paragraph*{To apply the Loop Rule:}
+\begin{enumerate}
+    \item Identify all independent loops in the circuit.
+    \item Choose a direction to traverse each loop (clockwise or counterclockwise).
+    \item Write an equation for each loop, summing the voltage drops (negative) and voltage rises (positive) around the loop and setting the sum equal to zero.
+    \item Solve the system of equations to find the unknown voltages and currents.
+\end{enumerate}
+
+\ \ \ \ These rules can be used together to solve for the currents and voltages at different points in a circuit.
+
+\hrulefill
+
+\paragraph*{Steps to Solve a Circuit with Kirchhoff's Laws:}
+\begin{enumerate}
+    \item Label all currents and voltages: Assign a variable to each unknown current and voltage in the circuit.
+    \item Apply the Junction Rule: Write equations for each junction in the circuit.
+    \item Apply the Loop Rule: Write equations for each independent loop in the circuit.
+    \item Solve the system of equations: Use algebraic methods to solve the system of equations obtained from the Junction and Loop Rules.
+\end{enumerate}
+
+\paragraph*{Sign Conventions}
+When applying Kirchhoff's Laws, it is important to follow these sign conventions:
+\begin{itemize}
+    \item If the current enters the positive terminal of a resistor, the voltage drop across the resistor is positive.
+    \item If the current enters the negative terminal of a resistor, the voltage drop across the resistor is negative.
+    \item If the current enters the positive terminal of a battery, the voltage rise across the battery is negative.
+    \item If the current enters the negative terminal of a battery, the voltage rise across the battery is positive.
+\end{itemize}

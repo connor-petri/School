@@ -1,0 +1,36 @@
+\subsection{Data and Math}
+
+\subsubsection*{Data Instructions}
+M - Memory, R - Register, C - Constant
+\begin{description}
+    \item[mov \{MR-\}, \{MRC\}] Move data from op2 to op1 
+    \item[cbw] Convert byte in AL to word in AX by sign-extending the most significant bit of AL
+    \item[cwd] Convert word in AX to doubleword in DX:AX by sign-extending the most significant bit of AX
+    \item[cdq] Convert doubleword in EAX to quadword in EDX:EAX by sign-extending the most significant bit of EAX
+\end{description}
+
+\subsubsection*{Math Instructions}
+M - Memory, R - Register, C - Constant
+\begin{description}
+    \item[add \{MR-\}, \{MRC\}] Add two values and store in op1
+    \item[sub \{MR-\}, \{MRC\}] Subtract two values and store in op1
+    \item[mul \{MR-\}] Multiply eax by op1 and store in edx:eax
+    \item[div \{MR-\}] Divide edx:eax by op1, quotient in eax, remainder in edx
+    \item[imul \{MR-\}] Signed multiply eax by op1 and store in edx:eax
+    \item[idiv \{MR-\}] Signed divide edx:eax by op1, quotient in eax, remainder in edx
+\end{description}
+
+\subsubsection*{Bitwise Instructions}
+M - Memory, R - Register, C - Constant
+\begin{description}
+    \item[and \{MR-\}, \{MRC\}] Bitwise AND two values and store in op1
+    \item[or \{MR-\}, \{MRC\}] Bitwise OR two values and store in op1
+    \item[xor \{MR-\}, \{MRC\}] Bitwise XOR two values and store in op1
+    \item[not \{MR-\}] Bitwise NOT op1
+    \item[shl \{MR-\}, \{MRC\}] Shift op1 left by op2 bits
+    \item[shr \{MR-\}, \{MRC\}] Shift op1 right by op2 bits with zero extension
+    \item[sal \{MR-\}, \{MRC\}] Same as shl
+    \item[sar \{MR-\}, \{MRC\}] Shift op1 right by op2 bits with sign extension    
+    \item[rcl \{MR-\}, \{MRC\}] Rotate bits of op1 left through the carry flag by op2 bits
+    \item[rcr \{MR-\}, \{MRC\}] Rotate bits of op1 right through the carry flag by op2 bits
+\end{description}
