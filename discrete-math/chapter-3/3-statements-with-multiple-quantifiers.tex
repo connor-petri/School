@@ -1,0 +1,35 @@
+\subsection{Statements with Multiple Quantifiers}
+\hrulefill
+
+Consider the statement: $\forall x \in D, \exists y \in E \ni P(x,y)$. To show the truth of the statement, 
+we must show that for every $x$ in $D$, there exists a $y$ in $D$ such that $P(x,y)$ is true.
+
+\paragraph*{Example}
+Let $D = \{1,2,3\}$ and $P(x,y)$ be the predicate "$x + y = 4$". Show that the statement
+$\forall x \in D, \exists y \in D \ni P(x,y)$ is true.
+\begin{align*}
+    x = 1: \quad &\exists y \in D \ni 1 + y = 4 \implies y = 3\\
+    x = 2: \quad &\exists y \in D \ni 2 + y = 4 \implies y = 2\\
+    x = 3: \quad &\exists y \in D \ni 3 + y = 4 \implies y = 1\\
+    \therefore \quad &\forall x \in D, \exists y \in D \ni P(x,y) \text{ is true.}
+\end{align*}
+
+Consider the statement: $\exists x \in D \ni \forall y \in D, P(x,y)$. To show the truth of the statement,
+we must show that there exists an $x$ in $D$ such that for every $y$ in $D$, $P(x,y)$ is true.
+
+\paragraph*{Example}
+Let $D = \{1,2,3\}$ and $P(x,y)$ be the predicate "$x + y = 4$". Show that the statement
+$\exists x \in D \ni \forall y \in P, P(x,y)$ is false.
+\begin{align*}
+    x = 1: \quad &\forall y \in D, 1 + y = 4 \implies y = 3\\
+    x = 2: \quad &\forall y \in D, 2 + y = 4 \implies y = 2\\
+    x = 3: \quad &\forall y \in D, 3 + y = 4 \implies y = 1\\
+    \therefore \quad &\exists x \in D \ni \forall y \in D, P(x,y) \text{ is false.}
+\end{align*}
+
+\paragraph*{Negation of Multiply-Quantified Statements}
+\begin{align*}
+    \neg(\forall x \in D, \exists y \in E \ni P(x,y)) &\equiv \exists x \in D \ni \forall y \in E, \neg P(x,y))\\
+    \neg(\exists x \in D, \ni \forall y \in E, P(x,y)) &\equiv \forall x \in D, \exists y \in E \ni \neg P(x,y)\\
+\end{align*}
+

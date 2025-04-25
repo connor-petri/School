@@ -1,0 +1,25 @@
+\subsection{Predicates and Quantified Statements (Part 2)}
+\hrulefill
+
+\subsubsection*{Negations of Quantified Statements}
+\paragraph*{Negation of a Universal Statement}
+\begin{equation*}
+    \neg(\forall x \in D, P(x)) \equiv \exists x \in D \ni \neg P(x)
+\end{equation*}
+
+\paragraph*{Negation of an Existential Statement}
+\begin{equation*}
+    \neg(\exists x \in D \ni P(x)) \equiv \forall x \in D, \neg P(x)
+\end{equation*}
+
+\paragraph*{Negation of a Universal Conditional Statement}
+\begin{equation*}
+    \neg(\forall x \in D, P(x) \implies Q(x)) \equiv \exists x \in D \ni P(x) \land \neg Q(x)
+\end{equation*}
+
+Consider the statement: $\forall x \in D, P(x) \implies Q(x)$.
+\begin{align*}
+    \text{It's contrapositive is:} \quad &\forall x \in D, \neg Q(x) \implies \neg P(x)\\
+    \text{It's converse is:} \quad &\forall x \in D, Q(x) \implies P(x)\\
+    \text{It's inverse is:} \quad &\forall x \in D, \neg P(x) \implies \neg Q(x)
+\end{align*}

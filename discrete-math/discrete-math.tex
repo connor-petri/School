@@ -1,0 +1,60 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{titlesec}
+\usepackage{graphicx}
+
+\graphicspath{{images/}}
+
+\titleformat{\section}
+[block]
+{\Huge\bfseries\center}
+{\thesection.\ }
+{0pt}
+{}
+
+\titleformat{\subsection}
+[block]
+{\large\bfseries\center}
+{\thesubsection\ }
+{0pt}
+{}
+
+\titleformat{\subsubsection}
+[block]
+{\large\center}
+{}
+{0pt}
+{}
+
+\title{MATHD022: Discrete Mathematics}
+\author{Connor Petri}
+\date{Spring 2025}
+
+\begin{document}
+
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\include{chapter-1/1-variables}
+\include{chapter-1/2-sets}
+\include{chapter-1/3-relations-and-functions}
+
+\section{The Logic of Compound Statements}
+\input{chapter-2/1-logical-form-equivalence}
+\include{chapter-2/2-conditional-statements.tex}
+\include{chapter-2/3-valid-and-invalid-args.tex}
+
+\section{The Logic of Quantified Statements}
+\input{chapter-3/1-predicates-and-quantified-statements-1.tex}
+\include{chapter-3/2-predicates-and-quantified-statements-2.tex}
+\include{chapter-3/3-statements-with-multiple-quantifiers.tex}
+\include{chapter-3/4-arguments-with-quantified-statements.tex}
+
+\section{Elementray Number Theory and Methods of Proof}
+\input{chapter-4/1-direct-proof-and-counterexample-1.tex}
+
+\end{document}

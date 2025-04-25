@@ -1,0 +1,82 @@
+\subsection{Predicates and Quantified Statements (Part 1)}
+\hrulefill
+
+\subsubsection*{Predicates}
+\paragraph*{Definition}
+A predicate is a sentence that contains a finite number of variables and becomes
+a statement when specific values are substituted for the variables. For example: 
+"$P(x): x$ is a positive integer" is a predicate. The statement $P(3)$ is true, while $P(-2)$ is false.
+
+\paragraph*{Domain of a Predicate}
+The Domain of a predicate is the set of all values that can be substituted for the
+variable.
+
+\paragraph*{Example}
+Let $P(x)$ be the predicate "$x^2 > x$." The domain of $P(x)$ is $\mathbb{R}$.
+\begin{align*}
+    P(\frac{1}{2}): &\quad (\frac{1}{2})^2 > \frac{1}{2} &= False\\
+    P(-\frac{1}{2}): &\quad (-\frac{1}{2})^2 > -\frac{1}{2} &= True\\
+    P(2): &\quad 2^2 > 2 &= True\\
+\end{align*}
+
+\subsubsection*{Truth Sets}
+\paragraph*{Definition}
+If $P(x)$ is a predicate with domain $D$, the truth set of $P(x)$ is the set of all
+elements in $D$ for which $P(x)$ is true when they are substituted for x. The truth 
+set of $P(x)$ is denoted by:
+\begin{equation*}
+    \{x \in D \ni P(x)\} \subseteq D
+\end{equation*}
+
+\paragraph*{Example}
+Let $P(x)$ be the predicate "$n^2 \leq 30$" with domain $\mathbb{Z}$. The truth set of $P(x)$ is:
+\begin{equation*}
+    \{x \in \mathbb{Z} \ni P(x)\} = \{-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5\}
+\end{equation*}
+
+\subsubsection*{Quantified Statements}
+\paragraph*{Definition}
+A quantified statement is a statement that contains a quantifier. The two most common quantifiers are:
+\begin{itemize}
+    \item \textbf{Universal Quantifier} $\forall$ (for all)
+    \item \textbf{Existential Quantifier} $\exists$ (there exists)
+\end{itemize}
+
+\paragraph*{Universal Statements}
+Let $P(x)$ be a predicate with domain $D$. A univseral statment is a statement of the form 
+"$\forall x \in D, P(x)$" which is read as "for all $x$ in $D$, $P(x)$ is true."
+\begin{itemize}
+    \item It is defined to be true if and only if $P(x)$ is true for all $x$ in $D$.
+    \item It is defined to be false if and only if $P(x)$ is false for at least one $x$ in $D$.
+    \item The value of $x$ for which $P(x)$ is false is called a counterexample.
+\end{itemize}
+
+\paragraph*{Example}
+Let $D = \{1,2,3\}$, and show that the statement "$\forall x \in D, x^2 \geq x$" is true.
+\begin{align*}
+    1^2 \geq 1 &\text{ is true}\\
+    2^2 \geq 2 &\text{ is true}\\
+    3^2 \geq 3 &\text{ is true}\\
+    \therefore \quad \forall x \in &D, x^2 \geq x \text{ is true.}
+\end{align*}
+
+\paragraph*{Existential Statements}
+Let $P(x)$ be a predicate with domain $D$. An existential statement is a statement of the form
+"$\exists x \in D \ni P(x)$" which is read as "there exists an $x$ in $D$ such that $P(x)$ is true."
+\begin{itemize}
+    \item It is defined to be true if and only if $P(x)$ is true for at least one $x$ in $D$.
+    \item It is defined to be false if and only if $P(x)$ is false for all $x$ in $D$.
+    \item The value of $x$ for which $P(x)$ is true is called a witness.
+\end{itemize}
+
+\paragraph*{Example}
+Show that the statement "$\exists x \in \mathbb{Z} \ni \frac{1}{x} = x$" is true.
+\begin{align*}
+    x = 1: \frac{1}{1} &= 1 \text{ is true}\\
+    \therefore \quad \exists x \in &\mathbb{Z} \ni \frac{1}{x} = x \text{ is true.}
+\end{align*}
+
+\paragraph*{Universal Conditional Statements}
+A universal conditional statement is a statement of the form "$\forall x \in D, P(x) \implies Q(x)$" 
+which is read as "for all $x$ in $D$, if $P(x)$ is true, then $Q(x)$ is true."
+

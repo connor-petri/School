@@ -1,0 +1,31 @@
+\subsection{Direct Proof and Counterexample (Part 1)}
+\hrulefill
+
+\paragraph*{Definitions}
+Let P(n) be the predicate "n is an even number".
+\begin{align*}
+    \forall n \in \mathbb{Z}, P(n) \iif \exists k \in \mathbb{Z} \ni n = 2k.
+    \forall n \in \mathbb{Z}, \neg P(n) \iff \exists k \in \mathbb{Z} \ni n = 2k + 1.
+\end{align*}
+
+\paragraph*{Example}
+Is -301 even or odd?
+\begin{align*}
+    -301 &= 2k + 1 \text{ for } k=-151\\
+\end{align*}
+
+\paragraph*{Example}
+If $a, b \in \mathbb{Z}$, is $6a^2b$ even?
+\begin{align*}
+    &\exists a, b \in \mathbb{Z} \ni 6a^2b = 2(k) + 1 \\
+    &6a^2b = 2(3a^2b) \text{ for } k=3a^2b\\
+    \therefore \quad &6a^2b \text{ is even.}
+\end{align*}
+
+\paragraph*{Prime and Composite Number Definition}
+Let P(n) be the predicate "n is a prime number".
+\begin{align*}
+    \forall n \in \mathbb{Z}_{>1}, P(n) &\iff \forall r, s \in \mathbb{Z}_{>1}, n=rs \implies r=n \lor s=n\\
+    \forall n \in \mathbb{Z}_{>1}, \neg P(n) &\iff \exists r, s \in \mathbb{Z}_{>1} \ni n=rs \land 1 < r < n \land 1 < s < n
+\end{align*}
+

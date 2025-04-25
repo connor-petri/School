@@ -1,0 +1,65 @@
+\subsection{Sets}
+\paragraph*{Definition} 
+A \textbf{set} is a collection of objects.
+
+\paragraph*{Notation} 
+\begin{itemize}
+    \item $x \in S$: $x$ is an element of $S$.
+    \item $x \notin S$: $x$ is not an element of $S$.
+    \item $S = \{1,2,3, \dots\}$: is \textbf{set roster notation.}
+\end{itemize}
+
+\paragraph*{Axion of Extension}
+A set is determined by what its elements are. Orders of elements or repeated elements can't be determine the set.\\
+For example: $\{1,2,3\} = \{3,2,2,1,2,3,1\}$. There are 3 elements in both sets.
+
+\paragraph*{Common Sets}
+\begin{itemize}
+    \item $\mathbb{R}$: the set of all real numbers.
+    \item $\mathbb{Z}$: $\{\dots , -3,-2,-1,0,1,2,3,\dots\}$ the set of all integers.
+    \item $\mathbb{N}$: $\{1,2,3,\dots\}$ the set of all natural numbers.
+    \item $\mathbb{Q}$: the set of all rational numbers.
+    \item $\emptyset = \{\}$: the empty set, or null set.
+\end{itemize}
+
+The null set is a subset of every set.
+
+\paragraph*{Set Builder Notation}
+Let $S$ denote a set and let $x\in S$ be and element in $S$. $P(x)$ is a property that some elements of $S$ satisfy.
+
+\begin{center}
+    $A = \{x\in S | P(x)\}$\\
+    $A$ constains elements in $S$ such that (|) P(x) is true.
+\end{center}
+
+\pagebreak
+
+\subsubsection*{Subsets}
+\paragraph*{Definition}
+Let $A$ and $B$ be sets. $A$ is a \textbf{subset} ($\subseteq$) of $B$ if every element of $A$ is also an element of $B$.\\
+
+\paragraph*{Proper Subsets}
+Let $A$ and $B$ be sets. $A$ is a \textbf{proper subset} ($\subset$) of $B$ if every element of $A$ is also an element of $B$, \textbf{and} 
+there is at least one element in $B$ that is not in $A$.\\
+
+\paragraph*{Example}
+Let $A = \mathbb{Z^+}, B = \{n\in\mathbb{Z}|0\leq n\leq 100\}, and C = \{100,200,300,400,500\}$.
+\begin{itemize}
+    \item $B \subseteq A$ is false.
+    \item $C \subset A$ is true.
+    \item $C \subseteq B$ is false.
+    \item $C \subseteq C$ is true.
+\end{itemize}
+
+\paragraph*{Cartesian Product of sets}
+Let $A$ and $B$ be sets. The \textbf{Cartesian product} of $A$ and $B$, denoted $A\times B$, is the set of all ordered pairs $(a,b)$ such that $a\in A$ and $b\in B$.\\
+\begin{equation*}
+    A\times B = \{(a,b)|a\in A, b\in B\}
+\end{equation*} 
+
+\paragraph*{Example}
+Let $A = \{1,2,3\}$ and $B = {u,v}$.
+\begin{align*}
+    A\times B &= \{(1,u),(1,v),(2,u),(2,v),(3,u),(3,v)\}\\
+    A\times A &= \{(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3)\}
+\end{align*}

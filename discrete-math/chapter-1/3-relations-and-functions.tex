@@ -1,0 +1,54 @@
+\subsection{Relations and Functions}
+
+\paragraph*{Relations}
+Let $A$ and $B$ be sets. A \textbf{relation} from $A$ to $B$ is a subset of the Cartesian product $A\times B$.\\
+\begin{equation*}
+    R \subseteq A\times B
+\end{equation*}
+\begin{itemize}
+    \item If (x,y) $\in R$, we say that $x$ is related to $y$ by $R$, denoted as $xRy$.
+    \item \textbf{A} is in the \textbf{domain} of \textbf{R}
+    \item \textbf{B} is the \textbf{codomain} of \textbf{R}
+\end{itemize}
+
+\paragraph*{Example}
+Let $A = \{1,2,3\}$ and $B = \{1,2\}$ and define a relation $R$ from $A$ to $B$ as follows:
+\begin{align*}
+    (x,y) &\in R \iff \frac{x+y}{2} \in \mathbb{Z}\\
+    R = &\{(1,1), (1,2), (2,1), (2,2), (3,1)\}\\
+        &\text{Domain of } R = \{1,2,3\}\\
+        &\text{Codomain of } R = \{1,2\}\\
+\end{align*}
+
+\subsubsection*{Functions}
+\paragraph*{Definition}
+Let A and B be two sets. A function F from A to B is a relation with domain A and co-domain B that satisfies the following properties:
+\begin{itemize}
+    \item For every element $x \in A$, there is an element $y \in B$ such $(x,y) \in F$
+    \item For every element $x \in A$,
+\end{itemize}
+\pagebreak
+\paragraph*{Example}
+Let  $A = \{2,4,6\}$ and $B = \{1,3,5\}$. Which of the relations defined below are functions from A to B?
+\begin{itemize}
+    \item $R = \{(2, 5), (4, 1), (4, 3), (6, 5)\}$
+    \begin{itemize}
+        \item Not a function because $4$ is related to $1$ and $3$. This is not a many-to-one relationship.
+    \end{itemize}
+
+    \item For all $(x.y) \in A \times B, (x,y) \in S \iff y = x + 1$
+    \begin{itemize}
+        \item $S = \{(2,3), (4,5)\}$ is a function from A to B.
+    \end{itemize}
+
+    \item $T = \{(2,5),(4,1),(6,1)\}$
+    \begin{itemize}
+        \item $T$ is a function from A to B as A has a many-to-one relationshop with B.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Equivalent Functions}
+Let A and B be two sets. Two functions $f$ and $g$ from A to B:
+\begin{equation*}
+    f = g \iff f(x) = g(x) \quad \forall \quad x \in A
+\end{equation*}

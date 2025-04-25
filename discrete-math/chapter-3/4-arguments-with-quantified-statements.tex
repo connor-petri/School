@@ -1,0 +1,47 @@
+\subsection{Arguments with Quantified Statements}
+\hrulefill
+
+\subsubsection*{Universal Model Ponens (Direct Proof)}
+\begin{align*}
+    &\forall x, P(x) \implies Q(x) \quad &\text{ If $x$ makes P(x) true, then x makes Q(x) true.}\\
+    &P(a) \quad &\text{ Input $a$ makes P(a) true.}\\
+    \therefore \quad &Q(a) \quad &\text{ Therefore $a$ makes Q(a) true.}
+\end{align*}
+
+\paragraph*{Example}
+Let $P(x)$ be the predicate "$x$ is a prime number" and $Q(x)$ be the predicate "$x$ is an odd number".
+\begin{align*}
+    &\forall x, P(x) \implies Q(x) \quad &\text{If $x$ is a prime number, then $x$ is an odd number.}\\
+    &P(3) \quad &\text{3 is a prime number,}\\
+    \therefore \quad &Q(3) \quad &\text{therefore 3 is an odd number.}
+\end{align*}
+
+\subsubsection*{Universal Modus Tollens (Prove by Contradiction)}
+\begin{align*}
+    &\forall x, P(x) \implies Q(x) \quad &\text{If $x$ makes P(x) true, then $x$ makes Q(x) true.}\\
+    &\neg Q(a) \quad &\text{Input $a$ makes Q(a) false.}\\
+    \therefore \quad &\neg P(a) \quad &\text{Therefore $a$ does not make P(a) true.}
+\end{align*}
+
+\paragraph*{Example}
+Consider the statement "All irrational numbers are real numbers.":
+\begin{align*}
+    &\forall x \in \mathbb{R} - \mathbb{Q}, x \in \mathbb{R} \quad &\text{If $x$ is an irrational number, then $x$ is a real number.}\\
+    &\frac{1}{0} \notin \mathbb{R} \quad &\text{$\frac{1}{0}$ is not a real number,}\\
+    \therefore \quad &\frac{1}{0} \notin \mathbb{R} - \mathbb{Q} \quad &\text{therefore $\frac{1}{0}$ is not an irrational number.}
+\end{align*}
+
+\subsubsection*{Converse and Inverse Errors}
+\paragraph*{Converse Error}
+\begin{align*}
+    &\forall x, P(x) \implies Q(x)
+    &Q(a)
+    \therefore \quad &P(a) \text{(Invalid Arguement)}
+\end{align*}
+
+\paragraph*{Inverse Error}
+\begin{align*}
+    &\forall x, P(x) \implies Q(x)
+    &\neg P(a)
+    \therefore \quad &\neg Q(a) \text{(Invalid Arguement)}
+\end{align*}

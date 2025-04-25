@@ -1,0 +1,62 @@
+\subsection{Logical Form and Equivalence}
+\hrulefill
+\subsubsection*{Arguments}
+
+\paragraph*{Definition}
+An arguement is a sequence of statements aimed at demonstrating the truth of an assertion.
+\begin{itemize}
+    \item The assertion at the end of the sequence is called the conclusion.
+    \item The statements that support the conclusion are called premises.
+    \item If the premises are true, the conclusion must also be true.
+\end{itemize}
+
+\paragraph*{Example}
+\begin{itemize}
+    \item If student A is a math major or student A is a computer science major,
+    \item Then student A will take Discrete Math.
+\end{itemize}
+
+\subsubsection*{Logical Statements}
+\paragraph*{Definition}
+A logical statement is a declarative sentence that is either true or false, but not both.\\
+\begin{itemize}
+    \item Not $p$: \quad $\neg p$
+    \item $p$ and/but $q$: \quad $p \land q$
+    \item $p$ or $q$: \quad $p \lor q$
+    \item Neither $p$ nor $q$: \quad $\neg p \land \neg q$
+\end{itemize}
+
+\paragraph*{Example}
+h = healthy, w = wealthy, s = wise\\
+\begin{itemize}
+    \item John is healthy and wealthy but not wise. 
+    \begin{itemize}
+        \item $\quad (h \land w) \land \neg s$
+    \end{itemize}
+    \item John is neither wealthy nor wise, but he is healthy
+    \begin{itemize}
+        \item $\quad (\neg w \land \neg s) \land h$
+    \end{itemize} 
+\end{itemize}
+
+\subsubsection*{Equivalent Statements}
+\paragraph*{Definition}
+Two logical statements are equivalent if they have the same truth tables, denoted:
+\begin{equation*}
+    p \equiv q
+\end{equation*}
+
+\paragraph*{De Morgan's Laws}
+The negation ($\neg$) of an and statement is logically equivalent to the or statement of the negations. Similarly,
+the negation of an or statement is logically equivalent to the and statement of the negations. 
+\begin{itemize}
+    \item $\neg (p \land q) \equiv \neg p \lor \neg q$
+    \item $\neg (p \lor q) \equiv \neg p \land \neg q$
+\end{itemize}
+
+\paragraph*{Tautological and Condtradictory Statements}
+\begin{itemize}
+    \item A tautological statement is a statement that is always true.
+    \item A contradictory statement is a statement that is always false.
+\end{itemize}
+

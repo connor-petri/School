@@ -1,0 +1,82 @@
+\subsection{Conditional Statements}
+\hrulefill
+\paragraph*{Definition}
+A Conditional statement is in the form "If $p$, then $q$" and is denoted as $p \implies q$ This is read as $p$ implies $q$.\\
+\begin{itemize}
+    \item $p$ is the \textbf{hypothesis} of the statement.
+    \item $q$ is the \textbf{conclusion} of the statement.
+\end{itemize}
+
+\paragraph*{Order of Operations}
+\begin{itemize}
+    \item (): parentheses
+    \item $\neg$: negation
+    \item $\land/\lor$: conjunction/disjunction
+    \item $\implies$: implication
+\end{itemize}
+
+\paragraph*{Equivalent of Conditional Statements}
+\begin{align*}
+    p \implies q &\equiv \neg p \lor q\\
+    \neg (p \implies q) &\equiv p \land \neg q\\
+\end{align*}
+
+\paragraph*{Example}
+Find the negation of the following statement: "If my car is in the repair shop then I cannot go to class".
+\begin{itemize}
+    \item Hypothesis ($p$): "My car is in the repair shop"
+    \item Conclusion ($q$): "I cannot go to class"
+    \item Convert: $p \implies q \equiv \neg p \lor q$
+    \item Negation: $\neg (p \implies q) \equiv \neg (\neg p \lor q) \equiv p \land \neg q$
+    \item Convert back: "My car is in the repair shop and I can go to class"
+\end{itemize}
+
+\paragraph*{Negation vs Inverse}
+The negation of a statement is NOT the same as the inverse of the statement.
+\begin{itemize}
+    \item Negation: $\neg (p \implies q)$
+    \item Inverse: $\neg p \implies \neg q$
+\end{itemize}
+
+\paragraph*{Example}
+If p is a square, then p is a rectangle.
+\begin{itemize}
+    \item Hypothesis ($p$): "p is a square"
+    \item Conclusion ($q$): "p is a rectangle"
+    \item Negation: $\neg (p \implies q) \equiv p \land \neg q$
+    \item Convert back: "p is a square and p is not a rectangle"
+    \item Inverse: $\neg p \implies \neg q \equiv p \lor \neg q$
+    \item Convert: "If p is not a square, then p is not a rectangle"
+\end{itemize}
+
+\paragraph*{More statement types}
+\begin{itemize}
+    \item Contrapositive of $p \implies q \equiv \neg q \implies \neg p$
+    \item Converse of $p \implies q \equiv q \implies p$
+    \item Inverse of $p \implies q \equiv \neg p \implies \neg q$
+\end{itemize}
+
+\paragraph*{Example}
+If today is Easter then tomorrow is Monday.
+\begin{itemize}
+    \item Hypothesis ($p$): "Today is Easter"
+    \item Conclusion ($q$): "Tomorrow is Monday"
+    \item Convert: $p \implies q$
+    \item Contrapositive: $\neg q \implies \neg p \equiv \text{If tomorrow is not Monday, then today is not Easter}$
+    \item Converse: $q \implies p \equiv \text{If tomorrow is Monday, then today is Easter}$
+    \item Inverse: $\neg p \implies \neg q \equiv \text{If today is not Easter, then tomorrow is not Monday}$
+\end{itemize}
+
+\paragraph{Biconditional Statements}
+A biconditional statement is in the form "p if and only if q" and is denoted as $p \iff q$. This is read as $p$ if and only if $q$.\\
+\begin{equation}
+    p \iff q \equiv (p \implies q )\land (q \implies p)
+\end{equation}
+
+\paragraph*{Sufficient and Necessary Conditions}
+If $r$ and $s$ are statements:
+\begin{itemize}
+    \item r is a \textbf{sufficient condition} for s if $r \implies s$.
+    \item r is a \textbf{necessary condition} for s if $s \implies r$ or $s \implies r$.
+    \item r is a \textbf{necessary and sufficient condition} for s if $r \iff s$.
+\end{itemize}
