@@ -4,7 +4,7 @@
 \paragraph*{Definitions}
 Let P(n) be the predicate "n is an even number".
 \begin{align*}
-    \forall n \in \mathbb{Z}, P(n) \iif \exists k \in \mathbb{Z} \ni n = 2k.
+    \forall n \in \mathbb{Z}, P(n) \iff \exists k \in \mathbb{Z} \ni n = 2k.\\
     \forall n \in \mathbb{Z}, \neg P(n) \iff \exists k \in \mathbb{Z} \ni n = 2k + 1.
 \end{align*}
 
@@ -29,3 +29,71 @@ Let P(n) be the predicate "n is a prime number".
     \forall n \in \mathbb{Z}_{>1}, \neg P(n) &\iff \exists r, s \in \mathbb{Z}_{>1} \ni n=rs \land 1 < r < n \land 1 < s < n
 \end{align*}
 
+\subsubsection*{Constructive Proof of Existential Statement}
+\begin{equation*}
+    \exists x in D \ni Q(x)
+\end{equation*}
+\begin{itemize}
+    \item Find an x in D that makes !(x) true.
+    \item Give a set of directions for finding such an x in D
+\end{itemize}
+
+\paragraph*{Example}
+Prove there is and even integer n such that n can be written in two ways as a sum of two prime numbers.
+\begin{align*}
+    \text{Let } n &= 10,\\
+    10 &= 3 + 7\\
+    10 &= 5+5\\
+    \therefore \quad &\text{the statement is true.}
+\end{align*}
+
+\subsubsection*{Disproving Universal Statement by Counterexample}
+\begin{equation*}
+    \forall x in D, P(x) \implies Q(x)
+\end{equation*}
+
+\begin{itemize}
+    \item Find an x in D that makes P(x) true, but Q(x) false.
+\end{itemize}
+
+% \paragraph*{Example}
+% Disprove the statement $\forall n, k \in \mathbb{Z}, n = 2k \implies \frac{n-1}{2} = 2k + 1$
+% \begin{align*}
+%     Let n = 1\\
+%     1 = 2(0) + 1, \therefore n is odd.
+%     \frac{1-1}{2}
+% \end{align*}
+
+\subsubsection*{Method of Exhaustion of Proving Universal Statement}
+\begin{equation*}
+    \forall x in D, P(x) \implies Q(x)
+\end{equation*}
+\begin{itemize}
+    \item Check all x in D to make sure that when P(x) is true, Q(x) is false.
+\end{itemize}
+
+% \paragraph*{Example}
+% Prove the statement "$\forall n \in 4 \leq n \leq 10, n = a + b$ where a and b are prime numbers.
+% \begin{align*}
+%     n &= 4, \quad 4 &= 2+2
+% \end{align*}
+
+\subsubsection*{Direct Proof of Universal Statement}
+\begin{equation*}
+    \forall x \in D, P(x) \implies Q(x)
+\end{equation*}
+\begin{itemize}
+    \item Suppose x is an arbitrary element in D for which the hypothesis P(x) is true.
+    \item Using definitions or previously established results and rules to conclude Q(x) is true.
+\end{itemize}
+
+\paragraph*{Example}
+Prove the statement "the sum of any two even integers is even."
+\begin{align*}
+    &\text{Suppose a and b are two even integers}\\
+    \therefore \quad & a = 2k, \exists k_1 \in \mathbb{Z}\\
+    \therefore \quad & b = 2k, \exists k_2 \in \mathbb{Z}\\
+    \therefore \quad & a + b = 2k_1 + 2k_2\\
+    \therefore \quad & a + b = 2(k_1 + k_2)\\
+    \therefore \quad & a + b \text{ is even}
+\end{align*}
