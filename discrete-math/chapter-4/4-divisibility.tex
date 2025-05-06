@@ -1,0 +1,54 @@
+\subsection{Divisibility}
+\hrulefill
+
+\paragraph*{Definitions}
+If n and d are integers and d $\neq$ 0, then n is divisible by d if and only if n = dk for some integer k.
+\begin{itemize}
+    \item Notation: $d|n$ is read "d divides n".
+    \begin{itemize}
+        \item $d|n \iff \exists k \in \mathbb{Z} \ni n=dk$
+    \end{itemize}
+\end{itemize}
+
+It is equivalent to the following statements:
+\begin{itemize}
+    \item n is a multiple of d
+    \item d is a factor of n
+    \item d is a divisor of n
+    \item d divides n
+\end{itemize}
+
+\paragraph*{Example}
+Prove the following statement: $\forall a,b,c \in \mathbb{Z}, a|b \land a|c \implies a|(b+c)$.
+\begin{align*}
+    & \text{Suppose } a,b,c \in \mathbb{Z} \land a|b \land a|c\\
+    \therefore \quad & b=ak, \exists k \in \mathbb{Z} & \text{Definition of Divisibility}\\
+    \therefore \quad & c=am, \exists m \in \mathbb{Z}\\
+    \therefore \quad & b+c=a(k+m) & \text{Substitution and distributive}\\
+    \therefore \quad & k+m \in \mathbb{Z} & \text{Integers are closed under addition}\\
+    \therefore \quad & a|(b+c) & \text{Def. of divisibility}
+\end{align*}
+
+\subsubsection*{Divisibility Theorems}
+\paragraph*{Positive Divisor of a Positive Integer Theorem}
+\begin{equation*}
+    \forall a,b \in \mathbb{Z}, a>0 \land b>0 \land a|b \implies a \leq b.
+\end{equation*}
+
+\paragraph*{Divisors of 1 Theroem}
+The only divisors of 1 are 1 and -1.
+
+\paragraph*{Transistivity of Divisibility Theorem}
+\begin{equation*}
+    \forall a,b,c \in \mathbb{Z}, a|b \land b|c \implies a|c
+\end{equation*}
+
+\paragraph*{Divisible by a Prime Theorem}
+Any integers n > 1 is divisible by a prime number.
+
+\paragraph*{Unique Factorization of Integers Theorem}
+Given any integers n > 1, there exists k many distinct prime numbers $(p_1, \dots, p_k)$ and k many positive integers 
+$(e_1, \dots, e_k)$, where k is a positive integer, such that:
+\begin{equation*}
+    n = \prod_{i=1}^k p_i^{e_i}
+\end{equation*}

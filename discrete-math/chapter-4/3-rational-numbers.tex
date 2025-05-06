@@ -1,0 +1,85 @@
+\subsection{Rational Numbers}
+\hrulefill
+
+\paragraph*{Definitions}
+\begin{itemize}
+    \item A real number r is rational if and only if $\exists a,b \in \mathbb{Z}$ such that $r = \frac{a}{b} \land b \neq 0$.
+    \item A real number that is not rational is irrational.
+\end{itemize}
+
+\paragraph*{Example}
+Is 320.5492492492... a rational number? (The 492 repeats). We can split the number into two parts: 320.5 and 0.0492492...
+\begin{align*}
+    &\text{First we rewrite 320.5 as a fraction:}\\
+    & 320.5 = \frac{3205}{10}\\
+    \\
+    &\text{Then we rewrite 0.0492492... as a fraction:}\\
+    &10000(0.0492492...) - 10(0.0492492...) = 492.492... = 0.492492... = 492\\
+    \Rightarrow \quad & 10000x - 10x = 492\\
+    \Rightarrow \quad & 9990x = 492\\
+    \Rightarrow \quad & x = \frac{492}{9990}\\
+    \\
+    &\text{Now we can combine the two fractions:}\\
+    & 320.5492492... = \frac{3205}{10} + \frac{492}{9990}\\
+    \Rightarrow \quad & \frac{3205 \cdot 999}{10 \cdot 999} + \frac{492 \cdot 1}{9990}\\
+    \Rightarrow \quad & \frac{3205 \cdot 999 + 492}{9990}\\
+    \Rightarrow \quad & \frac{3199995 + 492}{9990}\\
+    \Rightarrow \quad & \frac{3200487}{9990}\\
+    \therefore \quad & 320.5492492... \text{ is rational.}
+\end{align*}
+
+\subsubsection{Zero Product Property}
+\paragraph*{Theorem}
+If neither of two real numbers is zero, then their product is non-zero. The contrapositive of this theorem is also true: If the product of two real numbers is zero, then at least one of the two numbers is zero.
+\begin{align*}
+    &\text{Let } a,b \in \mathbb{Q}\\
+    &\text{If } ab = 0 \Rightarrow a = 0 \lor b = 0\\
+    &\text{If } ab \neq 0 \Rightarrow a \neq 0 \land b \neq 0
+\end{align*}
+
+\paragraph*{Example}
+\begin{align*}
+    &\text{Let } a,b \in \mathbb{Q}:\\
+    \therefore \quad & a = \frac{n_1}{d_1}, \exists n_1,d_1 \in \mathbb{Z} \land d_1 \neq 0 & \text{Definition of rational numbers.}\\
+    \therefore \quad & b = \frac{n_2}{d_2}, \exists n_1,d_1 \in \mathbb{Z} \land d_2 \neq 0\\
+    \therefore \quad & a + b = \frac{n_1}{d_1} + \frac{n_2}{d_2} & \text{Substitution principle.}\\
+    \therefore \quad & a + b = \frac{n_1d_2 + n_2d_1}{d_1d_2}\\
+    \therefore \quad & d_1d_2 \neq 0 & \text{Zero product property}\\
+    \therefore \quad & a + b \text{ is rational}
+\end{align*}
+
+\subsubsection*{Corollaries}
+\paragraph*{Definition}
+A corollary is a statement whose truth can be immediately deduced from a theorem that has already been proven.
+
+\paragraph*{Example}
+Prove that the product of two rational numbers is rational.
+\begin{align*}
+    &\text{Let } a,b \in \mathbb{Q}:\\
+    \therefore \quad & a = \frac{n}{m}, \exists n,m \in \mathbb{Z} \land m \neq 0 & \text{Definition of rational numbers.}
+    \therefore \quad & b = \frac{s}{t}, \exists s,t \in \mathbb{Z} \land t \neq 0\\
+    \therefore \quad & a \cdot b = \frac{n}{m} \cdot \frac{s}{t}, m \neq 0 \land t \neq 0\\
+    \therefore \quad & ab = \frac{ns}{mt}, mt \neq 0 & \text{Zero product property.}\\
+    \therefore \quad & ab \in \mathbb{Q}
+\end{align*}
+
+\paragraph*{Example}
+Prove or disprove by counterexample the following statement: "The quotient of any 2 rational numbers is rational."
+\begin{align*}
+    & \forall p,q \in \mathbb{Q}, \frac{p}{q} \in \mathbb{Q} & \text{Statement}\\
+    & \text{Let } p=1,q=0\\
+    \therefore \quad & \frac{p}{q} \notin \mathbb{Q}\\
+    \therefore \quad & \exists p,q \in \mathbb{Q} \ni \frac{p}{q} \notin \mathbb{Q}
+\end{align*}
+
+\paragraph*{Example}
+Prove or disprove by counterexample the following statement: $\forall a,b \in \mathbb{R}, a<b \implies a<\frac{a+b}{2}<b.$
+\begin{align*}
+    \therefore \quad & a < b \implies a + b < 2b\\
+    \because \quad & \frac{1}{2} > 0\\
+    \therefore \quad & a < b \land \frac{1}{2} > 0 \implies \frac{a+b}{2} < \frac{b}{2}\\
+    \therefore \quad & a < b \implies 2a < b + a\\
+    \because \quad & \frac{1}{2} > 0\\
+    \therefore \quad & a < b \land \frac{1}{2} > 0 \implies a < \frac{a+b}{2}\\
+    \therefore a < \frac{a+b}{2} \land \frac{a+b}{2} < b \equiv a < \frac{a+b}{2} < b\\
+\end{align*}
