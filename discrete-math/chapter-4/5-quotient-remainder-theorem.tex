@@ -1,0 +1,47 @@
+\subsection{The Quotient-Remainder Theorem}
+
+\paragraph*{Theorem}
+\begin{equation*}
+    \forall n \in \mathbb{Z}, \forall d \in \mathbb{Z}^+, \exists q,r \in \mathbb{Z} \ni n=dq+r \land 0 \leq r < d
+\end{equation*}
+
+\paragraph*{Definition}
+Given any integer n and any positive integer d:
+\begin{align*}
+    n \div d = q\\
+    n \% d = r
+\end{align*}
+
+\paragraph*{Example}
+If today is tuesday, what day of the week will it be in 365 days?
+\begin{equation*}
+    365 \mod 7 = 1
+    \text{Tuesday + 1 day} = \text{Wednesday}
+\end{equation*}
+
+\subsubsection*{The Parity Property}
+\paragraph*{Definition}
+We call the fact that any integer is either even or odd the parity property.
+\paragraph*(Method of Proof by Division Into Cases)
+To prove a statement of the form "If $A_1 or A_2 \dots or A_n$, then C."
+
+\paragraph*{Example}
+The product of two consecutive integers is even.
+\begin{align*}
+    & \exists n \in \mathbb{Z}\\
+    \\
+    & \text{Case 1: } n \text{ is even}\\
+    \therefore \quad & n = 2k, \exists k \in \mathbb{Z}\\
+    \therefore \quad & n + 1 = 2k + 1\\
+    \therefore \quad & n(n+1) = 2k(2k+1) = \\
+    \therefore \quad & n(n+1) = 2(2k^2 + k)\\
+    \therefore \quad & n(n+1) \text{ is even}\\
+    \\
+    & \text{Case 2: } n \text{ is odd}\\
+    \therefore \quad & n = 2k + 1, \exists k \in \mathbb{Z}\\
+    \therefore \quad & n + 1 = 2k + 2\\
+    \therefore \quad & n(n+1) = (2k + 1)(2k + 2)
+    \therefore \quad & n(n+1) = 2((k + 1)(2k + 1))\\
+    \therefore \quad & n(n+1) \text{ is even}
+\end{align*}
+
