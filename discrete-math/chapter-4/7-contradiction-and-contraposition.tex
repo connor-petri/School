@@ -59,13 +59,13 @@ Prove the theorem by contradiction: "The sum of any rational number and any irra
 \paragraph*{Example}
 Prove the statement by contraposition: "For all integers m and n, if mn is even then m is even or n is even."
 \begin{align*}
-    \text{Theorem:} \quad & \forall m, n \in \mathbb{Z}, mn | 2 \implies m|2 \lor n|2\\
-    \text{Contrapositive:} \quad & \forall m, n \in \mathbb{Z}, \neg (m|2) \land \neg(n|2) \implies \neg (mn|2)\\
+    \text{Theorem:} \quad & \forall m, n \in \mathbb{Z}, 2 | mn \implies 2|m \lor 2|n\\
+    \text{Contrapositive:} \quad & \forall m, n \in \mathbb{Z}, \neg (2|m) \land \neg(2|n) \implies \neg (2|mn)\\
     \\
-    \text{Suppose:} \quad & \exists m, n \in \mathbb{Z} \ni \neg (m|2) \land \neg(n|2)\\
-    \therefore \quad & \exists k, l \in \mathbb{Z} \ni m = 2k + 1 \land n = 2l + 1\\
+    \text{Suppose:} \quad & \exists m, n \in \mathbb{Z} \ni \neg (2|m) \land \neg(2|n)\\
+    \therefore \quad & \neg(2|m) \land \neg(2|n) \implies \exists k, l \in \mathbb{Z} \ni m = 2k + 1 \land n = 2l + 1\\
     \therefore \quad & mn = (2k + 1)(2l + 1)\\
     \implies \quad & mn = 4kl + 2k + 2l + 1 \implies mn = 2(2kl + k + l) + 1\\
-    \therefore \quad & 2kl + k + l \in \mathbb{Z} & \text{Integers are closed under addition}\\
-    \therefore \quad & mn = 2(2kl + k + l) + 1 \implies \neg(mn|2)\\
+    \therefore \quad & k,l \in \mathbb{Z} \implies 2kl + k + l \in \mathbb{Z}\\
+    \therefore \quad & mn = 2(2kl + k + l) + 1 \land 2kl + k + 1 \in \mathbb{Z} \implies \neg(2|mn)\\
 \end{align*}

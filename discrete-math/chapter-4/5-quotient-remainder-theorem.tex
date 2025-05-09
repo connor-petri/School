@@ -9,15 +9,15 @@
 Given any integer n and any positive integer d:
 \begin{align*}
     n \div d = q\\
-    n \% d = r
+    n \mod d = r
 \end{align*}
 
 \paragraph*{Example}
 If today is tuesday, what day of the week will it be in 365 days?
-\begin{equation*}
+\begin{align*}
     365 \mod 7 = 1
     \text{Tuesday + 1 day} = \text{Wednesday}
-\end{equation*}
+\end{align*}
 
 \subsubsection*{The Parity Property}
 \paragraph*{Definition}
@@ -30,19 +30,19 @@ The product of two consecutive integers is even.
 \begin{align*}
     & \exists n \in \mathbb{Z}\\
     \\
-    & \text{Case 1: } n \text{ is even}\\
-    \therefore \quad & n = 2k, \exists k \in \mathbb{Z}\\
-    \therefore \quad & n + 1 = 2k + 1\\
-    \therefore \quad & n(n+1) = 2k(2k+1) = \\
-    \therefore \quad & n(n+1) = 2(2k^2 + k)\\
-    \therefore \quad & n(n+1) \text{ is even}\\
+    & \text{Case 1: } 2|n\\
+    \therefore \quad & 2|n \implies \exists k \in \mathbb{Z} \ni n = 2k \implies n + 1 = 2k + 1\\
+    \therefore \quad & n(n+1) = 2k(2k+1) = 2(2k^2 + k)\\
+    \therefore \quad & k \in \mathbb{Z} \implies 2k^2+k \in \mathbb{Z}\\
+    \therefore \quad & n(n+1) = 2(2k^2 + k) \land 2k^2 + k \in \mathbb{Z} \implies [2|n(n+1)]\\
     \\
-    & \text{Case 2: } n \text{ is odd}\\
-    \therefore \quad & n = 2k + 1, \exists k \in \mathbb{Z}\\
-    \therefore \quad & n + 1 = 2k + 2\\
-    \therefore \quad & n(n+1) = (2k + 1)(2k + 2)
-    \therefore \quad & n(n+1) = 2((k + 1)(2k + 1))\\
-    \therefore \quad & n(n+1) \text{ is even}
+    & \text{Case 2: } \neg (2|n)\\
+    \therefore \quad & \neg (2|n) \implies \exists k \in \mathbb{Z} \ni n = 2k + 1 \implies n + 1 = 2k + 2\\
+    \therefore \quad & n(n+1) = (2k + 1)(2k + 2) = 2(2k^2 + 3k + 1)\\
+    \therefore \quad & k \in \mathbb{Z} \implies 2k^2 + 3k + 1 \in \mathbb{Z}\\
+    \therefore \quad & n(n+1) = 2(2k^2 + 3k + 1) \land 2k^2 + 3k + 1 \in \mathbb{Z} \implies [2|n(n+1)]
+    \\
+    \therefore \quad & [2|n(n+1)]
 \end{align*}
 
 \subsubsection*{Absolute Value}
