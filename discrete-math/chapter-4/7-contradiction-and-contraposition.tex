@@ -1,0 +1,71 @@
+\subsection{Contradiction and Contraposition}
+\hrulefill
+
+\subsubsection*{Method of Proof by Contradiction}
+\begin{itemize}
+    \item Suppose the opposite of the to-be proved conclusion.
+    \item Show that this supposition leads logically to a contradiction (a statement that is always false).
+    \item Conclude that the statement to be broved is true.
+\end{itemize}
+
+\paragraph*{Example}
+Prove the theorem by contradiction: "There is no greatest integer."
+\begin{align*}
+    \text{Suppose:} \quad & \exists m \in \mathbb{Z} \ni \forall n \in \mathbb{Z}, n \leq m & \text{Opposite of theorem}\\
+    \therefore \quad & \exists n \in \mathbb{Z} \ni n = m + 1\\
+    \therefore \quad & \nexists m \in \mathbb{Z} \ni \forall n \in \mathbb{Z}, n \leq m\\
+\end{align*}
+
+\paragraph*{Example}
+Prove the theorem by contradiction: "The square root of any irrational number is irrational."
+\begin{align*}
+    \text{Theorem:} \quad & \forall n \notin \mathbb{Q}, \sqrt{n} \notin \mathbb{Q} & \text{Theorem}\\
+    \text{Suppose:} \quad & \forall n \notin \mathbb{Q}, \sqrt{n} \in \mathbb{Q} & \text{Opposite of theorem}\\ 
+    \therefore \quad & \sqrt{n} \in \mathbb{Q} \implies \exists a, b \in \mathbb{Z} \ni \sqrt{n} = \frac{a}{b} \land b \neq 0 & \text{Definition of rational numbers}\\
+    \therefore \quad & \sqrt{n} = \frac{a}{b} \implies n = \frac{a^2}{b^2} & \text{Squaring both sides}\\
+    \therefore \quad & a, b \in \mathbb{Z} \implies a^2, b^2 \in \mathbb{Z} & \text{Integers are closed under squaring}\\
+    \therefore \quad & n = \frac{a^2}{b^2} \land a^2, b^2 \in \mathbb{Z} \implies n \in \mathbb{Q} & \text{Definition of rational numbers}\\
+    \therefore \quad & n \in \mathbb{Q} \land n \notin \mathbb{Q} & \text{Contradiction}\\
+    \therefore \quad & \text{The assumption is false, and the theorem is true.}
+\end{align*}
+
+\paragraph*{Example}
+Prove the theorem by contradiction: "The sum of any rational number and any irrational number is irrational."
+\begin{align*}
+    \text{Theorem:} \quad & \forall n \in \mathbb{Q}, \forall m \notin \mathbb{Q}, n + m \notin \mathbb{Q}\\
+    \\
+    \text{Suppose:} \quad & \forall n \in \mathbb{Q}, \forall m \notin \mathbb{Q}, n+m \in \mathbb{Q} & \text{Opposite of theorem}\\
+    \therefore \quad & n + b \in \mathbb{Q} \implies \exists a,b \in \mathbb{Z} \ni n + m = \frac{a}{b} \land b \neq 0 & \text{Definition of rational numbers}\\
+    \therefore \quad & m = \frac{a}{b} - n\\
+    \therefore \quad & n \in \mathbb{Q} \implies \exists x,y \in \mathbb{Z} \ni n = \frac{x}{y} \land y \neq 0 & \text{Definition of rational numbers}\\
+    \therefore \quad & m = \frac{a}{b} - \frac{x}{y}\\
+    \therefore \quad & m = \frac{ay - bx}{by} \implies m \in \mathbb{Q}\\
+    \therefore \quad & m \in \mathbb{Q} \land m \notin \mathbb{Q} & \text{Contradiction}\\
+    \therefore \quad & \forall n \in \mathbb{Q}, \forall m \notin \mathbb{Q}, n + m \notin \mathbb{Q} & \text{The theorem is true.}
+\end{align*}
+
+
+\subsubsection*{Method of Proof by Contraposition}
+\begin{itemize}
+    \item Express the given statement in the form of "$\forall x \in D, P(x) \implies Q(x)$".
+    \item Rewrite in contrapositive form: "$\forall x \in D, \neg Q(x) \implies \neg P(x)$".
+    \item Prove the contrapositive by direct proof.
+    \begin{itemize}
+        \item Suppose $\exists x \in D \ni \neg Q(x)$.
+        \item Prove $\neg P(x)$.
+    \end{itemize}
+\end{itemize}
+
+\paragraph*{Example}
+Prove the statement by contraposition: "For all integers m and n, if mn is even then m is even or n is even."
+\begin{align*}
+    \text{Theorem:} \quad & \forall m, n \in \mathbb{Z}, mn | 2 \implies m|2 \lor n|2\\
+    \text{Contrapositive:} \quad & \forall m, n \in \mathbb{Z}, \neg (m|2) \land \neg(n|2) \implies \neg (mn|2)\\
+    \\
+    \text{Suppose:} \quad & \exists m, n \in \mathbb{Z} \ni \neg (m|2) \land \neg(n|2)\\
+    \therefore \quad & \exists k, l \in \mathbb{Z} \ni m = 2k + 1 \land n = 2l + 1\\
+    \therefore \quad & mn = (2k + 1)(2l + 1)\\
+    \implies \quad & mn = 4kl + 2k + 2l + 1 \implies mn = 2(2kl + k + l) + 1\\
+    \therefore \quad & 2kl + k + l \in \mathbb{Z} & \text{Integers are closed under addition}\\
+    \therefore \quad & mn = 2(2kl + k + l) + 1 \implies \neg(mn|2)\\
+\end{align*}
