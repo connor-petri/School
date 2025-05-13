@@ -1,4 +1,8 @@
--i*
+# Ignore Flag
+.~ignore*
+
+# LibreOffice temp files.\
+.~lock*
 # Textbook PDFs
 James*Stewart*.pdf
 Ron*Larson*.pdf
