@@ -1,0 +1,113 @@
+\subsection{Sequences}
+\hrulefill
+
+\paragraph*{Definiton}
+A sequence is a function whose \textbf{domain} is either all the \textbf{integers} between two given integers 
+or all the integers greater than or equal to a given integers.
+
+\paragraph*{Notation}
+\begin{align*}
+    a_1 &= f(1)\\
+    &\cdots\\
+    a_{n-1} &= f(n-1)\\
+    a_n &= f(n)\\
+    a_{n+1} &= f(n+1)
+\end{align*}
+
+\paragraph*{Example}
+Write the first three terms of the sequence whose \textbf{explicit} or \textbf{general formula} is given:
+\begin{align*}
+    a_n &= \frac{(-1)^n}{2^n + 1} \text{ for } n \geq 1\\
+    a_1 &= \frac{(-1)^1}{2^1 + 1} = - \frac{1}{3}\\
+    a_2 &= \frac{(-1)^2}{2^2 + 1} = \frac{1}{5}\\
+    a_3 &= \frac{(-1)^3}{2^3 + 1} = - \frac{1}{9}
+\end{align*}
+
+\subsubsection*{Summation Notation}
+\paragraph*{Definition}
+If m and n are integers andm $\leq$ n, then a \textbf{series} can be notated as:
+\begin{equation*}
+    \sum_{i=m}^n a_i = a_m + a_{m+1} + \cdots + a_n
+\end{equation*} 
+
+\begin{itemize}
+    \item \textbf{Read as} ``the summation from i = m to n of a-sub-i''
+    \item \textbf{i} is called the \mathbf{index} of the Summation
+    \item \textbf{m} is called the \texbf{lower limit} of the Summation
+    \item \textbf{n} is called the \texbf{upper limit} of the summation
+\end{itemize}
+
+\paragraph*{Example}
+Expand and evaluate the following:
+\begin{align*}
+    &\sum_{i=2}^6 (i-1)^2\\
+    &= 1 + 4 + 9 + 16 + 25\\
+    &= 55
+\end{align*}
+
+\paragraph*{Re-indexing a Summation}
+Re-indexing a summation involves changing the index variable or the limits of summation, often to simplify the expression or to match 
+another sum's index.
+\begin{align*}
+    &\sum_{i=1}^{n+1} \frac{1}{i^2}\\
+    = &\sum_{i=1}^{n} \frac{1}{i^2} + \frac{1}{(n+1)^2}
+\end{align*}
+
+\paragraph*{Example}
+If $j=i+1$, transform the following summation by rewriting it in terms of j: $\sum_{i=4}^{k-1} i(i-1)$
+\begin{align*}
+    i &= 4 \implies j = 4 + 1 = 5 & \text{Rewrite lower limit.}\\
+    i &= k - 1 \implies j = k - 1 + 1 = k & \text{Rewrite upper limit}\\
+    j &= i + 1 \implies i = j - 1 & \text{Rewrite i in terms of j}\\
+    & \sum_{j=5}^{k} (j-1)(j-2) & \text{Rewrite sum}
+\end{align*}
+
+\subsubsection{Product Notation}
+\paragraph*{Definition}
+If m and n are integers andm $\leq$ n, then a \textbf{series} can be notated as:
+\begin{equation*}
+    \prod_{i=m}^n a_i = a_m \cdot a_{m+1} \cdot \cdots \cdot a_n
+\end{equation*} 
+
+\begin{itemize}
+    \item \textbf{Read as} ``the product from i = m to n of a-sub-i''
+    \item \textbf{i} is called the \mathbf{index} of the product
+    \item \textbf{m} is called the \texbf{lower limit} of the product
+    \item \textbf{n} is called the \texbf{upper limit} of the product
+\end{itemize}
+
+\paragraph*{Example}
+Expand and evaluate the following:
+\begin{align*}
+    & \prod_{k=2}^{5} \frac{k}{k+1}\\
+    &= \frac{2}{2+1} \cdot \frac{3}{3+1} \cdot \frac{4}{4+1} \cdot \frac{5}{5+1}\\
+    &= \frac{1}{3}
+\end{align*}
+
+\paragraph*{Theorem}
+Given sequences $\{a\}$ and $\{b\}$ and $c \in \mathbb{R}$, the following equations hold:
+\begin{align*}
+    \sum_{i=m}^{n} a_i + \sum_{i=m}^{n} b_i &= \sum_{i=m}^{n} (a_n + b_n)\\
+    c \cdot \sum_{i=m}^{n} a_i &= \sum_{i=m}^{n} c \cdot a_i\\
+    \prod_{i=m}^{n} a_i \cdot \prod_{i=m}^{n} b_i &= \prod_{i=m}^{n} (a_i b_i)
+\end{align*}
+
+\paragraph*{Factorials}
+\begin{equation*}
+    n! = n \cdot (n-1) \cdot \dots \cdot 2 \cdot 1
+\end{equation*}
+
+\subsubsection*{Binomial Coefficient}
+\paragraph*{Definition}
+Let n and r be integers with $0 \leq r \leq n$, the binomial coeffecient is notated as:
+\begin{equation*}
+    nCr = \binom{n}{r} = \frac{n!}{r!(n-r)!}
+\end{equation*}
+
+It presents the number of combinations of choosing r items from n choices.
+
+\paragraph*{Example}
+Evaluate:
+\begin{align*}
+    \binom{5}{3} = \frac{5!}{3!(5-3)!} = \frac{5 \cdot 4 \cdot 3 \cdot 2 \cdot 1}{3 \cdot 2 \cdot 1 \cdot 2 \cdot 1} = \frac{5 \cdot 4}{2 \cdot 1} = 10
+\end{align*}
