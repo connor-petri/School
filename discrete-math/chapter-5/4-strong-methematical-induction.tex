@@ -9,12 +9,25 @@ Let P(n) be a property that is defined for integers n, and let a and b be fixed 
 \end{itemize}
 
 \paragraph*{Example}
-Prove that $S_n = 5^n - 1 \forall n \in \mathbb{Z}^+$ if $S_0 = 0$, $S_1 = 4$, $S_k = 6S_{k-1} - S_{k-2}$ for all integers $k \geq 2$.
+Define a sequence:
 \begin{align*}
-    \text{Basic step:}&\\
-    &S_0 = 5^0 - 1 = 1 - 1 = 0\\
-    &S_1 = 5^1 - 1 = 5 - 1 = 4\\
-    \text{Inductive step:}&\\
-    %Finish this
+    S_0 &= 0\\
+    S_1 &= 4\\
+    \forall k \in \{x \in \mathbb{Z} : x \geq 2\}, S_k &= 6S_{k-1} - 5S_{k-2}\\
+\end{align*}
+Prove $\forall n \in \{x \in \mathbb{Z} : x \geq 0\}, S_n = 5^n - 1$:
+\begin{align*}
+    &\text{Let } G = \{x \in \mathbb{Z} : x \geq 0\}\\
+    \\
+    &\text{Basic step:}\\
+    &\quad S_0 = 5^0 - 1 = 1 - 1 = 0\\
+    &\quad S_1 = 5^1 - 1 = 5 - 1 = 4\\
+    \\
+    &\text{Inductive step:}\\
+    &\quad \text{Suppose } \forall k \in G, S_k = 5^k - 1\\
+    \implies& \quad S_{k+1} = 6S_k - 5S_{k-1} = 6(5^k-1) - 5(5^{k-1}-1) = 6(5^k) - 6 + 5(5^{k-1}) + 5\\
+    &\quad = 6(5^k) - (5^{k-1+1}) - 1 = (6-1)5^k - 1 = 5 \cdot 5^k - 1 = 5^{k+1} - 1\\
+    &\therefore \quad S_{k+1} = 6S_k - 5S_{k-1}\\
+    \therefore &\quad \forall n \in \{x \in \mathbb{Z} : x \geq 0\}, S_n = 5^n - 1
 \end{align*}
 

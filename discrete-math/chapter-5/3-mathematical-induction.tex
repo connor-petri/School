@@ -8,13 +8,14 @@
 \end{itemize}
 
 \paragraph*{Example}
-Use mathematical induction to prove that $\forall n \in {x \in \mathbb{Z} : x \geq 0}, 3 | (2^{2n}-1)$.
+Use mathematical induction to prove \newline $\forall n \in \{x \in \mathbb{Z} : x \geq 0\}, 3 | (2^{2n}-1)$:
 \begin{align*}
     \text{Step 0:}& \text{ Identify the property P(n)}\\
     &P(n) \equiv 3 | (2^{2n}-1)\\
     \\
     \text{Step 1:}& \text{ Prove P(0)}\\
     & 2^{2(0)} - 1 = 2^0 - 1 = 1 - 1 = 0\\
+    & 3 | 0\\
     \therefore \quad & 3 | (2^{2(0)} - 1)\\
     \\
     \text{Step 2:}& \text{ Suppose P(k) is true for } k \geq 0, \text{ then prove P(k+1)}\\
@@ -28,15 +29,28 @@ Use mathematical induction to prove that $\forall n \in {x \in \mathbb{Z} : x \g
 \end{align*}
 
 \paragraph*{Example}
-Use mathematical induction to prove that $\forall n \in {x \in \mathbb{Z} : x \geq 5}, n^2 < 2^n$
+Use mathematical induction to prove \newline $\forall n \in \{x \in \mathbb{Z} : x \geq 5\}, n^2 < 2^n$
 \begin{align*}
-    \text{Base Step: n = 5}\\
-    5^2 < 2^5 = 25 < 32\\
+    &\text{Base Step: } n = 5\\
+    &\quad 5^2 < 2^5 = 25 < 32\\
     \\
-    \text{Inductive Step:}\\
-    &\text{Suppose } \forall k \in {x \in \mathbb{Z} : x \geq 5}, k^2 < 2^k\\
-    &\text{Then prove } (k+1)^2 < 2^{k+1}\\
-    \text{LHS} k
+    &\text{Inductive Step:} \text{ Suppose } \forall k \in \{x \in \mathbb{Z} : x \geq 5\}, k^2 < 2^k \text{ then prove } (k+1)^2 < 2^{k+1}\\
+    &\quad \text{LHS} = (k+1)^2\\
+    &\qquad (k+1)^2 = k^2 + 2k + 1\\
+    &\qquad k^2 < 2^k \implies k^2 + 2k + 1 < 2^k + [2k + 1]\\
+    \\
+    &\quad \text{RHS} = 2^{k+1}\\
+    &\qquad 2^{k+1} = 2^k \cdot 2^1 = 2^k + [2^k]\\
+    \\
+    &\quad \text{Prove } (k+1)^2 < 2^{k+1} \text{ for } k \geq 5:\\
+    &\qquad 2 \cdot 5 + 1 = 11 < 32 = 2^5\\
+    &\qquad 2 \cdot 6 + 1 = 13 < 64 = 2^6\\
+    &\qquad 2 \cdot 7 + 1 = 15 < 128 = 2^7\\
+    &\qquad \text{and so on.}\\
+    &\quad \therefore \quad \forall k \in \{x \in \mathbb{Z} : x \geq 5\}, 2k+1 < 2^k\\
+    \\
+    &\quad \therefore \quad \forall k \in \{x \in \mathbb{Z} : x \geq 5\}, (k+1)^2 < 2^{k+1}\\
+    &\quad \therefore \quad \forall k \in \{x \in \mathbb{Z} : x \geq 5\}, k^2 < 2^k
 \end{align*}
 
 \subsubsection*{Recursion}
