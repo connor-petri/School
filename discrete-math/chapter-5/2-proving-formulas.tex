@@ -8,5 +8,45 @@ Induction proof explores the \textbf{patterns} we recognize from a list of unkno
 \paragraph*{Method}
 Consider the statement $\forall n \in \{a \in \mathbb{Z} : n \geq a\}, P(n)$
 \begin{itemize}
-    \item Step 1: \textbf{(basis step):} Show that P(a) is true
+    \item Step 1: \textbf{(basis step):} Show that P(a) is true.
+    \item Step 2: \textbf{(inductive step):} Show that if we suppose P(k) is true, then P(k+1) is true.
 \end{itemize}
+
+\paragraph*{Example}
+Use the formula to evaluate $1 + 2 + \cdots + n = \frac{n(n+1)}{2}$.
+\begin{align*}
+    & \text{Suppose } n = 50\\
+    1 + 2 + \cdots + 50 &= \frac{50(50+1)}{2}\\
+    &= \frac{50(51)}{2}\\
+    &= \frac{2550}{2}\\
+    &= 1275
+\end{align*}
+
+
+\paragraph*{Definition} If a sum with a variable number of terms is show to equal an expression that does not contain either an ellipsis 
+or a summation sign, we can say that the sum is written in \textbf{closed form}.
+
+\paragraph*{Example}
+Use the formula to evaluate $1 + 2 + \cdots + n$
+
+\subsubsection*{Geometric Series}
+\paragraph*{Definition}
+If $r \in \mathbb{R} \land r \neq 1$, the sum of the first n terms of a geometric series is given by:
+\begin{equation*}
+    \sum_{i=0}^{n} r^i = \frac{r^{n+1} - 1}{r - 1}
+\end{equation*}
+
+\paragraph*{Example}
+Use the above formula to evaluate $1 + 3 + \cdots + 3^{m-2}$
+\begin{align*}
+    r = 3, n = m-2\\
+    1 + 3 + \cdots + 3^{m-2} &= \sum_{i=0}^{m-2} 3^i\\
+    &= \frac{3^{m-1} - 1}{3 - 1} = \frac{3^{m-1}-1}{2}\\
+\end{align*}
+
+\paragraph*{Example}
+$3^2 + 3^3 + \cdots + 3^{m}$
+\begin{align*}
+   $3^2 + 3^3 + \cdots + 3^{m}$ = 1 + 3 + 3^2 + 3^3 + \cdots + 3^{m} - (1 + 3)\\
+   r=3, n=m\\
+\end{align*}
