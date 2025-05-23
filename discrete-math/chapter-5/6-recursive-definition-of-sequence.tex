@@ -1,0 +1,32 @@
+\subsection{Defining Sequences Recursively}
+\hrulefill\\
+\subsubsection*{Definition}
+A sequence is defined recursively if it is defined in terms of itself.
+\begin{itemize}
+    \item The \textbf{initial conditions} are given for $a_0, a_1, \dots, a_{i-1}$ for a fixed $i$.
+    \item A \textbf{recurrence relation} is a formula that relates $a_k$, $k \geq i$ to its predecessors $a_{k-1}, a_{k-2}, \dots, a_{0}$.
+\end{itemize}
+
+Two sequences are \textbf{equivalent} if they have the same initial conditions and recurrence relations that yeild the same sequence.
+
+\paragraph*{Example}
+\begin{equation*}
+    a_k = 
+    \begin{cases}
+        1, & k = 1\\
+        3, & k = 2\\
+        2a_{k-1} + a_{k-2}, & \forall k \in \{x \in \mathbb{Z} : x \geq 3\}
+    \end{cases}
+\end{equation*}
+
+\subsubsection*{The Fibonacci Sequence}
+\paragraph*{Definition}
+The Fibonacci sequence is a recursive sequence that is found everywhere in the natural world. It is defined as:
+\begin{equation*}
+    F_k =
+    \begin{cases}
+        1, & k = 0\\
+        1, & k = 1\\
+        F_{k-1} + F_{k-2}, & \forall k \in \{x \in \mathbb{Z} : x \geq 2\}
+    \end{cases}
+\end{equation*}

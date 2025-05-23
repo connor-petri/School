@@ -28,6 +28,16 @@ Prove $\forall n \in \{x \in \mathbb{Z} : x \geq 0\}, S_n = 5^n - 1$:
     \implies& \quad S_{k+1} = 6S_k - 5S_{k-1} = 6(5^k-1) - 5(5^{k-1}-1) = 6(5^k) - 6 + 5(5^{k-1}) + 5\\
     &\quad = 6(5^k) - (5^{k-1+1}) - 1 = (6-1)5^k - 1 = 5 \cdot 5^k - 1 = 5^{k+1} - 1\\
     &\therefore \quad S_{k+1} = 6S_k - 5S_{k-1}\\
+    \\
     \therefore &\quad \forall n \in \{x \in \mathbb{Z} : x \geq 0\}, S_n = 5^n - 1
 \end{align*}
 
+\subsubsection*{Well-Ordering Principle for the Integers}
+\paragraph*{Definition}
+Let S be a \textbf{non-empty} set of \textbf{integers}. If all elements in S are greater than some fixed integers, then S has a \textbf{least element.}
+For the well-ordering principle to work:
+\begin{itemize}
+    \item The set must be integers.
+    \item The set must be non-empty.
+    \item The set must be greater than some fixed integers.
+\end{itemize}
