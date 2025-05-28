@@ -1,0 +1,31 @@
+\subsection*{Functions Defined on General Sets}
+\hrulefill\\
+
+\begin{center}
+    \includegraphics*[width=\textwidth]{functions.png}
+\end{center}
+
+\paragraph*{Theorem: Function Equality}
+Let X and Y be two sets: If $F: X \rightarrow Y$ and $G: X \rightarrow Y$, are two functions, then 
+$F = G \iff \forall x \in X, F(x) = G(x)$
+
+\paragraph*{Identitiy Functions}
+Let X be a set. Define a function $I_X: X \rightarrow X$ by:
+\begin{equation*}
+    \forall x \in X, I_X(x) = x
+\end{equation*}
+
+\paragraph*{Not Well Defined Functions}
+A function is not well defined if 
+\begin{itemize}
+    \item there is no y that satisfies the given equation.
+    \item There are two different values of y that satisfy the equations.
+\end{itemize}
+
+\paragraph*{Example}
+Suppose $f: \mathbb{Q} \rightarrow \mathbb{Z}$ is defined as:
+\begin{equation*}
+    \forall m,n \in \mathbb{Z}, \forall \frac{m}{n} \in \mathbb{Q}, f(\frac{m}{n}) = m - n \land n \neq 0
+\end{equation*}
+Explain why $f$ is not well defined:\\
+$f(\frac{1}{2}) = \frac{1}$ and $f(\frac{2}{4}) = 2$, so $f$ is not well defined.
