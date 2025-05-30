@@ -1,0 +1,60 @@
+\subsection*{Cardinality and Infinity}
+\hrulefill\\
+
+\paragraph*{Cardinality of Sets}
+The \textbf{cardinality} of a set $A$, denoted $|A|$, is a measure of the "number of elements" in $A$.
+
+\paragraph*{Formal Definition of Cardinality}
+Two sets $A$ and $B$ have the same cardinality, written $|A| = |B|$, if there exists a bijection $f: A \to B$.
+
+\paragraph*{Finite Sets}
+A set $A$ is \textbf{finite} if $|A| = n$ for some $n \in \mathbb{N}$, i.e., there is a bijection between $A$ and $\{1,2,\ldots,n\}$.
+
+\paragraph*{Infinite Sets}
+A set that is not finite is \textbf{infinite}.
+
+\paragraph*{Countable Sets}
+A set $A$ is \textbf{countably infinite} if there is a bijection between $A$ and $\mathbb{N}$. A set is \textbf{countable} if it is finite or countably infinite.
+
+\paragraph*{Examples of Countable Sets}
+\begin{itemize}
+    \item $\mathbb{N}$ is countably infinite (identity function).
+    \item $\mathbb{Z}$ is countably infinite (can be listed as $0,1,-1,2,-2,\ldots$).
+    \item $\mathbb{Q}$ is countably infinite (can be listed in a sequence, e.g., by diagonals).
+\end{itemize}
+
+\paragraph*{Uncountable Sets}
+A set is \textbf{uncountable} if it is not countable. $\mathbb{R}$ is uncountable.
+
+\paragraph*{Theorem: $\mathbb{Q}$ is Countable}
+There exists a bijection between $\mathbb{N}$ and $\mathbb{Q}$.
+
+\paragraph*{Theorem: $\mathbb{R}$ is Uncountable (Cantor's Diagonal Argument)}
+Suppose $[0,1]$ is countable and list all real numbers in $[0,1]$ as decimals. Construct a new number by changing the $n$th digit of the $n$th number. This new number differs from every number in the list, so $[0,1]$ is uncountable.
+
+\paragraph*{Comparing Cardinalities}
+If there is an injective function from $A$ to $B$, then $|A| \leq |B|$. If there is a bijection, $|A| = |B|$.
+
+\paragraph*{Sizes of Infinity}
+$|\mathbb{N}|$ is the smallest infinite cardinality ("countable infinity"). $|\mathbb{R}|$ is strictly larger ("uncountable infinity").
+
+\paragraph*{Summary}
+\begin{itemize}
+    \item Cardinality measures the size of sets.
+    \item Countable sets can be listed in a sequence; uncountable sets cannot.
+    \item There are different sizes of infinity.
+\end{itemize}
+
+\paragraph*{Summary Table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Set & Countable? & Cardinality \\
+\hline
+$\mathbb{N}$ & Yes & $\aleph_0$ \\
+$\mathbb{Z}$ & Yes & $\aleph_0$ \\
+$\mathbb{Q}$ & Yes & $\aleph_0$ \\
+$\mathbb{R}$ & No & $\mathfrak{c}$ \\
+\hline
+\end{tabular}
+\end{center}

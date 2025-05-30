@@ -1,0 +1,70 @@
+\subsection*{Composition of Functions}
+\hrulefill\\
+
+\paragraph*{Definition}
+Let $f: X \to Y$ and $g: Y \to Z$ be functions. The \textbf{composition} of $g$ and $f$, denoted $g \circ f$, is the function from $X$ to $Z$ defined by:
+\begin{equation*}
+    (g \circ f)(x) = g(f(x)) \quad \forall x \in X
+\end{equation*}
+
+\paragraph*{Order Matters}
+In general, $g \circ f \neq f \circ g$. The function $f$ is applied first, then $g$.
+
+\paragraph*{Example}
+Let $f(x) = 2x$ and $g(x) = x + 3$ with $f, g: \mathbb{R} \to \mathbb{R}$.
+\begin{align*}
+    (g \circ f)(x) &= g(f(x)) = g(2x) = 2x + 3 \\
+    (f \circ g)(x) &= f(g(x)) = f(x+3) = 2(x+3) = 2x + 6
+\end{align*}
+
+\paragraph*{Domain and Codomain for Composition}
+If $f: A \to B$ and $g: B \to C$, then $g \circ f: A \to C$ is defined by $(g \circ f)(x) = g(f(x))$ for all $x \in A$. The output of $f$ must be in the domain of $g$.
+
+\paragraph*{Example:}
+Let $A = \{1,2,3\}$, $B = \{a,b,c\}$, $C = \{\alpha, \beta, \gamma\}$.
+Suppose $f: A \to B$ is defined by $f(1)=a, f(2)=b, f(3)=c$ and $g: B \to C$ is defined by $g(a)=\gamma, g(b)=\alpha, g(c)=\beta$.
+\\
+Then:
+\begin{align*}
+    (g \circ f)(1) &= g(f(1)) = g(a) = \gamma \\
+    (g \circ f)(2) &= g(f(2)) = g(b) = \alpha \\
+    (g \circ f)(3) &= g(f(3)) = g(c) = \beta
+\end{align*}
+
+\paragraph*{Composition Not Always Defined}
+If the range of $f$ is not a subset of the domain of $g$, then $g \circ f$ is not defined for all elements of $A$.
+
+\paragraph*{Identity and Composition}
+For any set $A$, the identity function $I_A: A \to A$ satisfies $f \circ I_A = f$ and $I_B \circ f = f$ for $f: A \to B$.
+
+\paragraph*{Associativity of Composition}
+If $f: A \to B$, $g: B \to C$, $h: C \to D$, then $h \circ (g \circ f) = (h \circ g) \circ f$.
+
+\paragraph*{Example with Real Functions}
+Let $f(x) = x^2$, $g(x) = x+1$ on $\mathbb{R}$.
+\begin{align*}
+    (g \circ f)(x) &= g(f(x)) = g(x^2) = x^2 + 1 \\
+    (f \circ g)(x) &= f(g(x)) = f(x+1) = (x+1)^2 = x^2 + 2x + 1
+\end{align*}
+
+\paragraph*{Summary}
+\begin{itemize}
+    \item The composition $g \circ f$ means apply $f$ first, then $g$.
+    \item The composition is only defined when the codomain of $f$ matches the domain of $g$.
+    \item Composition is associative but not commutative.
+    \item The identity function acts as a neutral element for composition.
+\end{itemize}
+
+\paragraph*{Properties}
+\begin{itemize}
+    \item If $f$ and $g$ are both injective, $g \circ f$ is injective.
+    \item If $f$ and $g$ are both surjective, $g \circ f$ is surjective.
+    \item If $f$ and $g$ are both bijective, $g \circ f$ is bijective.
+\end{itemize}
+
+\paragraph*{Example}
+Let $f: \mathbb{Z} \to \mathbb{Z}$, $f(x) = x + 1$ and $g: \mathbb{Z} \to \mathbb{Z}$, $g(x) = 2x$.
+\begin{align*}
+    (g \circ f)(x) &= g(f(x)) = g(x+1) = 2(x+1) = 2x + 2 \\
+    (f \circ g)(x) &= f(g(x)) = f(2x) = 2x + 1
+\end{align*}

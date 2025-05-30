@@ -1,0 +1,119 @@
+\subsection*{Function Types: Injective, Surjective, Bijective}
+\hrulefill\\
+
+\paragraph*{Injective (One-to-One) Functions}
+A function $f: X \to Y$ is \textbf{injective} if for all $x_1, x_2 \in X$, $f(x_1) = f(x_2)$ implies $x_1 = x_2$. That is, no two different elements in the domain map to the same element in the codomain. \\
+\textit{Injective functions may leave some elements in the codomain unused, but they never ``collide'' two domain elements to the same output.}
+
+\paragraph*{Example:} $f(x) = 2x$ from $\mathbb{R} \to \mathbb{R}$ is injective.
+
+\paragraph*{Example:} Define $f: \mathbb{R} \to \mathbb{R}$ as $f(x) = 4x - 1 \forall x \in \mathbb{R}$. 
+Is $f$ injective? Prove or disprove with a counterexample.\\
+\begin{align*}
+    \text{Suppose } x_1, x_2 \in \mathbb{R} \ni f(x_1) = f(x_2).\\
+    \implies \quad & 4x_1 - 1 = 4x_2 - 1 \quad \implies \quad x_1 = x_2.\\
+    \therefore \quad & f \text{ is injective.}
+\end{align*}
+
+\paragraph*{Surjective (Onto) Functions}
+A function $f: X \to Y$ is \textbf{surjective} if for every $y \in Y$, there exists $x \in X$ such that $f(x) = y$. In other words, every element of the codomain is the image of at least one element from the domain.\\
+\textit{Surjective functions may map multiple domain elements to the same codomain element, but they never leave any codomain element out.}
+
+\paragraph*{Example:} $f(x) = x^3$ from $\mathbb{R} \to \mathbb{R}$ is surjective.
+
+\paragraph*{Example:} Define $f: \mathbb{R} \to \mathbb{R}$ as $f(x) = 4x-1 \forall x \in \mathbb{R}$. Is $f$ surjective? Prove or disprove with a counterexample.\\
+\begin{align*}
+    &\text{Suppose } y \in \mathbb{R} \ni f(x) = y.\\
+    \implies \quad & 4x - 1 = y \quad \implies \quad x = \frac{y + 1}{4}.\\
+    \implies \quad & f(x) = 4(\frac{y + 1}{4}) - 1 = y + 1 - 1 = y.\\
+    \implies \quad & \exists x \in \mathbb{R} \ni f(x) = y.\\
+    \therefore \quad & f \text{ is surjective.}
+\end{align*}
+
+\paragraph*{Example:} Define $g: \mathbb{Z} \to \mathbb{Z}$ as $g(x) = 4x - 1 \forall x \in \mathbb{Z}$. Is $g$ surjective? Prove or disprove with a counterexample.\\
+\begin{align*}
+    &\text{Suppose } y \in \mathbb{Z} \ni g(x) = y.\\
+    \implies \quad & 4x - 1 = y \quad \implies \quad x = \frac{y + 1}{4}.\\
+    &\text{For } x \in \mathbb{Z}, y + 1 \text{ must be divisible by } 4.\\
+    &\text{If } y = 2, y + 1 = 3, \text{ which is not divisible by } 4.\\
+    \therefore \quad & g \text{ is not surjective.}
+\end{align*}
+
+\paragraph*{Bijective Functions}
+A function is \textbf{bijective} (one-to-one correspondence) if it is both injective and surjective. That is, every element of the codomain is hit exactly once by a unique element of the domain.\\
+\textit{Bijective functions are both one-to-one and onto: they never ``collide'' domain elements, and they never leave any codomain element out.}
+
+\paragraph*{Example:} $f(x) = x + 1$ from $\mathbb{R} \to \mathbb{R}$ is bijective.
+
+\paragraph*{Example:} Define $f: \mathbb{R} \times \mathbb{R} \to \mathbb{R} \times \mathbb{R}$ as $f(x, y) = (x + y, x - y)$. Is $f$ bijective? Prove or disprove with a counterexample.\\
+\begin{align*}
+    &\text{Suppose } (x_1, y_1), (x_2, y_2) \in \mathbb{R} \times \mathbb{R} \ni f(x_1, y_1) = f(x_2, y_2).\\
+    \implies \quad & (x_1 + y_1, x_1 - y_1) = (x_2 + y_2, x_2 - y_2).\\
+    &\text{This gives us two equations:}\\
+    & x_1 + y_1 = x_2 + y_2 \quad (1)\\
+    & x_1 - y_1 = x_2 - y_2 \quad (2)\\
+    &\text{Adding (1) and (2):}\\
+    & 2x_1 = 2x_2 \implies x_1 = x_2.\\
+    &\text{Substituting } x_1 = x_2 \text{ into (1):}\\
+    & x_1 + y_1 = x_1 + y_2 \implies y_1 = y_2.\\
+    \therefore \quad & f \text{ is injective.}\\
+    \\
+    &\text{Now, to check surjectivity:}\\
+    &\text{For any } (a, b) \in \mathbb{R} \times \mathbb{R}, \text{ we need to find } (x, y) \text{ such that } f(x, y) = (a, b).\\
+    &\text{Let } x = \frac{a + b}{2}, y = \frac{a - b}{2}.\\
+    \implies \quad & f(x, y) = (x + y, x - y) = (a, b).\\
+    \therefore \quad & f \text{ is surjective.}\\
+    &\therefore \quad f \text{ is bijective.}
+\end{align*}
+
+\subsubsection*{Inverse Functions}
+
+
+\paragraph*{Inverse Functions}
+A function $f: X \to Y$ has an \textbf{inverse} if there exists a function $g: Y \to X$ such that $g(f(x)) = x$ for all $x \in X$ and $f(g(y)) = y$ for all $y \in Y$. The inverse is denoted $f^{-1}$.
+
+\textit{A function has an inverse if and only if it is bijective.}
+
+\paragraph*{Example:} $f(x) = 2x + 3$ from $\mathbb{R} \to \mathbb{R}$ is bijective. Its inverse is $f^{-1}(y) = \frac{y - 3}{2}$.
+
+\paragraph*{How to Find the Inverse}
+\begin{enumerate}
+    \item Replace $f(x)$ with $y$.
+    \item Solve for $x$ in terms of $y$.
+    \item Interchange $x$ and $y$ to get $f^{-1}(x)$.
+\end{enumerate}
+
+\paragraph*{Example:} Find the inverse of $f(x) = \frac{x-1}{x+2}$ for $x \neq -2$.
+\begin{align*}
+    y &= \frac{x-1}{x+2} \\
+    y(x+2) &= x-1 \\
+    yx + 2y &= x-1 \\
+    yx - x &= -1 - 2y \\
+    x(y-1) &= -1 - 2y \\
+    x &= \frac{-1-2y}{y-1}
+\end{align*}
+Interchange $x$ and $y$:
+\begin{equation*}
+    f^{-1}(x) = \frac{-1-2x}{x-1}
+\end{equation*}
+
+\paragraph*{Visualizing Function Types}
+\begin{itemize}
+    \item \textbf{Injective:} No two arrows from different domain elements point to the same codomain element.
+    \item \textbf{Surjective:} Every codomain element has at least one arrow pointing to it.
+    \item \textbf{Bijective:} Each domain element maps to a unique codomain element, and every codomain element is hit.
+\end{itemize}
+
+\paragraph*{Properties}
+\begin{itemize}
+    \item If $f$ is bijective, $f$ has an inverse $f^{-1}$.
+    \item If $f$ is injective, $f$ may not be surjective.
+    \item If $f$ is surjective, $f$ may not be injective.
+\end{itemize}
+
+\paragraph*{Examples}
+\begin{itemize}
+    \item $f: \mathbb{Z} \to \mathbb{Z}$, $f(x) = x + 1$ is bijective.
+    \item $f: \mathbb{Z} \to \mathbb{Z}$, $f(x) = 2x$ is injective but not surjective.
+    \item $f: \mathbb{Z} \to \mathbb{Z}$, $f(x) = \lfloor x/2 \rfloor$ is surjective but not injective.
+\end{itemize}
