@@ -1,5 +1,6 @@
 # Ignore Flag
 .~ignore*
+.ignore/
 
 # LibreOffice temp files.\
 .~lock*
