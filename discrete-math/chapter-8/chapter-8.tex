@@ -1,0 +1,165 @@
+\subsection{Relations on Sets}
+\hrulefill
+
+\paragraph*{Definition}
+A \textbf{relation} $R$ from set $A$ to set $B$ is a subset of the Cartesian product $A \times B$.
+\begin{equation*}
+    R \subseteq A \times B
+\end{equation*}
+If $(a, b) \in R$, we say $a$ is related to $b$ by $R$ (written $aRb$).
+
+\paragraph*{Domain and Codomain}
+\begin{itemize}
+    \item $A$ is the \textbf{domain} of $R$.
+    \item $B$ is the \textbf{codomain} of $R$.
+\end{itemize}
+
+\paragraph*{Examples}
+Let $A = \{1,2,3\}$, $B = \{x, y\}$. Define $R = \{(1, x), (2, y)\}$.\
+$R$ is a relation from $A$ to $B$.
+
+\paragraph*{Types of Relations on a Set $A$}
+\begin{itemize}
+    \item \textbf{Reflexive}: $\forall a \in A,\ (a,a) \in R$
+    \item \textbf{Symmetric}: $\forall a,b \in A,\ (a,b) \in R \implies (b,a) \in R$
+    \item \textbf{Antisymmetric}: $\forall a,b \in A,\ (a,b) \in R \land (b,a) \in R \implies a = b$
+    \item \textbf{Transitive}: $\forall a,b,c \in A,\ (a,b) \in R \land (b,c) \in R \implies (a,c) \in R$
+\end{itemize}
+
+\paragraph*{Special Relations}
+\begin{itemize}
+    \item \textbf{Equivalence Relation}: Reflexive, symmetric, and transitive.
+    \item \textbf{Partial Order}: Reflexive, antisymmetric, and transitive.
+\end{itemize}
+
+\paragraph*{Notation}
+\begin{itemize}
+    \item $A \times B = \{(a, b)\ |\ a \in A, b \in B\}$
+    \item $R(a, b)$ or $aRb$ means $(a, b) \in R$
+\end{itemize}
+
+\paragraph*{Matrix Representation}
+A relation on a finite set $A = \{a_1, ..., a_n\}$ can be represented by an $n \times n$ matrix $M$ where $M_{ij} = 1$ if $(a_i, a_j) \in R$, else $0$.
+
+\paragraph*{Graph Representation}
+A relation on $A$ can be visualized as a directed graph (digraph) with vertices for elements of $A$ and edges for pairs in $R$.
+
+\paragraph*{Closures}
+\begin{itemize}
+    \item \textbf{Reflexive closure}: Add $(a,a)$ for all $a \in A$ if missing.
+    \item \textbf{Symmetric closure}: Add $(b,a)$ whenever $(a,b) \in R$.
+    \item \textbf{Transitive closure}: Add $(a,c)$ whenever $(a,b) \in R$ and $(b,c) \in R$.
+\end{itemize}
+
+\paragraph*{Example:}
+Let $A = \{1,2,3\}$, $R = \{(1,1), (2,2), (3,3), (1,2), (2,1)\}$.\
+$R$ is reflexive and symmetric, but not transitive (since $(1,2)$ and $(2,1)$ are in $R$, but $(1,1)$ is already present).
+
+\subsection{Equivalence Relations}
+\hrulefill
+
+\paragraph*{Definition}
+An \textbf{equivalence relation} on a set $A$ is a relation $R$ that is reflexive, symmetric, and transitive.
+
+\paragraph*{Equivalence Classes}
+For an equivalence relation $R$ on a set $A$, the \textbf{equivalence class} of an element $a \in A$ is the set of all elements in $A$ that are related to $a$ by $R$:
+\begin{equation*}
+    [a]_R = \{x \in A\ |\ xRa\} = \{x \in A\ |\ (x,a) \in R\}
+\end{equation*}
+
+\paragraph*{Properties of Equivalence Classes}
+\begin{itemize}
+    \item Every element belongs to exactly one equivalence class.
+    \item The equivalence classes form a partition of the set $A$.
+    \item $a R b \iff [a]_R = [b]_R$
+\end{itemize}
+
+\paragraph*{Examples of Equivalence Relations}
+\begin{itemize}
+    \item \textbf{Equality} on any set: $a = b$ defines an equivalence relation.
+    \item \textbf{Congruence modulo $n$}: For integers $a$ and $b$, $a \equiv b \pmod{n}$ if $n$ divides $(a-b)$. 
+    \item \textbf{Same size}: For sets $A$ and $B$, $A \sim B$ if there exists a bijection between $A$ and $B$.
+\end{itemize}
+
+\paragraph*{Example: Modular Arithmetic}
+In $\mathbb{Z}_5 = \{0, 1, 2, 3, 4\}$ with relation $a \equiv b \pmod{5}$, the equivalence classes are:
+\begin{itemize}
+    \item $[0] = \{..., -10, -5, 0, 5, 10, ...\}$
+    \item $[1] = \{..., -9, -4, 1, 6, 11, ...\}$
+    \item $[2] = \{..., -8, -3, 2, 7, 12, ...\}$
+    \item $[3] = \{..., -7, -2, 3, 8, 13, ...\}$
+    \item $[4] = \{..., -6, -1, 4, 9, 14, ...\}$
+\end{itemize}
+
+\paragraph*{Partition of a Set}
+A \textbf{partition} of a set $A$ is a collection of nonempty subsets $\{A_i\}$ such that:
+\begin{itemize}
+    \item Each element of $A$ belongs to exactly one subset $A_i$.
+    \item The union of all subsets equals $A$.
+    \item The intersection of any two distinct subsets is empty.
+\end{itemize}
+
+\subsection{Partial Orders}
+\hrulefill
+
+\paragraph*{Definition}
+A \textbf{partial order} on a set $A$ is a relation $R$ that is reflexive, antisymmetric, and transitive.
+A set with a partial order is called a \textbf{partially ordered set} or \textbf{poset}.
+
+\paragraph*{Common Notation}
+For a partial order, we often use the symbol $\leq$ or $\preceq$ instead of $R$.
+
+\paragraph*{Properties}
+\begin{itemize}
+    \item Two elements $a, b$ in a poset are \textbf{comparable} if $a \leq b$ or $b \leq a$.
+    \item If neither $a \leq b$ nor $b \leq a$, then $a$ and $b$ are \textbf{incomparable}.
+    \item A partial order where any two elements are comparable is called a \textbf{total order}.
+\end{itemize}
+
+\paragraph*{Special Elements in a Poset $(A, \leq)$}
+For a subset $B \subseteq A$:
+\begin{itemize}
+    \item An element $m \in A$ is a \textbf{minimal element} of $B$ if there is no element $b \in B$ with $b < m$.
+    \item An element $M \in A$ is a \textbf{maximal element} of $B$ if there is no element $b \in B$ with $M < b$.
+    \item An element $g \in A$ is a \textbf{greatest lower bound (glb)} or \textbf{infimum} of $B$ if:
+    \begin{itemize}
+        \item $g \leq b$ for all $b \in B$ (lower bound)
+        \item If $h \leq b$ for all $b \in B$, then $h \leq g$ (greatest lower bound)
+    \end{itemize}
+    \item An element $l \in A$ is a \textbf{least upper bound (lub)} or \textbf{supremum} of $B$ if:
+    \begin{itemize}
+        \item $b \leq l$ for all $b \in B$ (upper bound)
+        \item If $b \leq k$ for all $b \in B$, then $l \leq k$ (least upper bound)
+    \end{itemize}
+\end{itemize}
+
+\paragraph*{Examples of Partial Orders}
+\begin{itemize}
+    \item The relation $\leq$ on $\mathbb{R}$ is a total order.
+    \item The subset relation $\subseteq$ on the power set $\mathcal{P}(S)$ is a partial order.
+    \item The divisibility relation $|$ on $\mathbb{Z}^+$ is a partial order.
+\end{itemize}
+
+\paragraph*{Hasse Diagrams}
+A \textbf{Hasse diagram} is a visual representation of a finite poset where:
+\begin{itemize}
+    \item Elements are represented as vertices.
+    \item If $a < b$ and there is no $c$ such that $a < c < b$, then an edge connects $a$ to $b$.
+    \item If $a < b$, then $a$ is drawn below $b$.
+\end{itemize}
+
+\paragraph*{Example: Divisibility}
+For the set $A = \{1, 2, 3, 4, 6, 12\}$ with the divisibility relation $|$:
+\begin{itemize}
+    \item $1$ divides every number, so it's at the bottom of the Hasse diagram.
+    \item $12$ is divided by every number, so it's at the top.
+    \item $2$ and $3$ are incomparable (neither divides the other).
+\end{itemize}
+
+\paragraph*{Summary}
+\begin{itemize}
+    \item A relation is a subset of $A \times B$.
+    \item Equivalence relations (reflexive, symmetric, transitive) partition a set into equivalence classes.
+    \item Partial orders (reflexive, antisymmetric, transitive) create hierarchical structures.
+    \item Both have important applications in mathematics and computer science.
+\end{itemize}
