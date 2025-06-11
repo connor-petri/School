@@ -1,4 +1,4 @@
-\subsection*{Possibility Trees and Multiplication-Rule}
+\subsection{Possibility Trees and Multiplication-Rule}
 \hrulefill
 
 \paragraph*{Definition}
@@ -19,3 +19,16 @@ A \textbf{permutation} of a set is an arrangement of its elements in a specific 
 \end{equation*}
 where $n!$ (n factorial) is the product of all positive integers up to $n$.
 
+\paragraph*{Example} You can arrange the letters int the word "COMPUTER" in $8!$ different ways, since there are 8 distinct letters.
+
+\subsubsection*{r-Permutation}
+An \textbf{r-permutation} of a set of $n$ distinct objects is an arrangement of $r$ objects selected from the set. The number of r-permutations is given by:
+\begin{equation*}
+    P(n, r) = \frac{n!}{(n - r)!}
+\end{equation*}
+where $n$ is the total number of objects and $r$ is the number of objects to arrange.
+
+\paragraph*{Example} The number of ways to arrange 3 letters from the word "COMPUTER" is given by:
+\begin{equation*}
+    P(8, 3) = \frac{8!}{(8 - 3)!} = \frac{8!}{5!} = 8 \times 7 \times 6 = 336
+\end{equation*}

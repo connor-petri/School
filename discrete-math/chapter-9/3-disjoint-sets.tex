@@ -1,0 +1,31 @@
+\subsection{Counting Elements of Disjoint Sets}
+\hrulefill
+\subsubsection*{Addition Rule}
+The \textbf{addition rule} states that if $A$ and $B$ are two disjoint sets (i.e., they have no elements in common), then the number of elements in the union of these sets is given by:
+\begin{equation*}
+    |A \cup B| = |A| + |B|
+\end{equation*}
+
+\subsubsection*{Difference Rule}
+The \textbf{difference rule} states that if $A$ and $B$ are two sets, then the number of elements in the difference of these sets is given by:
+\begin{equation*}
+    |A - B| = |A| - |B \cap A|
+\end{equation*}
+If S is a finite sample space and A is an event in S, then:
+\begin{equation*}
+    P(A^c) = 1 - P(A)
+\end{equation*}
+
+\paragraph*{Example} Consider tossing a coin 5 times.
+\begin{itemize}
+    \item There are $6$ possible outcomes where there is exactly one head.
+    \item There are $2^5 = 1 = 31$ possible outcomes where there is at least one head.
+\end{itemize}
+
+\subsubsection*{The includion/exclusion rule for Two or Three Sets}
+If $A$, $B$, and $C$ are finite sets, then:
+\begin{align*}
+    N(A \cup B) &= |A| + |B| - |A \cap B| \\
+    N(A \cup B \cup C) &= |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|
+\end{align*}
+
