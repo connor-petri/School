@@ -1,0 +1,40 @@
+\subsection{Counting Subsets of a Set: Combinations}
+\hrulefill
+\subsubsection*{r-Combination}
+The number of ways of unorderly selection of $r$ elements taken from a set of  $n$ elements.\\
+If $n, r \in \mathbb{Z} \land 1 \leq r \leq n$, then the number of $r$-combinations of a set of $n$ elements is
+given by the formula:
+\begin{equation*}
+    \binom{n}{r} = \frac{n!}{r!(n - r)!}
+\end{equation*}
+
+\paragraph*{Example}
+The number of 16-byte strings that contain at least 13 'i's is given by:
+\begin{align*}
+    \binom{16}{13} + \binom{16}{14} + \binom{16}{15} + \binom{16}{16} &= \frac{16!}{13!3!} + \frac{16!}{14!2!} + \frac{16!}{15!1!} + \frac{16!}{16!0!} \\
+    &= 560 + 120 + 16 + 1 \\&= 697
+\end{align*}
+
+\paragraph*{Example}
+Two new drugs are to be tested on a group of 60 lab rats. 22 mice are to be given each drug and 16 are left as a control.
+How many ways can the assignment of treatments to mice be made?
+\begin{align*}
+    &\binom{60}{22} \cdot \binom{38}{22} \cdot \binom{16}{16}\\
+    =& 3.148e26
+\end{align*}
+
+\pagebreak
+
+\subsubsection*{Permutations with Sets of Indistinguishable Objects}
+Suppose a collection consists of $n$ objects of which
+\begin{itemize}
+    \item $n_1$ are of type 1 and are indistinguishable from each other.
+    \item $n_2$ are of type 2 and are indistinguishable from each other.
+    \item $\cdots$
+    \item $n_k$ are of type n and are indistinguishable from each other.
+\end{itemize}
+and suppose that $n_1 + n_2 + \cdots + n_k = n$, then the jumber of distinguishable permutations of the
+$n$ objects is given by:
+\begin{equation*}
+    \frac{n!}{n_1!n_2! \dots n_k!}
+\end{equation*}
