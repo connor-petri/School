@@ -2,6 +2,8 @@
 .~ignore*
 .ignore/
 
+
+*/.directory
 .directory
 .env
 
