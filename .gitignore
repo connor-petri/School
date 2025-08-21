@@ -2,6 +2,9 @@
 .~ignore*
 .ignore/
 
+.directory
+.env
+
 # LibreOffice temp files.\
 .~lock*
 # Textbook PDFs
