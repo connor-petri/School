@@ -1,0 +1,80 @@
+\subsection{Sample Spaces and Events}
+\hrulefill
+
+\subsubsection{Probability}
+\begin{itemize}
+    \item Probability is used as a mathematical tool to understand or describe random phenomena, chance variation, and uncertainty. 
+    \item We will use probability as a tool to evaluate the reliability of our conclusions about the population when we only have sample information.
+    \item Probablility is used in a variety of fields including genetics, quality control, and finance.
+    \item Probability is used as a model for situation for which outcomes occur randomly.
+    \item Such situations are called \textbf{experiments}.
+    \item Examples:
+    \begin{itemize}
+        \item Toss a coin.
+        \item Roll a die.
+        \item Draw a card from a deck.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Vocabulary}
+\begin{itemize}
+    \item An action or process whose outcome is subject to uncertainty is called an \textbf{experiment}.
+    \item The possible outcomes of an experiment are called \textbf{sample space}.
+    \item An \textbf{event} is a specific outcome or a set of outcomes from an experiment.
+    \item A \textbf{simple event} is an event that consists of a single outcome from sample space S.
+\end{itemize}
+
+\paragraph*{Example} What is the outcome of rolling an even (E), rolling greater than 3 (F), and rolling a 2 (G) on a 6-sided die?
+\begin{align*}
+    S &= {1, 2, 3, 4, 5, 6}\\
+    E &= {2, 4, 6}\\
+    F &= {4, 5, 6}\\
+    G &= {2}
+\end{align*}
+
+\paragraph*{A Note on Venn Diagrams}
+All Venn Diagrams in this course require a rectangle to represent the sample space. Events are represented by circles within the rectangle.
+
+\hrulefill
+
+\subsubsection*{Operations}
+\paragraph*{Set Operations}
+\begin{itemize}
+    \item $A \subseteq B$: $A$ is a subset of $B$.
+    \item $A \cap B$: the intersection of $A$ and $B$ (elements in both $A$ and $B$).
+    \item $A \cup B$: the union of $A$ and $B$ (elements in either $A$ or $B$).
+    \item $A^c$ or $A'$: the complement of $A$ (elements in $S$ that are not in $A$).
+\end{itemize}
+
+\paragraph*{Logical Operations}
+\begin{itemize}
+    \item $A$ or $B$: $A \lor B$
+    \item $A$ xor $B$: $A \oplus B$
+    \item $A$ and $B$: $A \land B$
+    \item not $A$: $\neg A$
+\end{itemize}
+
+\subsubsection*{Mutually Exclusive Events}
+\begin{itemize}
+    \item Events $A$ and $B$ are \textbf{mutually exclusive} if they cannot both occur at the same time.
+    \item In terms of set operations: $A \cap B = \emptyset$.
+    \item Example: Rolling a die and getting an even number (E) or an odd number (O) are mutually exclusive events.
+\end{itemize}
+
+\hrulefill
+
+\subsubsection*{Identities}
+
+\begin{align*}
+    A \cup A' &= S\\
+    A \cap A' &= \emptyset
+\end{align*}
+
+\paragraph{DeMorgan's Laws}
+\begin{align*}
+    (A \cup B)^c &= A^c \cap B^c\\
+    (A \cap B)^c &= A^c \cup B^c\\
+    \neg(A \lor B) &= \neg A \land \neg B\\
+    \neg(A \land B) &= \neg A \lor \neg B
+\end{align*}
+
