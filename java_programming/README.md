@@ -5,7 +5,6 @@
 ## Professor Dominic Abucejo
 - Email through Canvas
 - No recording.
-- 
 
 ---
 
@@ -19,3 +18,8 @@
 - Notice of "pop" quizzes will be given 1 class period in advance.
 - No midterms.
 - Javadoc will be used for documentation.
+
+---
+
+## Homework
+- Week 2: 1.1-1.6 2.1-2.25
