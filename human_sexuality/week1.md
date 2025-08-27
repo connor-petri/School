@@ -4,7 +4,7 @@
 - Discussion Post 1 due Friday
 - Job Fair/Internship announcement on canvas
 - Class Cancellation will be announced. Films and lectures will be posted to canvas.
-- SIGN UP FOR WIKIEDU. Link and instructions will be posted to canvas. Do not do this on a smartphone. Email professor if things are not working. Possible issues with campus wifi.
+- SIGN UP FOR WIKIEDU. Link and instructions will be posted to canvas. Do not do this on a smartphone. Email professor if things are not working. Possible issues with campus wifi. 
 
 
 ## Charles Darwin (1809-1992)
