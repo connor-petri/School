@@ -1,0 +1,85 @@
+\subsection{Probability}
+\hrulefill
+
+\paragraph*{Definition}
+Probability is a function that maps the sample space S to $\mathbb{R}$. The sample space is the 
+\textbf{domain} and the real numbers are the \textbf{codomain}.
+
+\subsubsection*{Axioms of Probability}
+\begin{enumerate}
+    \item Non-negativity: For any event A, $P(A) \geq 0$.
+    \item Normalization: $P(S) = 1$, where S is the sample space.
+    \item Additivity: For any two mutually exclusive events A and B, $P(A_1 \cup A_2 \cup \cdots \cup A_n) = \sum_{i=1}^{n} P(A_i)$.
+\end{enumerate}
+
+\begin{equation*}
+    P(\cup_{i=1}^{n} A_i) = \sum_{i=1}^{n} P(A_i)
+\end{equation*}
+
+\paragraph*{Not axioms but useful observations}
+\begin{enumerate}
+    \item $P(A) < 1$ for any event A.
+    \item $P(A^c) = 1 - P(A)$.
+    \item $P(A \cap B) = P(A) + P(B) - P(A \cup B)$ for any two events A and B.
+\end{enumerate}
+
+\subsubsection*{Proving Observations}
+
+\paragraph*{Observation 1: $P(\emptyset) = 0$}
+\begin{proof}
+    $P(\emptyset) = 0$\\
+    $\emptyset \cup S = S$\\
+    $\emptyset \cap S = \emptyset$\\
+    $P(\emptyset \cup S) = P(S)$\\
+    $\emptyset$ and $S$ are mutually exclusive.\\
+    $P(\emptyset) + P(S) = P(S)$ by axiom 3.\\
+    $\therefore P(\emptyset) = 0$ by algebra.
+\end{proof}
+
+\paragraph*{Observation 2: $P(A^c) = 1 - P(A)$}
+\begin{proof}
+    $S = A \cup A^c$\\
+    $\emptyset = A \cap A^c$\\
+    $P(A^c \cup A) = P(S)$\\
+    $A$ and $A^c$ are mutually exclusive by line 2.\\
+    $P(A^c) + P(A) = P(S)$ by axiom 3.\\
+    $P(A^c) + P(A) = 1$\\
+    $\therefore P(A^c) = 1 - P(A)$ by algebra.
+\end{proof}
+
+\paragraph*{Observation 3: $P(A \cap B) = P(A) + P(B) \implies A \cap B = \emptyset$}
+\begin{proof}
+    $P(\cup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)$ for any countable collection of mutually exclusive events $A_i$.\\
+    Let $A_1 = A, A_2 = B, A_3 = A_4 = \emptyset$.
+    $P(A \cup B \cup \emptyset \cup \emptyset) = P(A) + P(B) + 0$\\
+    $\therefore P(A \cup B) = P(A) + P(B)$ by axiom 3.\\
+\end{proof}
+
+\paragraph*{Identities for the next proof}
+\begin{enumerate}
+    \item $P(A) = P(A \cap B') + P(A \cap B)$
+    \item $P(B) = P(A' \cap B) + P(A \cap B)$
+    \item $P(A \cup B) = P(A \cap B') + P(A \cap B) + P(A' \cap B)$
+    \item $1 = P(A \cap B') + P(A \cap B) + P(A' \cap B) + P(A' \cap B')$
+\end{enumerate}
+
+\paragraph*{Observation 4: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$}
+\begin{proof}
+    $P(A \cup B) = P(A \cap B') + P(A \cap B) + P(A' \cap B)$ by 3.\\
+    $P(A \cup B) = P(A) + P(A' \cap B)$ by 1.\\
+    $P(A \cup B) = P(A) + [P(B) - P(A \cap B)]$\\
+    $\therefore P(A \cup B) = P(A) + P(B) - P(A \cap B)$ by algebra.
+\end{proof}
+
+\subsubsection*{Other Propositions}
+\paragraph($A \subseteq B \implies P(A) \leq P(B)$)
+\begin{proof}
+    $B = (A \cap B) \cup (A' \cap B)$\\
+    $A \cap B = A$\\
+    $B = A \cup (A' \cap B)$\\
+    $P(B) = P(A) + P(A' \cap B)$ by axiom 3.\\
+    $P(B) \geq P(A)$ since $P(A' \cap B) \geq 0$ by axiom 1.\\
+    For any $A$, $A \subseteq S$.\\
+    $P(A) \leq P(S)$.\\
+    $\therefore P(A) < 1$.
+\end{proof}
