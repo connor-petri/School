@@ -102,7 +102,7 @@ It is important to know that Darwin's view of this ignores the fact that females
 4. Bateman gradient
 
 ### Parental Investment
-Any investment by a parent in an offspring that increases that offspring's chances of survival, at the cost of the parent's ability to ivest in other offspring.
+Any investment by a parent in an offspring that increases that offspring's chances of survival, at the cost of the parent's ability to invest in other offspring.
 
 #### PI in young is marked by:
 - Longer childhood
@@ -122,3 +122,30 @@ $$OSR = \frac{\text{Ready to Mate Males}}{\text{Fertile Females}}$$
 - Season length
 - Syncronization of female fertility
 - Time spent on care.
+
+### Potential Reproductive Rate
+This is the idealized speed at which a sex could produce surviving offspring if mates were always available.
+- Higher PPR = higher intersexual competition
+- Car, pregnancy, lactation, and guarding lower PPR by occupying time.
+- When male PPR is slowed by offspring care, selection favors male choice and higher male investment, females competitive.
+- Time is a critical factor in reproduction.
+
+### Bateman Gradient
+A way to summarize the payoff to persue extra partners; a slope linking mates (x) to offspring (y).
+- "How many mates yuo get" and "How many babies you make"
+- **extra babies per extra mate**
+- Steeper slope = bigger payoff per extra mate.
+- Flatter slope = diminishing returns to extra mates.
+
+## Additional Evidence and Metrics
+1. Anatomy
+2. Behavior
+3. 
+
+### Anatomy
+Primate anatomy includes a generalized skeletal plan, grasping hands/feet, nails, tactile finger pads, binocular vision, reduced smell, and relatively large brains.
+
+#### Example: Ball Size
+An example of post-copulatory selection is ball size on certain primates. Larger balls = more sperm, which can be an advantage when male vs male competition is high.
+
+### Behavior
