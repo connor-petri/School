@@ -26,60 +26,87 @@ Probability is a function that maps the sample space S to $\mathbb{R}$. The samp
 \subsubsection*{Proving Observations}
 
 \paragraph*{Observation 1: $P(\emptyset) = 0$}
-\begin{proof}
-    $P(\emptyset) = 0$\\
-    $\emptyset \cup S = S$\\
-    $\emptyset \cap S = \emptyset$\\
-    $P(\emptyset \cup S) = P(S)$\\
-    $\emptyset$ and $S$ are mutually exclusive.\\
-    $P(\emptyset) + P(S) = P(S)$ by axiom 3.\\
-    $\therefore P(\emptyset) = 0$ by algebra.
-\end{proof}
+\begin{align*}
+    P(\emptyset) &= 0 \\
+    \emptyset \cup S &= S \\
+    \emptyset \cap S &= \emptyset \\
+    P(\emptyset \cup S) &= P(S) \\
+    P(\emptyset) + P(S) &= P(S) \quad \text{(by axiom 3)}
+\end{align*}
+\noindent
+$\emptyset$ and $S$ are mutually exclusive.\\
+Therefore, $P(\emptyset) = 0$ by algebra.
 
 \paragraph*{Observation 2: $P(A^c) = 1 - P(A)$}
-\begin{proof}
-    $S = A \cup A^c$\\
-    $\emptyset = A \cap A^c$\\
-    $P(A^c \cup A) = P(S)$\\
-    $A$ and $A^c$ are mutually exclusive by line 2.\\
-    $P(A^c) + P(A) = P(S)$ by axiom 3.\\
-    $P(A^c) + P(A) = 1$\\
-    $\therefore P(A^c) = 1 - P(A)$ by algebra.
-\end{proof}
+\begin{align*}
+    S &= A \cup A^c \\
+    \emptyset &= A \cap A^c \\
+    P(A^c \cup A) &= P(S) \\
+    P(A^c) + P(A) &= P(S) \quad \text{(by axiom 3)} \\
+    P(A^c) + P(A) &= 1 \\
+    P(A^c) &= 1 - P(A)
+\end{align*}
 
-\paragraph*{Observation 3: $P(A \cap B) = P(A) + P(B) \implies A \cap B = \emptyset$}
-\begin{proof}
-    $P(\cup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)$ for any countable collection of mutually exclusive events $A_i$.\\
-    Let $A_1 = A, A_2 = B, A_3 = A_4 = \emptyset$.
-    $P(A \cup B \cup \emptyset \cup \emptyset) = P(A) + P(B) + 0$\\
-    $\therefore P(A \cup B) = P(A) + P(B)$ by axiom 3.\\
-\end{proof}
+\paragraph*{Observation 3: $P(A \cup B) = P(A) + P(B)$ if $A \cap B = \emptyset$}
+\begin{align*}
+    P\left(\bigcup_{i=1}^\infty A_i\right) &= \sum_{i=1}^\infty P(A_i) \quad \text{for mutually exclusive } A_i \\
+    \text{Let } A_1 = A,\, A_2 = B,\, A_3 = A_4 = \emptyset \\
+    P(A \cup B \cup \emptyset \cup \emptyset) &= P(A) + P(B) + 0 \\
+    P(A \cup B) &= P(A) + P(B) \quad \text{(by axiom 3)}
+\end{align*}
 
 \paragraph*{Identities for the next proof}
-\begin{enumerate}
-    \item $P(A) = P(A \cap B') + P(A \cap B)$
-    \item $P(B) = P(A' \cap B) + P(A \cap B)$
-    \item $P(A \cup B) = P(A \cap B') + P(A \cap B) + P(A' \cap B)$
-    \item $1 = P(A \cap B') + P(A \cap B) + P(A' \cap B) + P(A' \cap B')$
-\end{enumerate}
+\begin{align*}
+    P(A) &= P(A \cap B') + P(A \cap B) \\
+    P(B) &= P(A' \cap B) + P(A \cap B) \\
+    P(A \cup B) &= P(A \cap B') + P(A \cap B) + P(A' \cap B) \\
+    1 &= P(A \cap B') + P(A \cap B) + P(A' \cap B) + P(A' \cap B')
+\end{align*}
 
 \paragraph*{Observation 4: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$}
-\begin{proof}
-    $P(A \cup B) = P(A \cap B') + P(A \cap B) + P(A' \cap B)$ by 3.\\
-    $P(A \cup B) = P(A) + P(A' \cap B)$ by 1.\\
-    $P(A \cup B) = P(A) + [P(B) - P(A \cap B)]$\\
-    $\therefore P(A \cup B) = P(A) + P(B) - P(A \cap B)$ by algebra.
-\end{proof}
+\begin{align*}
+    P(A \cup B) &= P(A \cap B') + P(A \cap B) + P(A' \cap B) \\
+    &= P(A) + P(A' \cap B) \\
+    &= P(A) + [P(B) - P(A \cap B)] \\
+    &= P(A) + P(B) - P(A \cap B)
+\end{align*}
 
 \subsubsection*{Other Propositions}
-\paragraph($A \subseteq B \implies P(A) \leq P(B)$)
-\begin{proof}
-    $B = (A \cap B) \cup (A' \cap B)$\\
-    $A \cap B = A$\\
-    $B = A \cup (A' \cap B)$\\
-    $P(B) = P(A) + P(A' \cap B)$ by axiom 3.\\
-    $P(B) \geq P(A)$ since $P(A' \cap B) \geq 0$ by axiom 1.\\
-    For any $A$, $A \subseteq S$.\\
-    $P(A) \leq P(S)$.\\
-    $\therefore P(A) < 1$.
-\end{proof}
+
+\paragraph*{$A \subseteq B \implies P(A) \leq P(B)$}
+\begin{align*}
+    B &= (A \cap B) \cup (A' \cap B) \\
+    A \cap B &= A \\
+    B &= A \cup (A' \cap B) \\
+    P(B) &= P(A) + P(A' \cap B) \quad \text{(by axiom 3)} \\
+    P(B) &\geq P(A) \quad \text{since } P(A' \cap B) \geq 0 \text{ (by axiom 1)} \\
+    \text{For any } A,\, A &\subseteq S \\
+    P(A) &\leq P(S) \\
+    \therefore P(A) &< 1
+\end{align*}
+
+\paragraph*{Example}
+If $P(C) = .46, P(D) = .47, P(C \cup D) = .62$, find the following:
+\begin{align*}
+    P(C') &= 1 - P(C) = 1 - .46 = .54 \\
+    P(C \cap D) &= P(C) + P(D) - P(C \cup D) = .46 + .47 - .62 = .31 \\
+    P(C \cap D') &= P(C) - P(C \cap D) = .46 - .31 = .15 \\
+    P(C' \cup D') &= 1 - P(C \cup D) = 1 - .62 = .38 \\
+\end{align*}
+
+\subsubsection*{Probability Square Trick}
+
+\paragraph*{Example}
+There are 5 simple events in a sample space. $S = {E_1, E_2, E_3, E_4, E_5}$ with
+probabilities $p_1, p_2, p_3, p_4, p_5$. Suppose $p_3 = 2p_2 = 2 p_4$ and $p_2 = 2p_1 = 2p_5$.
+Find $p_1, p_2, p_3, p_4, p_5$.
+\begin{align*}
+    p_1 + p_2 + p_3 + p_4 + p_5 &= 1 \\
+    p_3 &= 2p_2 \\
+    p_3 &= 2p_4\\
+    p_4 &= p_2 \\
+    p_2 &= 2p_1 \\
+    p_2 &= 2p_5 \\
+    p_1 &= p_5 \\
+    \text{Solve for the 5 unknowns with the 5 equations:}
+\end{align*}
