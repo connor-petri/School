@@ -147,5 +147,3 @@ Primate anatomy includes a generalized skeletal plan, grasping hands/feet, nails
 
 #### Example: Ball Size
 An example of post-copulatory selection is ball size on certain primates. Larger balls = more sperm, which can be an advantage when male vs male competition is high.
-
-### Behavior
