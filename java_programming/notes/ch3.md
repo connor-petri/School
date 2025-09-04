@@ -47,10 +47,14 @@ String uniqueMemString = new String(sb);
 Member variables and methods can be public, private, or protected. Static methods should not access not static memeber variables or non static methods.
 ```java
 public class Animal {
-    private String name;
+    protected String name;
 
     // Default Constructor
-    public Animal(String name = "Buddy") {
+    public Animal() {
+        this.name = "Buddy";
+    }
+
+    public Animal(String name) {
         this.name = name;
     }
 
@@ -71,6 +75,45 @@ public class Animal {
 
     public void speak() {
         System.out.println(this.name + " speaks.");
+    }
+}
+```
+
+### Inheritance
+```java
+```java
+public class Dog extends Animal {
+    protected String owner;
+
+    // Constructor with parameters
+    public Dog(String name, String owner) {
+        super(name);
+        this.owner = owner;
+    }
+
+    // Default constructor
+    public Dog() {
+        super("Buddy");
+        this.owner = "Connor";
+    }
+
+    // Copy constructor
+    public Dog(Dog d) {
+        super(d);
+        this.owner = d.getOwner();
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getOwner() {
+        return this.owner;
+    }
+
+    @Override
+    public void speak() {
+        System.out.println(this.name + " barks.");
     }
 }
 ```
