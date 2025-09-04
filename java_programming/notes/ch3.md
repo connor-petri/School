@@ -29,7 +29,7 @@ s.toLowerCase();
 s.trip(); // Removes all spaces
 s.toString(); // Most classes have a string representation. This is how it is accessed.
 s.equals("Hello"); // Compares strings returns bool
-s.equalsIgnoreCase("HeLlO");
+s.equalsIgnoreCase("HeLlO"); // true
 s.compareTo("aello"); // returns 1 for 1 character difference.
 s.compareToIgnoreCase(...);
 s.indexOf("o"); // Gets index of specific character or substring
