@@ -1,4 +1,4 @@
-package java_programming.labs.word_count;
+package java_programming.labs.wordcount;
 
 import java.util.Scanner;
 

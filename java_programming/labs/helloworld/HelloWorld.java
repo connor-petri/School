@@ -1,4 +1,4 @@
-package java_programming.labs.hellow;
+package java_programming.labs.helloworld;
 
 public class HelloWorld {
     public static void main(String[] args) {
