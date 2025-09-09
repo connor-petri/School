@@ -1,0 +1,58 @@
+\subsection{Counting Techniques}
+\hrulefill
+
+\subsubsection*{Equally Likely Outcomes}
+If all outcomes in a sample space are equally likely for any event A, then
+\begin{equation*}
+    P(A) = \frac{\text{Number of outcomes in A}}{\text{Number of outcomes in S}} = \frac{n(A)}{n(S)}
+\end{equation*}
+where $n(A)$ is the number of outcomes in event A and $n(S)$ is the number of outcomes in sample space S.
+
+\subsubsection*{Combinatorics}
+Combinatorics is the branch of mathematics dealing with combinations of objects in specific sets under certain constraints. It provides tools for counting and arranging objects.
+Some basic combinatorial concepts include:
+\begin{itemize}
+    \item \textbf{Permutations:} The number of ways to arrange a set of objects in a specific order.
+    \item \textbf{Combinations:} The number of ways to select a subset of objects from a larger set, without regard to the order of selection.
+\end{itemize}
+
+\paragraph*{Counting Subsets}
+Let $\Omega = { a, b, c, d, e, f, g, h , i, j }$. How would we find all possible subsets of $\Omega$?
+\begin{align*}
+    Num = 2^{len(\Omega)} = 2^{10} = 1024
+\end{align*}
+This is because each element can either be included or excluded (2 options) from a subset, leading to $2^{n}$ possible subsets for a set with $n$ elements.
+
+\pagebreak
+
+\subsubsection*{Permutations and Combinations}
+\paragraph*{Permutations}
+A permutation is an arrangement of objects in a specific order. The number of permutations of 
+$k$ objects chosen from $n$ distinct objects is given by the following formula:
+\[
+    P_{k,n} = \frac{n!}{(n-k)!} = n \times (n-1) \times (n-2) \times ... \times (n-k+1)
+\]
+Where $P_{k,n}$ is the number of permutations of $n$ objects taken $k$ at a time, $n!$ is the factorial of $n$, and $(n-k)!$ is the factorial of $(n-k)$.
+
+\paragraph*{Example:} Suppose we want to rank 5 candidates Amy, Bai, Catherine, David, and Eduardo in preference for a position.
+How many different ways can we rank (1.) all of the candidates and (2.) only 2 of the candidates?
+\begin{align*}
+    1. \quad P_{5,5} &= \frac{5!}{5-5!} = \frac{5!}{1} = 120 \\
+    2. \quad P_{5,2} &= \frac{5!}{5-2!} = \frac{5!}{3!} = 20
+\end{align*}
+
+\paragraph*{Combinations}
+A combination is a selection of objects without regard to the order of selection. The number of combinations
+of $k$ objects chosen from $n$ distinct objects is given by the following formula:
+\[
+    C_{k,n} = \frac{n!}{k!(n-k)!} = \frac{P_{k,n}}{k!}
+\]
+Where $C_{k,n}$ is the number of combinations of $n$ objects taken $k$ at a time, $n!$ is the factorial of 
+$n$, $k!$ is the factorial of $k$, and $(n-k)!$ is the factorial of $(n-k)$.
+
+\paragraph*{Example:}
+How many hands of 3 cards can be drawn from a standard deck of 52 playing cards?
+\[
+    C_{3,52} = \binom{52}{3} = \frac{52!}{3!(52-3)!} = \frac{52!}{3!49!} = 22100
+\]
+
