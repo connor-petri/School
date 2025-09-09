@@ -81,7 +81,6 @@ public class Animal {
 
 ### Inheritance
 ```java
-```java
 public class Dog extends Animal {
     protected String owner;
 
@@ -115,5 +114,31 @@ public class Dog extends Animal {
     public void speak() {
         System.out.println(this.name + " barks.");
     }
+}
+```
+
+### ArrayList
+```java
+import java.util.ArrayList
+
+ArrayList<int> nums = new ArrayList<int>();
+
+nums.add(1);
+nums.add(2);
+System.out.println(nums.get(0)); // prints 1
+```
+
+## Linked Lists
+A linked list is a collection of Node classes linked together by references.
+```java
+@param<T>
+public class Node<T> {
+    private T val;
+    private T next;
+
+    public getVal() { return this.val; }
+    public setVal(T val) { this.val = val; }
+    public getNext() { return this.next; }
+    public setNext(Node next) { this.next = next; }
 }
 ```
