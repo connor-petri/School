@@ -48,7 +48,7 @@
 - Dominant male will patrol their territory.
 
 #### 6. Chimps
-- Babies learn food strategies from their mothers, who activly teach their young by correcting their mistakes.
+- Babies learn food strategies from their mothers, who actively teach their young by correcting their mistakes.
 - Females carry their young.
 - Females for cooalitions to fend off dominant male aggression.
 
@@ -66,3 +66,14 @@
 - Often twins
 - High male and helper care lowers male PPR and upposrts social stability.
 - Higher prolactin and lower testosterone during their period of care.
+
+## Important points:
+- How does paternal certainty correlated to PI in patterns of fatherhood?:
+
+    - Cooperative breeders maintain high male care without parental certainty; helpers and prosocial bond spread risk
+    - Pair bonded - high paternal certainty and high direct male care.
+    - Harem - High paternal pertainty and low direct care, investment is indirect protection and tolerance.
+    - Multi-partner - low paternal certainty, direct parental care is rare; indirect investment is tolerance and group defence.
+
+- ***Care intensity = enfant need + helper availability + opportunity cost time***
+- More direct male care = pair stability + mutual mate choice; less care = more contests, monopolization, and sperm competition.
