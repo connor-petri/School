@@ -56,3 +56,30 @@ How many hands of 3 cards can be drawn from a standard deck of 52 playing cards?
     C_{3,52} = \binom{52}{3} = \frac{52!}{3!(52-3)!} = \frac{52!}{3!49!} = 22100
 \]
 
+\paragraph*{Example:}
+A playlist contains 100 songs. 10 of these songs are by The Strokes. We can find the probability of the first 
+song by The Strokes being the 5th song played by finding the ratio of the number of favorable outcomes to the total number of outcomes.
+
+\begin{align*}
+    P(\text{1st Strokes on 5th}) &= \frac{\text{Number of favorable outcomes}}{\text{Total number of outcomes}} \\
+    &= \frac{P_{4,90} \cdot P_{1,10}}{P_{5, 100}} = \frac{\frac{90!}{(90-4)!} \cdot 10}{\frac{100!}{(100-5)!}}\\
+    &= .0679
+\end{align*}
+
+Another way of thinking about this would be that there are $\binom{100}{10}$ different ways to choose the 
+10 Strokes songs. Now if we choose 9 of the last 95 songs to be Strokes songs, there are $\binom{95}{9}$ ways to do this,
+ leaving 4 non-Strokes songs and 1 Strokes song in the first 5 songs. The probability is then:
+\[
+    P(\text{1st Strokes on 5th}) = \frac{\binom{95}{9}}{\binom{100}{10}} = .0679
+\]
+
+\paragraph*{Example:}
+A university warehouse has recieved 25 printers, of which 10 are laser printers and 15 are inkjet printers.
+If 6 printers are randomly selected for testing, what is the probability that exacty 3 of those selected are
+laser printers?\\
+
+Let $D_3$ be the event that exactly 3 of the selected printers are laser printers. 
+\begin{align*}
+    P(D_3) &= \frac{\text{Number of favorable outcomes}}{\text{Total number of outcomes}} \\
+    &= \frac{N(D_3)}{N} = \frac{\binom{15}{3} \cdot \binom{10}{3}}{\binom{25}{6}} = .3083
+\end{align*}
