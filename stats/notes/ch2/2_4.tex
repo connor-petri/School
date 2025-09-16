@@ -1,0 +1,121 @@
+\subsection{Conditional Probability}
+\hrulefill
+
+A conditional probability of an event is the probability that the event occurs given that some other event
+has already occurred. Conditional probabilities can prove to be counterintuitive and may lead tableofcontents
+suprising results.
+
+\paragraph*{Definition:} The conditional probability of an event $A$ given that an event $B$ has occurred is denoted by
+$P(A|B)$ and is defined as:
+\[
+    P(A|B) = \frac{P(A \cap B)}{P(B)}
+\]
+
+\paragraph*{Example:} If you flip 3 coins, what is the probability that exactly 2 are heads (B)?
+
+\begin{align*}
+    \Omega &= \{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\} \\
+    B &= \{HHT, HTH, THH\} \\
+    A &= \{HHH, HTT, HTH, HHT\} \\
+\end{align*}
+\begin{align*}
+    P(A \cap B) &= \frac{2}{8} \\
+    P(B) &= \frac{3}{8} \\
+    P(A|B) = \frac{P(A \cap B)}{P(B)} &= \frac{\frac{2}{8}}{\frac{3}{8}} = \frac{2}{3}
+\end{align*}
+
+\subsubsection*{Multiplication Rule}
+The multiplication rule is a way to find the probability of the intersection of two events. It states that:
+\begin{align*}
+    P(A \cap B) &= P(A|B) \cdot P(B) \\
+    P(A \cap B) &= P(B|A) \cdot P(A) \\
+\end{align*}
+
+\pagebreak
+
+CHECK THIS FOR ACCURACY
+\paragraph*{General Multiplication Rule:} For any number of events $A_1, A_2, \ldots, A_n$:
+\begin{align*}
+    P\left(\bigcap_{i=1}^{n} A_i\right) &= P(A_1) \cdot P(A_2|A_1) \cdot P(A_3|A_1 \cap A_2) \cdots P(A_n|A_1 \cap A_2 \cap \cdots \cap A_{n-1}) \\
+\end{align*}
+
+\subsubsection*{Law of Total Probability}
+For any events A and B, we can get the following from the multiplication rule:
+\begin{align*}
+    P(A \cap B) &= P(A|B)P(B) \\
+    P(A \cap B') &= P(A|B')P(B') \\
+\end{align*}:
+Note that $B$ and $B'$ form a \textit{partition} of $\Omega$.
+
+\paragraph*{General Law of Total Probability:}
+Let $B_1, \ldots, B_n$ be a partition of the sample space $\Omega$. Then for any event $A$:
+\[
+    P(A) = \sum_{i=1}^{n} P(A|B_i)P(B_i)
+\]
+
+\paragraph*{Example:}
+Suppose that we have 2 boxes with marbles in them. Box 1 has 1 white and 3 black marbles. Box 2 
+has 2 white and 2 black marbles. We randomly select a box and then randomly select a marble from that box.
+What is the probability that we select a black marble?
+
+\begin{align*}
+    P(Black) &= P(Black|Box 1)P(Box 1) + P(Black|Box 2)P(Box 2) \\
+    &= \left(\frac{3}{4}\right)\left(\frac{1}{2}\right) + \left(\frac{2}{4}\right)\left(\frac{1}{2}\right) \\
+    &= \frac{3}{8} + \frac{2}{8} = \frac{5}{8} \\
+\end{align*}
+
+
+\paragraph*{Example:}
+On any given morning, it is either raining (25\% of the time), foggy (35\% of the time), or sunny (40\% of the time).
+If it is raining, there is a 30\% change that I will miss the bus. If it is foggy, there is a 20\%
+chance that I will miss the bus. If it is sunny, there is a 10\% chance that I will miss the bus.
+What is the probability that I will miss the bus on any given morning?
+
+\begin{align*}
+    P(MB) &= P(MB|R)P(R) + P(MB|F)P(F) + P(MB|S)P(S) \\
+    &= (0.30)(0.25) + (0.20)(0.35) + (0.10)(0.40) \\
+    &= 0.075 + 0.07 + 0.04 = 0.185 \\
+\end{align*}
+
+\subsubsection*{Bayesian Analysis}
+Bayesian analysis is a statistical method that involves using Bayes' theorem to update the probability of a hypothesis
+based on new evidence or data. It is named after Thomas Bayes, an 18th-century statistician and theologian.
+
+\paragraph*{Bayes' Theorem}
+Let $B_1,\ldots,B_n$ form a partition of the sample space $\Omega$. Then for any event $A$:
+\[
+    P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum_{j=1}^{n} P(A|B_j)P(B_j)}
+\]
+Note that in the special case of the partition consisting of $B$ and $B'$, this reduces to:
+
+\[
+    P(B|A) = \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|B')P(B')}
+\]
+
+\paragraph*{Example:}
+If I pull a black marble from one of the boxes in the previous example, what is the probability that I pulled it from Box 1?
+\begin{align*}
+    P(B_1|Black) &= \frac{P(Black|B_1)P(B_1)}{P(Black)} \\
+    &= \frac{(\frac{3}{4})(\frac{1}{2})}{\frac{5}{8}} = \frac{3}{5}
+\end{align*}
+
+\paragraph*{Example:}
+According to the Arizona Chapter of the American Lung Association, 7\% of the population has lung disease. Of those,
+people, 90\% are smokers; and of those without lung disease, 74.7\% are non-smokers. What are the chances that a smoker has 
+lung disease?
+\begin{align*}
+    P(LD|S) &= \frac{P(S|LD)P(LD)}{P(S|LD)P(LD) + P(S|LD')P(LD')} \\
+    &= \frac{(0.90)(0.07)}{(0.90)(0.07) + (0.253)(0.93)} \\
+    &= \frac{0.063}{0.063 + 0.23529} = \frac{0.063}{0.29829} \approx 0.2111 \\
+\end{align*}
+
+\paragraph*{Example:}
+You give a friend a letter to mail. He forgets to mail it with probability 0.2. Given that he mails it, 
+the Post Office delivers it with probability 0.9. Given that the letter was not delivered, what is the probability
+that it was not mailed.
+
+\begin{align*}
+    P(M'|D') &= \frac{P(D'|M')P(M')}{P(D'|M')P(M') + P(D'|M)P(M)} \\
+    &= \frac{(1)(0.2)}{(1)(0.2) + (0.1)(0.8)} \\
+    &= \frac{0.2}{0.2 + 0.08} = \frac{0.2}{0.28} = \frac{5}{7} \\
+\end{align*}
