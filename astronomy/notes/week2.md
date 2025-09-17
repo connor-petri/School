@@ -1,4 +1,4 @@
-# Astronomy Notes: 
+# Week 2: 
 **August 27, 2025**
 
 
