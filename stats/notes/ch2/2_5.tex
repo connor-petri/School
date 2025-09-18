@@ -1,0 +1,57 @@
+\subsection{Independence}
+\hrulefill
+
+\paragraph*{Definition:}
+Two events $A$ and $B$ are independent if the occurance of one event does not affect the probability of the other event occurring.
+Otherwise, the events are dependent. Sometimes it is obvios that two events influence each other, such as crude oil prices and 
+gas prices. Sometimes it is obvious that two events are not dependent, such as rolling a die and the weather.
+Sometimes it is difficult to tell, such as obtaining two heads in three coin flips and obtaining a head on the first of three flips.
+Mutual exclusivity and independence are not the same thing. Two events can be independent and not mutually exclusive, such as rolling 
+a 1 and rolling an odd number on a die.
+
+\paragraph*{Checking for Independence:}
+In many cases, you will need to evaluate independence by checking the following formulas:
+\begin{itemize}
+    \item A and B are independent if and only if $P(A|B) = P(A)$
+    \item A and B are independent if and only if $P(A \cap B) = P(A)P(B)$
+\end{itemize}
+
+Note that independent trials are okay to be assumed to be independent, such as rolling a die or flipping a coin.
+
+\paragraph*{Properties:}
+\begin{itemize}
+    \item If A and B are independent, then $b$ and $A$ are independent.
+    \item If A and B are independent, then $A'$ and $B'$, $A$ and $B'$, and $A'$ and $B$ are all independent.
+\end{itemize}
+
+\pagebreak
+
+\paragraph*{Example:}
+Suppose we draw a card from a deck of 52 playing cards. Let A be the event that the card is an Ace, and let B be the event that 
+the card is a Spade. Are A and B independent?
+
+\begin{align*}
+    P(A) &= \frac{4}{52} = \frac{1}{13} \\
+    P(B) &= \frac{13}{52} = \frac{1}{4} \\
+    P(A \cap B) &= \frac{1}{52} \\
+    P(A)P(B) &= \frac{1}{13} \cdot \frac{1}{4} = \frac{1}{52} \\
+\end{align*}
+Since $P(A \cap B) = P(A)P(B)$, A and B are independent.
+
+\paragraph*{Example:}
+Suppose we roll 2d6. What is the probability of getting 2 even numbers?
+\begin{align*}
+    P(E_1  \cap E_2) &= P(E_1)P(E_2) &\text{ since } E_1 \text{ and } E_2 \text{ are independent} \\
+    &= \left(\frac{3}{6}\right)\left(\frac{3}{6}\right) \\
+    &= \frac{9}{36} = \frac{1}{4}
+\end{align*}
+
+\paragraph*{Example:}
+Roll 2d6. Let A be the event that the sum is 7. Let B be the event that the first die is a 4. Are A and B independent?
+\begin{align*}
+    P(A) &= \frac{6}{36} = \frac{1}{6} \\
+    P(B) &= \frac{1}{6} \\
+    P(A \cap B) &= \frac{1}{36} \\
+    P(A)P(B) &= \frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36} \\
+\end{align*}
+Since $P(A \cap B) = P(A)P(B)$, A and B are independent.
