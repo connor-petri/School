@@ -42,3 +42,26 @@ public class Fib {
     }
 }
 ```
+
+## Exceptions
+Exceptions provide a mechanism for cleanly reporting and handling error without using specific return values. Exceptions allow us to clearly separate error paths from the main code branch. There are 4 kinds of problems in Java:
+- Nobody's fault (solar flare knocking out comms).
+- Your fault (this idiot divided by 0).
+- Java's fault (for just existing tbh).
+- Problems revealed by assertions during testing.
+
+### Exception Handling
+We use ```try``` and ```catch``` blocks to handle exceptions.
+```java
+File dirf = new File(path);
+File logf = new File(dirf, "log.txt");
+
+try {
+    logf.createNewFile();
+    System.out.println("Ok");
+} catch (IOExceptions e) {
+    System.out.println("YOU FUCKED UP DIPSHIT: " + e.getMessage());
+}
+System.out.println("Done");
+```
+
