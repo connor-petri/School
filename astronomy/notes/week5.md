@@ -26,9 +26,11 @@
 ## Telescopes
 ### Refracting Telescope
 - Essentially a giant light bucket that just collects the raw light from the sky and focuses it through lenses.
+- Needs to be very ling with many very large and heavy lenses.
 
 ### Reflecting Telescope
-- Giant light bucket but with mirrors for focusing and magnifying
+- Giant light bucket but with mirrors for focusing and magnifying.
+- 
 
 ### Resolution
 - A telescope's resolution is the measure of how much detail it's images are. 
