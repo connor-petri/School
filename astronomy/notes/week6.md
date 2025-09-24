@@ -15,6 +15,13 @@
 - If the particles are not going fast enough, they are deflected by the electric force that repels particles with like-charges.
 - In order for fusion to occur, they must be traveling fast enough that the repelling force doesn't have enough time to push it out of the way.
 
+#### Fusion Reaction Example
+$$
+4\ ^1H \longrightarrow\ ^4He + \gamma + 2\nu
+$$
+
+Where $^1H$ is a hydrogen atom, $^4He$ is a helium atom, $\gamma$ is a gamma ray, and $\nu$ is a neutrino.
+
 #### Iron
 Iron acts as a sort of "dividing line" on the periodic table. You cannot get nuclear energy from iron. 
 - Everything after iron on the periodic table had elements with a high atomic mass. We can split these elements to get the nuclear energy from the molecule. 
