@@ -76,7 +76,7 @@ class Dog extends Animal {
 }
 ```
 
-## Memory Regions
+### Memory Regions
 - References go on the stack.
 - Objects go on the heap.
 - After creation, the class of an object does not change.
@@ -85,3 +85,47 @@ class Dog extends Animal {
     - Actual class of the object
     - Any superclass of the object
     - Any interface the class inherits from.
+
+## Interfaces
+One of the biggest pitfalls in Object Oriented Programming is multiple inheritance, as it causes code to be far more complex and opens up the possibility of naming conflicts. The way we solve this is by using *interfaces*, which are in effect class blueprints that contain public static data members and public function declarations (but not implementation). By convention, we should begin each interface with a capital I to differentiate it from a class.
+
+```java
+public interface IUsableItem {
+    public final static int MAX_ID = 999;
+    public int getID();
+    public void use();
+}
+
+class Chair implements IUsableItem {
+    private String name = "Chair";
+    private static nextID = 0;
+    private int id = nextID++;
+
+    public String getName() {
+        return this.name;
+    }
+    
+    public int getID() {
+        return this.id;
+    }
+
+    public void use() {
+        System.out.println("Object #" + this.id + " has been used.");
+    }
+}
+```
+
+### More Polymorphism
+We can cast any class that implements the interface can be type cast as the interface. This allows us to work with instances of an interface independently of their implementing class, only using the methods defined.'
+
+```java
+Chair ch = new Chair();
+IUsableItem item = ch;
+
+// This is allowed
+item.getID();
+item.use();
+
+// This is not, as getName is not a part of the interface.
+item.getName();
+```
