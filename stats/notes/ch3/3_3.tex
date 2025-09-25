@@ -1,0 +1,162 @@
+\subsection{Expected Values}
+\hrulefill
+\vspace{5mm}
+
+The \textbf{expected value} is a weighted average of the possible values of a random variable X with PMF p(x).
+It is given by:
+\[
+    E(X) = \mu_X = \sum_x x p(x)
+\]
+where the sum is over all possible values of X.
+
+\paragraph*{Names for Expected Value}
+\begin{itemize}
+    \item Mean
+    \item Expected Value
+    \item Expectation
+    \item $\mu$
+    \item $E(X)$
+    \item (Bonus) The "center of mass" of the histogram of the PMF.
+\end{itemize}
+
+\paragraph*{Example:}
+Craps is a dice game in which the players make wagers on the sum of a roll of a pair of dice. One of the wagers 
+available to the player is the \textit{field bet}. The field consists of \{5, 6, 7, 8\}. If the sum of the dice is one of these
+numbers, you lose your bet. Otherwise you get your bet back plus a payout according to the following table:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+        Winnings & -1 & 1 & 2 & 3 \\
+        \hline
+        Outcome & field & {3, 4, 9, 10, 11} & 2 & 12 \\
+    \end{tabular}
+\end{table}
+
+Is the bet favorable to the player?
+
+\paragraph*{Solution:}
+Let X be the random variable that gives your winnings on a field bet. The PMF is given by:
+
+\[
+\begin{array}{c|c|c|c|c}
+    x & -1 & 1 & 2 & 3 \\
+    \hline
+    p(x) & \frac{16}{36} & \frac{20}{36} & \frac{1}{36} & \frac{1}{36} \\
+\end{array}
+\]
+
+\begin{align*}
+    E(X) &= \sum_x x p(x) \\
+    &= -1 \cdot \frac{20}{36} + 1 \cdot \frac{14}{36} + 2 \cdot \frac{1}{36} + 3 \cdot \frac{1}{36} \\
+    &= -\frac{20}{36} + \frac{14}{36} + \frac{2}{36} + \frac{3}{36} \\
+    &= -\frac{1}{36} \\
+    &\approx -0.028
+\end{align*}
+The expected value is negative, so the bet is unfavorable to the player.
+
+\subsubsection*{Expectation of a Function of a Random Variable}
+\vspace{5mm}
+
+If $X$ is a discrete random variable with PMF $p(X)$ and $h(x)$ is any real valued function of X, then the expectation of 
+$h(X)$ is given by:
+\[
+    E[h(X)] = \sum_x h(x) p(x)
+\]
+
+
+\paragraph*{Example:}
+Find $E(X^2)$ if X is the sum of two dice.
+
+\[
+    E(X^2) = \sum x^2 p(x) 
+\]
+
+\pagebreak
+
+Note that this is not always reversible. $E[h(X)] \neq h(E[X])$ except when $h(x)$ is a linear function. Then 
+\[
+    E(aX + b) = aE[X] + b
+\]
+
+\paragraph*{Proof:}
+\begin{align*}
+    E(aX + b) &= \sum_x (ax + b)p(X) \\
+    &= \sum_x ax \cdot p(x) + b \cdot p(x) \\
+    &= a \sum_x x p(x) + b \sum_x p(x) \\
+    &= aE[X] + b \cdot 1 \\
+    &= aE[X] + b
+\end{align*}
+
+\paragraph*{Special Cases and Rules:}
+\begin{align*}
+    a = 0 &: E(b) = b \\
+    b = 0 &: E(aX) = aE[X] \\
+    E(X + Y) &= E(X) + E(Y) \\
+    E(3X - 2Y + b) &= 3E(X) - 2E(Y) + b
+\end{align*}
+
+\subsubsection*{Variance of a Discrete Random Variable}
+\vspace{5mm}
+The \textbf{variance} of a discrete random variable is the "spread" of the random variable around it's mean.
+Suppose X is a discrete random variable with PMF p(x) and mean $\mu$. The variance of X, denoted by $\sigma^2$ is given by:
+\[
+    \sigma^2 =Var(X) = E[(X - \mu)^2] = E[X^2] - \mu^2
+\]
+Recall here that $\mu = E(X)$. The variance is the mean squared distance of the values of X from their mean.
+
+\pagebreak
+
+\paragraph*{Names for Variance}
+\begin{itemize}
+    \item Variance
+    \item $Var(X)$
+    \item $V(X)$
+    \item $\sigma^2$
+\end{itemize}
+
+\paragraph*{Computation Formula}
+\[
+    V(X) = E[X^2] - (E[X])^2
+\]
+
+\subsubsection*{Standard Deviation}
+\vspace{5mm}
+The \textbf{standard deviation} of a discrete random variable X is the positive square root of the variance of X. It is denoted by $\sigma$.
+\[
+    \sigma = SD(X) = \sqrt{Var(X)} = \sqrt{E[X^2] - (E[X])^2}
+\]
+
+\paragraph{Note:}
+Variance is NOT a linear operator. Let X be a random variable with constants a and b. Then:
+\[
+    V(aX + b) = a^2 V(X) \implies \sigma_{aX + b} = |a| \sigma_X
+\]
+
+\paragraph*{Example:}
+Show that the variance of the Bernoulli Random Variable is $p(1-p)$:
+\begin{align*}
+    V(X) &= E(X^2) - [E(X)]^2 \\
+    &= \sum_x x^2 p(x) - \left(\sum_x x p(x)\right)^2 \\
+    &= 0^2(1-p) + 1^2(p) - (0(1-p) + 1(p))^2 \\
+    &= p - p^2 \\
+    &= p(1-p)
+\end{align*}
+
+\paragraph*{Example:}
+Let $X$ be a discrete random variable with $\mu = 2$ and variance of $\sigma^2 = 6$. (a) Find $E(X^2)$. (b) Find $V[(X-1)^2]$ and (c) 
+Find $\sigma_X$.
+
+\begin{align*}
+    (a) \quad E(X^2) &= V(X) + [E(X)]^2 \\
+    &= 6 + 2^2 \\
+    &= 10 \\
+    \\
+    (b) \quad V[(X-1)^2] &= E[(X-1)^4] - [E(X-1)^2]^2 \\
+    &= E[X^4 - 4X^3 + 6X^2 - 4X + 1] - [E(X^2) - 2E(X) + 1]^2 \\
+    &= E[X^4] - 4E[X^3] + 6E[X^2] - 4E[X] + 1 - [10 - 4 + 1]^2 \\
+    &= E[X^4] - 4E[X^3] + 60 - 8 + 1 - 49 \\
+    &= E[X^4] - 4E[X^3] + 4 \\
+    \\
+    (c) \quad \sigma_X &= \sqrt{V(X)} = \sqrt{6} \approx 2.45
+\end{align*}
