@@ -1,0 +1,128 @@
+\subsection{The Binomial Probability Distribution}
+\hrulefill
+
+\paragraph*{Definition:}
+There are many experiments that conform either exactly or approximately to the following list of requirements:
+\begin{itemize}
+    \item The experiment consists of a sequence of $n$ identical trials.
+    \item Each trial results in one of two outcomes, which we will call a success and a failure.
+    \item The trials are independent, so that the outcome on any particular trial does not influence the outcome on any other trial.
+    \item The probability of a success, denoted by $p$, remains the same from trial to trial. The probability of a failure is $q = 1 - p$.
+\end{itemize}
+An experiment that satisfies these requirements is called a \textbf{binomial experiment}.
+
+\paragraph*{Example:}
+Consider each of the next $n$ vehicles undergoing an emissions test, and let S denote a cehicle thta passes the test and $F$ denote one that fails.
+\begin{itemize}
+    \item The experiment consists of $n$ identical trials, where each trial is the emissions test of a vehicle.
+    \item Each trial results in one of two outcomes: S or F.
+    \item The trials are independent, assuming that the vehicles are randomly selected.
+    \item The probability of a success (a vehicle passing the test) remains the same from trial to trial, assuming that the vehicles are randomly selected.
+\end{itemize}
+Thus, this is a binomial experiment.
+
+\subsubsection*{The Binomail Random Variable and Distribution}
+
+In most binomial experiments, we are interested in the total number of successes that occur in the $n$ trials rather than the specific sequence of
+ successes and failures.
+\paragraph*{Definition:}
+The \textbf{binomial random variable} $X$ associated with a binomial experiment consisting of $n$ trials is defined as:
+\[
+    X = \text{the number of successes in } n \text{ trials.}
+\]
+
+\paragraph*{Example:}
+Suppose that $n=3$. There are 8 possible outcomes of the experiment, as shown in the following table:
+\begin{center}
+    \begin{tabular}{c|c}
+        Outcome & $X$ \\
+        \hline
+        SSS & 3 \\
+        SSF & 2 \\
+        SFS & 2 \\
+        FSS & 2 \\
+        SFF & 1 \\
+        FSF & 1 \\
+        FFS & 1 \\
+        FFF & 0 \\
+    \end{tabular}
+\end{center}
+The possible values of $X$ are 0, 1, 2, and 3.
+
+\paragraph*{Example:}
+Consider the case that $n=4$. Find P(SSFS) and P(SSSS):
+\begin{align*}
+    P(SSFS) &= P(S) \cdot P(S) \cdot P(F) \cdot P(S) \\
+    &= p \cdot p \cdot (1-p) \cdot p \\
+    &= p^3(1-p)
+    \\
+    P(SSSS) &= P(S) \cdot P(S) \cdot P(S) \cdot P(S) \\
+    &= p \cdot p \cdot p \cdot p \\
+    &= p^4
+\end{align*}
+
+\pagebreak
+
+\paragraph*{Notation:}
+Because the pmf of a binomial random variable $X$ depends on the two parameters $n$ and $p$, we denote the pmf by $b(x: n, p)$.
+
+\paragraph*{Example:}
+Find $b(3; 4, p)$:
+\begin{align*}
+    b(3; 4, p) &= P(X=3) \\
+    &= P(SSSF) + P(SSFS) + P(SFSS) + P(FSSS) \\
+    &= p^3(1-p) + p^3(1-p) + p^3(1-p) + p^3(1-p) \\
+    &= 4p^3(1-p)
+\end{align*}
+
+\paragraph{Theorem}:
+\[
+    b(x; n, p) = \begin{cases}
+        \binom{n}{x} p^x (1-p)^{n-x}, & x = 0, 1, 2, \ldots, n \\
+        0, & \text{otherwise}
+    \end{cases}
+\]
+
+\paragraph*{Example:}
+Each of six randomly selected cola drinkers is given a glass containing cola $S$ and one containing cola $F$. 
+The glasses are identical in appearance except for a code on the bottom to identify the cola. 
+Suppose there is actually no tendency among cola drinkers to prefer one cola over the other. 
+Then $p = P(S) = 0.5$. Find (1) the probability that exactly four of the six cola drinkers prefer cola $S$,
+(2) the probability that at least four of the six cola drinkers prefer cola $S$, and (3) the probability that at most
+1 of the six cola drinkers prefer cola $S$.
+
+\paragraph*{1.}
+\begin{align*}
+    P(X=4) = b(4; 6, 0.5) &= \binom{6}{4} (0.5)^4 (1-0.5)^{6-4} \\
+    &= \binom{6}{4} (0.5)^4 (0.5)^2 \\
+    &= 15 \cdot (0.5)^6 \\
+    &= \frac{15}{64} \approx 0.2344
+\end{align*}
+
+\paragraph*{2.}
+\begin{align*}
+    P(X \geq 4) &= \sum_{x=4}^{6} b(x; 6, 0.5) \\
+    &= \sum_{x=4}^{6} \binom{6}{x} (0.5)^x (1-0.5)^{6-x} \\
+    &= \frac{22}{64} \approx 0.3438
+\end{align*}
+
+\paragraph*{3.}
+\begin{align*}
+    P(X \leq 1) &= \sum_{x=0}^{1} b(x; 6, 0.5) \\
+    &= \sum_{x=0}^{1} \binom{6}{x} (0.5)^x (1-0.5)^{6-x} \\
+    &= \frac{7}{64} \approx 0.1094
+\end{align*}
+
+\subsubsection*{Binomial Tables}
+For $X ~ \text{Binomial}(n, p)$, the cdf will be denoted by:
+\[
+    B(x; n, p) = P(X \leq x) = \sum_{y=0}^{\lfloor x \rfloor} b(y; n, p)
+\]
+
+\paragraph*{Theorem:}
+If $X ~ B(n,p)$, then:
+\begin{itemize}
+    \item $E(X) = np$
+    \item $V(X) = np(1-p)$
+    \item $\sigma_X = \sqrt{np(1-p)}$
+\end{itemize}
