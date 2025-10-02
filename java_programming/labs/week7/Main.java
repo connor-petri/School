@@ -5,11 +5,12 @@ public class Main {
         AddClass a = new AddClass();
         IAdd i = a;
 
-        i.add_xy(3, 4);
+        System.out.println("Sum: " + i.add_xy(3, 4));
 
         a.change_x(5);
         a.change_y(6);
-        a.add_xy(7, 8);
+
+        System.out.println("Sum: " + a.add_xy(7, 8));
     }
 }
 
