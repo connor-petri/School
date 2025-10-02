@@ -70,7 +70,7 @@ public class ProfessorCollection implements Collection {
 
 #### Example of TreeMap usage
 ```java
-TreeMap<Star, Astronomer> starToDiscoverer = new TreeMap<Star, Asreonomer>();
+TreeMap<Star, Astronomer> starToDiscoverer = new TreeMap<Star, Astronomer>();
 // This is also acceptable
 TreeMap<Star, Astronomer> starToDiscoverer = new TreeMap<>();
 
@@ -97,3 +97,4 @@ In order for a class to be a key in a ```TreeMap```, it must implement ```Compar
     - Removes that object from the stack.
 - ```public T peek()```
     - Same as pop without removing it.
+
