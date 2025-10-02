@@ -1,0 +1,162 @@
+\subsection{Hypergeometric and Negative Binomial Probability Distributions}
+\hrulefill
+
+[Catch up on negative binomial info from last class]
+Summary: (to be refined later)
+Run n independent bernoulli trials
+Decide you require r successes
+X = number of trials required to obtain r successes
+$X\sim NB(r,p)$
+$X = r, r+1, r+2, ...$
+$P(X=k) = \binom{k-1}{r-1} p^r (1-p)^{k-r}$
+$E(X) = \frac{r}{p}$
+$V(X) = \frac{r(1-p)}{p^2}$
+
+\hrulefill
+
+\subsubsection*{Geometric Probability Distribution}
+\paragraph*{Definition:}
+This is a special case of the negative binomial distribution where $r=1$. Essentially we are looking for the number of trials required 
+to obtain the first success. This is denoted:
+\[
+    X \sim \text{Geometric}(p)
+\]
+The pmf is given by:
+\[
+    P(X=k) = p(1-p)^{k-1}, \quad k=1,2,3,...
+\]
+The mean and variance are given by:
+\[
+    E(X) = \frac{1}{p}, \qquad V(X) = \frac{1-p}{p^2}
+\]
+
+\paragraph*{Review of Geometric Series:}
+\[
+    1+A+A^2+A^3+...+A^n = \begin{cases}
+        \frac{1-A^{n+1}}{1-A}, & A \neq 1\\
+        n+1, & A=1 \\
+    \end{cases}\frac{1-A^{n+1}}{1-A}
+\]
+
+\[
+    \sum_{k=0}^{\infty} A^k = \frac{1}{1-A}, \quad |A|<1
+\]
+
+\paragraph*{Example:}
+You roll a fair die until you see the first six. Define the random variable you are working with in words and state 
+the corresponding distribution along with all relevant parameters. (a) How many rolls do you expect to make? (b) What is the 
+probability that the first six occurs on the fifth roll? (c) What  is the probability that you will need more than 10 rolls?
+
+Let $X \sim \text{Geo}(\frac{1}{6})$ be the number of rolls until the first six.
+\paragraph*{a.}
+
+\[
+    E(X) = \frac{1}{p} = \frac{1}{\frac{1}{6}} = 6
+\]
+
+\paragraph*{b.}
+\begin{align*}
+    P(X=5) &= p(1-p)^{5-1} \\
+    &= \frac{1}{6} \left(1-\frac{1}{6}\right)^4 \\
+    &= \frac{1}{6} \left(\frac{5}{6}\right)^4 \\
+    &= \frac{625}{7776} \approx 0.0804
+\end{align*}
+
+\paragraph*{c.}
+\begin{align*}
+    P(X>10) &= 1 - P(X \leq 10) \\
+    &= 1 - \sum_{k=1}^{10} P(X=k) \\
+    &= 1 - \sum_{k=1}^{10} p(1-p)^{k-1} \\
+    &= 1 - p \sum_{k=0}^{9} (1-p)^k \\
+    &= 1 - p \left(\frac{1-(1-p)^{10}}{1-(1-p)}\right) = 1 - (1-(1-p)^{10}) \\
+    &= (1-p)^{10} = \left(1-\frac{1}{6}\right)^{10} = \left(\frac{5}{6}\right)^{10} \approx 0.1615
+\end{align*}
+
+\paragraph*{Remark:}
+The textbook uses $Y$, the number of faliures before the first success, instead of $X$, the number of trials until the first success.
+This means that $Y = X-1$.
+
+\subsubsection*{Hypergeometric Probability Distribution}
+
+\paragraph*{Definition:}
+Suppose you have a population of size $N$, in which each individual can be classified as either a success (S) or a failure(F).
+The number of successes in the population is $M$. A sample of size $n$ is selected at random without replacement from the population.
+Let $X$ be the number of successes in the sample. Then $X$ is a hypergeometric random variable with parameters $n$, $M$, and $N$:\\
+\[
+    X \sim \text{Hypergeometric}(n, M, N) \equiv X \sim HG(n, M, N)
+\]
+
+The pmf is denoted:
+\[
+    h(n,M,N)
+\]
+
+\paragraph*{Example:}
+Identify the parameters $n$, $M$, and $N$ for the following situations:
+\begin{itemize}
+    \item The number of aces in a poker hand.
+    \begin{itemize}
+        \item $N=52$ (cards in deck)
+        \item $M=4$ (aces in deck)
+        \item $n=5$ (cards in hand)
+    \end{itemize}
+    \item The number of juniors in a 5-person committee chosen at random from a group of ten juniors and five seniors.
+    \begin{itemize}
+        \item $N=15$ (total students)
+        \item $M=10$ (juniors)
+        \item $n=5$ (committee members)
+    \end{itemize}
+    \item The number of green marbles you pull when randomly selecing 3 marbles from  a beg with 10 red,  8 green, and 2 blue marbles.
+    \begin{itemize}
+        \item $N=20$ (total marbles)
+        \item $M=8$ (green marbles)
+        \item $n=3$ (marbles selected)
+    \end{itemize}
+\end{itemize}
+
+Let $X$ = the number of green marbles you pull when randomly selecting 3 marbles from a bag with 10 red, eight green, and two blue marbles.
+Find the PMF of $X$.
+\begin{align*}
+    P(X=0) &= \frac{\binom{8}{0} \binom{12}{3}}{\binom{20}{3}} = \frac{220}{1140} = \frac{22}{114} \approx 0.19298 \\
+    P(X=1) &= \frac{\binom{8}{1} \binom{12}{2}}{\binom{20}{3}} = \frac{8 \cdot 66}{1140} = \frac{528}{1140} = \frac{44}{95} \approx 0.46316 \\
+    P(X=2) &= \frac{\binom{8}{2} \binom{12}{1}}{\binom{20}{3}} = \frac{28 \cdot 12}{1140} = \frac{336}{1140} = \frac{28}{95} \approx 0.29474 \\
+    P(X=3) &= \frac{\binom{8}{3} \binom{12}{0}}{\binom{20}{3}} = \frac{56 \cdot 1}{1140} = \frac{56}{1140} = \frac{14}{285} \approx 0.04912
+\end{align*}
+
+\paragraph*{PMF:}
+Generically, the pmf is given by:
+\[
+    h(x; n, M, N) = P(X=x) = \frac{\binom{M}{x} \binom{N-M}{n-x}}{\binom{N}{n}}, \quad \max\{n - (N-M), 0\} \leq x \leq \min\{n, M\}
+\]
+
+\begin{align*}
+    E(X) &= n \left(\frac{M}{N}\right) \\
+    V(X) &= n \left(\frac{M}{N}\right) \left(\frac{N-M}{N}\right) \left(\frac{N-n}{N-1}\right)
+\end{align*}
+
+\paragraph*{Example:}
+Let $X$ = nuymber of aces in a 5 card poker hand. (a) Describe the distribution of X. (b) What is the probability that $x=2$?
+(c) How many aces do you expect to have?
+
+\paragraph*{a.}
+\[
+    X \sim HG(5, 4, 52)
+\]
+
+\paragraph*{b.}
+\begin{align*}
+    P(X=2) &= h(2; 5, 4, 52) \\
+    &= \frac{\binom{4}{2} \binom{48}{3}}{\binom{52}{5}} \\
+    &= \frac{6 \cdot 17296}{2598960} \\
+    &= \frac{103776}{2598960} \approx 0.03993
+\end{align*}
+
+\paragraph*{c.}
+\[
+    E(X) = 5 \left(\frac{4}{52}\right) = \frac{5}{13} \approx 0.3846
+\]
+
+\subsubsection*{Relationship Between the Binomial and Hypergeometric Distributions}
+\paragraph*{Remark:}
+The hypergeometric distribution can be approximated by the binomial distribution when the population size $N$ and the 
+number of successes $M$ is large relative to the sample size $n$.
