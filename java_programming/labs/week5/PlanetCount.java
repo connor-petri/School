@@ -1,4 +1,4 @@
-package java_programming.labs.planetcount;
+package java_programming.labs.week5;
 
 import java.io.IOException;
 

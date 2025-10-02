@@ -1,4 +1,4 @@
-package java_programming.labs.classcomparison;
+package java_programming.labs.week6;
 
 public class Data {
     private int x;

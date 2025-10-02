@@ -1,4 +1,4 @@
-package java_programming.labs.books;
+package java_programming.labs.week4;
 
 public class Book {
     private String title;

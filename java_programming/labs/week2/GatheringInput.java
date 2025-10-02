@@ -1,4 +1,4 @@
-package java_programming.labs.gatheringinput;
+package java_programming.labs.week2;
 
 import java.util.Scanner;
 
