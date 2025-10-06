@@ -48,6 +48,55 @@ $P(B_j|A) = \frac{P(A|B_j)P(B_j)}{P(A)} = \frac{P(A|B_j)P(B_j)}{\sum_{i=1}^n P(A
 \textbf{Independence:}\\
 Two events \( A \) and \( B \) are independent if and only if $P(A|B) = P(A)$ and \( P(A \cap B) = P(A)P(B) \).\\
 If $A$ and $B$ are independent, then $B$ and $A$, $A$ and $B^c$, $A^c$ and $B$, $A^c$ and $B^c$ are also independent.\\
+\paragraph*{Random Variables}
+An RV is a function that assigns a real number to each outcome in the sample space of a random experiment.\\
+\textbf{Discrete RV} --- A random variable that can take on a countable number of distinct values.\\
+\textbf{Continuous RV} --- A random variable that can take on any value within a given range or interval.\\
+$X: S \rightarrow \mathbb{R}$ Where S is the event space and \( X \) is the random variable.\\
+\textbf{PMF} --- Probability Mass Function for discrete RVs. $P(X=x)$\\
+\textbf{CDF} --- Cumulative Distribution Function for both discrete and continuous RVs. $F(x) = P(X \leq x) = \sum_{i \leq x} p(i)$
+This is just like the pmf but cumulative rather than pointwise.\\
+\textbf{Bernoulli Random Variable} --- A discrete RV that takes the value 1 with probability \( p \) and the value 0 with probability \( 1-p \).\\
+\textbf{Expected Value} --- The mean. $E(X) = \mu_X = \sum_x xP(X=x)$ for discrete RVs and $E(X) = \mu_X = \int_{-\infty}^{\infty} xf(x)dx$ for continuous RVs.\\
+$E(h(X)) = \sum_x h(x)P(X=x)$ for discrete RVs and $E(h(X)) = \int_{-\infty}^{\infty} h(x)f(x)dx$ for continuous RVs.\\
+$E(aX + b) = aE(X) + b$\\
+$E(X + Y) = E(X) + E(Y)$\\
+$E(X^2) = \sum_x x^2p(x)$\\
+\textbf{Variance} --- A measure of how much the values of a random variable deviate from the mean. $Var(X) = \sigma_X^2 = E[(X - \mu_X)^2] = E(X^2) - (E(X))^2$\\
+\textbf{Standard Deviation} --- The square root of the variance. $\sigma_X = \sqrt{Var(X)}$\\
+\\
+\textbf{Common Discrete Distributions:}\\
+\\
+\textbf{Binomial Distribution} --- Models the number of successes in \( n \) independent Bernoulli trials, each with success probability \( p \).\\
+$X \sim Bin(n, p)$\\
+\textbf{PMF:} --- $P(X = k) = b(x; n,p) = \binom{n}{k} p^k (1-p)^{n-k}$ for $ k = 0, 1, \ldots, n $ else $0$\\
+\textbf{CDF:} --- $B(x; n,p) = P(X \leq x) = \sum_{y=0}^{\lfloor x \rfloor} b(y; n,p)$\\
+\textbf{Mean:} --- $E(X) = np$\\
+\textbf{Variance:} --- $Var(X) = np(1-p)$\\
+\\
+\textbf{Negative Binomial Distribution} --- Models the number of trials needed to achieve \( r \) successes in a sequence of independent Bernoulli trials, 
+each with success probability \( p \).\\
+$X \sim NB(r, p)$\\
+\textbf{PMF:} --- $P(X = k) = \binom{k-1}{r-1} p^r (1-p)^{k-r}$ for $ k = r, r+1, \ldots $ else $0$\\
+\textbf{CDF:} --- $NB(x; r,p) = P(X \leq x) = \sum_{y=r}^{\lfloor x \rfloor} \binom{y-1}{r-1} p^r (1-p)^{y-r}$\\
+\textbf{Mean:} --- $E(X) = \frac{r}{p}$\\
+\textbf{Variance:} --- $Var(X) = \frac{r(1-p)}{p^2}$\\
+\\
+\textbf{Geometric Distribution} --- A special case of the negative binomial distribution where \( r = 1 \). 
+It models the number of trials needed to get the first success.\\
+$X \sim Geo(p)$\\
+\textbf{PMF:} --- $P(X = k) = (1-p)^{k-1} p$ for $ k = 1, 2, \ldots $ else $0$\\
+\textbf{CDF:} --- $G(x; p) = P(X \leq x) = 1 - (1-p)^{\lfloor x \rfloor}$\\
+\textbf{Mean:} --- $E(X) = \frac{1}{p}$\\
+\textbf{Variance:} --- $Var(X) = \frac{1-p}{p^2}$\\
+\\
+\textbf{Hypergeometric Distribution} --- Models the number of successes in \( n \) draws from a finite population of size \( N \) containing \( K \) successes,
+without replacement.\\
+$X \sim Hyp(N, K, n)$\\
+\textbf{PMF:} --- $h(x; n, N, K) = P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$ for $ \max(0, n-(N-K)) \leq k \leq \min(n, K) $ else $0$\\
+\textbf{CDF:} --- $H(x; n, N, K) = P(X \leq x) = \sum_{y=\max(0, n-(N-K))}^{\lfloor x \rfloor} \frac{\binom{K}{y} \binom{N-K}{n-y}}{\binom{N}{n}}$\\
+\textbf{Mean:} --- $E(X) = n \frac{K}{N}$\\
+\textbf{Variance:} --- $Var(X) = n \frac{K}{N} \frac{N-K}{N} \frac{N-n}{N-1}$\\
 \\
 
 \vspace{9999pt}
