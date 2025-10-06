@@ -1,0 +1,57 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{blindtext}
+\usepackage{graphicx}
+
+\setlength{\columnsep}{0.3in}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{multicols}{2}
+
+\textbf{Axioms of Probability}
+
+\begin{enumerate}
+    \item Non-negativity: For any event \( A \), \( P(A) \geq 0 \).
+    \item Normalization: \( P(S) = 1 \), where \( S \) is the sample space.
+    \item Additivity: For any two mutually exclusive events \( A \) and \( B \), \( P(A \cup B) = P(A) + P(B) \).
+    This can be extended to $P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)$ for mutually exclusive events \( A_1, A_2, \ldots, A_n \).
+\end{enumerate}
+
+\textbf{Basic Properties of Probability:}\\
+$\forall A \in S, P(A) < 1$\\
+$P(A^c) = 1 - P(A)$\\
+P($\emptyset$) = 0\\
+$P(A \cup B) = P(A) + P(B) - P(A \cap B)$\\
+$A \subseteq B \implies P(A) \leq P(B)$\\
+\\
+\textbf{Counting:}\\
+\textbf{Permutation} --- An arrangement of objects in a specific order. $P(n, r) = \frac{n!}{(n-r)!}$\\
+\textbf{Combination} --- A selection of objects without regard to the order. $C(n, r) = \frac{n!}{r!(n-r)!}$\\
+\textbf{Binomial Coefficient} --- The number of ways to choose \( k \) successes in \( n \) independent Bernoulli trials. 
+$\binom{n}{k} = C(n, k) = \frac{n!}{k!(n-k)!}$\\
+\textbf{Number of Subsets} --- The number of subsets of a set with \( n \) elements is \( 2^n \).\\
+\\
+\textbf{Conditional Probability:}\\
+$P(A|B) = \frac{P(A \cap B)}{P(B)}$\\
+\textbf{Multiplication Rule:} --- $P(A \cap B) = P(A|B)P(B) = P(B|A)P(A)$\\
+$P(\bigcap_{i=1}^n A_i) = P(A_1)P(A_2|A_1)P(A_3|A_1 \cap A_2)...P(A_n|\bigcap_{i=1}^{n-1} A_i)$\\
+\textbf{Law of Total Probability:} --- If \( B_1, B_2, \ldots, B_n \) are mutually exclusive and exhaustive events, then for any event \( A \):
+$P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)$\\
+\textbf{Bayes' Theorem:} --- \\
+$P(B_j|A) = \frac{P(A|B_j)P(B_j)}{P(A)} = \frac{P(A|B_j)P(B_j)}{\sum_{i=1}^n P(A|B_i)P(B_i)}$\\
+\\
+\textbf{Independence:}\\
+Two events \( A \) and \( B \) are independent if and only if $P(A|B) = P(A)$ and \( P(A \cap B) = P(A)P(B) \).\\
+If $A$ and $B$ are independent, then $B$ and $A$, $A$ and $B^c$, $A^c$ and $B$, $A^c$ and $B^c$ are also independent.\\
+\\
+
+\vspace{9999pt}
+
+\end{multicols}
+
+\end{document}
