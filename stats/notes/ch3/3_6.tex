@@ -1,0 +1,73 @@
+\subsection{Poisson Probability Distribution}
+\hrulefill
+\paragraph*{Definition:}
+The \textbf{Poisson distribution} is used to model the number of times a rare event occurs.\\
+Examples:
+\begin{itemize}
+    \item The number of earthquakes in CA in a month.
+    \item The number of misprints on a page of some document.
+    \item The number of atoms emitted by a radioactive particle.
+\end{itemize}
+
+A random variable $X$ is called a Poisson ($\lambda$) random variable ($\lambda > 0$), if $X$ takes
+on values $0,1,2,\dots$ and has pmf:
+\[
+    P(X=k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad k=0,1,2,\dots
+\]
+\begin{itemize}
+    \item The expected value $E(X) = \lambda$
+    \item The variance $V(X) = \lambda$
+    \item The parameter $\lambda$ is the average number of occurrences in a given interval.
+\end{itemize}
+
+\paragraph*{Note:}
+Informally, the smaller $\lambda$ is, the more rare the event $X$ is.
+
+\paragraph*{Example:}
+Suppose on average there are two typos per page in the text book.
+\begin{itemize}
+    \item For a randomly selected page of the book, what is the probability that there are no typos?
+    \item For a randomly selected page of the book, what is the probability that there are two typos?
+    \item For a randomly selected page of the book, what is the probability that there is at least 1 typo?
+\end{itemize}
+
+\pagebreak
+
+Let $X \sim \text{Poisson}(2)$ be the number of typos on a randomly selected page.
+\begin{itemize}
+    \item $\lambda = 2$
+    \item $P(X=0) = \frac{e^{-2} 2  ^0}{0!} = e^{-2} \approx 0.1353$
+    \item $P(X=2) = \frac{e^{-2} 2 ^2}{2!} = 2e^{-2} \approx 0.2707$
+    \item $P(X \geq 1) = 1 - P(X=0) = 1 - e^{-2} \approx 0.8647$
+\end{itemize}
+
+\paragraph*{Example:}
+Both Hurricane Harvey and Hurricane Irma were said to be "One in 500 Year" storms, yet they both 
+occurred in 2017.
+\begin{enumerate}
+    \item What is the probability that 2 such storms occur in a given year? Same month?
+    \item That is the probability that a baby born today in a hurricane zone will see one such storm.
+    What about a "one in 100 year" storm?
+\end{enumerate}
+
+Let $X \sim \text{Poisson}(\lambda)$ be the number of "one in 500 year" storms in a year and 
+$Y \sim \text{Poisson}(\mu)$ be the number of "one in 500 year" storms in a month.
+\begin{enumerate}
+    \item \begin{align*}
+        \lambda &= \frac{1}{500} \\
+        P(X=2) &= \frac{e^{-\frac{1}{500}} \left(\frac{1}{500}\right)^2}{2!} \\
+        &\approx 1.996 \times 10^{-6}\\
+        \\
+        \mu &= \frac{1}{500 \cdot 12} = \frac{1}{6000} \\
+        P(Y=2) &= \frac{e^{-\frac{1}{6000}} \left(\frac{1}{6000}\right)^2}{2!} \\
+    \end{align*}
+    \item \begin{align*}
+        \lambda &= \frac{1}{100} \\
+        P(X \geq 1) &= 1 - P(X=0) = 1 - e^{-\frac{1}{100}} \\
+        &\approx 0.00995\\
+        \\
+        \mu &= \frac{1}{100 \cdot 12} = \frac{1}{1200} \\
+        P(Y \geq 1) &= 1 - P(Y=0) = 1 - e^{-\frac{1}{1200}} \\
+        &\approx 0.000833
+    \end{align*}
+\end{enumerate}
