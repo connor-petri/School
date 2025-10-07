@@ -98,3 +98,8 @@ In order for a class to be a key in a ```TreeMap```, it must implement ```Compar
 - ```public T peek()```
     - Same as pop without removing it.
 
+### The Call Stack
+Every time a local variable or a method is called, it is pushed to the call stack. When the function returns, the input parameters and function are popped from the stack and the return value is pushed.
+
+## Sets
+Sets are arrays that do not allow duplicate entries. Start with HashSet and go from there. TreeSet is ordered and is sorted on insertion.
