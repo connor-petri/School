@@ -98,6 +98,14 @@ $X \sim Hyp(N, K, n)$\\
 \textbf{Mean:} --- $E(X) = n \frac{K}{N}$\\
 \textbf{Variance:} --- $Var(X) = n \frac{K}{N} \frac{N-K}{N} \frac{N-n}{N-1}$\\
 \\
+\textbf{Poisson Distribution} --- Models the number of events occurring in a fixed interval of time or space, given the average rate \( \lambda \) of occurrence.\\
+Used to model the number of times a rare event occurs in a large population.\\
+$X \sim Pois(\lambda)$\\
+\textbf{PMF:} --- $P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$ for $ k = 0, 1, 2, \ldots $ else $0$\\
+\textbf{CDF:} --- $P(X \leq x) = \sum_{y=0}^{\lfloor x \rfloor} \frac{\lambda^y e^{-\lambda}}{y!}$\\
+\textbf{Mean:} --- $E(X) = \lambda$\\
+\textbf{Variance:} --- $Var(X) = \lambda$\\
+\\
 
 \vspace{9999pt}
 
