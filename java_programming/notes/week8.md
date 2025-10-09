@@ -13,3 +13,12 @@ javaDoc is a tool which allows documentation to be generated from your ```.java`
  */
 public static gpsData getGPSData(GNSS gps)
 ```
+
+### Tags
+- ```@author [Author Name]``` Documents code author
+- ```@version [Version Number]``` Documents code version
+- ```@param varName [Info on Param]``` Documents a method parameter
+- ```@return [Info on return value]``` Documents a method return value
+- ```@throws/@exception``` Documents all exceptions thrown by method
+- ```@see``` Creates a link to another class, method, or field.
+- ```@since``` Indicates when a feature was added.
