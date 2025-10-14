@@ -165,3 +165,16 @@ $\varphi = 1.618...$
 
 ### What to do on your date?
 - Involve laughter, a mild challenge, mild exercise and novelty, or builds empathy.
+
+### What to say on your date?
+- Be careful of what you say; most important part of attraction
+    - Be prosocial
+    - avoid icks
+
+### What to bring on your date?
+- Bring a child or demonstrate you're good with children in some way.
+
+
+### What to eat on your date?
+- **Eat Spicy Food:** releases beta endorphins.
+- **Avoid Heavy Booze:** blunts accurate selection.
