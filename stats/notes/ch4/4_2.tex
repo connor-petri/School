@@ -1,0 +1,136 @@
+\subsection{Cumulative Distribution Function (CDF)}
+\hrulefill
+
+\paragraph{Definition:} The cumulative distribution function (CDF) of a continuous random variable $X$ is a function 
+$F(x)$ defined as:
+\[
+    F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t) dt
+\]
+where $f(t)$ is the PDF of $X$.
+
+\paragraph{Relationship between PDF and CDF:}
+\begin{itemize}
+    \item The CDF $F(x)$ is the integral of the PDF $f(x)$.
+    \item The PDF $f(x)$ is the derivative of the CDF $F(x)$, i.e., $f(x) = \frac{d}{dx} F(x)$.
+\end{itemize}
+
+\paragraph{Properties of CDF:}
+\begin{itemize}
+    \item $F(x)$ is non-decreasing.
+    \item $\lim_{x \to -\infty} F(x) = 0$ and $\lim_{x \to \infty} F(x) = 1$.
+    \item $P(X \leq x) = F(x)$
+    \item $P(X > x) = 1 - F(x)$
+    \item $P(a < X \leq b) = F(b) - F(a)$
+\end{itemize}
+
+\paragraph*{Example:}
+Let $X$ be a continuous random variable with PDF:
+\[
+    f(x) = \begin{cases}
+        \frac{2}{9} x & 0 \leq x \leq 3 \\
+        0 & \text{otherwise}
+    \end{cases}
+\]
+a. Find the CDF $F(x)$.\\
+b. Use the CDF to compute $P(X > 2)$.\\
+
+\paragraph*{a.}
+\begin{align*}
+    F(x) &= \int_0^x f(t) dt = \int_0^x \frac{2}{9} t dt = \begin{cases}
+        0 & x < 0 \\
+        \frac{2}{9} \cdot \frac{x^2}{2} = \frac{x^2}{9} & 0 \leq x \leq 3 \\
+        1 & x > 3
+    \end{cases}
+\end{align*}
+
+\paragraph*{b.}
+\begin{align*}
+    P(X > 2) &= 1 - P(X \leq 2) = 1 - F(2) \\
+    &= 1 - \frac{2^2}{9} = 1 - \frac{4}{9} = \frac{5}{9}
+\end{align*}
+
+\subsubsection*{Percentiles}
+\paragraph*{Definition:} The score $s$ is the $p$-th percentile $\eta (p)$ of a continuous random variable $X$ if:
+\begin{itemize}
+    \item $P(X \leq s) = F(s) = p$
+    \item $P(X > s) = 1 - F(s) = 1 - p$
+    \item $\int_{-\infty}^{\eta (p)} f(x) dx = p$
+    \item $F(\eta (p)) = p$
+\end{itemize}
+
+\paragraph*{Percentile Vocabulary:}
+\begin{itemize}
+    \item $\eta (0.5)$ is the median.
+    \item $\eta (0.25)$ is the first quartile $Q_1$.
+    \item $\eta (0.75)$ is the third quartile $Q_3$.
+    \item The interquartile range (IQR) is $Q_3 - Q_1$.
+\end{itemize}
+
+\paragraph*{Example:}
+Find the 75th percentile of the continuous random variable $X$ from the previous example.
+\begin{align*}
+    \eta (0.75) &= s \text{ such that } F(s) = 0.75 \\
+    F(s) &= \frac{s^2}{9} = 0.75 \\
+    s^2 &= 6.75 \\
+    s &= \sqrt{6.75} \approx 2.598
+\end{align*}
+
+\hrulefill
+
+\subsubsection{Mean and Variance of a Continuous Random Variable}
+\paragraph{Mean (Expected Value):} The mean or expected value of a continuous random variable $X$ with PDF $f(x)$ is given by:
+\begin{align*}
+    E(X) &= \int_{-\infty}^{\infty} x f(x) dx\\
+    E(h(X)) &= \int_{-\infty}^{\infty} h(x) f(x) dx\\
+    E(aX+b) &= aE(X) + b\\
+    E(h(X)) &\neq h(E(X)) \text{ unless $h(x)$ is linear}
+\end{align*}
+
+
+\paragraph{Variance:} The variance of a continuous random variable $X$ with PDF $f(x)$ is given by:
+\begin{align*}
+    \sigma^2 &= Var(X) = \int_{-\infty}^{\infty} (x - \mu)^2 f(x) dx \\
+    Var(X) &= E(X^2) - (E(X))^2\\
+    Var(aX+b) &= a^2 Var(X)
+\end{align*}
+
+\pagebreak
+
+\paragraph*{Example:}
+Let $X$ be a continuous random variable with PDF:
+\[
+    f(x) = \begin{cases}
+        \frac{3}{8} x & 0 \leq x \leq 2 \\
+        0 & \text{otherwise}
+    \end{cases}
+\]
+a. Find $E(X)$\\
+b. Find $E(X^2)$\\
+c. Find $Var(X)$\\
+
+
+CHECK THIS IT IS NOT ACCURATE
+\paragraph*{a.}
+\begin{align*}
+    E(X) &= \int_{-\infty}^{\infty} x f(x) dx \\
+    &= \int_0^2 x \cdot \frac{3}{8} x dx + \int_{-\infty}^0 x \cdot 0 dx + \int_2^{\infty} x \cdot 0 dx \\
+    &= \int_0^2 \frac{3}{8} x^3 dx + 0 + 0 \\
+    &= \frac{3}{8} \left[ \frac{x^4}{4} \right]_0^2 \\
+    &= \frac{3}{8} \cdot \frac{16}{4} = 1.5
+\end{align*}
+
+\paragraph*{b.}
+\begin{align*}
+    E(X^2) &= \int_{-\infty}^{\infty} x^2 f(x) dx \\
+    &= \int_0^2 x^2 \cdot \frac{3}{8} x dx + \int_{-\infty}^0 x^2 \cdot 0 dx + \int_2^{\infty} x^2 \cdot 0 dx \\
+    &= \int_0^2 \frac{3}{8} x^3 dx + 0 + 0 \\
+    &= \frac{3}{8} \left[ \frac{x^4}{4} \right]_0^2 \\
+    &= \frac{3}{8} \cdot \frac{16}{4} = 1.5
+\end{align*}
+
+\paragraph*{c.}
+\begin{align*}
+    Var(X) &= E(X^2) - (E(X))^2 \\
+    &= 1.5 - (1.5)^2 \\
+    &= 1.5 - 2.25 = -0.75
+\end{align*}

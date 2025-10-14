@@ -1,0 +1,69 @@
+\subsection{Probability Density Functions}
+\hrulefill
+\subsubsection*{Continuous Random Variables}
+\paragraph{Definition:} A random variable $X$ is said to be \textbf{continuous} if its set of possible values is 
+an interval or a collection of intervals on the real line. Examples of continuous random variables include:
+\begin{itemize}
+    \item The time required to complete a task.
+    \item The height of a randomly selected person.
+    \item The amount of rainfall in a given month.
+    \item The weight of a randomly selected object.
+\end{itemize}
+
+\subsubsection*{Probability Density Function (PDF)}
+\paragraph{Definition:} Let $X$ be a continuous random variable. Then a probability distrubution or probability 
+density function (PDF) of $X$ is a function $f(x)$ such that for any two 
+\[
+    P(a \leq X \leq b) = \int_{a}^b f(x) dx
+\]
+
+Thus the probability that $X$ takes on a value between $a$ and $b$ is represented by the area under the curve of $f(x)$ from $a$ to $b$. 
+
+\paragraph{Properties of PDF:}
+\begin{itemize}
+    \item $f(x) \geq 0$ for all $x$.
+    \item $\int_{-\infty}^{\infty} f(x) dx = 1$.
+    \item $P(X = x) = 0$ for any specific value of $x$.
+    \item $P(X < x) = P(X \leq x)$.
+\end{itemize}
+
+\paragraph{Calculus Concepts Needed:}
+\begin{itemize}
+    \item Differentiation and Integration
+    \item Polynomial and Exponential Functions
+    \item Possibly Product and Quotient Rules
+    \item Chain Rule
+    \item Integration by Parts
+    \item L'hopital's Rule
+    \item $\int_0^\infty f(x) dx = \lim_{b \to \infty} \int_0^b f(x) dx$
+\end{itemize}
+
+\paragraph*{Example:}
+Let $X$ be a continuous random variable with PDF:
+\[
+    f(x) = \begin{cases}
+        cx & 0 \leq x \leq 3 \\
+        0 & \text{otherwise}
+    \end{cases}
+\]
+a. Find the value of $c$.\\
+b. Compute $P(2 \leq X \leq 4)$\\
+
+\paragraph*{a.}
+\begin{align*}
+    1 &= \int_{-\infty}^{\infty} f(x) dx \\
+    1 &= \int_0^3 cx dx \\
+    1 &= c \left[ \frac{x^2}{2} \right]_0^3 \\
+    1 &= c \cdot \frac{9}{2} \\
+    c &= \frac{2}{9}
+\end{align*}
+
+\paragraph*{b.}
+\begin{align*}
+    P(2 \leq X \leq 4) &= \int_2^4 f(x) dx \\
+    &= \int_2^3 \frac{2}{9} x dx + \int_3^4 0 dx  & \text{(since $f(x) = 0$ for $x > 3$)}\\
+    &= \frac{2}{9} \left[ \frac{x^2}{2} \right]_2^3 + 0 \\
+    &= \frac{2}{9} \left( \frac{9}{2} - 2 \right) \\
+    &= \frac{5}{9}
+\end{align*}
+
