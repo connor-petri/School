@@ -1,0 +1,38 @@
+\subsection{The Exponential and Gamma Distributions}
+\hrulefill
+
+\subsubsection*{The Exponential Distribution}
+A continuous random variable $X$ is said to have an Exponential distribution with parameter
+$\lambda > 0$ if its probability density function is given by
+\[f(x) = \begin{cases}
+\lambda e^{-\lambda x} & x > 0 \\
+0 & \text{otherwise}
+\end{cases}.\]
+
+\paragraph*{Notation:} $X \sim \text{Exp}(\lambda)$ means that $X$ is an Exponential random variable with parameter
+$\lambda$.
+
+\paragraph*{CDF:} The CDF of $X \sim \text{Exp}(\lambda)$ is
+\[F(x) = P(X \leq x) = \begin{cases}
+1 - e^{-\lambda x} & x \geq 0 \\
+0 & x < 0
+\end{cases}.\]
+
+\paragraph*{Used for:}
+\begin{itemize}
+    \item The time until a radioactive particle decays.
+    \item The time until a customer arrives at a service point.
+    \item The time until a light bulb burns out.
+    \item Life spans of living organisms.
+\end{itemize}
+
+\paragraph*{Survival Function:} The survival function is given by
+\[S(t) = P(X > t) = 1 - F(t) = e^{-\lambda t}.\]
+This is the probability that the event of interest has not occurred by time $t$.
+This is done instead of the CDF for lifespans because people are little bitches about death, so now we have to 
+learn more formulae.
+
+\paragraph*{Mean and Variance:} If $X \sim \text{Exp}(\lambda)$, then
+\[\mu = E(X) = \frac{1}{\lambda}, \quad \sigma^2 = Var(X) = \frac{1}{\lambda^2}.\]
+
+\paragraph*{Note:} When integrating by parts, let $u$ be the polynomial term and $dv$ be the exponential term.

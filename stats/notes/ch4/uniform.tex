@@ -1,0 +1,57 @@
+\subsection{The Uniform Distribution}
+\hrulefill
+
+In the beginning of this course we considered smaple spaces in which every outcome is equally likely.
+For example, let $X =$ the value of a fair six-sided die.
+This is called the uniform distribution. The analogous continuous distribution is called the continuous 
+uniform distribution. We have to consider all possible values in an interval $(a,b)$. The probability that $X$
+falls into a subinterval should only depend on the length (and not the location) of the subinterval $(a,b)$.
+This means that the probability density function must be constant. Let $f(x) = c \forall x \in (a,b)$.
+Then we have
+\[\int_a^b f(x) \, dx = 1 \implies c(b-a) = 1 \implies c = \frac{1}{b-a}.\]
+Thus the probability density function of a continuous uniform distribution is
+\[f(x) = \begin{cases}
+\frac{1}{b-a} & a < x < b \\
+0 & \text{otherwise}
+\end{cases}.\]
+
+\paragraph*{Notation:} $X \sim U(a,b)$ means that $X$ is a continuous uniform random variable on the 
+interval $(a,b)$.
+
+\paragraph*{CDF:} The CDF of $X \sim U(a,b)$ is
+\[F(x) = P(X \leq x) = \begin{cases}
+0 & x \leq a \\
+\frac{x-a}{b-a} & a < x < b \\
+1 & x \geq b
+\end{cases}.\]
+
+\paragraph*{Mean and Variance:} If $X \sim U(a,b)$, then
+\[\mu = E(X) = \frac{a+b}{2}, \quad \sigma^2 = Var(X) = \frac{(b-a)^2}{12}.\]
+
+\pagebreak
+
+\paragraph*{Example:}
+Suppose you arrie at a bus stop at 10:00 am. The bus will arrive at a time T uniformly distributed between 
+10:00 am and 10:30 am.\\
+a. What is the probability that you will have to wait more than 5 minutes?\\
+b. If at 10:15 am the bus has not arrived, what is the probability that you will have to wait 
+at least another 5 minutes?\\
+c. What is the probability that the bus will arrive exactly at 10:15 am?
+
+\paragraph*{a.}
+\begin{align*}
+    &X \sim U(0,30)& \\
+    P(X>5) &= 1 - P(X \leq 5) = 1 - F(5) = 1 - \frac{5-0}{30-0} = \frac{25}{30} = \frac{5}{6}
+\end{align*}
+
+\paragraph*{b.}
+\begin{align*}
+    &X \sim U(0,30)& \\
+    P(X>20 | X>15) &= \frac{P(X>20 \cap X>15)}{P(X>15)} = \frac{P(X>20)}{P(X>15)} = \frac{1 - F(20)}{1 - F(15)} \\
+    &= \frac{1 - \frac{20-0}{30-0}}{1 - \frac{15-0}{30-0}} = \frac{\frac{10}{30}}{\frac{15}{30}} = \frac{2}{3}
+\end{align*}
+
+\paragraph*{c.}
+\[P(X=15) = \int_{15}^{15} f(x) \,dx = 0.\]
+This is because the probability of a continuous random variable taking on any single value is 0.
+
