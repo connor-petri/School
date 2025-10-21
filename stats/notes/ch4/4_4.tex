@@ -35,9 +35,90 @@ learn more formulae.
 \paragraph*{Mean and Variance:} If $X \sim \text{Exp}(\lambda)$, then
 \[\mu = E(X) = \frac{1}{\lambda}, \quad \sigma^2 = Var(X) = \frac{1}{\lambda^2}.\]
 
-<<<<<<< HEAD
-\paragraph*{Note:} When integrating by parts, let $u$ be the polynomial term and $dv$ be the exponential term.
-=======
 \paragraph*{Note:} When integrating by parts, let $u$ be the polynomial term and $dv$ be the exponential term.
 \paragraph*{Note:} $\lim_{b\to\infty} \frac{\text{Polynomial}}{e^{\lambda b}} = 0$ for any polynomial.
->>>>>>> 5595871 (Stats - Class Notes 10/15)
+
+\paragraph*{Lack of Memory Property}
+The Exponential distribution has the lack of memory property, which states that
+\[P(X > s + t | X > s) = P(X > t) \forall s,t \geq 0.\]
+This means that the probability of waiting an additional time $t$ does not depend on how much time $s$ has already elapsed.
+
+\paragraph*{Example:}
+You are a customer service representative. Let $X$ be the time in minutes that you spend with a customer.
+Suppose $X \sim \text{Exp}(\lambda = 0.5)$.\\
+\\
+a. What is the probability that it takes the customer representitive more than 3 minutes with the next customer?
+\begin{align*}
+    P(X > 3) &= 1 - F(3) = e^{-0.5 \cdot 3} = e^{-1.5} \approx 0.2231.
+\end{align*}\\
+
+b. Suppose the rep has already been on the phone for 15 minutes. What is the probability it will take a total of 18 minutes 
+or more with this customer?
+\begin{align*}
+    P(X > 18 | X > 15) &= \frac{P(X > 18 \cap X > 15)}{P(X > 15)} = \frac{P(X > 18)}{P(X > 15)} \\
+    &= \frac{e^{-0.5 \cdot 18}}{e^{-0.5 \cdot 15}} = e^{-0.5 \cdot 3} = e^{-1.5} \approx 0.2231.
+\end{align*}\\
+
+c. What is the probability that it takes the customer rep less than 3 minutes with the next5 customers?
+\begin{align*}
+    &X_i \sim \text{Exp}(0.5) \quad i = 1,2,3,4,5& \\
+    P(X_1 < 3 \cap X_2 < 3 \cap X_3 < 3 \cap X_4 < 3 \cap X_5 < 3) &= P(X_1 < 3)P(X_2 < 3)P(X_3 < 3)P(X_4 < 3)P(X_5 < 3) \\
+    &= (F(3))^5 = (1 - e^{-0.5 \cdot 3})^5 \approx 0.6321^5 \approx 0.1013.
+\end{align*}\\
+
+d. What is the probability that it takes the rep a total of 15 minutes or less to help the next 5 customers?
+\begin{align*}
+    &X_i \sim \text{Exp}(0.5) \quad i = 1,2,3,4,5& \\
+    T &= \sum_{i=1}^5 X_i \sim \Gamma(n=5, \lambda=0.5)\\
+    P(T \leq 15) &= F_T(15) = 1 - e^{-0.5 \cdot 15} \sum_{k=0}^{4} \frac{(0.5 \cdot 15)^k}{k!} \\
+    &= 1 - e^{-7.5} \left(1 + 7.5 + \frac{7.5^2}{2} + \frac{7.5^3}{6} + \frac{7.5^4}{24}\right) \approx 0.5596.
+\end{align*}
+
+\hrulefill
+
+\subsubsection*{The Gamma Distribution}
+\paragraph*{Definition} A continuous random variable with PDF
+\[f(x) = \begin{cases}
+\frac{\lambda (\lambda x)^{n-1} e^{-\lambda x}}{(n-1)!} & x > 0 \\
+0 & \text{otherwise}
+\end{cases}\]
+is said to have a Gamma distribution with parameters $n$ and $\lambda$, where $n$ is a positive integer
+and $\lambda > 0$.
+
+\paragraph*{The Gamma Function}
+The Gamma function is defined as
+\[\Gamma(\alpha) = \int_0^\infty x^{\alpha - 1} e^{-x} \, dx \quad \alpha > 0.\]
+For positive integers $n$, $\Gamma(n) = (n-1)!$.
+
+\paragraph*{Properties of the Gamma Function:}
+\begin{itemize}
+    \item For $\alpha > 1, \Gamma(\alpha) = (\alpha - 1) \Gamma(\alpha - 1)$.
+    \item For a positive integer $n, \Gamma(n) = (n-1)!$.
+    \item $\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$.
+\end{itemize}
+
+\paragraph*{Examples of Gamma Distribution}
+\begin{itemize}
+    \item Time until the $r$-th customer gets their coffee
+    \item Milage that you get out of $r$ tanks of gas - note that $r$ does not have to be an integer here
+\end{itemize}
+
+
+\paragraph*{Relationship between Gamma and Exponential Distributions}
+Much like the negative binomial gets us the probability of the $r$-th success in a series of Bernoulli trials, 
+the Gamma distribution gives us the probability of the $r$-th event occurring in an exponential process.\\
+\\
+If $X_1, X_2, \ldots, X_r$ are independent Exponential random variables with parameter $\lambda$, then
+\[
+T = \sum_{i=1}^r X_i \sim \Gamma(r, \lambda).
+\]
+
+\paragraph*{Mean and Variance:} If $X \sim \Gamma(r, \lambda)$, then
+\[\mu = E(X) = \frac{r}{\lambda}, \quad \sigma^2 = Var(X) = \frac{r}{\lambda^2}.\]
+
+Note that the textbook defines the following:
+\[ \alpha = r, \quad \beta = \frac{1}{\lambda}.\]
+
+\paragraph*{The CDF of the Gamma Distribution}
+For and arbitrary $r > 0$ there is no closed form for the CDF, but for positive integers $r$ we have
+\[F(x) = P(X \leq x) = 1 - \sum_{k=0}^{r-1} \frac{(\lambda x)^k e^{-\lambda x}}{k!}.\]

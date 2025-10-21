@@ -1,3 +1,25 @@
 \subsection{The Normal Distribution}
 \hrulefill
 
+The Normal Distribution is by far the most important distribution that we will study in this class.
+It is the distribution most often applied to data by scientists in all disciplines. It was first used 
+in 733 by Moivre and used by Gauss to predict the location of astronomical bodies.\\
+
+Also known as:
+\begin{itemize}
+    \item Normal Distribution
+    \item Gaussian Distribution
+    \item Bell Curve
+\end{itemize}
+
+\paragraph*{Definition}
+A continuous random variable $X$ is said to have a normal distribution with mean $\mu$ and 
+variance $\sigma^2$ if its PDF is given by
+\[f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x - \mu)^2}{2 \sigma^2}} \quad -\infty < x < \infty.\]
+We denote this as $X \sim \mathcal{N}(\mu, \sigma^2)$.
+
+\paragraph*{Expected Value and Variance}
+If $X \sim \mathcal{N}(\mu, \sigma^2)$, then
+\[\mu = E(X), \quad \sigma^2 = Var(X).\]
+
+Note that because of the symmetry of normal distributions, $\mu = \nu(0.5) = \text{median}$.
