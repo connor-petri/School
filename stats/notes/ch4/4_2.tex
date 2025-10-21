@@ -100,7 +100,7 @@ Find the 75th percentile of the continuous random variable $X$ from the previous
 Let $X$ be a continuous random variable with PDF:
 \[
     f(x) = \begin{cases}
-        \frac{3}{8} x & 0 \leq x \leq 2 \\
+        \frac{3}{8} x^2 & 0 \leq x \leq 2 \\
         0 & \text{otherwise}
     \end{cases}
 \]
@@ -108,29 +108,17 @@ a. Find $E(X)$\\
 b. Find $E(X^2)$\\
 c. Find $Var(X)$\\
 
-
-CHECK THIS IT IS NOT ACCURATE
 \paragraph*{a.}
 \begin{align*}
-    E(X) &= \int_{-\infty}^{\infty} x f(x) dx \\
-    &= \int_0^2 x \cdot \frac{3}{8} x dx + \int_{-\infty}^0 x \cdot 0 dx + \int_2^{\infty} x \cdot 0 dx \\
-    &= \int_0^2 \frac{3}{8} x^3 dx + 0 + 0 \\
-    &= \frac{3}{8} \left[ \frac{x^4}{4} \right]_0^2 \\
-    &= \frac{3}{8} \cdot \frac{16}{4} = 1.5
+    E(X) &= \int_0^2 x \cdot \frac{3}{8} x^2 dx = \int_0^2 \frac{3}{8} x^3 dx = \left[ \frac{3}{8} \cdot \frac{x^4}{4} \right]_0^2 = \frac{3}{8} \cdot 4 = \frac{3}{2}
 \end{align*}
 
 \paragraph*{b.}
 \begin{align*}
-    E(X^2) &= \int_{-\infty}^{\infty} x^2 f(x) dx \\
-    &= \int_0^2 x^2 \cdot \frac{3}{8} x dx + \int_{-\infty}^0 x^2 \cdot 0 dx + \int_2^{\infty} x^2 \cdot 0 dx \\
-    &= \int_0^2 \frac{3}{8} x^3 dx + 0 + 0 \\
-    &= \frac{3}{8} \left[ \frac{x^4}{4} \right]_0^2 \\
-    &= \frac{3}{8} \cdot \frac{16}{4} = 1.5
+    E(X^2) &= \int_0^2 x^2 \cdot \frac{3}{8} x^2 dx = \int_0^2 \frac{3}{8} x^4 dx = \left[ \frac{3}{8} \cdot \frac{x^5}{5} \right]_0^2 = \frac{3}{8} \cdot \frac{32}{5} = \frac{12}{5}
 \end{align*}
 
 \paragraph*{c.}
 \begin{align*}
-    Var(X) &= E(X^2) - (E(X))^2 \\
-    &= 1.5 - (1.5)^2 \\
-    &= 1.5 - 2.25 = -0.75
+    Var(X) &= E(X^2) - (E(X))^2 = \frac{12}{5} - \left( \frac{3}{2} \right)^2 = \frac{12}{5} - \frac{9}{4} = \frac{48}{20} - \frac{45}{20} = \frac{3}{20}
 \end{align*}
