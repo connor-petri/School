@@ -55,4 +55,8 @@ for (int i = 1; i <= 100; i++) {
 - Subclass names convey more specific information about that type of throwable.
 
 ### Passing the exception up
-Instead of putting a try-catch block inside of a function, you can specify that a specific set of 
+Instead of putting a try-catch block inside of a function, you can specify that a specific set of exceptions are to be handled by the caller of the function.
+
+```java
+public static String readFile() throws IOException { ... }
+```
