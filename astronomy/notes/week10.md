@@ -34,3 +34,30 @@
 - This is called gravitational lensing, and all large gravitational bodies cause it, just at a smaller scale
     - The sun has an observable gravitational lensing effect if you have the right tools
 
+---
+
+## Stellar Life Cycles
+
+1. A *stellar nebula* is a large cloud of dust that is capable of forming new stars
+    - As the dust groups together, the gravity they generate pulls more and more of the surrounding dust towards it
+    - As the dust contracts, it begins to spin faster and faster
+2. When the pressure and temperature at the core of this start is sufficiently high, a **protostar** is formed
+    - The leftover gas not pulled into the star begins to orbit the new star, forming *accretion disks*
+    - Planets are formed from these disks
+3. When the mass of the *protostar* is sufficiently high, fusion in the core becomes consistant and it becomes a **main-sequence star.**
+4. The star "ages" by running out of fuel
+    - When all the core's hydrogen is fused, the core contracts and heats up until helium can be fused into carbon. This is called a **helium flash**
+        - A star fusing helium is called a **red giant**
+    - When the star runs out of helium, the core contracts and heats up again and carbon begins fusing into neon, magnesium, oxygen, and sodium
+        - **Double shell burning** occurs at this stage
+5. The star dies
+    - A star the size of the sun will die in a *nova*
+        - The carbon in the core is compressed hard enough to become a giant diamond in space. This is called a **white dwarf**
+        - Relatively non-violent, most of the star's mass just keeps expanding away from the white dwarf
+            - This cloud is called a *planetary nebula*
+    - O and B class stars will explode in a violent **supernova**
+        - Supernova create **neutron stars** (B class) and **black holes** (O class)
+6. White dwarf supernova
+    - If a white dwarf is in a binary star system it may eat it's neighboring star
+    - If it eats too much, it can go supernova as well and turn into a neutron star
+    - Same thing can happen to neutron stars which turn into black holes
