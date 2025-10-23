@@ -65,3 +65,25 @@
 - **Problem** all mammals *can* survive long enough to become grandparents
     - It is very hard to survive long enough (i.e. avoiding being eaten)
     - Grandmothers *may* be a side effect of our tool use and being the top of the food chain.
+
+### Side Effects of Menopause
+- More brittle bones
+- Sexual function reduces
+
+### Main Critique of Grandmother Hypothesis
+- **Early critique:** guppy study extended lifespan and reproduction stopped, but fish are not humans.
+- **Captive primate examples:** long lives from steady food, veterinary care, medicines create late-life cycle changes not seen in wild groups.
+    - captivity artifact; not species wide
+- **Oopause vs menopause**
+    - **oopause:** decline in ovarian function and reserves, fertility drops with senescence, many wild mammals die soon after
+    - **menopause:** year without menses, district hormone shift, long natural life afterward in many ecologies.
+- Captivity narratives weak; people are haters; a long human post-reproductive span is rare across mammals and makes sense where elders turn time and labor into better outcomes.
+
+### How do we know the Grandmother Hypothesis is Sound?
+- **Three+ ways**
+1. **Ethnographic field studies**
+2. **Historical demography/agrarian studies**
+3. **Comparitive hormone studies**
+- **Other methods** mathematical and statistical modeling and genetic studies.
+
+  
