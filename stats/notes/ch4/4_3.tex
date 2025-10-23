@@ -22,4 +22,91 @@ We denote this as $X \sim \mathcal{N}(\mu, \sigma^2)$.
 If $X \sim \mathcal{N}(\mu, \sigma^2)$, then
 \[\mu = E(X), \quad \sigma^2 = Var(X).\]
 
-Note that because of the symmetry of normal distributions, $\mu = \nu(0.5) = \text{median}$.
+Note that because of the symmetry of normal distributions, $\mu = \eta(0.5) = \text{median}$.
+
+\subsubsection*{Standard Normal Distribution}
+A normal random variable with mean 0 and variance 1 is called a standard normal random variable.
+We denote this as $Z \sim \mathcal{N}(0, 1)$ with CDF $\Phi(z)$.
+
+\paragraph*{Remarks}
+\begin{itemize}
+    \item The standard normal distribution does not often arise naturally, but it serves as a tool for computing probabilities involving the normal distribution.
+    \item Tables of values of $\Phi(z)$ are used to find probabilities for normal random variables.
+\end{itemize}
+
+\paragraph*{Standard Normal Table}
+A standard normal table gives values of $\Phi(z)$ for various values of $z$.
+To use the table, we find the row corresponding to the first two digits of $z$ and the column corresponding to the second decimal place of $z$.
+The value at the intersection gives $\Phi(z)$.
+
+\paragraph*{Normal Percentiles}
+The $k$th percentile $\eta(k)$ of a normal distribution is the value $z_k$ such that $\Phi(z_k) = k$.
+To find $z_k$, we look up the value $k$ in the body of the standard normal table and find the corresponding $z$ value from the row and column headers.
+
+\paragraph*{Tail Probabilities}
+Later in this course we will frequently work with right tail areas of the standard normal distribution. Let 
+$z_a$ denote the value on the measurement axis, for which the area under the standard normal curve to the right of $z_a$
+is equal to $a$.
+\[
+    z_a = (1-a)100 \text{-th percentile}
+\]
+
+\paragraph*{Standardization}
+\textbf{Any} normal random variable $X$ with mean $\mu$ and standard deviation $\sigma$ can be transformed into a random variable $Z$ 
+having a standard normal distribution via the standardization transformation:
+\[
+    Z = \frac{X - \mu}{\sigma}.
+\]
+
+This allows us to compute probabilities for any normal random variable using the standard normal table.
+Let $X \sim \mathcal{N}(\mu, \sigma^2)$, then for any $a$ and $b$,
+\[P(a \leq X \leq b) = P\left(\frac{a - \mu}{\sigma} \leq Z \leq \frac{b - \mu}{\sigma}\right) = \Phi\left(\frac{b - \mu}{\sigma}\right) - \Phi\left(\frac{a - \mu}{\sigma}\right).\]
+
+\pagebreak
+
+\paragraph*{Example}
+Let $X=$ height of a random female student entering college in inches, where $X \sim \mathcal{N}(\mu=65, \sigma^2=25)$.\\
+\\
+a. What is the probability that a randomly selected female student has a height between 55 and 72.5 inches?
+\begin{align*}
+    P(55 \leq X \leq 72.5) &= P\left(\frac{55 - 65}{5} \leq Z \leq \frac{72.5 - 65}{5}\right) \\
+    &= P(-2 \leq Z \leq 1.5) \\
+    &= \Phi(1.5) - \Phi(-2) \\
+    &= 0.9332 - 0.0228 \\
+    &= 0.9104.
+\end{align*}
+
+b. What is the height of a student such that only 5\% of the students are taller than her? (Find the 95th percentile.)
+\begin{align*}
+    P(X > h) &= 0.05 \\
+    P\left(Z > \frac{h - 65}{5}\right) &= 0.05 \\
+    P\left(Z < \frac{h - 65}{5}\right) &= 0.95 \\
+    \frac{h - 65}{5} &= \Phi^{-1}(0.95) \\
+    \frac{h - 65}{5} &= 1.645 \\
+    h - 65 &= 8.225 \\
+    h &= 73.225.
+\end{align*}
+
+\pagebreak
+
+\paragraph*{Example:}
+LSAT scores have an approximately Normal distribution with mean $\mu = 150$ and standard deviation $\sigma = 10$.\\
+\\
+a. If you have a score of 167, then you did better than what percent of the people taking the test with you?
+\begin{align*}
+    P(X < 167) &= P\left(Z < \frac{167 - 150}{10}\right) \\
+    &= P(Z < 1.7) \\
+    &= \Phi(1.7) \\
+    &\approx 0.9554.
+\end{align*}
+
+b. How high would your score have to be so that you are in the top 90\%?
+\begin{align*}
+    P(X > s) &= 0.10 \\
+    P\left(Z > \frac{s - 150}{10}\right) &= 0.10 \\
+    P\left(Z < \frac{s - 150}{10}\right) &= 0.90 \\
+    \frac{s - 150}{10} &= \Phi^{-1}(0.90) \\
+    \frac{s - 150}{10} &\approx 1.28 \\
+    s - 150 &\approx 12.8 \\
+    s &\approx 162.8.J
+\end{align*}
