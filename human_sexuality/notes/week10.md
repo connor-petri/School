@@ -78,6 +78,9 @@
     - **oopause:** decline in ovarian function and reserves, fertility drops with senescence, many wild mammals die soon after
     - **menopause:** year without menses, district hormone shift, long natural life afterward in many ecologies.
 - Captivity narratives weak; people are haters; a long human post-reproductive span is rare across mammals and makes sense where elders turn time and labor into better outcomes.
+- Grandmothers is too narrow of a view (excludes grandfathers)
+    - Reinforces narrow ideas of sexual division of labor
+- Why do men live as long?
 
 ### How do we know the Grandmother Hypothesis is Sound?
 - **Three+ ways**
@@ -86,4 +89,3 @@
 3. **Comparitive hormone studies**
 - **Other methods** mathematical and statistical modeling and genetic studies.
 
-  
