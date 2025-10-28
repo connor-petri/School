@@ -47,7 +47,12 @@
 3. When the mass of the *protostar* is sufficiently high, fusion in the core becomes consistant and it becomes a **main-sequence star.**
 4. The star "ages" by running out of fuel
     - When all the core's hydrogen is fused, the core contracts and heats up until helium can be fused into carbon. This is called a **helium flash**
+        $$
+        3\ \ ^4He \rightarrow \ \ ^{12}C + \text{energy}
+        $$
         - A star fusing helium is called a **red giant**
+            - Surface is expanding and cooling
+            - Core is contracting and heating up
     - When the star runs out of helium, the core contracts and heats up again and carbon begins fusing into neon, magnesium, oxygen, and sodium
         - **Double shell burning** occurs at this stage
 5. The star dies
