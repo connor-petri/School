@@ -19,7 +19,7 @@
     - Find next smallest member, put it in ```a[1]```
     - etc.
 
-### Complexity Analysis
+## Complexity Analysis
 - Need to know how long it will take to sort $n$ items in a way that is hardware-agnostic
 - Expressed in "big-O" notation (i.e. $O(n^2)$)
 - Count # of array visits
