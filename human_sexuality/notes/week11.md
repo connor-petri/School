@@ -40,4 +40,53 @@
 
 ---
 
-##
+## Cooperative Breeding and the Alloparents
+- **In cooperative breeders,** group members other than the biological mother help care and/or provision
+- **Alloparent** - anyone who provides care or provisioning to a child other than the biological mother
+    - **Primate typology:** genetic father a "parent" when paternity is known, otherwise also an alloparent
+
+### Allomothers
+- In primate typology, **allomothers** are female kin helpers
+    - allomother = alloparent because mother is a role not a biology
+
+#### Who are our Alloparents?
+- **Kin:** fathers, grandmothers, grandfathers, aunts, uncles, etc
+- **Affinal and fostered kin:** more distant relatives and in-laws; stepparents/step-siblings; foster parents; adoptive parents
+- **Trusted non-kin (fictive kin):** any individuals who are not related by blood or marriage; godparents, babysitters, friends, caretakers, nurses, teachers, other lactating allomothers
+
+### Adaptive Logic of Alloparenting
+- **Human children** are costly and few
+- Without help from others, *many children would not survive;* infants are tuned to multiple caregivers
+- **Cooperative systems** let calories and information move efficiently across a network of helpers.
+
+## Compare Cooperative Breeders
+- **Classic cooperative breeders:**
+    - **Marmosets** and **tamarins** group rely on helpers who share resources and care
+    - Unique **helping psychology** supports teaching, social learning, and language use
+
+### Helping Psychology?
+- **Cooperative breeders** offer high-value foods without coercion or begging
+    - No other primate other than those 2 + humans does this
+
+### From Food Sharing to Language
+- **Food donation** extends to information = **teaching behaviors**
+- **Teaching** is *rare* in nature; common in cooperative breeders
+- **Social motivation** links learning outcomes; juveniles get better at reading signals, taking guidance from many caregivers
+- **In humans,** sharing + attention directing enables shared goals and shared intentionality that ground teaching and **language developments**
+- Cooperative breeders also engage in **"baby talk"** like humans do
+
+### Cognitive Effects
+- **Cooperative breeding** boosts social tolerance and prosocial motivation
+- **Social motivation** raises performance on socio-cognitive tasks without raising raw capacity.
+- **Shared intentionality** supports teaching, language use norms, and institutions
+
+### Human Infants Built for Many Caregivers
+- **Human babies** expect close contact with several people, not just the mother
+    - early signals invite holding, vocal play, face-to-face exchange, and shared attention
+- **Marmoset and tamarin** infants *self-transfer* among alloparents; adults monition intentions, allow smooth hand-offs
+- **Human babies** track who holds them, who brings comfort, who brings food, who guides them to interesting things
+    - our babies are connoissuers of mothers
+
+#### Male Care Among Fathers and Kin
+- **Human male allocare** is *highly variable*; ask which social conditions enable/prevent it
+- Male care rises when authority, residence, and roles support it; when not, help shifts to maternal kin
