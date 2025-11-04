@@ -1,0 +1,52 @@
+\subsection{Distribution of Linear Combinations of Random Variables}
+
+\hrulefill
+
+\paragraph{Definition}
+Given a collection of random variables \(X_1, X_2, \ldots, X_n\), a \textbf{linear combination} of these 
+random variables is a new random variable \(Y\) defined as
+\[
+Y = a_1 X_1 + a_2 X_2 + \ldots + a_n X_n = \sum_{i=1}^n a_i X_i
+\]
+where \(a_1, a_2, \ldots, a_n\) are constants.
+
+\paragraph{Mean and Variance of Linear Combinations}
+If \(X_1, X_2, \ldots, X_n\) are random variables with means \(\mu_1, \mu_2, \ldots, \mu_n\) and variances 
+\(\sigma_1^2, \sigma_2^2, \ldots, \sigma_n^2\), then the mean and variance of the linear combination \(Y\) are given by:
+\[
+E[Y] = \sum_{i=1}^n a_i E[X_i] = \sum_{i=1}^n a_i \mu_i
+\]
+regardless of whether the random variables are independent or not, and
+\[
+Var(Y) = \sum_{i=1}^n a_i^2 Var(X_i) = \sum_{i=1}^n a_i^2 \sigma_i^2
+\]
+if the random variables \(X_1, X_2, \ldots, X_n\) are independent, or
+\[
+Var(Y) = \sum_{i=1}^n \sum_{j=1}^n a_i a_j Cov(X_i, X_j)
+\]
+
+\paragraph*{Properties of Covariance}
+\begin{itemize}
+    \item $Cov(X, X) = Var(X)$
+    \item $Cov(X, Y) = Cov(Y, X)$
+    \item $Cov(aX, bY) = ab \, Cov(X, Y)$
+    \item $Cov(X + Y, Z) = Cov(X, Z) + Cov(Y, Z)$
+    \item If $X$ and $Y$ are independent, then $Cov(X, Y) = 0$
+\end{itemize}
+
+\paragraph*{Example:}
+Let $X_1$ and $X_2$ be random variables with means $\mu_1 = 1$ and $\mu_2 = 5$, variances $\sigma_1^2 = 1$ and $\sigma_2^2 = 4$, and covariance $Cov(X_1, X_2) = 3$.\\
+\\
+a. Are $X_1$ and $X_2$ independent? No (since $Cov(X_1, X_2) \neq 0$)\\
+b. Find $E(X_1 + 2X_2)$
+\[
+E(X_1 + 2X_2) = E(X_1) + 2E(X_2) = 1 + 2(5) = 11
+\]
+c. Find $Var(X_1 + 2X_2)$
+\[
+Var(X_1 + 2X_2) = Var(X_1) + 4Var(X_2) + 4Cov(X_1, X_2) = 1 + 4(4) + 4(3) = 29
+\]
+d. Find $V(X_1 - 2X_2)$
+\[
+Var(X_1 - 2X_2) = Var(X_1) + 4Var(X_2) - 4Cov(X_1, X_2) = 1 + 4(4) - 4(3) = 5
+\]

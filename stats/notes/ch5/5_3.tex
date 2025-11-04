@@ -1,0 +1,64 @@
+\subsection{Random Samples and Statistics}
+\hrulefill
+
+\paragraph{Definition}
+The RBs \(X_1, X_2, \ldots, X_n\) are said to form a \textbf{random sample} of size \(n\) If
+\begin{itemize}
+    \item The \(X_i\) are independent
+    \item Every \(X_i\) has the same probability distribution
+\end{itemize}
+Any function of a random sample \(Y = T(X_1, X_2, \ldots, X_n)\) is called a \textbf{statistic}.
+
+\paragraph{Some Common Statistics}
+\begin{itemize}
+    \item Sample Mean: \(\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i\)
+    \item Sample Total: \(T = \sum_{i=1}^n X_i\)
+    \item Sample Variance: \(S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})^2\)
+\end{itemize}
+
+\subsubsection*{Sampling Distributions}
+\paragraph*{Definition}
+The probability distribution of a statistic is called a \textbf{sampling distribution}. In this case we are 
+especially interested in the sampling distributions of the sample mean \(\bar{X}\) and the sample variance 
+\(S^2\). The standard deviation of a sampling distribution is called the \textbf{standard error} of the statistic.
+
+\paragraph*{Proposition}
+Let \(X_1, X_2, \ldots, X_n\) be a random sample from some distribution. This means that the observations
+are independent and have the same distribution. Let \(\bar{X}\) be the sample mean. Then
+\begin{itemize}
+    \item $E[\bar{X}] = \mu$
+    \item $Var(\bar{X}) = \frac{\sigma^2}{n}$
+    \item $\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}$
+\end{itemize}
+
+\subsubsection*{When the Population is Normal}
+\paragraph*{Proposition}
+Let \(X_1, X_2, \ldots, X_n\) be a random sample from a normal distribution $\mathcal{N}(\mu, \sigma^2)$. Then the sample mean
+\(\bar{X}\) is also normally distributed with distribution
+\[\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right)\]
+
+\paragraph*{In Summary}
+\begin{itemize}
+    \item The sample mean $\bar{X}$ is a random variable
+    \item Therefore it has a probability distribution
+    \item If the population is also normal, then the sample mean with also be normal
+    \item A normal distribution is described by its mean and variance
+    \item If we sampled from a distribution with mean $\mu$ and variance $\sigma^2$, then the sample mean will also have mean $\mu$, but have variance $\frac{\sigma^2}{n}$
+\end{itemize}
+
+\paragraph*{Example:}
+Let $X_1 \dots X_{25} \sim \mathcal{N}(106, 144)$.\\
+\\
+a. What can you say about the sampling distribution of $\bar{X}$?\\
+\[\bar{X} \sim \mathcal{N}\left(106, \frac{144}{25}\right) = \mathcal{N}(106, 5.76)\]
+b. Find $P(X > 110)$\\
+\begin{align*}
+P(X > 110) &= P\left(Z > \frac{110 - 106}{\sqrt{144/25}}\right) = P(Z > 1.67) \\
+&= 1 - P(Z < 1.67) = 1 - 0.9525 = 0.0475
+\end{align*}
+c. Find $P(\bar{X} > 110)$\\
+\begin{align*}
+P(100 < \bar{X} < 110) &= P\left(\frac{100 - 106}{\sqrt{144/25}} < Z < \frac{110 - 106}{\sqrt{144/25}}\right) \\
+&= P(-2.5 < Z < 1.67) = P(Z < 1.67) - P(Z < -2.5) \\
+&= 0.9525 - 0.0062 = 0.9463
+\end{align*}
