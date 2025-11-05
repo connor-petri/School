@@ -1,1 +1,42 @@
-\subsection{Expected Values, Covariance and Correlation}
+\subsection{Expected Values, Covariance, and Correlation}
+
+\hrulefill
+
+\paragraph{Definition}
+Let $X$ and $Y$ be jointly distributed random variables with pmf or pdf $P(x,y)$. The \textbf{expected value} of a function $h(X,Y)$ is given by
+\[
+E[h(X,Y)] = \sum_{x} \sum_{y} h(x,y) P(x,y) \quad \text{(discrete)}
+\]
+or
+\[
+E[h(X,Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} h(x,y) f(x,y) \, dx \, dy \quad \text{(continuous)}
+\] 
+
+Expected values and variances can be used to describe the behavior of a single random variable. If we want to consider joint behavior,
+we need to consider how one quantity influence the other?
+
+\subsubsection*{Covariance}
+\paragraph{Definition}
+The \textbf{covariance} between two random variables $X$ and $Y$ is defined as
+\[Cov(X,Y) = E[(X - \mu_X)(Y - \mu_Y)] = E[XY] - \mu_X \mu_Y\]
+In practice, the following computational formula is typically used:
+\[Cov(X,Y) = E[XY] - E[X]E[Y]\]
+The covarience describes the joint behavior of the variables $X$ and $Y$. However, this quantity depends
+on the measurement units of $X$ and $Y$.
+
+\subsubsection*{Correlation Coefficient}
+The correlation coefficient of $X$ and $Y$ is denoted by $\rho_{X,Y}$ and is defined as
+\[\rho_{X,Y} = \frac{Cov(X,Y)}{\sigma_X \sigma_Y}\]
+The correlation coefficient is a unitless measure of the linear relationship between $X$ and $Y$.
+Its value is always between -1 and 1. A value of 1 indicates a perfect positive linear relationship,
+a value of -1 indicates a perfect negative linear relationship, and a value of 0 indicates no linear relationship.
+
+\paragraph{Properties of Covariance and Correlation}
+\begin{itemize}
+    \item $Cov(X,X) = Var(X)$
+    \item $Cov(X,Y) = Cov(Y,X)$
+    \item $Cov(aX, bY) = ab \, Cov(X,Y)$
+    \item $Cov(X + Y, Z) = Cov(X,Z) + Cov(Y,Z)$
+    \item If $X$ and $Y$ are independent, then $Cov(X,Y) = 0$ and $\rho_{X,Y} = 0$
+    \item $\rho = \pm 1 \iff \exists a, b \in \mathbb{R} \ni Y = aX+b$ 
+\end{itemize}
