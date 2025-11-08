@@ -111,6 +111,57 @@ $E(X^2) = \sum_x x^2p(x)$ or $= \int x^2f(x)dx$\\
 % \textbf{Variance:} --- $Var(X) = \lambda$\\
 % \\
 
+\textbf{Continuous Distributions:}
+\\
+\text{Normal} --- $X \sim \mathcal{N}(\mu, \sigma^2)$\\
+\textbf{PDF:} --- $f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$ for $ -\infty < x < \infty $ else $0$\\
+\textbf{Standard Normal} --- $Z \sim \mathcal{N}(0, 1) \qquad Z = \frac{X - \mu}{\sigma}$\\
+$P(a \leq X \leq b) = P(\frac{a - \mu}{\sigma} \leq Z \leq \frac{b - \mu}{\sigma}) = \Phi(\frac{b - \mu}{\sigma}) - \Phi(\frac{a - \mu}{\sigma})$\\
+$z_\alpha$ is the z-score such that $P(Z \geq z_\alpha) = \alpha$ or the $(1 - \alpha) \cdot 100$th percentile\\
+\\
+\textbf{Exponential} --- $X \sim Exp(\lambda)$\\
+\textbf{PDF:} --- $f(x) = \lambda e^{-\lambda x}$ for $ x \geq 0 $ else $0$\\
+\textbf{CDF:} --- $F(x) = 1 - e^{-\lambda x}$ for $ x \geq 0 $ else $0$\\
+\textbf{Mean:} --- $E(X) = \frac{1}{\lambda}$\\
+\textbf{Variance:} --- $Var(X) = \frac{1}{\lambda^2}$\\
+\\
+\textbf{Uniform} --- $X \sim U(a, b)$\\
+\textbf{PDF:} --- $f(x) = \frac{1}{b - a}$ for $ a \leq x \leq b $ else $0$\\
+\textbf{CDF:} --- $F(x) = \frac{x - a}{b - a}$ for $ a \leq x \leq b $, $0$ for $ x < a $, $1$ for $ x > b $\\
+\textbf{Survival Function:} --- $S(x) = 1 - F(x) = \frac{b - x}{b - a}$ for $ a \leq x \leq b $, $1$ for $ x < a $, $0$ for $ x > b $\\
+\textbf{Mean:} --- $E(X) = \frac{a + b}{2}$\\
+\textbf{Variance:} --- $\sigma^2 = \frac{(b - a)^2}{12}$\\
+\\
+
+\textbf{Jointly Distributed Random Variables:}\\
+$P(x, y) = P(X = x, Y = y)$\\
+Trick: $P(X=Y) + P(Y > X) + P(Y < X) = 1$\\
+\textbf{Marginal PMF} --- $P_X(x) = \sum_y P(x, y)$ and $P_Y(y) = \sum_x P(x, y)$\\
+$X$ and $Y$ are independent $\iff P(x, y) = P_X(x)P_Y(y)$\\
+\textbf{Conditional PMF} --- $P_{Y|X}(y|x) = \frac{P(x, y)}{P_X(x)}$\\
+\textbf{Expected Value} --- $E(h(X,Y)) = \sum_x \sum_y h(x,y) P(x,y)$\\
+$E(h(X,Y)) = \int \int h(x,y) f(x,y) dx dy$\\
+\textbf{Covariance} --- $Cov(X,Y) = E[(X - \mu_X)(Y - \mu_Y)] = E(XY) - E(X)E(Y)$\\
+$Cov(X,Y) = 0$ if \( X \) and \( Y \) are independent.\\
+\textbf{Correlation Coefficient} --- $\rho_{XY} = \frac{Cov(X,Y)}{\sigma_X \sigma_Y}$\\
+$-1 \leq \rho_{XY} \leq 1$\\
+\textbf{Properties} $Cov(X,X) = Var(X)$ $Cov(X,Y) = Cov(Y,X)$ $Cov(aX,bY) = abCov(X,Y)$
+$Cov(X + Y, Z) = Cov(X,Z) + Cov(Y,Z)$ $\exists a,b \in \mathbb{R} \ni Y = aX + b$\\
+
+\textbf{Random Samples and Statistics:}\\
+A random sample of size \( n \) is a set of \( n \) independent and identically distributed (i.i.d.) random variables \( X_1, X_2, \ldots, X_n \) drawn from a population with a common distribution.\\
+\textbf{Sample Mean} --- $\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i$\\
+\textbf{Sample Variance} --- $S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})^2$\\
+$E(\bar{X}) = \mu$\\
+$Var(\bar{X}) = \frac{\sigma^2}{n}$\\
+When sampling from a normal population, $\bar{X} \sim \mathcal{N}(\mu, \frac{\sigma^2}{n})$\\
+\\
+\textbf{Linear Combinations} --- $Y = a_1X_1 + a_2X_2 + ... + a_nX_n$\\
+$E(Y) = a_1E(X_1) + a_2E(X_2) + ... + a_nE(X_n)$\\
+$Var(Y) = a_1^2Var(X_1) + a_2^2Var(X_2) + ... + a_n^2Var(X_n)$ if \( X_i \) are independent.\\
+If \( X_i \sim \mathcal{N}(\mu_i, \sigma_i^2) \), then $Y \sim \mathcal{N}(a_1\mu_1 + a_2\mu_2 + ... + a_n\mu_n, a_1^2\sigma_1^2 + a_2^2\sigma_2^2 + ... + a_n^2\sigma_n^2)$\\
+\\
+
 \vspace{9999pt}
 
 \end{multicols}
