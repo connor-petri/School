@@ -1,0 +1,76 @@
+\subsection{Point Estimation}
+\hrulefill
+
+\subsubsection*{Central Limit Theorem}
+Let \(X_1, X_2, \ldots, X_n\) be a random sample from a population with mean \(\mu\) and finite variance \(\sigma^2\). 
+Then, as \(n\) approaches infinity, the distribution of the sample mean \(\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i\) 
+approaches a normal distribution with mean \(\mu\) and variance \(\frac{\sigma^2}{n}\), regardless of the shape of the 
+original population distribution. Formally,
+\[
+\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0, 1) \text{ as } n \to \infty.
+\]
+
+Usually $n \geq 30$ is considered sufficient for the CLT to hold.
+
+\subsubsection*{sectionname}
+Let $\theta$ be an unknown parameter of a population distribution, and let $X_1, X_2, \ldots, X_n$ be a random sample from that distribution.
+An estimator $\hat{\theta} = g(X_1, X_2, \ldots, X_n)$ is a function of the sample data used to estimate the parameter $\theta$.
+The estimator $\hat{\theta}$ is called a \textbf{point estimator} of the parameter $\theta$.
+
+If $E(\hat{\theta}) = \theta$, then $\hat{\theta}$ is an \textbf{unbiased estimator} of $\theta$. $\sigma_{\hat{\theta}}$ is called the
+\textbf{standard error} of the estimator $\hat{\theta}$.
+
+We will study 2 cases:
+
+\paragraph*{Case 1: Quantitative variable}
+Let \(X_1, X_2, \ldots, X_n\) be a random sample from a population with mean \(\mu\) and variance \(\sigma^2\).
+The parameter we want to target is $\mu = E(X_i)$. In this case, $\hat{\theta} = \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i$.
+
+\paragraph*{Case 2: Binary Variable}
+Let \(X_1, X_2, \ldots, X_n\) be a random sample from a population with proportion \(p\).
+The parameter we want to target is $P : \begin{cases}
+    \text{Proportion of indifividuals with characteristic} & \text{if } X_i \sim \text{Bernoulli}(p) \\
+    \text{Probability of success} & \text{if } X_i \sim \text{Binomial}(n, p)
+\end{cases}$
+
+\paragraph*{Example:}
+Let $X_i$ be the weight of banana $i$ and $\mu_X$ be the average weight of a banana. We take a sample of $n$ bananas by weighing them.
+We will use $\mu_X = \frac{1}{n} \sum X_i$ as a point estimator.
+\begin{align*}
+    E(\bar{X}) = \mu, \text{so } \bar{X} \text{ is an unbiased estimator of } \mu. \\
+    \text{Var}(\bar{X}) = \frac{\sigma^2}{n} = \frac{\sigma}{\sqrt{n}}
+\end{align*}
+
+\paragraph*{Example:}
+Parameter of interest is $p =$ proportion of California Residents with an active library card. Point estimator $\hat{p} =$ # in your sample of CA Residents
+with an active library card.
+
+\begin{align*}
+    X_i = \begin{cases}
+        1 & \text{if individual } i \text{ has an active library card} \\
+        0 & \text{otherwise}
+    \end{cases}
+    \hat{p} = \frac{1}{n} \sum_{i=1}^n X_i\\
+    T = \sum_{i=1}^n X_i \sim \text{Binomial}(n, p)\\
+    E(\hat{p}) = E\left(\frac{T}{n}\right) = \frac{1}{n} E(T) = \frac{1}{n} (n p) = p \\
+    \text{Var}(\hat{p}) = \text{Var}\left(\frac{T}{n}\right) = \frac{1}{n^2} \text{Var}(T) = \frac{1}{n^2} (n p (1 - p)) = \frac{p(1 - p)}{n}
+\end{align*}
+
+\paragraph*{Properties of $\hat{\theta}$:}
+\begin{itemize}
+    \item $E(\hat{\theta}) = E(\frac{T}{n}) = \frac{1}{n} E(T) = \theta$ so $\hat{\theta}$ is an unbiased estimator of $\theta$.
+    \item $\text{Var}(\hat{\theta}) = \text{Var}(\frac{1}{n} T) = \frac{1}{n^2} \text{Var}(T) = \frac{1}{n^2} (n \theta (1 - \theta)) = \frac{\theta (1 - \theta)}{n}$
+\end{itemize}
+
+\begin{table}
+    \begin{tabular}{|c|c|c|c|c|}
+        Parameter & Point Estimator & Bias? & Standard Error & Estimated Standard Error \\
+        \hline
+        $\mu$ & $\bar{X} = \frac{1}{n} \sum X_i$ & $\frac{sigma}{\sqrt{n}}$ & $\frac{S}{\sqrt{n}}$ \\
+        \hline
+        $p$ & $\hat{p}$: sample proportion & $E(\hat{p}) = p$ & $\sqrt{\frac{p(1 - p)}{n}}$ & $\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Note: $S^2 = \frac{1}{n - 1} \sum_{i=1}^n (X_i - \bar{X})^2$ is an unbiased estimator of $\sigma^2$.
