@@ -1,0 +1,81 @@
+\subsection{Large-Sample Confidence Intervals for a Population Mean and Proportion}
+\hrulefill
+
+\paragraph*{Confidence Intervals for Large Samples:}
+If the sample size $n$ is large then the sample mean has approximately a Normal distribution regardless of the 
+population distribution according to teh Cenreal Limit Theorem. However, in most practical applications 
+the population variance $\sigma^2$ is unknown. It is still possible to obtain conficence intervals for the 
+mean, by first estimating $\sigma^2$ by $s^2$ and then using the estimate $s$ in the conficence interval formula.
+If $n$ is sufficiently large (usually $n \geq 40$), then the standardized variable
+\[
+    Z = \frac{\bar{X} - \mu}{\frac{S}{\sqrt{n}}} \sim \mathcal{N}(0,1)
+\]
+has approximately a standard normal distribution. The $n$ needs to be a little bit larger here 
+because of the additional variation introduced through the estimation of $\sigma$.
+
+\paragraph*{Definition:}
+After observing a large ($n \geq 40$) random sample from a population with unknown variance $\sigma^2$ and computing the sample mean $\bar{X}$,
+an approximate $100(1-\alpha)\%$ confidence interval for $\mu$ is given by
+\[
+    CI_\mu = (\bar{X} - z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}, \bar{X} + z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}})
+\]
+
+\paragraph*{Example:} 
+Suppose the instructor of a large calculus class tries to write an exam of medium difficulty with a mean score of 75.
+Fifty students take the exam. The mean of these exam scores is 82 with a standard deviation of 18.\\
+\\
+a. Compute a 90\% confidence interval for the degree of difficulty of the exam.
+\begin{align*}
+    X &= \text{ a student's test score} \quad \bar{X} = 75 \quad n = 50 \quad \mu_X = 82 \quad \sigma_X = 18 \quad \alpha = .1\\
+    CI_\mu &= (\bar{X} - z_0.05 \frac{\sigma}{\sqrt{n}}, \bar{X} + z_0.05 \frac{\sigma}{\sqrt{n}})\\
+    &= (75 + 1.64 \frac{18}{\sqrt{50}}, 75 - 1.64 \frac{18}{\sqrt{50}})\\
+    &= (75 + 4.175, 75 - 4.175) = (79.175, 70.825)\\
+    &= (70.825, 79.175)
+\end{align*}
+
+b. In light of this information, we can conclude the exam turned out slightly easier than the professor had hoped.
+
+\subsubsection*{Confidence Interval for a Population Proportion}
+\paragraph*{Definition}
+Let $p$ denote the (true, but possibly unknown) proportion of "successes" in a population. A random sample of $n$ 
+individuals is selected fro the population and let $X$ denote the number of successes in the sample.
+If the sample size $n$ is large enough, then $X$ has an approximately Normal distrubution. 
+The most commonly used point estimate for $p$ is $\hat{p} = \frac{X}{n}$ the sample proportion of successes.
+
+\paragraph*{Proposition:}
+An approximate $100(1-\alpha)\%$ confidence interval for $p$ itself
+\[
+    CI_p = (\hat{p} - z_\frac{\alpha}{2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \hat{p} + z_\frac{\alpha}{2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}})
+\]
+
+Here $\hat{p}$ is the sample proportion of "successes" and $1-\hat{p}$ is the same proportion of "failures."
+The above confidence interval can be used in cases where the sample size $n$ is large enough such that 
+$n\hat{p} \geq 10$ and $n(1-\hat{p}) \geq 10$.
+
+\paragraph*{Example:}
+Of 150 randomly chosen voters, 104 voted for canidate Z. What is a 98\% confidence interval for the 
+population proportion of votes that Z gets?
+
+\begin{align*}
+    CI_Z &= (\frac{Z}{n} - z_{.01}\sqrt{\frac{\frac{Z}{n}(1-\frac{Z}{n})}{n}}, \frac{Z}{n} + z_{.01}\sqrt{\frac{\frac{Z}{n}(1-\frac{Z}{n})}{n}})\\
+    &= (\frac{104}{150} + 2.33 \sqrt{\frac{\frac{104}{150}(1-\frac{104}{150})}{150}}, \frac{104}{150} - 2.33 \sqrt{\frac{\frac{104}{150}(1-\frac{104}{150})}{150}})\\
+    &= (0.6933 + 0.0736, 0.6933 - 0.0736) = (0.6197, 0.7669)
+\end{align*}
+
+\paragraph*{Interval Estimation Main Ideas:}
+\begin{itemize}
+    \item Specify a random interval $(A, B)$ based on a random sample such that with a high probability the interval contains the parameter of interest.
+    \item The probability of coverage is pre-specified and is called the confidence coefficient and is denoted by $1-\alpha$.
+    \item Usually $\alpha$ is chosen to be .01, .05, or .1
+    \item For a given data set, the corresponding interval ($a, b$) is called a confidence interval for the paremeter with confidence coefficient $1-\alpha$.
+    \item Before the data is collected, the end points $A$ and $B$ are random variables since they depend on the random sample
+\end{itemize}
+
+\paragraph*{Construction of Confidence Intervals:}
+\begin{itemize}
+    \item Suppose the estimator is approximately normally distributed (usually by central limit theorem).
+    \item Given a value $\alpha$, define $z_{\frac{\alpha}{2}}$ such that $P(Z > z_{\frac{\alpha}{2}}) = \frac{\alpha}{2}$, where $Z \sim \mathcal{N}(0,1)$.
+    \item Define the $100(1-\alpha)\%$ confidence interval for the parameter to be.
+    \item The interpretation is that for $100(1-\alpha)\%$ of the random samples of size $n$, the random interval constructed by the above procedure will contain the true value of the parameter.
+    \item Note, the smaller SE, the narrower the confidence interval, hence more precise the estimate.
+\end{itemize}

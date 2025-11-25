@@ -1,0 +1,46 @@
+\subsection{Confidence Intervals}
+\paragraph*{Main Idea:}
+If $\bar{X}$ is close to $\mu$ with 95\% probability, then $\mu$ is also close to $\bar{X}$ with 95\% probability.
+Using this idea, we can use our point estimate $\bar{X}$ to create a \textbf{confidence interval} for $\mu$.
+
+\paragraph*{Definition:}
+After observing a random sample from a normal population of size $n$ and computing the sample mean $\bar{X}$,
+a 95\% confidence interval for $\mu$ itself
+\[
+    CI_\mu = (\bar{X} - 1.96 \cdot \frac{\sigma}{\sqrt{n}}, \bar{X} + 1.96 \cdot \frac{\sigma}{\sqrt{n}})
+\]
+
+This means that with 95\% probability, the interval $CI_\mu$ contains the true mean $\mu$.
+
+\paragraph*{Example:}
+A random sample of $n=50$ males showed an average daily intake of dairy products equal to 756 grams.
+Suppose it is known that dairy intake follows a normal distribution with standard deviation of
+35 grams. Fins a 95\% confidence interval for the population mean $\mu$.
+
+\[
+    CI_\mu = (\bar{X} - 1.96 \frac{\sigma}{\sqrt{n}}, \bar{X} + 1.96 \cdot \frac{\sigma}{\sqrt{n}}) = (756 - 1.96 \cdot \frac{35}{\sqrt{50}}, 756 + 1.96 \cdot \frac{35}{\sqrt{50}}) = (744.26, 767.74)
+\]
+
+\paragraph*{Interpreting Confidence Intervals:}
+\textbf{Warning:} Assume that you collect data ($X_1, \dots, X_n$) and compute a 95\% confidence interval.
+It is tempting, but wrong, to say that your confidence interval contains the true mean $\mu$ with 95\% probability.
+Since the true mean is a fixed number, it will be contained in any interval with probability either 0 or 1. The
+\textbf{Confidence Level} (here 95\%) rather refers to the generation of the random variables or the sampling process.
+
+\paragraph*{Confidence Levels:}
+To compute conficence intervals for levels other than 95\%, we have to change the critical z-value from 1.96 to 
+another number. You can find the appropriate number in the Normal CDF table. Therefore, the general formula for a
+confidence interval with confidence level $100(1 - \alpha)\%$ is:
+\[
+    CL_\mu = (\bar{X} - z_\frac{\sigma}{2}\frac{\sigma}{\sqrt{n}}, \bar{X} + z_\frac{\sigma}{2}\frac{\sigma}{\sqrt{n}})
+\]
+
+\paragraph*{Confidence Level, Precision, and Sample Size:}
+Which is better? A 95\% confidence interval or a 99\% confidence interval? It depends on how much precision is required. 
+Higher confidence levels lead to wider intervals, therefore less precision. If more precision is required, a larger sample size is needed.
+The following factors influence the width of a confidence interval:
+\begin{itemize}
+    \item Confidence Level: Higher confidence levels lead to wider intervals.
+    \item Sample size: Larger sample sizes lead to narrower intervals.
+    \item Standard deviation of the population: Larger standard deviations lead to wider intervals.
+\end{itemize}
