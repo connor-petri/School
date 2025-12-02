@@ -1,0 +1,47 @@
+\subsection{Hypothesis and Test Procedures}
+\hrulefill
+
+\subsubsection*{Hypothesis Testing}
+\paragraph*{Definition}
+A statistical hypothesis is a claim about a population parameter. The null hypothesis, denoted by $H_0$, is the claim that is initially
+assumed to be true. The alternative hypothesis, denoted by $H_a$, is an assertion that is contradictory to $H_0$. Null hypothesis is 
+the status quo, aka the default assumption is absence of compelling evidence. The alternative hypothesis is what we want to find evidence for.
+
+At the conclusion of a hypothesis test, we either reject $H_0$ in favor of $H_a$ or fail to reject $H_0$. We never accept $H_0$ as true, 
+we only fail to reject it. An analogue to this is a court trial, where the defendant is assumed innocent until proven guilty. 
+If there is enough evidence to convict, the defendant is found guilty (reject $H_0$). If there is not enough evidence, the defendant is
+found not guilty (fail to reject $H_0$).
+
+\paragraph*{Errors}
+There are two possible errors that can be made in hypothesis testing:
+\begin{itemize}
+    \item Type I Error: Rejecting the null hypothesis when it is actually true. (Finding a guilty defendant innocent)
+    \item Type II Error: Failing to reject the null hypothesis when it is actually false. (Finding an innocent defendant guilty)
+\end{itemize}
+
+\begin{itemize}
+    \item We want to keep these two types of error rates as small as possible
+    \item However, it is impossible to minimize both simultaneously
+    \item The choice of rejection region determines the probabilities of both a type I and type II error
+\end{itemize}
+
+\paragraph*{Significance Level}
+The probability of a type I error is called the significance level of the test, denoted by $\alpha$. The probability of a type II error 
+is usually denoted by $\beta$. We agree on a maximum acceptable value for $\alpha$ before conducting the test, commonly 0.05, 0.01, or 0.005.
+The quantity $1 - \beta$ is called the power of the test, which is the probability of correctly rejecting a false null hypothesis. Good tests
+have high power.
+
+\paragraph*{Components of a Statistical Test}
+\begin{itemize}
+    \item A \textbf{test statistic} (based on a random sample from the population under question) that summarized the evidence against the null hypothesis
+    \item A \textbf{p-value} is a probability that measures how likely the value of the test statistic is, assuming that $H_0$ is true
+    \item A \textbf{rejection region} tells us for which values of the test statistic we reject $H_0$
+    \item A \textbf{Conclusion} is a decision of the form either Reject $H_0$ or Fail to Reject $H_0$
+    \item A \textbf{significance level} $\alpha$ which represents the maximum allowable risk of rejection $H_0$ in favor of $H_a$ when $H_0$ is true.
+\end{itemize}
+
+\paragraph*{p-values}
+One way to report the results of a hypothesis test is to determine if the test statistic value falls into the rejection region and subsequently, whether or not the 
+null hypothesis is rejected at a specified level of significance. This yes/no decision does not convey any information about how soundly the 
+null hypothesis was rejected. Where in the rejection region did the observed test statistic fall? Note that the p-value is calculated assuming
+that the null hypothesis is true.
