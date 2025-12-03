@@ -1,9 +1,23 @@
+package src;
 import java.util.*;
 
+/**
+ * A class to hold data for each Pokemon
+ * @author Connor Petri
+ * @see StatBlock
+ */
 public class Pokemon implements Comparable<Pokemon>{
+
+    /**
+     * Enum for sorting options for compareTo
+     */
     public enum SortOption {
         NAME, HP, SPEED
     }
+
+    /**
+     * Enum containing all Pokemon types and NONE
+     */
     public enum Type {
         NONE, FIRE, WATER, GRASS, ELECTRIC, PSYCHIC, ICE, DRAGON, DARK, FIGHTING, 
         POISON, GROUND, FLYING, BUG, ROCK, GHOST, STEEL, NORMAL, FAIRY
@@ -34,6 +48,12 @@ public class Pokemon implements Comparable<Pokemon>{
     private int generation;
     private boolean isLegendary;
 
+    /**
+     * Constructs a Pokemon from a row of csv data
+     * @param csvRow
+     * 
+     * @see StatBlock
+     */
     public Pokemon(String csvRow) {
         // Split the row into columns
         String[] columns = csvRow.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
@@ -101,6 +121,15 @@ public class Pokemon implements Comparable<Pokemon>{
     }
 
     @Override
+    /**
+     * Override of .compareTo to enable sorting. Sort priority is set by user
+     * - NAME uses a string comparison on the names of each pokemon
+     * - HP compares by hp stat
+     * - SPEED compares by speed stat
+     * 
+     * @param other pokemon to compare against
+     * @return negative if this < other, positive if this > other, 0 if they are equal
+     */
     public int compareTo(Pokemon other) {
         switch (sortOption) {
             case SortOption.NAME:
@@ -193,6 +222,13 @@ public class Pokemon implements Comparable<Pokemon>{
         return isLegendary;
     }
 
+    /**
+     * Converts a type string into enum Type
+     * @param s input string
+     * @return Instance of Type enum corresponding to the input string s
+     * 
+     * @see Type
+     */
     private Type stringToType(String s) {
         switch (s.toLowerCase()) {
             case "fire":

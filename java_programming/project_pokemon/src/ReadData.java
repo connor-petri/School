@@ -1,6 +1,12 @@
+package src;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Provides methods for reading Pokemon csv data
+ * @author Connor Petri
+ * @see IReadData
+ */
 public class ReadData implements IReadData {
     private ArrayList<String> rows = new ArrayList<String>();
 

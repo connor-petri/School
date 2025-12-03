@@ -1,5 +1,16 @@
+package src;
 import java.util.*;
 
+
+/**
+ * Driver Class
+ * 
+ * @author Connor Petri
+ * @see ReadData
+ * @see TestData
+ * @see AnalyzePokemon
+ * @see Pokemon
+ */
 public class MyApp {
     private static Scanner s = new Scanner(System.in);
     private static ReadData readData = new ReadData();
@@ -88,9 +99,12 @@ public class MyApp {
         }
     }
 
-    // This function does not use AnalyzePokemon due to needing to print the row data instead of just the name
-    // This Function is from Part 2 of the assignment, before we were instructed to write the pokemon class
-    // thus, it doesn't use it
+    /**
+     * Searches for a pokemon by name. Prints row data if a match is found
+     * This function does not use AnalyzePokemon due to needing to print the row data instead of just the name.
+     * This Function is from Part 2 of the assignment, before we were instructed to write the pokemon class 
+     * thus, it doesn't use it.
+     */
     private static void searchByName() {
         System.out.print("Search by Name: ");
         s.nextLine(); // Flush buffer
@@ -143,6 +157,9 @@ public class MyApp {
     }
 
 
+    /**
+     * Prints the name of all pokemon with an hp stat within a specified range
+     */
     private static void searchByRangeHP() {
         System.out.print("Enter minimum HP value: ");
         int min = s.nextInt();
@@ -167,14 +184,23 @@ public class MyApp {
         System.out.println("");
     }
 
+    /**
+     * Prints the name of the Pokemon with the lowest hp stat.
+     */
     private static void getLowestHP() {
         System.out.println("Lowest HP pokemon: " + hpTree.first().getName());
     }
 
+    /**
+     * Prints the name of the Pokemon with the highest hp stat.
+     */
     private static void getHighestHP() {
         System.out.println("Highest HP pokemon: " + hpTree.last().getName() + " has " + hpTree.last().getStats().hp + " hp");
     }
 
+    /**
+     * Sub menu for searching for a pokemon by HP value. For use by the menuing system only
+     */
     private static void searchByHP() {
         int userChoice;
 
@@ -210,6 +236,9 @@ public class MyApp {
         return;
     }
 
+    /**
+     * Prints the name of the 3 Pokemon with the highest speed stats.
+     */
     private static void getPokemonTop3Speeds() {
         int l = 0, m = 0, h = 0;
         for (Pokemon p : speedTree) {
@@ -229,6 +258,9 @@ public class MyApp {
         System.out.println("");
     }
 
+    /**
+     * Prints the name of the 3 Pokemon with the lowest speed values
+     */
     private static void getPokemonBottom3Speeds() {
         int l = Integer.MAX_VALUE, m = Integer.MAX_VALUE, h = Integer.MAX_VALUE;
         
@@ -256,6 +288,9 @@ public class MyApp {
         System.out.println("");
     }
 
+    /**
+     * Prints the names of Pokemon with a speed stat within a specified range
+     */
     private static void getPokemonInSpeedRange() {
         System.out.print("Enter minimum speed value: ");
         int min = s.nextInt();
@@ -278,6 +313,9 @@ public class MyApp {
         }
     }
 
+    /**
+     * Prints the 3 Speed values with the highest number of Pokemon associated with them.
+     */
     private static void getTop3SpeedGroups() {
         // Get the 3 highest unique speeds
         Set<Integer> uniqueSpeeds = new TreeSet<>();
@@ -318,6 +356,9 @@ public class MyApp {
         }
     }
 
+    /**
+     * Print the names of all Pokemon in the most populous set with equal speed values
+     */
     private static void getPokemonInLargestSpeedGroup() {
         int currentSpeed = -1;
         int currentCount = 0;
@@ -344,6 +385,9 @@ public class MyApp {
         }
     }
 
+    /**
+     * Submenu for searching by speed. For menuing system use only
+     */
     private static void searchBySpeed() {
         int userChoice;
         do {
@@ -387,6 +431,9 @@ public class MyApp {
         }
     }
 
+    /**
+     * Sub menu for searching by attribute. For menuing system use only.
+     */
     private static void searchByAttribute() {
         int userChoice;
         System.out.println("""
@@ -404,6 +451,9 @@ public class MyApp {
         return;
     }
 
+    /**
+     * Runs all unit tests
+     */
     private static void unitTest() {
         int userChoice = showSubMenu();
 
