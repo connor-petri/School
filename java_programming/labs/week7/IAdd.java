@@ -1,4 +1,4 @@
-package java_programming.labs.week7;
+package week7;
 
 public interface IAdd {
     int add_xy(int x, int y);

@@ -1,4 +1,4 @@
-package java_programming.labs.week8.src;
+package week8.src;
 
 /**
  * The MyMath interface contains definitions for basic arithmetic operations

@@ -1,4 +1,4 @@
-package java_programming.labs.week8.src;
+package week8.src;
 
 /**
  * An implementation of the MyMath Interface

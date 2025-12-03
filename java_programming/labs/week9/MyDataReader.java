@@ -1,4 +1,4 @@
-package java_programming.labs.week9;
+package week9;
 
 
 /**

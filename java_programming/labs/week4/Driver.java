@@ -1,4 +1,4 @@
-package java_programming.labs.week4;
+package week4;
 import java.util.*;
 
 public class Driver {

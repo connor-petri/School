@@ -1,4 +1,4 @@
-package java_programming.labs.week10;
+package week10;
 
 import java.util.*;
 import java.io.*;

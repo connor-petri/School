@@ -1,4 +1,4 @@
-package java_programming.labs.week5;
+package week5;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package java_programming.labs.week8.src;
+package week8.src;
 
 /**
  * Driver class to demonstrate use of MyMath interface and MathCore class.

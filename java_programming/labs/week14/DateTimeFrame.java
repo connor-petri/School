@@ -1,4 +1,4 @@
-package java_programming.labs.week14;
+package week14;
 
 import javax.swing.*;
 import java.awt.*;

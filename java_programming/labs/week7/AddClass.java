@@ -1,4 +1,4 @@
-package java_programming.labs.week7;
+package week7;
 
 public class AddClass implements IAdd {
     private int x, y;

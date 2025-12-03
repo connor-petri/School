@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"java_programming.labs.week8.src","l":"Main"},{"p":"java_programming.labs.week8.src","l":"MathCore"},{"p":"java_programming.labs.week8.src","l":"MyMath"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"week8.src","l":"Main"},{"p":"week8.src","l":"MathCore"},{"p":"week8.src","l":"MyMath","k":"10"}];updateSearchResults();
