@@ -45,3 +45,95 @@ One way to report the results of a hypothesis test is to determine if the test s
 null hypothesis is rejected at a specified level of significance. This yes/no decision does not convey any information about how soundly the 
 null hypothesis was rejected. Where in the rejection region did the observed test statistic fall? Note that the p-value is calculated assuming
 that the null hypothesis is true.
+
+\paragraph*{Definition}
+Suppose the null hypothesis $H_0$ is true. The p-value is the probability of observing a test statistic value 
+at least as contradictory to $H_0$ as the computed value due to sampling variability. In other words, the p-value is the probability of obtaining a test statistic
+value as extreme or more extreme than the one observed, assuming that $H_0$ is true.
+
+\subsubsection*{Rejection Regions}
+\paragraph*{Definition:} If a p-value is smaller than the significance level $\alpha$, then the 
+corresponding value of the test statistic falls into the rejection region and the null hypothesis is rejected in favor of the alternative hypothesis.
+\[
+    p\text{-value} \leq \alpha \rightarrow \text{reject } H_0
+\]
+If the p-value is large, then it is quite likely to see data as extreme as that observed, assuming that $H_0$ is true. Thus, there is not enough evidence to reject $H_0$.
+\[
+    p\text{-value} > \alpha \rightarrow \text{fail to reject } H_0
+\]
+
+\paragraph*{Example:}
+A kid is supposed to bush their teeth every night. One night, the parent asks the kid if they have already brushed their teeth.
+The kid says yes. The parent wants to test the hypothesis that the kid has brushed their teeth. The null hypothesis is that the kid has brushed their teeth,
+$H_0: \text{brushed teeth}$. The alternative hypothesis is that the kid has not brushed their teeth, $H_a: \text{not brushed teeth}$.
+The test statistic is whether or not the toothbrush is wet. If the toothbrush is wet, then the p-value is high, and the parent fails to reject $H_0$.
+If the toothbrush is dry, then the p-value is low, and the parent rejects $H_0$ in favor of $H_a$.
+
+\paragraph*{Example:}
+Suppose $H_0 : \mu = 5$ with alternative $H_a : \mu \neq 5$. (a) Find the rejection region for the test statistiv for $\alpha = 0.05$.
+(b) Compute the p-value for an observed test statistic value of 2.14.
+
+\subsubsection*{Tests for a Population Mean}
+\paragraph*{Case 1:} Sampling from a Normal Population with known $\sigma$. Let $X_1, X_2, \ldots, X_n$ be a random sample from a normal population with
+unknown mean and known variance $\sigma^2$. According to the Central Limit Theorem, 
+the sample mean $\bar{X}$ has a Normal distribution with mean $\mu$ and variance $\frac{\sigma^2}{n}$.
+\[
+    Z = \frac{\bar{X}-\mu_0}{\frac{sigma}{\sqrt{n}}} \sim \mathcal{N}(0,1)
+\]
+Suppose we want to test the null hypothesis that $H_0 : \mu = \mu_0$ (some specified value). In this case our test statistic is:
+\[
+    Z = \frac{\bar{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}
+\]
+The distribution of the test statistic is known if $H_0$ is true. This allows us to find rejection
+regions for specified levels of $\alpha$ or to compute p-values for certain values $z$ of 
+the test statistic.
+
+\paragraph*{Case 2:} 
+If a sample is large $(n \geq 40)$, then the population standard deviation $\sigma$ may be replaced by the point esitmate $s$ 
+without changing the distribution of the sample mean, meaning our test statistic becomes:
+\[
+    Z = \frac{\bar{X}-\mu_0}{\frac{s}{\sqrt{n}}}
+\]
+This is an approximation that is valid for large samples due to the Central Limit Theorem.
+
+\paragraph*{Example:} 
+The daily yield for a chemical plant has avereaged 880 tons for several years. The quality control manager
+wants to know if this average has changed. She randomly selects 50 days and records and average yield of
+871 tons with a standard deviation of 21 tons. Perform a test with sigificance level $\alpha = 0.05$.
+\begin{align*}
+    t = \frac{871 - 880}{\frac{21}{\sqrt{50}}} = -3.03\\
+    \text{Degrees of Freedom} = n - 1 = 49\\
+    t' = \pm 2.009\\
+    t < -t' \rightarrow \text{Reject } H_0
+\end{align*}
+
+\subsubsection*{Test for a Population Proportion}
+Let $p$ denote the proportion of individuals in a popoulation who possess a certain characeristic.
+A random sample of size $n$ is selected from the population and the proportion $\hat{p}$ of successes
+in the sample is observed. We want to use this quantity to decide if we will reject a statement about
+population parameter $p$.
+
+\paragraph*{Large Sample Test for a Population Proportion}
+If the sample size $n$ is large $(np_0 \geq 10$ and $n(1-p_0) \geq 10)$, then the test statistic is:
+\[
+    H_0 : p = p_0
+\]
+has approximately a Normal distribution. Test Statistic:
+\[
+    Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1 - p_0)}{n}}}
+\]
+where $p_0$ is the hypothesized value of the population proportion under the null hypothesis.
+
+\paragraph*{Example:}
+Consider Prevnar, a vaccine for meningitis usually given to infants. In a clinical trial, the vaccine was given to 710 children,
+of whom 72 experiences a loss of appetitie. Competing medications cause about 13.5\% of 
+children to experience a loss of appetitie. Can we conclude that the percentage of children experiencing a loss of 
+appetite from Prevnar is significantly less than for other medications? Use a significance level of $\alpha = 0.01$.
+\begin{align*}
+    H_0 : p = 0.135\\
+    H_a : p < 0.135\\
+    \hat{p} = \frac{72}{710} = 0.1014\\
+    Z = \frac{0.1014 - 0.135}{\sqrt{\frac{0.135(1-0.135)}{710}}} = -2.36\\
+    Z' = -2.33 \text{ ~1000 DOF } \alpha = 0.01\\
+    Z < Z' \rightarrow \text{Reject } H_0
+\end{align*}
