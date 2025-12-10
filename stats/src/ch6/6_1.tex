@@ -61,15 +61,15 @@ with an active library card.
     \item $E(\hat{\theta}) = E(\frac{T}{n}) = \frac{1}{n} E(T) = \theta$ so $\hat{\theta}$ is an unbiased estimator of $\theta$.
     \item $\text{Var}(\hat{\theta}) = \text{Var}(\frac{1}{n} T) = \frac{1}{n^2} \text{Var}(T) = \frac{1}{n^2} (n \theta (1 - \theta)) = \frac{\theta (1 - \theta)}{n}$
 \end{itemize}
-
-\begin{table}
+\begin{table}[h]
+    \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
         Parameter & Point Estimator & Bias? & Standard Error & Estimated Standard Error \\
         \hline
-        $\mu$ & $\bar{X} = \frac{1}{n} \sum X_i$ & $\frac{sigma}{\sqrt{n}}$ & $\frac{S}{\sqrt{n}}$ \\
+        $\mu$ & $\bar{X} = \frac{1}{n} \sum X_i$ & $E(\bar{X}) = \mu$ (unbiased) & $\frac{\sigma}{\sqrt{n}}$ & $\frac{S}{\sqrt{n}}$ \\
         \hline
-        $p$ & $\hat{p}$: sample proportion & $E(\hat{p}) = p$ & $\sqrt{\frac{p(1 - p)}{n}}$ & $\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$ \\
+        $p$ & $\hat{p}$ (sample proportion) & $E(\hat{p}) = p$ (unbiased) & $\sqrt{\frac{p(1 - p)}{n}}$ & $\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$ \\
         \hline
     \end{tabular}
 \end{table}
