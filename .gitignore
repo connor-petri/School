@@ -6,6 +6,8 @@
 */.directory
 .directory
 .env
+.vscode
+*/.vscode
 
 # LibreOffice temp files.\
 .~lock*
