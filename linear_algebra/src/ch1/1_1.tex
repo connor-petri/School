@@ -1,0 +1,160 @@
+\subsection{Linear Equations}
+\hrulefill
+
+\paragraph{Definition} A \textbf{linear equation} in the variables $x_1, x_2, \ldots, x_n$ is an equation that can be written in the form
+\[a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = b\]
+where $a_1, a_2, \ldots, a_n$ and $b$ are constants. The constants $a_1, a_2, \ldots, a_n$ are called the \textbf{coefficients} of the equation, and $b$ is called the \textbf{constant term}.
+
+\paragraph*{Examples} of linear equations include:
+\begin{itemize}
+    \item $2x + 3y - z = 5$
+    \item $-x_1 + 4x_2 + 0x_3 = 7$
+    \item $0x + 0y + 0z = 0$
+\end{itemize}
+
+\paragraph*{Non-examples} of linear equations include:
+\begin{itemize}
+    \item $x^2 + y = 3$ (because of the $x^2$ term)
+    \item $xy + z = 4$ (because of the $xy$ term)
+    \item $\sin(x) + y = 1$ (because of the $\sin(x)$ term)
+    \item $x + \sqrt{y} = 2$ (because of the $\sqrt{y}$ term)
+\end{itemize}
+
+\subsubsection*{Systems of Linear Equations}
+\paragraph*{Definition} A \textbf{finite} collection of linear equations involving the same set of variables is called a \textbf{system of linear equations}.
+\paragraph*{Example} of a system of linear equations:
+\[\begin{cases}
+2x + 3y - z = 5 \\
+-x + 4y + 2z = 7 \\
+3x - y + z = 2 \\
+\cdots
+\end{cases}\]
+
+\paragraph*{Definition} A sequence of numbers $(s_1, s_2, \ldots, s_n)$ is called a \textbf{solution} to the system of linear equations if, when we substitute $s_i$ for $x_i$ in each equation, the equation holds true.
+
+\paragraph*{Example} Consider the system of equations:
+\[\begin{cases}
+    x + y + z = 3 \\
+    2x + y + 3z = 1 \\
+\end{cases}\]
+Is the sequence $(-2, -5, 0)$ a solution to this system? Does $x = y = z = 1$?
+\paragraph*{Solution} To check if $(-2, -5, 0)$ is a solution, substitute $x = -2$, $y = -5$, and $z = 0$ into both equations:
+\begin{itemize}
+    \item First equation: $(-2) + (-5) + 0 = -7 \neq 3$ (does not hold)
+    \item Second equation: $2(-2) + (-5) + 3(0) = -4 - 5 = -9 \neq 1$ (does not hold)
+\end{itemize}
+Thus, $(-2, -5, 0)$ is not a solution to the system. \\
+Next, check if $(1, 1, 1)$ is a solution:
+\begin{itemize}
+    \item First equation: $1 + 1 + 1 = 3$ (holds)
+    \item Second equation: $2(1) + 1 + 3(1) = 2 + 1 + 3 = 6 \neq 1$ (does not hold)
+\end{itemize}
+Thus, $(1, 1, 1)$ is also not a solution to the system.
+
+\subsubsection*{Solutions to Linear Systems}
+\paragraph*{Definition} There are three possible scenarios for the solutions to a system of linear equations:
+\begin{itemize}
+    \item \textbf{No solution}: The system is inconsistent, meaning there are no values for the variables that satisfy all equations simultaneously.
+    \item \textbf{Unique solution}: There is exactly one set of values for the variables that satisfies all equations.
+    \item \textbf{Infinitely many solutions}: There are multiple sets of values for the variables that satisfy all equations. (i.e. the same line or scalar multiples of each other)
+\end{itemize}
+
+Systems of linear equations that have at least one solution are called \textbf{consistent}, while those with no solutions are called \textbf{inconsistent}.
+
+\hrulefill
+
+\subsubsection*{Matricies}
+
+\paragraph*{Definition} A \textbf{matrix} is a rectangular array of numbers arranged in rows and columns. The numbers in the matrix are called its \textbf{entries} or \textbf{elements}. 
+A matrix with $m$ rows and $n$ columns is called an $m \times n$ matrix.
+
+\paragraph*{Example} of an \textbf{augmented} matrix:
+\[\begin{cases}
+3x_1 + 2x_2 - x_3 + x_4 = -1 \\
+2x_1 - x_3 + 2x_4 = 0 \\
+3x_1 + x_2 + 2x_3 + 5x_4 = 2\\
+\end{cases} = \begin{bmatrix}
+3 & 2 & -1 & 1 & | & -1 \\
+2 & 0 & -1 & 2 & | & 0 \\
+3 & 1 & 2 & 5 & | & 2 \\
+\end{bmatrix}\]
+
+\subsubsection*{Elementary Operations}
+\paragraph*{Definition} There are three types of \textbf{elementary row operations} that can be performed on a matrix:
+\begin{itemize}
+    \item \textbf{Row swapping}: Interchanging two rows of the matrix.
+    \item \textbf{Row scaling}: Multiplying all entries in a row by a non-zero constant.
+    \item \textbf{Row addition}: Adding a multiple of one row to another row.
+\end{itemize}
+
+These operations are used in methods such as Gaussian elimination to solve systems of linear equations.
+Row operations do not produce equal matricies, but they do produce \textbf{equivalent} matrices, meaning they represent systems of equations with the same solution set.
+In order for 2 matricies to be equal, they must have the same dimensions and identical entries in corresponding positions.
+
+\paragraph*{Example} Consider the matricies:
+\[\begin{bmatrix}
+    1 & 2 & | & 0 \\
+    3 & 4 & | & 1 \\
+\end{bmatrix} \mapsto \begin{bmatrix}
+    2 & 4 & | & 0 \\
+    3 & 4 & | & 1 \\
+\end{bmatrix} \]
+This represents the row operation of scaling the first row by 2 ($2R_1 \mapsto R_1$). These matricies are equivalent but not equal.
+
+\paragraph*{Example} Solve MESSY CHECK THIS REDO IT OR SMTHN GODDAMN:
+\begin{align*}
+    &\begin{cases}
+        2x + 3y - z = -3 \\
+        -x - y + z = 1 \\
+        x - 2y -5z = 0 \\
+    \end{cases} = \begin{bmatrix}
+        2 & 3 & -1 & | & -3 \\
+        -1 & -1 & 1 & | & 1 \\
+        1 & -2 & -5 & | & 0 \\
+    \end{bmatrix} \\
+    &\xmapsto{R_2 + \frac{1}{2}R_1 \mapsto R_2} \begin{bmatrix}
+        2 & 3 & -1 & | & -3 \\
+        0 & \frac{1}{2} & \frac{1}{2} & | & -\frac{1}{2} \\
+        1 & -2 & -5 & | & 0 \\
+    \end{bmatrix} \\
+    &\xmapsto{R_3 - \frac{1}{2}R_1 \mapsto R_3} \begin{bmatrix}
+        2 & 3 & -1 & | & -3 \\
+        0 & \frac{1}{2} & \frac{1}{2} & | & -\frac{1}{2} \\
+        0 & -\frac{7}{2} & -\frac{9}{2} & | & \frac{3}{2} \\
+    \end{bmatrix} \\
+    &\xmapsto{ -2R_2 \mapsto R_2} \begin{bmatrix}
+        2 & 3 & -1 & | & -3 \\
+        0 & 1 & 1 & | & 1 \\
+        0 & -\frac{7}{2} & -\frac{9}{2} & | & \frac{3}{2} \\
+    \end{bmatrix} \\
+    &\xmapsto{ R_3 + \frac{7}{2}R_2 \mapsto R_3} \begin{bmatrix}    
+        2 & 3 & -1 & | & -3 \\
+        0 & 1 & 1 & | & 1 \\
+        0 & 0 & -1 & | & 5 \\
+    \end{bmatrix} \\
+    &\xmapsto{ -R_3 \mapsto R_3} \begin{bmatrix}    
+        2 & 3 & -1 & | & -3 \\
+        0 & 1 & 1 & | & 1 \\
+        0 & 0 & 1 & | & -5 \\
+    \end{bmatrix} \\
+    &\xmapsto{ R_2 - R_3 \mapsto R_2} \begin{bmatrix}    
+        2 & 3 & -1 & | & -3 \\
+        0 & 1 & 0 & | & 6 \\
+        0 & 0 & 1 & | & -5 \\
+    \end{bmatrix} \\
+    &\xmapsto{ R_1 + R_3 \mapsto R_1} \begin{bmatrix}    
+        2 & 3 & 0 & | & -8 \\
+        0 & 1 & 0 & | & 6 \\
+        0 & 0 & 1 & | & -5 \\
+    \end{bmatrix} \\
+    &\xmapsto{ R_1 - 3R_2 \mapsto R_1} \begin{bmatrix}    
+        2 & 0 & 0 & | & -26 \\
+        0 & 1 & 0 & | & 6 \\
+        0 & 0 & 1 & | & -5 \\
+    \end{bmatrix} \\
+    &\xmapsto{ \frac{1}{2}R_1 \mapsto R_1} \begin{bmatrix}    
+        1 & 0 & 0 & | & -13 \\
+        0 & 1 & 0 & | & 6 \\
+        0 & 0 & 1 & | & -5 \\
+    \end{bmatrix} \\
+\end{align*}
