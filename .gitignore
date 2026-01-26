@@ -11,7 +11,9 @@
 
 # LibreOffice temp files.\
 .~lock*
+
 # Textbook PDFs
 James*Stewart*.pdf
 Ron*Larson*.pdf
 Roger*Kamien*.pdf
+Introduction*.pdf
