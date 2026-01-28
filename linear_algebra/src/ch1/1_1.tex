@@ -101,60 +101,54 @@ In order for 2 matricies to be equal, they must have the same dimensions and ide
 \end{bmatrix} \]
 This represents the row operation of scaling the first row by 2 ($2R_1 \mapsto R_1$). These matricies are equivalent but not equal.
 
-\paragraph*{Example} Solve MESSY CHECK THIS REDO IT OR SMTHN GODDAMN:
+\paragraph*{Example} Solve:
 \begin{align*}
     &\begin{cases}
-        2x + 3y - z = -3 \\
+        2x + 3y - z = 3 \\
         -x - y + z = 1 \\
         x - 2y -5z = 0 \\
     \end{cases} = \begin{bmatrix}
-        2 & 3 & -1 & | & -3 \\
+        2 & 3 & -1 & | & 3 \\
         -1 & -1 & 1 & | & 1 \\
         1 & -2 & -5 & | & 0 \\
-    \end{bmatrix} \\
-    &\xmapsto{R_2 + \frac{1}{2}R_1 \mapsto R_2} \begin{bmatrix}
-        2 & 3 & -1 & | & -3 \\
-        0 & \frac{1}{2} & \frac{1}{2} & | & -\frac{1}{2} \\
+    \end{bmatrix} \xmapsto{R3 \mapsto R1} \begin{bmatrix}
         1 & -2 & -5 & | & 0 \\
+        -1 & -1 & 1 & | & 1 \\
+        2 & 3 & -1 & | & 3 \\
+    \end{bmatrix} \xmapsto{R2 + R1 \mapsto R2} \begin{bmatrix}
+        1 & -2 & -5 & | & 0 \\
+        0 & -3 & -4 & | & 1 \\
+        2 & 3 & -1 & | & 3 \\
     \end{bmatrix} \\
-    &\xmapsto{R_3 - \frac{1}{2}R_1 \mapsto R_3} \begin{bmatrix}
-        2 & 3 & -1 & | & -3 \\
-        0 & \frac{1}{2} & \frac{1}{2} & | & -\frac{1}{2} \\
-        0 & -\frac{7}{2} & -\frac{9}{2} & | & \frac{3}{2} \\
+    &\xmapsto{R3 - 2R1 \mapsto R3} \begin{bmatrix}
+        1 & -2 & -5 & | & 0 \\
+        0 & -3 & -4 & | & 1 \\
+        0 & 7 & 9 & | & 3 \\
+    \end{bmatrix} \xmapsto{-\frac{1}{3}R2 \mapsto R2} \begin{bmatrix}
+        1 & -2 & -5 & | & 0 \\
+        0 & 1 & \frac{4}{3} & | & -\frac{1}{3} \\
+        0 & 7 & 9 & | & 3 \\
+    \end{bmatrix} \xmapsto{R3 - 7R2 \mapsto R3} \begin{bmatrix}
+        1 & -2 & -5 & | & 0 \\
+        0 & 1 & \frac{4}{3} & | & -\frac{1}{3} \\
+        0 & 0 & \frac{-1}{3} & | & \frac{16}{3} \\
     \end{bmatrix} \\
-    &\xmapsto{ -2R_2 \mapsto R_2} \begin{bmatrix}
-        2 & 3 & -1 & | & -3 \\
-        0 & 1 & 1 & | & 1 \\
-        0 & -\frac{7}{2} & -\frac{9}{2} & | & \frac{3}{2} \\
+    &\xmapsto{-3R3 \mapsto R3} \begin{bmatrix}
+        1 & -2 & -5 & | & 0 \\
+        0 & 1 & \frac{4}{3} & | & -\frac{1}{3} \\
+        0 & 0 & 1 & | & -16 \\
+    \end{bmatrix} \xmapsto{R2 - \frac{4}{3}R3 \mapsto R2} \begin{bmatrix}
+        1 & -2 & -5 & | & 0 \\
+        0 & 1 & 0 & | & 21 \\
+        0 & 0 & 1 & | & -16 \\
+    \end{bmatrix} \xmapsto{R1 + 5R3 \mapsto R1} \begin{bmatrix}
+        1 & -2 & 0 & | & -80 \\
+        0 & 1 & 0 & | & 21 \\
+        0 & 0 & 1 & | & -16 \\
     \end{bmatrix} \\
-    &\xmapsto{ R_3 + \frac{7}{2}R_2 \mapsto R_3} \begin{bmatrix}    
-        2 & 3 & -1 & | & -3 \\
-        0 & 1 & 1 & | & 1 \\
-        0 & 0 & -1 & | & 5 \\
-    \end{bmatrix} \\
-    &\xmapsto{ -R_3 \mapsto R_3} \begin{bmatrix}    
-        2 & 3 & -1 & | & -3 \\
-        0 & 1 & 1 & | & 1 \\
-        0 & 0 & 1 & | & -5 \\
-    \end{bmatrix} \\
-    &\xmapsto{ R_2 - R_3 \mapsto R_2} \begin{bmatrix}    
-        2 & 3 & -1 & | & -3 \\
-        0 & 1 & 0 & | & 6 \\
-        0 & 0 & 1 & | & -5 \\
-    \end{bmatrix} \\
-    &\xmapsto{ R_1 + R_3 \mapsto R_1} \begin{bmatrix}    
-        2 & 3 & 0 & | & -8 \\
-        0 & 1 & 0 & | & 6 \\
-        0 & 0 & 1 & | & -5 \\
-    \end{bmatrix} \\
-    &\xmapsto{ R_1 - 3R_2 \mapsto R_1} \begin{bmatrix}    
-        2 & 0 & 0 & | & -26 \\
-        0 & 1 & 0 & | & 6 \\
-        0 & 0 & 1 & | & -5 \\
-    \end{bmatrix} \\
-    &\xmapsto{ \frac{1}{2}R_1 \mapsto R_1} \begin{bmatrix}    
-        1 & 0 & 0 & | & -13 \\
-        0 & 1 & 0 & | & 6 \\
-        0 & 0 & 1 & | & -5 \\
-    \end{bmatrix} \\
+    &\xmapsto{R1 + 2R2 \mapsto R1} \begin{bmatrix}
+        1 & 0 & 0 & | & -38 \\
+        0 & 1 & 0 & | & 21 \\
+        0 & 0 & 1 & | & -16 \\
+    \end{bmatrix} \implies (x, y, z) = (-38, 21, -16)
 \end{align*}
