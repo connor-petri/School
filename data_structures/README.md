@@ -9,6 +9,12 @@
 
 ---
 
+### Navigation
+- ```notes/``` holds lecture notes
+- ```IN CLASS DIR``` holds in class work
+- ```sandbox/``` holds misc code related to the class or given by the professor to run
+---
+
 ## Materials
 - Text: Introduction to Algorithms, 3rd edition Cormen, Leiserson, Rivest, Stein
 
