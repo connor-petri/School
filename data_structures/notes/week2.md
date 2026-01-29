@@ -206,3 +206,62 @@ public class DynamicArray<T> {
     - peek
     - size
     - isEmpty
+
+---
+
+$\sum_{k=1}^n (2k-1) = 2 \sum_{k=1}^n k - \sum_{k=1}^n 1 = n(n+1) - n = n^2$
+
+$log(\prod_{k=1}^n \frac{4^k}{2}) = \sum_{k=1}^n log(4^k) - \sum_{k=1}^n log(2) = \sum_{k=1}^n 2k - \sum_{k=1}^n 1 = n(n+1) - n = n^2$
+
+### Identities
+- $\sum_{k=1}^n k = \frac{n(n+1)}{2}$
+- $\prod_{k=1}^n k = n!$
+
+---
+
+Consider the following algorithm:
+
+```java
+int maxElement(int[] A, int n) {
+    int max = A[0];
+
+    for (int i = 1; i < n; i++) {
+        if (A[i] > max) {
+            max = A[i];
+        }
+    }
+    return max;
+}
+```
+
+There are \( n - 1 \) comparisons made in the loop, so the time complexity is \( O(n) \).
+
+The probability that the branch is taken is given by \( \frac{1}{i} \) for the \( i^{th} \) iteration, leading to an expected number of times the branch is taken as:
+\[\sum_{i=1}^{n} \frac{1}{i} = H_n \approx \ln(n) + \gamma\]
+where \( H_n \) is the \( n^{th} \) harmonic number and \( \gamma \) is the Euler-Mascheroni constant.
+
+---
+
+```java
+int secondLargest(int[] A, int n) {
+    int max, second;
+    if (A[0] >= A[1]) { // 1 comparison
+        max = A[0];
+        second = A[1];
+    } else {
+        max = A[1];
+        second = A[0];
+    }
+    for (int i = 2; i < n; i++) { // n-2 comparisons
+        if (A[i] > max) {
+            second = max;
+            max = A[i];
+        } else if (A[i] > second) {
+            second = A[i];
+        }
+    }
+    return second;
+}
+
+int secondLargest
+```
