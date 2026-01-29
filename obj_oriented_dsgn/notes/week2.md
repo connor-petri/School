@@ -20,8 +20,8 @@
 - Examining **use cases** will populate functional requirements
 - i.e. Calander app must be able to add, remove, and edit events
 #### Non-Functional Requirements
-    - concerned with the constraints under which the software must operate, such as response time and memory consumption
-    - i.e. Calandar app must run on a S.O.C. with 2 kb of RAM
+- concerned with the constraints under which the software must operate, such as response time and memory consumption
+- i.e. Calandar app must run on a S.O.C. with 2 kb of RAM
 
 ### Use Cases
 - Examines the interactions between user and system
@@ -101,10 +101,71 @@
 - **Interface** means the object impliments an interface, meaning it can do the things other classes that impliment the same interface can do
     - Remember that interfaces can extend from other interfaces
 - *Implimentation Specific*
+- UML Syntax:
+![UML syntac for Inheritance](img/UML-Inheritance.png)
 
 #### Has-a
+- **Aggregation** is a weaker form of composition
 - **Composition** literally means Object1 *has a* member variable of type Object2
+- For our purposes, we will treat aggregation and composition the same
+- Always an instance variable
+    - Non user-defined instance variables are called attributes, and do not have a has-a relationship with the class
+- UML Syntax:
+![UML syntax for Composition/Aggregation](img/Aggregation.png)
 
 #### Uses
+- Object1 *uses* Object2
+- Also called **Dependency**
+- A temporary relationship where Object1 needs Object2 to perform a task
+    - Return typs
+    - Method parameters
+- UML Syntax:
+![UML syntax for Dependency](img/uses.png)
+##### Optimized Version of Above Example
+- Avoids parameter passing overhead
+![UML syntax for Dependency Optimized](img/uses-aggregation.png)
 
 #### Association
+- Object1 *associates with* Object2
+- A more permanent relationship than dependency, but not as strong as composition
+- Bidirectional unless otherwise specified by arrows
+- UML Syntax:
+![UML syntax for Association](img/Association.png)
+- If unidirectional, use arrows to indicate direction of association
+![UML syntax for Unidirectional Association](img/association2.png)
+
+### Use Case Study
+- Use cases should be initiated by an actor (user or external system)
+- Identify variations and edge cases
+#### Use Case: Reach an Extension
+| Step | User Action | System Response |
+|-------|--------------|------------------|
+| 1 | Dials phone number | |
+| 2 | | The voice mail system plays a prompt |
+| 3 | Types in extension of person trying to reach | |
+| 4 | | Speaks "you have reached the voice mailbox of xxxx..." |
+
+#### Use Case: Leave a Message
+| Step | User Action | System Response |
+|-------|--------------|------------------|
+|1 | Carries out **Reach an Extension** | |
+|2 | Leaves a message | |
+|3| Hangs up | |
+|4| | Saves recorded message to file system |
+
+#### Use Case: Log In
+| Step | User Action | System Response |
+|-------|--------------|------------------|
+|1 | Mailbox owner carries out **Reach an Extension** | |
+|2 | Enters password | |
+|3 | | Verifies password |
+|4 | | Grants access to mailbox functions |
+
+#### Use Case: Retrieve Messages
+| Step | User Action | System Response |
+|-------|--------------|------------------|
+|1 | Mailbox owner carries out **Log In** | |
+|2 | Requests to retrieve messages | |
+|3 | | System plays back menu options |
+|4 | Requests to hear current messages | |
+|5 | | System plays back current messages |
