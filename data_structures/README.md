@@ -11,7 +11,7 @@
 
 ### Navigation
 - ```notes/``` holds lecture notes
-- ```IN CLASS DIR``` holds in class work
+- ```programs/``` holds coding assignments
 - ```sandbox/``` holds misc code related to the class or given by the professor to run
 ---
 
