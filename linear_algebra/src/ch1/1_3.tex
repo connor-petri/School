@@ -1,0 +1,79 @@
+\subsection{Homogeneous Systems}
+\hrulefill
+
+\paragraph*{Definition} A system is called \textbf{homogeneous} if all the constant terms are zero. In other words, a system of equations is homogeneous if it can be written in the form
+\[\begin{cases}
+    x-5y = 0 \\
+    2x+3y+z = 0 \\
+\end{cases}
+\]
+The soluttion set of a homogeneous system always contains the \textbf{trivial solution}, which is the solution where all variables are equal to zero. 
+For example, in the system above, the trivial solution is \(x=0, y=0, z=0\).  Any other solution is called a \textbf{nontrivial solution}.
+
+\paragraph*{Example} 1.3.1 % TODO: Copy example from written notes
+
+\paragraph*{Theorem} If a homogeneous system of linear equations has ore variables than equations, 
+then it has infinitly many non-trivial solutions. For some matrix $A$ with $m$ rows and $n$ parameters
+ $\text{rank}(A) \leq m < n$ implies that the solutions involved $n-rank(A) \geq 1$ parameters, so $x_i = S$ and 
+ we can choose any value for $S$ other than zero to get a non-trivial solution.
+\paragraph*{Note} If a homogeneous system has a nontrivial solution, it need not have more variables than equations.
+\paragraph*{Note} If a homogeneous system has a non-trivial solution, then it has infinitely many non-trivial solutions. If $x = S$ is a non-trivial solution, then so is $x = kS$ for any scalar $k \neq 0$.
+
+\hrulefill
+
+\subsubsection*{Vectors}
+\paragraph*{Definition} A \textbf{vector} in $\mathbb{R}^n$ is an ordered $n$-tuple of real numbers. We can represent a vector as a column matrix:
+\[\vec{x} = \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n
+\end{bmatrix} = (x_1, x_2, \ldots, x_n) = \langle x_1, x_2, \ldots, x_n \rangle\]
+where $x_1, x_2, \ldots, x_n$ are the components of the vector $\vec{x}$. In this class, vectors should always be 
+represented as column matrices unless otherwise specified.
+
+\paragraph*{Definition} A vector of length $n$ is an ordered n-tuple, and the set of all vectors of length $n$ is denoted by $\mathbb{R}^n$.
+In other words, $\vec{x} \in \mathbb{R}^n$ if $\vec{x}$ has $n$ components.
+
+\paragraph*{Vector Addition} Vector addition can only be performed on vectors of the same length. If $\vec{x}, \vec{y} \in \mathbb{R}^n$, then their sum is given by
+\[\vec{x} + \vec{y} = \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n
+\end{bmatrix} + \begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n
+\end{bmatrix} = \begin{bmatrix}
+    x_1 + y_1 \\
+    x_2 + y_2 \\
+    \vdots \\
+    x_n + y_n
+\end{bmatrix}\]
+
+\paragraph*{Scalar Multiplication} If $\vec{x} \in \mathbb{R}^n$ and $c$ is a scalar, then the scalar multiplication of $c$ and $\vec{x}$ is given by
+\[c\vec{x} = c \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n
+\end{bmatrix} = \begin{bmatrix}
+    cx_1 \\
+    cx_2 \\
+    \vdots \\
+    cx_n
+\end{bmatrix}\]
+
+\paragraph*{Linear Combination}
+A sum of scalar multiples of several vectors or columns is called a \textbf{linear combination} of the vectors or columns.
+For example, if $\vec{u}, \vec{v}, \vec{w} \in \mathbb{R}^n$ and $a, b, c$ are scalars, then
+\[a\vec{u} + b\vec{v} + c\vec{w}\]
+is a linear combination of the vectors $\vec{u}, \vec{v}, \vec{w}$.
+
+\paragraph*{Example} 1.3.2 % TODO: Copy example from written notes
+
+\paragraph*{Note} To find if $\vec{x}$ is a linear combinition of $\vec{a_1}, \vec{a_2}, \ldots, \vec{a_n}$, we can form the augmented matrix
+\[[\vec{a_1} \ \vec{a_2} \ \ldots \ \vec{a_n} \ | \ \vec{x}]\]
+and row reduce to see if there is a solution.
