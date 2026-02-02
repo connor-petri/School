@@ -49,13 +49,7 @@ public class MaxHeap
 
       // Insert @ end of array
       students.add(elt);
-
-      Student parent = students.get(parent(students.indexOf(elt)));
-      while (parent.compareTo(elt) < 0) {
-         swap(students.indexOf(elt), students.indexOf(parent));
-         // Update parent
-         parent = students.get(parent(students.indexOf(elt)));
-      }
+      checkTowardsRoot(students.size() - 1);
    }
    
    public void addGrade(Student elt, double gradePointsPerUnit, int units)
@@ -64,16 +58,9 @@ public class MaxHeap
 	  //from the student class), and then adjust the heap as needed using
 	  //the changeKey algorithm from the videos.
       elt.addGrade(gradePointsPerUnit, units);
-      Student parent = students.get(parent(students.indexOf(elt)));
-
-      if (parent.compareTo(elt) < 0) {
-         while (parent.compareTo(elt) < 0) {
-            swap(students.indexOf(parent), students.indexOf(elt));
-            parent = students.get(parent(students.indexOf(elt)));
-         }
-      } else {
-         maxHeapify(students.indexOf(elt));
-      }
+      int index = students.indexOf(elt); // INDEXOF ONLY ALLOWED ONCE
+      checkTowardsRoot(index);
+      maxHeapify((index));
    }
    
    private int parent(int index)
@@ -97,7 +84,14 @@ public class MaxHeap
       students.set(from,  students.get(to));
       students.set(to,  val);
    }
-   
+
+   private void checkTowardsRoot(int index) {
+      while (students.get(parent(index)).compareTo(students.get(index)) < 0) {
+         swap(parent(index), index);
+         index = parent(index);
+      }
+   }
+
    private void maxHeapify(int index)
    {
       int left = left(index);

@@ -1,4 +1,5 @@
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -70,22 +71,83 @@ public class SimpleGivenTests
     // Ensures no changes occur when addGrade is called with a grade that doesn't change the GPA
     @Test
     public void changeKeyByZeroTest() {
-       MaxHeap heap = new MaxHeap(10);
+        MaxHeap heap = new MaxHeap(10);
+        Student susan = new Student("Susan", 3, 6);
+        Student ben = new Student("Ben", 2.4, 10);
+        Student reed = new Student("Reed", 3.3, 3);
+        Student johnny = new Student("Johnny", 1, 4);
+
+        heap.insert(susan);
+        heap.insert(ben);
+        heap.insert(johnny);
+        heap.insert(reed);
+
+        heap.addGrade(susan, 0, 0);
+
+        // Ensure Susan's gpa is unchanged
+        assertEquals(3.0, susan.gpa(), 0.000001);
+        // Ensure Reed is still the heap max
+        assertEquals("Reed", heap.getMax().getName());
+    }
+
+    @Test
+    public void decreaseKeyTest() {
+        MaxHeap heap = new MaxHeap(10);
+        Student susan = new Student("Susan", 3, 6);
+        Student ben = new Student("Ben", 2.4, 10);
+        Student reed = new Student("Reed", 3.3, 3);
+        Student johnny = new Student("Johnny", 1, 4);
+
+        heap.insert(susan);
+        heap.insert(ben);
+        heap.insert(johnny);
+        heap.insert(reed);
+
+        heap.addGrade(reed, 0, 10);
+
+        // Ensure reed is demoted in the heap
+        assertEquals(susan, heap.getMax());
+    }
+
+    @Test
+    public void negativeValueKeyTest() {
+        MaxHeap heap = new MaxHeap(10);
+        Student susan = new Student("Susan", 3, 6);
+        Student ben = new Student("Ben", 2.4, 10);
+        Student reed = new Student("Reed", 3.3, 3);
+        Student johnny = new Student("Johnny", 1, 4);
+
+        heap.insert(susan);
+        heap.insert(ben);
+        heap.insert(johnny);
+        heap.insert(reed);
+
+        heap.addGrade(reed, -1000, 10);
+
+        assertEquals(susan, heap.getMax());
+    }
+
+    @Test
+    public void collectionConstructorTest() {
+       ArrayList<Student> l = new ArrayList<>();
        Student susan = new Student("Susan", 3, 6);
        Student ben = new Student("Ben", 2.4, 10);
        Student reed = new Student("Reed", 3.3, 3);
        Student johnny = new Student("Johnny", 1, 4);
 
-       heap.insert(susan);
-       heap.insert(ben);
-       heap.insert(johnny);
-       heap.insert(reed);
+       l.add(susan);
+       l.add(ben);
+       l.add(reed);
+       l.add(johnny);
 
-       heap.addGrade(susan, 0, 0);
+       MaxHeap heap = new MaxHeap(l);
 
-       // Ensure Susan's gpa is unchanged
-       assertEquals(3.0, susan.gpa(), 0.000001);
-       // Ensure Reed is still the heap max
-       assertEquals("Reed", heap.getMax().getName());
-   }
+       assertEquals(reed, heap.getMax());
+    }
+
+    @Test
+    public void studentNameConstructorTest() {
+       Student susan = new Student("Susan");
+       assertEquals(susan.gpa(), 0.0, .00001);
+    }
 }
