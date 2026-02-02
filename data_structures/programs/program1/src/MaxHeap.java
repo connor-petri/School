@@ -48,7 +48,7 @@ public class MaxHeap
 	  //following the insert algorithm from the videos.
 
       // Insert @ end of array
-      students.addLast(elt);
+      students.add(elt);
 
       Student parent = students.get(parent(students.indexOf(elt)));
       while (parent.compareTo(elt) < 0) {

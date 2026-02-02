@@ -66,5 +66,26 @@ public class SimpleGivenTests
 	   assertEquals(2.4, heap.extractMax().gpa(), .000001);
 	   assertEquals(2.0, heap.extractMax().gpa(), .000001);
    }
-   
+
+    // Ensures no changes occur when addGrade is called with a grade that doesn't change the GPA
+    @Test
+    public void changeKeyByZeroTest() {
+       MaxHeap heap = new MaxHeap(10);
+       Student susan = new Student("Susan", 3, 6);
+       Student ben = new Student("Ben", 2.4, 10);
+       Student reed = new Student("Reed", 3.3, 3);
+       Student johnny = new Student("Johnny", 1, 4);
+
+       heap.insert(susan);
+       heap.insert(ben);
+       heap.insert(johnny);
+       heap.insert(reed);
+
+       heap.addGrade(susan, 0, 0);
+
+       // Ensure Susan's gpa is unchanged
+       assertEquals(3.0, susan.gpa(), 0.000001);
+       // Ensure Reed is still the heap max
+       assertEquals("Reed", heap.getMax().getName());
+   }
 }
