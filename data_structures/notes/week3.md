@@ -117,3 +117,76 @@ A tree is a special type of graph that is connected and acyclic. Trees have a hi
 - Compare the new root with its children; if it violates the heap property, swap it with the larger (for max-heap) or smaller (for min-heap) child.
 - Repeat until the heap property is restored.
 - Displaced leaf moves up or down. Each level takes constant time $O(1)$, and the height is $\lfloor \log_2 n \rfloor$, so the overall time complexity for deletion is $O(\log n)$.
+
+---
+## In class notes - Optimizing with Stacks
+
+Given an array of values, the first value is $-\infty$, all other values are not. $A = [-\infty, 9, 3, 7, 16, 2, 5, 1, \cdots]$
+For each $A[i], i \geq 0$, find $A[j]$ such that $-j < i, A[j] < A[i]$, and $j$ is maximized.
+
+```java
+int[] A = { (int)Float.NEGATIVE_INFINITY, 9, 3, 7 ,16, 2, 5, 1 };
+int[] B = new int[8];
+
+for (int i = 1; i < n, i++) {
+    B[i] = A[i];
+    for (int j = -; j < i; j++) {
+        if (A[j] < A[i]) {
+            B[i] = A[j];
+        }
+    }
+}
+
+return B;
+```
+
+We can optimize this by rewriting the inner loop to start from the last found index. This makes the algorithm go from a constant $O(n^2)$ to $O(n^2)$ in the worst case, but $O(n)$ in the best case.
+
+```java
+int[] A = { (int)Float.NEGATIVE_INFINITY, 9, 3, 7 ,16, 2, 5, 1 };
+int[] B = new int[8];
+
+for (int i = 1; i < n, i++) {
+    B[i] = A[i];
+    for (int j = i - 1; j >= 0; j--) {
+        if (A[j] < A[i]) {
+            B[i] = A[j];
+            break;
+        }
+    }
+}
+```
+The presence of a ```break;``` statement in an if condition means the inner loop is basically a while loop. We can rewrite the code to use a while loop instead. This makes it clearer when the loop will terminate and gets rid of the if condition.
+
+```java
+int[] A = { (int)Float.NEGATIVE_INFINITY, 9, 3, 7 ,16, 2, 5, 1 };
+int[] B = new int[8];
+for (int i = 1; i < n, i++) {
+    B[i] = A[i];
+    int j = i - 1;
+    while (j >= 0 && A[j] >= A[i]) {
+        j--;
+    }
+    B[i] = A[j];
+}
+```
+
+We can use a stack to store the elements in decreasing order. This way, we can pop elements from the stack until we find an element that is less than the current element. In this way, the stack holds all the potential candidates for the answer, and we can efficiently find the correct one. Once we discard an element, it cannot be a solution for any future elements, so we never need to push it back onto the stack. 
+
+This runs in $O(n)$ time, as both the outer and inner loops run in total $O(n)$ time. Linear + linear = linear.
+
+```java
+import java.util.Stack;
+
+int[] A = { (int)Float.NEGATIVE_INFINITY, 9, 3, 7 ,16, 2, 5, 1 };
+int[] B = new int[8];
+Stack<Integer> stack = new Stack<>();
+
+for (int i = 0; i < 8; i++) {
+    while (!stack.isEmpty() && stack.peek() >= A[i]) {
+        stack.pop();
+    }
+    B[i] = stack.isEmpty() ? A[0] : stack.peek();
+    stack.push(A[i]);   
+}
+```
