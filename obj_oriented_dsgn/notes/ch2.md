@@ -1,4 +1,4 @@
-# Week 2 - Design Phase
+# Chapter 2 - Design Phase
 
 ---
 
@@ -229,3 +229,98 @@ optional.
 - Focus on the different states an object can be in and how it transitions between those states
 - Example:
 ![UML State Diagram Example](img/ch2/state-diagram.png)
+
+--- 
+
+## JavaDoc :vomit:
+Javadoc comments are not meant to explain source code, but rather to generate documentation for the various APIs of a class. Source code in this class must include the following types of Javadoc comments:
+1. File-level Javadoc - a brief description of the file and its purpose
+2. Class-level Javadoc - a description of the class and its responsibilities
+3. Method-level Javadoc - a description of the method, its parameters, return value, and any exceptions it may throw. Includes constructors
+
+### Preconditions and Postconditions
+- **Preconditions** are conditions that must be true before a method is called
+- **Postconditions** are conditions that must be true after a method is called
+- Acts as a contract between the method and its callers, ensuring that the method is used correctly and that it behaves as expected
+- Used even for simple methods as they provide clarity and help prevent bugs
+
+### Example
+```java
+/**
+ * Assignment 1 Solution
+ * 
+ * @author Connor Petri
+ * @version 1.0 1/28/26
+ */
+
+/**
+ * BankAccount represents a bank accout with a balance that can be changed through
+ * deposits, withdrawls, All accounts maintain a non-negative balance
+ */
+public class BankAccount {
+    private double balance;
+    /**
+     * Default constructor constructs a BankAccount with a 0 balance
+     */
+    public BankAccount() {
+        balance = 0;
+    }
+
+    /**
+     * Constructs a BankAccount with the given initial balance
+     * Precondition: initialBalance must be non-negative
+     * Postcondition: A BankAccount is created with the given initial balance
+     * 
+     * @param initialBalance the initial balance of the account, must be non-negative
+     * @throws IllegalArgumentException if initialBalance is negative
+     */
+    public BankAccount(double initialBalance) {
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException("Initial balance must be non-negative");
+        }
+        balance = initialBalance;
+    }
+
+    /**
+     * Sets the balance of the account to the given amount
+     * Precondition: amount must be non-negative
+     * Postcondition: The balance of the account is set to the given amount
+     * 
+     * @param amount the new balance of the account, must be non-negative
+     * @throws IllegalArgumentException if amount is negative
+     */
+    public void setBalance(double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Balance must be non-negative");
+        }
+        balance = amount;
+    }
+
+    /**
+     * Withdraws the given amount from the account
+     * Precondition: amount must be non-negative and less than or equal to the current balance
+     * Postcondition: The balance of the account is decreased by the given amount
+     * 
+     * @param amount the amount to withdraw, must be non-negative and less than or equal to the current balance
+     * @throws IllegalArgumentException if amount is negative or greater than the current balance
+     */
+    public void withdraw(double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount must be non-negative");
+        }
+        if (amount > balance) {
+            throw new IllegalArgumentException("Amount must be less than or equal to the current balance");
+        }
+        balance -= amount;
+    }
+
+    /**
+     * Returns the current balance of the account
+     * Postcondition: The current balance of the account is returned
+     * @return the current balance of the account
+     */
+    public double getBalance() {
+        return balance;
+    }
+}
+```
