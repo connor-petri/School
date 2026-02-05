@@ -1,0 +1,60 @@
+\subsection{Matricies and Matrix Operations}
+\hrulefill
+
+\paragraph*{Definition} A \textbf{matrix} is a rectangular array of numbers arranged in rows and columns. An $m \times n$ matrix has $m$ rows and $n$ columns. For example, the following is a $2 \times 3$ matrix:
+\[A = \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6
+\end{bmatrix}\]
+
+\paragraph*{Matrix Access} The entry in the $i$-th row and $j$-th column of a matrix $A$ is denoted by $a_{ij}$. For example, in the matrix $A$ above, $a_{12} = 2$ and $a_{21} = 4$.
+
+\[A_{m \times n} = \begin{bmatrix}
+    a_{11} & a_{12} & \ldots & a_{1n} \\
+    a_{21} & a_{22} & \ldots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{bmatrix}\]
+
+\subsubsection*{Matrix Operations}
+
+\paragraph*{Matrix Equality} Two matrices $A$ and $B$ are equal if they have the same dimensions and their corresponding entries are equal. That is, $A = B$ if and only if $a_{ij} = b_{ij}$ for all $i$ and $j$.
+
+\paragraph*{Matrix Addition} Two matrices can be added if they have the same dimensions, otherwise it is undefined. If $A$ and $B$ are both $m \times n$ matrices, then their sum is given by
+\[A + B = \begin{bmatrix}
+    a_{11} + b_{11} & a_{12} + b_{12} & \ldots & a_{1n} + b_{1n} \\
+    a_{21} + b_{21} & a_{22} + b_{22} & \ldots & a_{2n} + b_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} + b_{m1} & a_{m2} + b_{m2} & \ldots & a_{mn} + b_{mn}
+\end{bmatrix}\]
+
+\paragraph*{Scalar Multiplication} If $A$ is an $m \times n$ matrix and $c$ is a scalar, then the scalar multiplication of $c$ and $A$ is given by
+\[cA = \begin{bmatrix}
+    ca_{11} & ca_{12} & \ldots & ca_{1n} \\
+    ca_{21} & ca_{22} & \ldots & ca_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    ca_{m1} & ca_{m2} & \ldots & ca_{mn}
+\end{bmatrix}\]
+
+\paragraph*{Properties of Matrix Addition and Scalar Multiplication}
+Let $A$, $B$, and $C$ be matrices of the same dimensions, and let $c$ and $d$ be scalars. Then the following properties hold:
+\begin{itemize}
+    \item Commutative Property: $A + B = B + A$
+    \item Associative Property: $(A + B) + C = A + (B + C)$
+    \item Distributive Property: $c(A + B) = cA + cB$
+    \item Scalar Distributive Property: $(c + d)A = cA + dA$
+    \item Associative Property of Scalar Multiplication: $c(dA) = (cd)A$
+    \item Identity Property: $A + 0 = A$, where $0$ is the zero matrix of the same dimensions as $A$
+\end{itemize}
+
+\paragraph*{Matrix Transpose} The transpose of a matrix $A$, denoted by $A^T$, is obtained by interchanging its rows and columns. If $A$ is an $m \times n$ matrix, then $A^T$ is an $n \times m$ matrix given by
+\[A^T = \begin{bmatrix}
+    a_{11} & a_{21} & \ldots & a_{m1} \\
+    a_{12} & a_{22} & \ldots & a_{m2} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{1n} & a_{2n} & \ldots & a_{mn}
+\end{bmatrix}\]
+
+\paragraph*{Symmetric Matrix} A matrix $A$ is called symmetric if $A = A^T$. If A, B are $n \times n$ symmetric matrices, then $A + B$ is also symmetric. If c is a scalar, then cA is also symmetric.
+
+\paragraph*{Matrix Multiplication}

@@ -76,4 +76,19 @@ is a linear combination of the vectors $\vec{u}, \vec{v}, \vec{w}$.
 
 \paragraph*{Note} To find if $\vec{x}$ is a linear combinition of $\vec{a_1}, \vec{a_2}, \ldots, \vec{a_n}$, we can form the augmented matrix
 \[[\vec{a_1} \ \vec{a_2} \ \ldots \ \vec{a_n} \ | \ \vec{x}]\]
-and row reduce to see if there is a solution.
+and row reduce to see if there is a solution. Linear combinations are a good way to write the general solution to a homogeneous system.
+
+\paragraph*{Theorem} Any linear combination of solutions to a homogeneous system is also a solution to the system.
+\paragraph*{Example} 1.3.3
+\begin{align*}
+    \text{Let } \vec{p} = \begin{bmatrix} p_1 \\ p_2 \end{bmatrix} \text{ and } \vec{q} = \begin{bmatrix} q_1 \\ q_2 \end{bmatrix} \text{ be solutions to the homogeneous system } a_1x_1 + a_2x_2 = 0 \\
+    \implies \exists s, t \in \mathbb{R} \ni \begin{cases}
+        a_1p_1 + a_2p_2 = 0 \\
+        a_1q_1 + a_2q_2 = 0
+    \end{cases} = s\vec{p} + t\vec{q} = \begin{bmatrix}
+        sp_1 + tq_1 \\
+        sp_2 + tq_2
+    \end{bmatrix} \\
+\end{align*}
+
+\paragraph*{Example} 1.3.4 % TODO: Copy example from written notes
