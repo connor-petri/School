@@ -190,3 +190,63 @@ for (int i = 0; i < 8; i++) {
     stack.push(A[i]);   
 }
 ```
+
+---
+
+## Loop Invariants and Program Proofs
+
+
+
+
+Analyzing and proving algorithms is easy for simple prgrams, but gets more complex as we add complications such as loops, conditionals, and recursion.:
+```java
+int max(int x, int y) {
+    int tmp = x;      // tmp == x
+    if (y > tmp) {    // If y > tmp (y > tmp)
+        tmp = y       // then tmp == y
+    }
+    return tmp;       // returns the maximum of x and y
+}
+```
+
+### Loop Notation
+When describing the state of variables in a loop, we can use the notation $x_i$ to represent the value of variable $x$ at the end of the $i$-th iteration of the loop. For example, if we have a loop that iterates from 0 to n-1, we can denote the value of a variable $sum$ at the end of the $i$-th iteration as $sum_i$.
+
+```java
+float avg(float[] A) {
+    int sum = 0;                   // sum == 0
+    for (int i = 0; i < 3; i++) {  // i_2 == 2
+        sum += A[i];               // sum_2 == A[0] + A[1] + A[2]
+    }
+    return sum / 3.0f;
+}
+```
+
+#### Variable Sized Arrays
+
+We can analyze the following code the same way, except using summation notation: $sum_i = \sum_{j=0}^{i} A[j]$.
+
+```java
+float avg(float[] A, int n) {
+    int sum = 0;                   // sum == 0
+    for (int i = 0; i < n; i++) {  // i_n == n - 1
+        sum += A[i];               // sum_i ==\sum_{j=0}^{i} A[j]
+    }
+
+    return sum / (float)n; // returns sum_{i=n} / n
+}
+```
+
+We can prove this by induction on $n$. Assume $sum_i = \sum_{j=0}^i A[j]$. If we can prove that $sum_{i+1} = sum_i + A[i+1]$, then we can conclude that $sum_{i+1} = \sum_{j=0}^{i+1} A[j]$, and that this is a correct algorithm for computing the average of the first $n$ elements of the array. We call these types of proofs **loop invariants**.
+
+### Loop Invariants
+A loop invariant is a condition that holds true before and after each iteration of a loop. It is used to reason about the correctness of an algorithm. To prove that an algorithm is correct, we can use the following steps:
+1. **Initialization**: Show that the invariant holds before the first iteration of the loop.
+2. **Maintenance**: Show that if the invariant holds before an iteration of the loop, it also holds after that iteration.
+3. **Termination**: Show that when the loop terminates, the invariant gives us a useful property that helps us conclude the correctness of the algorithm.
+
+#### Proving the Average Algorithm
+1. **Initialization**: Before the first iteration, $sum_0 = 0$, which is equal to $\sum_{j=0}^{-1} A[j]$ (an empty sum), so the invariant holds.
+2. **Maintenance**: Assume that $sum_i = \sum_{j=0}^i A[j]$ holds for some $i < n$. During the $(i+1)$-th iteration, we update $sum$ to $sum_{i+1} = sum_i + A[i+1]$. By the inductive hypothesis, we have $sum_i = \sum_{j=0}^i A[j]$, so we can substitute this into the equation to get $sum_{i+1} = \sum_{j=0}^i A[j] + A[i+1] = \sum_{j=0}^{i+1} A[j]$. Thus, the invariant holds after the $(i+1)$-th iteration.
+3. **Termination**: When the loop terminates, we have $i = n$, so $sum_n = \sum_{j=0}^{n-1} A[j]$. The algorithm then returns $sum_n / n$, which is the average of the first $n$ elements of the array. Therefore, the algorithm is correct.
+
