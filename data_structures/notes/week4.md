@@ -103,3 +103,21 @@ $$
 1 + \log^*(\log n) & \text{if } n > 1
 \end{cases}
 $$
+
+## TO ASIMMILATE LATER
+
+$n_0$ is the smallist n value such that we only care about the leading term of the function. For example, if we have $f(n) = 3n^2 + 2n + 1$, then $n_0$ would be the smallest value of $n$ such that $3n^2$ dominates the function, which is when $n > 1$. Therefore, we can say that $f(n) = O(n^2)$ for $n > 1$.
+
+$\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \implies f(n) = o(g(n))$
+
+### LOG RULE
+$a^{\log_b c} = c^{\log_b a}$
+
+---
+
+## In-class: Rank the following functions in decreasing order of growth rate:
+$$
+n!, (n+1)!, \log_2{n!}, \frac{3}{2}^n,  2^{2^n}, 2^{2^{n+1}}, n\cdot 2^n, 2^n, e^n, n^2, n^3, n, n\log_2(n), \ln \ln(n), 2^{\log_2n},\\ \log_2(n)^{\log_2(n)}, \sqrt{2}^{\log_2(n)}, \log_2^2(n), 4^{log_2 n}, \ln(n), \log_2(n)!, 1, \sqrt{\log_2(n)}, 2^{\sqrt{2\log_2(n)}},\\
+\log_2(\log_2^*(n)), \log_2^*(\log_2 n), \log_2^* (n), 2^{\log_2^* n}
+$$
+
