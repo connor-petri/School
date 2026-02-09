@@ -55,6 +55,23 @@ Let $A$, $B$, and $C$ be matrices of the same dimensions, and let $c$ and $d$ be
     a_{1n} & a_{2n} & \ldots & a_{mn}
 \end{bmatrix}\]
 
-\paragraph*{Symmetric Matrix} A matrix $A$ is called symmetric if $A = A^T$. If A, B are $n \times n$ symmetric matrices, then $A + B$ is also symmetric. If c is a scalar, then cA is also symmetric.
+\paragraph*{Transposition Identities}
+Let $A, B$ be $m\times n$ matricies and $k \in \mathbb{R}$
+\begin{itemize}
+    \item $A^T$ is $n \times m$
+    \item $(A^T)^T = A$
+    \item $ (kA)^T = k(A^T)$
+    \item $(A + B)^T = A^T + B^T$
+\end{itemize}
 
-\paragraph*{Matrix Multiplication}
+\paragraph*{Example}
+Solve for A
+\begin{align*}
+    (2A^T + 3 \begin{bmatrix}
+        1 & 2 \\
+        -1 & 1
+    \end{bmatrix})^T
+\end{align*}
+
+\paragraph*{Symmetric Matrix} A matrix $A$ is called symmetric if $A = A^T$. If A, B are $n \times n$ symmetric matrices, then $A + B$ is also symmetric. If c is a scalar, then cA is also symmetric.
+If $A$ and $B$ are both symmetric, then $kA + kB$ is also symmetric for $k, p \in \mathbb{R}$.

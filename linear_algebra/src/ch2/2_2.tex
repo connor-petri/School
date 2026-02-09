@@ -1,0 +1,148 @@
+\subsection*{Matrix-Vector Multiplication}
+\hrulefill
+\subsubsection*{Vector-Matrix Multiplication}
+\paragraph*{Definition}
+Let $A$ be an $m \times n$ matrix written $A = [a_1 \ a_2 \ \ldots \ a_n]$ where $a_i$ is the $i$-th column of $A$. 
+Let $\vec{x}$ be an $n \times 1$ column vector written as $\vec{x} = \begin{bmatrix}
+    x_1 \\
+    \vdots \\
+    x_n
+\end{bmatrix}$. Then the matrix-vector product $A\vec{x}$ is defined as
+\begin{align*}
+    A\vec{x} &= [a_1 \ a_2 \ \ldots \ a_n] \begin{bmatrix}
+    x_1 \\
+    \vdots \\
+    x_n
+\end{bmatrix} \\
+&= x_1a_1 + x_2a_2 + \ldots + x_na_n \\
+&= \sum_{i=1}^n x_ia_i
+\end{align*}
+
+\paragraph*{Notes}
+\begin{itemize}
+    \item If $A$ is an $m \times n$ matrix, then $A\vec{x}$ is defined only for $\vec{x} \in \mathbb{R}^n$.
+    \item The inner sizes of the vector and matrix must match for the product to be defined.
+    \item $A\vec{x}$ is a linear combination of the columns of $A$ with coefficients $x_i$ in order.
+\end{itemize}
+
+\paragraph*{Example} 2.2.1
+
+\paragraph*{Example} 2.2.2
+
+\paragraph*{Theorem}
+A system of linear equations $\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n = b_1 \\
+a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n = b_2 \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \ldots + a_{mn}x_n = b_m
+\end{cases}$ can be written in matrix form as $A\vec{x} = \vec{b}$ where
+\[A = \begin{bmatrix}
+    a_{11} & a_{12} & \ldots & a_{1n} \\
+    a_{21} & a_{22} & \ldots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{bmatrix}, \quad \vec{x} = \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n
+\end{bmatrix}, \quad \vec{b} = \begin{bmatrix}
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_m
+\end{bmatrix}\] 
+$A$ is called the coefficient matrix, $\vec{x}$ is called the variable vector, and $\vec{b}$ is called the constant vector. The system of equations has a solution if and only if there exists a vector $\vec{x}$ such that $A\vec{x} = \vec{b}$.
+\begin{itemize}
+    \item Every system of linear equations can be written as $A\vec{x} = \vec{b}$ 
+    \item $A\vec{x} = \vec{b}$ is consistant if and only if $\vec{b}$ is a linear combination of columns of $A$.
+\end{itemize}
+
+\subsubsection*{Identitiy Matrix}
+\paragraph*{Definition}
+The $n \times n$ identity matrix, denoted by $I_n$, is the square matrix with 1's on the main diagonal and 0's elsewhere. That is,
+\[I_n = \begin{bmatrix}
+    1 & 0 & \ldots & 0 \\
+    0 & 1 & \ldots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \ldots & 1
+\end{bmatrix}\]
+
+\paragraph*{Properties of the Identity Matrix}
+\begin{itemize}
+    \item rank($I_n$) = $n$
+    \item $I_n\vec{x} = \vec{x}$ for all $\vec{x} \in \mathbb{R}^n$
+\end{itemize}
+
+\paragraph*{More Indentities}
+Let $A$ and $B$ be $n \times n$ matricies and $\vec{x}, \vec{y} \in \mathbb{R}^n$
+\begin{itemize}
+    \item $A(\vec{x} + \vec{y}) = A\vec{x} + A\vec{y}$
+    \item $A(k\vec{x}) = k(A\vec{x})$ for $k \in \mathbb{R}$
+    \item $(A + B)\vec{x} = A\vec{x} + B\vec{x}$
+\end{itemize}
+
+\paragraph*{Theorem}
+Let $A\vec{x} = \vec{b}$ be a system of linear equations and rank($A$) = $r$. Then the 
+rank of the augmented matrix $[A | \vec{b}]$ is either $r$ or $r + 1$. 
+The system is consistent if and only if rank($A$) = rank($[A | \vec{b}]$).
+
+\paragraph*{Example} 2.2.3
+
+\paragraph*{Dot Product}
+Let $\vec{a} = \begin{bmatrix}
+    a_1 \\
+    \vdots \\
+    a_n
+\end{bmatrix}$ and $\vec{b} = \begin{bmatrix}
+    b_1 \\
+    \vdots \\
+    b_n
+\end{bmatrix}$ be two vectors in $\mathbb{R}^n$. The dot product of $\vec{a}$ and $\vec{b}$, denoted by $\vec{a} \cdot \vec{b}$, is defined as
+\[\vec{a} \cdot \vec{b} = a_1b_1 + \ldots + a_nb_n = \sum_{i=1}^n a_ib_i\]
+
+The result of the dot product is a scalar.
+
+\paragraph*{Definition}
+Let $A$ be an $m \times n$ matrix and $\vec{x} \in \mathbb{R}^n$, then the $i$th entry of the vector $A\vec{x}$ is 
+the dot product of the $i$th row of $A$ with $\vec{x}$
+
+\paragraph*{Example} 2.2.4
+
+\paragraph*{Example} 2.2.5
+
+\paragraph*{Standard Basis Vectors}
+The standard basis vectors in $\mathbb{R}^n$ are the vectors $e_1, e_2, \ldots, e_n$ where $e_i$ has a 1 in the $i$-th position and 0's elsewhere. That is,
+\[e_1 = \begin{bmatrix}
+    1 \\
+    0 \\
+    \vdots \\
+    0
+\end{bmatrix}, \quad e_2 = \begin{bmatrix}
+    0 \\
+    1 \\
+    \vdots \\
+    0
+\end{bmatrix}, \quad e_i = \begin{bmatrix}
+    0 \\
+    \vdots \\
+    0 \\
+    1 \\
+    0 \\
+    \vdots \\
+    0
+\end{bmatrix}\]
+
+We can use these basis vectors to isolate the columns of a matrix. For example, if $A = [a_1 \ a_2 \ \ldots \ a_n]$ is an $m \times n$ matrix, then
+\begin{align*}
+Ae_1 &= a_1 \\
+Ae_2 &= a_2 \\
+&\vdots \\
+Ae_n &= a_n
+\end{align*} 
+
+\paragraph*{Theorem}
+$A, B \in \mathbb{R}^{m \times n}, \vec{x} \in \mathbb{R}^n \implies A=B \implies \forall i < n \in \mathbb{N}, Ae_i = Be_i$
+
+\paragraph*{Note}
+$A\vec{x} = B\vec{x}$ does not imply $A = B$ for all $\vec{x} \in \mathbb{R}^n$. For example, if $A$ and $B$ are both $m \times n$ matrices with all entries equal to 0, then $A\vec{x} = B\vec{x}$ for all $\vec{x} \in \mathbb{R}^n$, but $A$ and $B$ are not necessarily the same matrix.
