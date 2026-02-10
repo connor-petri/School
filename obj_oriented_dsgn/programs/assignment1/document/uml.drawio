@@ -1,11 +1,11 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
   <diagram name="Page-1" id="6Ekzqte5oRaMUNTUk8yg">
-    <mxGraphModel dx="2336" dy="895" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1724" dy="952" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="G9u_USVrWWpwWnSwmy04-20" value="&lt;b&gt;TimeInterval&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-40" y="290" width="320" height="210" as="geometry" />
+          <mxGeometry x="-40" y="290" width="320" height="230" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-21" value="attributes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-20">
           <mxGeometry y="30" width="320" height="20" as="geometry" />
@@ -19,28 +19,28 @@
         <mxCell id="G9u_USVrWWpwWnSwmy04-26" value="operations" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-20">
           <mxGeometry y="93" width="320" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="G9u_USVrWWpwWnSwmy04-27" value="+ getStartTime() : LocalDateTime&lt;div&gt;+ getEndTime() : LocalDateTime&lt;/div&gt;&lt;div&gt;+ setStartTime(in start : LocalDateTime) : void&lt;/div&gt;&lt;div&gt;+ setEndTime(in end : LocalDateTime) : void&lt;/div&gt;&lt;div&gt;+ overlapsWith(in other : TimeInterval) : boolean&lt;/div&gt;&lt;div&gt;+ compareTo(in other : TimeInterval) : int&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-20">
-          <mxGeometry y="113" width="320" height="97" as="geometry" />
+        <mxCell id="G9u_USVrWWpwWnSwmy04-27" value="+ getStartTime() : LocalDateTime&lt;div&gt;+ getEndTime() : LocalDateTime&lt;/div&gt;&lt;div&gt;+ setStartTime(in start : LocalDateTime) : void&lt;/div&gt;&lt;div&gt;+ setEndTime(in end : LocalDateTime) : void&lt;/div&gt;&lt;div&gt;+ overlapsWith(in other : TimeInterval) : boolean&lt;/div&gt;&lt;div&gt;+ compareTo(in other : TimeInterval) : int&lt;/div&gt;&lt;div&gt;+ print() : void&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-20">
+          <mxGeometry y="113" width="320" height="117" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-29" value="&lt;b&gt;Event&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="420" y="290" width="260" height="280" as="geometry" />
+          <mxGeometry x="420" y="260" width="340" height="370" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-30" value="attributes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-29">
-          <mxGeometry y="30" width="260" height="20" as="geometry" />
+          <mxGeometry y="30" width="340" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="G9u_USVrWWpwWnSwmy04-31" value="# name : String&lt;div&gt;# time : TimeInterval&lt;/div&gt;&lt;div&gt;# recurrance : String&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-29">
-          <mxGeometry y="50" width="260" height="50" as="geometry" />
+        <mxCell id="G9u_USVrWWpwWnSwmy04-31" value="# name : String&lt;div&gt;# time : TimeInterval&lt;/div&gt;&lt;div&gt;# recurrance : String&lt;/div&gt;&lt;div&gt;&lt;u&gt;- R_PATTERN : String&lt;/u&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-29">
+          <mxGeometry y="50" width="340" height="60" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-34" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-29">
-          <mxGeometry y="100" width="260" height="8" as="geometry" />
+          <mxGeometry y="110" width="340" height="8" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-35" value="operations" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-29">
-          <mxGeometry y="108" width="260" height="20" as="geometry" />
+          <mxGeometry y="118" width="340" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="G9u_USVrWWpwWnSwmy04-36" value="+ getName() : String&lt;div&gt;+ getTime() : TimeInterval&lt;/div&gt;&lt;div&gt;+ getRecurrance() : String&lt;/div&gt;&lt;div&gt;+ setName(in name : String) : void&lt;/div&gt;&lt;div&gt;+ setRecurrance(in recurrance : String) : void&lt;/div&gt;&lt;div&gt;+ isRecurrant() : boolean&lt;/div&gt;&lt;div&gt;+ overlapsWith(in other : Event) : boolean&lt;/div&gt;&lt;div&gt;+ print() : void&lt;/div&gt;&lt;div&gt;+ compareTo(in other : Event) : int&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-29">
-          <mxGeometry y="128" width="260" height="152" as="geometry" />
+        <mxCell id="G9u_USVrWWpwWnSwmy04-36" value="&lt;div&gt;+ Event(in name : String, timeInterval : TimeInterval)&lt;/div&gt;&lt;div&gt;+ Event(in name : String, timeInterval : TimeInterval, recurrence : String)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- checkPattern(String s) : void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;+ getName() : String&lt;div&gt;+ getTime() : TimeInterval&lt;/div&gt;&lt;div&gt;+ getRecurrence() : String&lt;/div&gt;&lt;div&gt;+ setName(in name : String) : void&lt;/div&gt;&lt;div&gt;+ setRecurrence(in recurrence : String) : void&lt;/div&gt;&lt;div&gt;+ isRecurrent() : boolean&lt;/div&gt;&lt;div&gt;+ overlapsWith(in other : Event) : boolean&lt;/div&gt;&lt;div&gt;+ print() : void&lt;/div&gt;&lt;div&gt;+ compareTo(in other : Event) : int&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-29">
+          <mxGeometry y="138" width="340" height="232" as="geometry" />
         </mxCell>
-        <mxCell id="G9u_USVrWWpwWnSwmy04-49" value="&lt;b&gt;MyCalandar&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="G9u_USVrWWpwWnSwmy04-49" value="&lt;b&gt;MyCalendar&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="120" y="660" width="500" height="250" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-50" value="attributes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-49">
@@ -61,13 +61,13 @@
         <mxCell id="G9u_USVrWWpwWnSwmy04-61" value="«interface»&lt;br&gt;&lt;b&gt;Comparable&lt;/b&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="260" y="130" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="G9u_USVrWWpwWnSwmy04-63" value="&lt;b&gt;MyCalandarTester&lt;/b&gt;&lt;br&gt;{driver}" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="G9u_USVrWWpwWnSwmy04-63" value="&lt;b&gt;MyCalendarTester&lt;/b&gt;&lt;br&gt;{driver}" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="90" y="1000" width="560" height="230" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-64" value="attributes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-63">
           <mxGeometry y="40" width="560" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="G9u_USVrWWpwWnSwmy04-65" value="&lt;u&gt;- calandar : MyCalandar&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-63">
+        <mxCell id="G9u_USVrWWpwWnSwmy04-65" value="&lt;u&gt;- calandar : MyCalendar&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-63">
           <mxGeometry y="60" width="560" height="20" as="geometry" />
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-68" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="G9u_USVrWWpwWnSwmy04-63">
@@ -97,16 +97,47 @@
             <mxPoint x="240" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="G9u_USVrWWpwWnSwmy04-79" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=0.536;exitY=1.014;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="G9u_USVrWWpwWnSwmy04-36" target="G9u_USVrWWpwWnSwmy04-49">
+        <mxCell id="G9u_USVrWWpwWnSwmy04-79" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="G9u_USVrWWpwWnSwmy04-49">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="470" y="610" as="sourcePoint" />
-            <mxPoint x="560" y="630" as="targetPoint" />
+            <mxPoint x="470" y="580" as="sourcePoint" />
+            <mxPoint x="495" y="630" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="G9u_USVrWWpwWnSwmy04-80" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="G9u_USVrWWpwWnSwmy04-56" target="G9u_USVrWWpwWnSwmy04-63">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="250" y="1050" as="sourcePoint" />
             <mxPoint x="410" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="G9u_USVrWWpwWnSwmy04-81" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="G9u_USVrWWpwWnSwmy04-35" target="G9u_USVrWWpwWnSwmy04-26">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="220" y="580" as="sourcePoint" />
+            <mxPoint x="380" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="G9u_USVrWWpwWnSwmy04-83" value="«import»&lt;br&gt;&lt;b&gt;LocalDateTime&lt;/b&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-280" y="310" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="G9u_USVrWWpwWnSwmy04-84" value="«import»&lt;div&gt;&lt;b&gt;MonthDay&lt;/b&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-70" y="740" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="G9u_USVrWWpwWnSwmy04-87" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="G9u_USVrWWpwWnSwmy04-22" target="G9u_USVrWWpwWnSwmy04-83">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-120" y="390" as="sourcePoint" />
+            <mxPoint x="-40" y="334" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="G9u_USVrWWpwWnSwmy04-88" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="G9u_USVrWWpwWnSwmy04-55" target="G9u_USVrWWpwWnSwmy04-84">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="70" y="820" as="sourcePoint" />
+            <mxPoint x="200" y="767.41" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="G9u_USVrWWpwWnSwmy04-89" value="{constraint spec.}" style="endArrow=none;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;dashPattern=10 10;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="220" y="570" as="sourcePoint" />
+            <mxPoint x="380" y="570" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>

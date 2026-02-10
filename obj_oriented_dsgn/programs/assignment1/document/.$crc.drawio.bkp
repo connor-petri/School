@@ -7,7 +7,7 @@
         <mxCell id="C8w4XeoKC64MsaNEWZ3H-37" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="35" y="490" width="600" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="C8w4XeoKC64MsaNEWZ3H-38" value="&lt;b&gt;MyCalandar&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+        <mxCell id="C8w4XeoKC64MsaNEWZ3H-38" value="&lt;b&gt;MyCalendar&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="35" y="490" width="295" height="30" as="geometry" />
         </mxCell>
         <mxCell id="C8w4XeoKC64MsaNEWZ3H-39" value="Collect Event objects&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Read/write to event save file&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Print day and month view&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Create Event&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;List all events&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Delete selected event&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Delete Recurring event&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Delete all events&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;" vertex="1" parent="1">
@@ -61,7 +61,7 @@
         <mxCell id="C8w4XeoKC64MsaNEWZ3H-51" value="Hold name and TimeInterval of event&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Check for conflict with another event&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="670" y="520" width="380" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="C8w4XeoKC64MsaNEWZ3H-52" value="MyCalandar&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;TimeInterval&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;" vertex="1" parent="1">
+        <mxCell id="C8w4XeoKC64MsaNEWZ3H-52" value="MyCalendar&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;TimeInterval&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1050" y="520" width="220" height="230" as="geometry" />
         </mxCell>
         <mxCell id="C8w4XeoKC64MsaNEWZ3H-53" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
@@ -103,13 +103,13 @@
         <mxCell id="C8w4XeoKC64MsaNEWZ3H-61" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="35" y="780" width="600" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="C8w4XeoKC64MsaNEWZ3H-62" value="&lt;b&gt;MyCalandarTester&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+        <mxCell id="C8w4XeoKC64MsaNEWZ3H-62" value="&lt;b&gt;MyCalendarTester&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="35" y="780" width="295" height="30" as="geometry" />
         </mxCell>
         <mxCell id="C8w4XeoKC64MsaNEWZ3H-63" value="Driver class&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Methods for each menu and submenu&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Handle retrieval and storage of user input&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="35" y="810" width="380" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="C8w4XeoKC64MsaNEWZ3H-64" value="MyCalandar&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Event&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;" vertex="1" parent="1">
+        <mxCell id="C8w4XeoKC64MsaNEWZ3H-64" value="MyCalendar&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Event&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="415" y="810" width="220" height="230" as="geometry" />
         </mxCell>
         <mxCell id="C8w4XeoKC64MsaNEWZ3H-65" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
