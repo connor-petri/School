@@ -121,3 +121,46 @@ n!, (n+1)!, \log_2{n!}, \frac{3}{2}^n,  2^{2^n}, 2^{2^{n+1}}, n\cdot 2^n, 2^n, e
 \log_2(\log_2^*(n)), \log_2^*(\log_2 n), \log_2^* (n), 2^{\log_2^* n}
 $$
 
+---
+
+## Recurrence Relations
+
+A **recurrence** is an equation or inequality that describes a function in terms of its value on smaller inputs. For example, the Fibonacci sequence can be defined by the recurrence relation:
+$$F(n) = F(n-1) + F(n-2)
+$$
+with base cases $F(0) = 0$ and $F(1) = 1$.
+
+### Solving Recurrence Relations
+1. **Substitution method**: Guess the form of the solution and then use mathematical induction to prove it.
+2. **Recursion tree method**: Draw a recursion tree and calculate the total work done at each level of the tree.
+3. **Master theorem**: A formula that provides a solution to recurrences of the form $T(n) = aT(n/b) + f(n)$, where $a \geq 1$ and $b > 1$
+
+### Substitution Method
+Consider the following recurrence relation:
+$$T(n) = 2T(n/2) + n
+$$
+We can guess that the solution to this recurrence is $T(n) = O(n \log n)$. To prove this, we can use mathematical induction.
+- **Base case**: $T(n) = 2T(n/2) + n \leq c \cdot n\log n$ for some constant $c$ and sufficiently large $n$.
+    - $2c(n/2)\log(n/2) + n \leq c \cdot n\log n$
+    - $cn\log(n/2) + n \leq c \cdot n\log n$
+    - $cn\log n - cn\log 2 + n \leq c \cdot n\log n$
+    - $-cn\log 2 + n \leq 0$
+    - $n \leq cn\log 2$
+    - $1 \leq c\log 2$
+
+
+---
+
+## In Class Problem
+
+Given n computer chips, some are good and some are bad. You can use 2 chips to test each other.
+- A good chip will correctly identify the other as good or bad
+- A bad chip can lie
+
+How can you identify which chips are good or bad?
+As stated, you cannot, but what if less than half of the chips are bad? 
+1. Pair up the chips and test each pair against each other.
+2. Discard any pair where both chips do not identify each other as good.
+3. If both identify each other as good, save one of the chips and discard the other.
+4. Repeat the process until only one chip remains. This chip must be good, as it has been identified as good by at least one other chip in each round. This solution is recursive
+- $T(n) = T(n-2) + 1 = \Theta(1)$
