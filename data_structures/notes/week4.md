@@ -139,6 +139,8 @@ with base cases $F(0) = 0$ and $F(1) = 1$.
 Consider the following recurrence relation:
 $$T(n) = 2T(n/2) + n
 $$
+
+FIX THIS
 We can guess that the solution to this recurrence is $T(n) = O(n \log n)$. To prove this, we can use mathematical induction.
 - **Base case**: $T(n) = 2T(n/2) + n \leq c \cdot n\log n$ for some constant $c$ and sufficiently large $n$.
     - $2c(n/2)\log(n/2) + n \leq c \cdot n\log n$
