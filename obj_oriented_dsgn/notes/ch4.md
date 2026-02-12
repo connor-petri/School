@@ -121,3 +121,48 @@ public class Person implements Comparable<Person> {
 }
 ```
 
+### ```Comparable``` vs ```Comparator```
+- `Comperable`: Defines a natural ordering for objects of a class. The class itself implements the `compareTo` method. We override the `compareTo` method in the class to define how objects of that class should be compared.
+- `Comparator`: An interface that defines a custom ordering for objects of a class. It allows us to create multiple comparators for different sorting criteria without modifying the class itself. We implement the `compare` method in a separate class that implements the `Comparator` interface to define how objects should be compared based on specific criteria.
+- We do this because we can pass the comparator to sorting methods to sort objects based on different criteria without changing the class definition, providing flexibility and separation of concerns.
+```java
+public class AgeComparator implements Comparator<Person> {
+    @Override
+    public int compare(Person p1, Person p2) {
+        return Integer.compare(p1.getAge(), p2.getAge());
+    }
+```
+
+## Annonymous Classes
+Anonymous classes are a way to define and instantiate a class at the same time, without giving it a name. They are often used to implement interfaces or extend classes in a concise way, especially when the implementation is only needed in a single place. Anonymous classes can be used to create instances of interfaces or abstract classes without having to create a separate named class for the implementation.
+```java
+Comparator<Country> comp = new
+    Comparator<Country>() {
+        public int compare(Country country1, Country country2) {
+            return country1.getName().compareTo(country2.getName());
+        }
+    };
+```
+
+### Factory Method
+- If we want to create multiple instances of an anonymous class, we can use a factory method to encapsulate the creation logic. A factory method is a static method that returns an instance of a class based on some input parameters. This allows us to reuse the anonymous class implementation without having to duplicate the code for each instance.
+```java
+public class ComparatorFactory {
+    public static Comparator<Country> createNameComparator() {
+        return new Comparator<Country>() {
+            public int compare(Country country1, Country country2) {
+                return country1.getName().compareTo(country2.getName());
+            }
+        };
+    }
+}
+```
+
+---
+
+### Graphics Programming (Swing)
+#### AWT
+- A class library for basic GUI programming. Swing has some dependency on AWT for event handling and some components, but it provides a more flexible and powerful set of GUI components compared to AWT.
+#### Swing
+- A more advanced GUI toolkit that provides a richer set of components and a more flexible architecture for building graphical user interfaces. Swing components are lightweight and can be customized more easily than AWT components.
+
