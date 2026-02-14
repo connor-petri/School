@@ -133,7 +133,31 @@ public class Event implements Comparable<Event> {
      * @return true/false if there is an overlap
      */
     public boolean overlapsWith(Event other) {
-        return time.overlapsWith(other.time);
+        if (!isRecurrent && !other.isRecurrent) {
+            return time.overlapsWith(other.time);
+        } else if (isRecurrent && !other.isRecurrent) {
+            return checkRecurrentOverlap(other);
+        } else if (!isRecurrent && other.isRecurrent) {
+            return other.checkRecurrentOverlap(this);
+        } else {
+            return checkRecurrentOverlap(other) || other.checkRecurrentOverlap(this);
+        }
+    }
+
+    private boolean checkRecurrentOverlap(Event other) {
+        LocalDate start = time.getStartTime().toLocalDate();
+        LocalDate end = time.getEndTime().toLocalDate();
+        LocalDate otherDate = other.time.getStartTime().toLocalDate();
+
+        while (!start.isAfter(end)) {
+            if (recurrence.indexOf(otherDate.getDayOfWeek().toString().charAt(0)) != -1 &&
+                    time.getStartTime().toLocalTime().isBefore(other.time.getEndTime().toLocalTime()) &&
+                    other.time.getStartTime().toLocalTime().isBefore(time.getEndTime().toLocalTime())) {
+                return true;
+            }
+            start = start.plusDays(1);
+        }
+        return false;
     }
 
     /**

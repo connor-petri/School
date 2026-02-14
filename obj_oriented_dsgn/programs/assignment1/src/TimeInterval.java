@@ -72,8 +72,8 @@ public class TimeInterval implements Comparable<TimeInterval> {
      * @return boolean
      */
     public boolean overlapsWith(TimeInterval other) {
-        return (startTime.compareTo(other.startTime) < 0 && other.startTime.compareTo(endTime) < 0) ||
-                (other.startTime.compareTo(startTime) < 0 && startTime.compareTo(other.endTime) < 0);
+        return ((startTime.isBefore(other.endTime) || startTime.equals(other.endTime)) &&
+                (other.startTime.isBefore(endTime) || other.startTime.equals(endTime)));
     }
 
     /**

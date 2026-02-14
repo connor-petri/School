@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9ddf844d-dbfd-428f-8d29-8f1f3428e2f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events.txt" beforeDir="false" afterPath="$PROJECT_DIR$/events.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyCalendar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyCalendarTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyCalendarTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TimeInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TimeInterval.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,7 @@
     "Application.MyCalendarTester.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "main",
@@ -74,7 +77,7 @@
       <updated>1770851340025</updated>
       <workItem from="1770851343494" duration="8759000" />
       <workItem from="1770923113963" duration="22071000" />
-      <workItem from="1771019358886" duration="11578000" />
+      <workItem from="1771019358886" duration="20767000" />
     </task>
     <servers />
   </component>
@@ -88,11 +91,6 @@
           <properties class="java.time.DateTimeException" package="java.time" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MyCalendar.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

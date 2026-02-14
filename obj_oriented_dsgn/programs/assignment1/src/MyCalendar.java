@@ -84,7 +84,7 @@ public class MyCalendar {
         }
     }
 
-    public void printMonthView(YearMonth yearMonth) {
+    public void printMonthView(YearMonth yearMonth, boolean showEvents) {
         System.out.println(yearMonth.getMonth() + " " + yearMonth.getYear());
         System.out.println("Su Mo Tu We Th Fr Sa");
         int slot = 0;
@@ -100,15 +100,19 @@ public class MyCalendar {
             if (slot % 7 == 0 && slot != 0) {
                 System.out.println();
             }
-            if (!getDayEvents(LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), day)).isEmpty()) {
+            if (!getDayEvents(LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), day)).isEmpty() && showEvents) {
                 System.out.print("{");
+            } else if (day == LocalDate.now().getDayOfMonth() && !showEvents) {
+                System.out.print("[");
             }
             if (day < 10) {
                 System.out.print("0");
             }
             System.out.print(day);
-            if (!getDayEvents(LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), day)).isEmpty()) {
+            if (!getDayEvents(LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), day)).isEmpty() && showEvents) {
                 System.out.print("}");
+            } else if (day == LocalDate.now().getDayOfMonth() && !showEvents) {
+                System.out.print("]");
             }
             System.out.print(" ");
             slot++;

@@ -26,6 +26,7 @@ public class MyCalendarTester {
             System.out.println(prompt);
             input = Character.toLowerCase(s.next().charAt(0));
         }
+        System.out.println();
         return input;
     }
 
@@ -79,18 +80,18 @@ public class MyCalendarTester {
 
     private static void monthView() {
         YearMonth ym = YearMonth.now();
-        cal.printMonthView(ym);
+        cal.printMonthView(ym, true);
         char[] valid = { 'p', 'n', 'g' };
         for (;;) {
             char input = getUserInput("[P]revious or [N]ext or [G]o back to the main menu?", valid);
             switch (input) {
                 case 'p':
                     ym = ym.minusMonths(1);
-                    cal.printMonthView(ym);
+                    cal.printMonthView(ym, true);
                     break;
                 case 'n':
                     ym = ym.plusMonths(1);
-                    cal.printMonthView(ym);
+                    cal.printMonthView(ym, true);
                     break;
                 case 'g':
                     return;
@@ -106,17 +107,24 @@ public class MyCalendarTester {
         System.out.println("Enter a start time (24hrs i.e. 06:00 or 13:30)");
         String t = s.nextLine();
         LocalTime startTime = parseTime(t);
-        System.out.println(startTime);
 
         System.out.println("Enter an end time (24hrs)");
         t = s.nextLine();
         LocalTime endTime = parseTime(t);
-        System.out.println(endTime);
 
         LocalDateTime startDateTime = date.atTime(startTime);
         LocalDateTime endDateTime = date.atTime(endTime);
 
-        cal.addEvent(new Event(name, new TimeInterval(startDateTime, endDateTime)));
+        Event ev = new Event(name, new TimeInterval(startDateTime, endDateTime));
+
+        for (Event e : cal.events) {
+            if (e.overlapsWith(ev)) {
+                System.out.println("Event overlaps with " + e.getName());
+                return;
+            }
+        }
+
+        cal.addEvent(ev);
     }
 
     private static LocalTime parseTime(String t) {
@@ -148,8 +156,10 @@ public class MyCalendarTester {
                 for (Event e : cal.getDayEvents(date)) {
                     if (e.getName().equals(name) && !e.isRecurrent()) {
                         cal.deleteEvent(e);
+                        return;
                     }
                 }
+                System.out.println("Event with name " + name + " not found");
                 break;
             case 'a':
                 date = getDate();
@@ -163,8 +173,10 @@ public class MyCalendarTester {
                 for (Event e : cal.getRecurringEvents()) {
                     if (e.getName().equals(n)) {
                         cal.deleteEvent(e);
+                        return;
                     }
                 }
+                System.out.println("Event with name " + n + " not found");
                 break;
         }
     }
@@ -200,10 +212,15 @@ public class MyCalendarTester {
     public static void main(String[] args) {
         try {
             cal.load();
+        } catch (Exception e) {
+            System.out.println("events.txt not found. Please check location.");
+            return;
+        }
+        cal.printMonthView(YearMonth.now(), false);
+        try {
             mainMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
