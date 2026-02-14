@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9ddf844d-dbfd-428f-8d29-8f1f3428e2f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events.txt" beforeDir="false" afterPath="$PROJECT_DIR$/events.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyCalendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/.$crc.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/document/.$crc.drawio.bkp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/crc.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/document/crc.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/use-cases.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyCalendarTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyCalendarTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TimeInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TimeInterval.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +76,7 @@
       <updated>1770851340025</updated>
       <workItem from="1770851343494" duration="8759000" />
       <workItem from="1770923113963" duration="22071000" />
-      <workItem from="1771019358886" duration="20767000" />
+      <workItem from="1771019358886" duration="23021000" />
     </task>
     <servers />
   </component>

@@ -6,12 +6,33 @@ import java.util.Scanner;
 import java.time.*;
 import java.time.format.*;
 
+/**
+ * Driver class for calendar app.
+ * @author Connor Petri
+ * @version 1.0
+ * @see Event
+ * @see TimeInterval
+ * @see MyCalendar
+ */
 public class MyCalendarTester {
     private static MyCalendar cal = new MyCalendar();
     private static final Scanner s = new Scanner(System.in);
 
+    /**
+     * Macro for Character.isDigit
+     * @param c
+     * @return
+     */
     private static boolean dig(char c) { return Character.isDigit(c); }
 
+    /**
+     * Gathers input from the user in the form of a single character and validates it against a character array
+     * Precondition: prompt and valid char array must not be null
+     * Postcondition: User input is validated against input array
+     * @param prompt What to prompt the user with
+     * @param valid Character array of valid inputs
+     * @return Validated user input
+     */
     private static char getUserInput(String prompt, char[] valid) {
         System.out.println(prompt);
         char input = Character.toLowerCase(s.next().charAt(0));
@@ -30,6 +51,10 @@ public class MyCalendarTester {
         return input;
     }
 
+    /**
+     * Prompts the user to choose day or month view and calls the appropriate function
+     * Postcondition: Correct view menu is called
+     */
     private static void viewMenu() {
         char[] valid = { 'd', 'm' };
         char input = getUserInput("[D]ay view or [M]onth view?", valid);
@@ -43,6 +68,12 @@ public class MyCalendarTester {
         }
     }
 
+    /**
+     * Prompts the user to enter a date in MM/DD/YYYY format and validates their input
+     * Precondition: User must enter valid date
+     * Postcondition: Valid LocalDate object is created
+     * @return LocalDate object from user input
+     */
     private static LocalDate getDate() {
         System.out.println("Enter a date [MM/DD/YYYY]");
         String d = s.nextLine();
@@ -50,10 +81,14 @@ public class MyCalendarTester {
             return LocalDate.parse(d, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
         } catch (DateTimeParseException e) {
             System.out.println("Invalid date format. Please use MM/DD/YYYY.");
-            return getDate(); // recursive call to get the date again
+            return getDate();
         }
     }
 
+    /**
+     * Shows all events in a given day separated by one-time and recurring events. Prompts user to move back or forward a day or return to menu
+     * Postcondition: Prints day view
+     */
     private static void dayView() {
         LocalDate date = LocalDate.now();
 
@@ -78,6 +113,10 @@ public class MyCalendarTester {
         }
     }
 
+    /**
+     * Prints a calendar view to console with days with events having curly braces around them. Prompts the user to go back or forward a month or return to menu
+     * Postcondition: Prints month view
+     */
     private static void monthView() {
         YearMonth ym = YearMonth.now();
         cal.printMonthView(ym, true);
@@ -99,6 +138,11 @@ public class MyCalendarTester {
         }
     }
 
+    /**
+     * Prompts the user to enter a name, date, start time, and end time for a new event, validates their input, and creates a new event on the calendar and writes it to events.txt
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void create() throws FileNotFoundException, IOException {
         System.out.println("Enter Event Name");
         String name = s.nextLine();
@@ -127,6 +171,12 @@ public class MyCalendarTester {
         cal.addEvent(ev);
     }
 
+    /**
+     * Turns a time string in HH:mm format, validates it, and makes it into a LocalTime object
+     * Precondition: t must not be null and be in HH:mm format
+     * @param t time string
+     * @return LocalTime object based on validated string t
+     */
     private static LocalTime parseTime(String t) {
         try {
             return LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm"));
@@ -136,11 +186,21 @@ public class MyCalendarTester {
         }
     }
 
+    /**
+     * Prints the day view of a specified date
+     * Postcondition: Prints day view from gathered input
+     */
     private static void goTo() {
         LocalDate date = getDate();
         cal.printDayView(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
     }
 
+    /**
+     * Prompts the user to delete a selected event, all events on a given day, or a recurring event
+     * Postcondition: event is deleted from calendar and from events.txt
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     private static void deleteEvent() throws FileNotFoundException, IOException {
         char[] valid = { 's', 'a', 'r' };
         char input = getUserInput("[S]elected  [A]ll   [R]ecurring", valid);
@@ -181,6 +241,13 @@ public class MyCalendarTester {
         }
     }
 
+    /**
+     * Displays the main menu and gathers/validates user input. Calls appropriate function based on user input
+     * Precondition: Input must be valid
+     * Postcondition: Proper calendar function is called
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
     private static void mainMenu() throws IOException, FileNotFoundException {
         char[] valid = { 'c', 'd', 'e', 'g', 'q', 'v' };
 
@@ -209,6 +276,10 @@ public class MyCalendarTester {
         }
     }
 
+    /**
+     * Main method. Loads events from events.txt, Prints the starting calendar, and calls the main menu function
+     * @param args Command line args
+     */
     public static void main(String[] args) {
         try {
             cal.load();
