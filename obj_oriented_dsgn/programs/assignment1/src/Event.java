@@ -10,10 +10,11 @@ public class Event implements Comparable<Event> {
     protected String name;
     protected TimeInterval time;
     protected String recurrence;
+    protected boolean isRecurrent;
 
     private static final String R_PATTERN = "MTWRFAS";
 
-    protected final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:m");
+    protected final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
     protected final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("E, MMM d yyyy");
 
     /**
@@ -54,6 +55,7 @@ public class Event implements Comparable<Event> {
         this.name = name;
         this.time = timeInterval;
         this.recurrence = "";
+        this.isRecurrent = false;
     }
 
     /**
@@ -74,6 +76,7 @@ public class Event implements Comparable<Event> {
         this.name = name;
         this.time = timeInterval;
         this.recurrence = recurrence;
+        this.isRecurrent = true;
     }
 
     /**
@@ -122,7 +125,7 @@ public class Event implements Comparable<Event> {
      * Postcondition: Returns whether this event is recurrent
      * @return true/false if recurrent
      */
-    public boolean isRecurrent() { return recurrence.isEmpty(); }
+    public boolean isRecurrent() { return isRecurrent; }
 
     /**
      * Postcondition: Determines if this event overlaps with the other event
@@ -149,6 +152,7 @@ public class Event implements Comparable<Event> {
                 System.out.print(" " + dateFormatter.format(time.getEndTime()));
             }
         }
+        System.out.println();
     }
 
     /**
@@ -156,6 +160,9 @@ public class Event implements Comparable<Event> {
      * @returns int > 0 if bigger < 0 if smaller
      */
     public int compareTo(Event other) {
-        return time.getStartTime().compareTo(other.time.getStartTime());
+        if (!time.getStartTime().equals(other.time.getStartTime())) {
+            return time.getStartTime().compareTo(other.time.getStartTime());
+        }
+        return name.compareTo(other.getName());
     }
 }

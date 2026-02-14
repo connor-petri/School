@@ -1,7 +1,10 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.time.*;
+import java.time.format.*;
 
 public class MyCalendarTester {
     private static MyCalendar cal = new MyCalendar();
@@ -11,7 +14,8 @@ public class MyCalendarTester {
 
     private static char getUserInput(String prompt, char[] valid) {
         System.out.println(prompt);
-        char input = Character.toLowerCase(s.next().charAt(1));
+        char input = Character.toLowerCase(s.next().charAt(0));
+        s.nextLine();
 
         Arrays.sort(valid);
         while (Arrays.binarySearch(valid, input) < 0) {
@@ -20,7 +24,7 @@ public class MyCalendarTester {
                 System.out.print(valid[i] + " ");
             }
             System.out.println(prompt);
-            input = Character.toLowerCase(s.next().charAt(1));
+            input = Character.toLowerCase(s.next().charAt(0));
         }
         return input;
     }
@@ -38,42 +42,34 @@ public class MyCalendarTester {
         }
     }
 
-    private static void printDayEvents(int year, int month, int day) {
-        for (Event e : cal.getEvents()) {
-            LocalDateTime t = e.getTime().getStartTime();
-            if (year == t.getYear() && month == t.getMonthValue() && day == t.getDayOfMonth()) {
-                e.print();
-            }
+    private static LocalDate getDate() {
+        System.out.println("Enter a date [MM/DD/YYYY]");
+        String d = s.nextLine();
+        try {
+            return LocalDate.parse(d, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use MM/DD/YYYY.");
+            return getDate(); // recursive call to get the date again
         }
     }
 
-    private static LocalDate getDate() {
-        System.out.println("Enter a date [MM/DD/YYYY]");
-        String d = s.next();
-        int month = Integer.parseInt(d.substring(0,1));
-        int day = Integer.parseInt(d.substring(3, 4));
-        int year = Integer.parseInt(d.substring(6, 9));
-
-        return LocalDate.of(year, month, day);
-    }
-
     private static void dayView() {
-        LocalDate date = getDate();
+        LocalDate date = LocalDate.now();
 
-        printDayEvents(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        cal.printDayView(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
 
         char[] valid = { 'p', 'n', 'g' };
-        char input = getUserInput("[P]revious or [N]ext or [G]o back to the main menu?", valid);
 
         for (;;) {
+            char input = getUserInput("[P]revious or [N]ext or [G]o back to the main menu?", valid);
             switch (input) {
                 case 'p':
                     date = date.minusDays(1);
-                    printDayEvents(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+                    cal.printDayView(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
                     break;
                 case 'n':
                     date = date.plusDays(1);
-                    printDayEvents(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+                    cal.printDayView(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
                     break;
                 case 'g':
                     return;
@@ -82,35 +78,98 @@ public class MyCalendarTester {
     }
 
     private static void monthView() {
-        return;
+        YearMonth ym = YearMonth.now();
+        cal.printMonthView(ym);
+        char[] valid = { 'p', 'n', 'g' };
+        for (;;) {
+            char input = getUserInput("[P]revious or [N]ext or [G]o back to the main menu?", valid);
+            switch (input) {
+                case 'p':
+                    ym = ym.minusMonths(1);
+                    cal.printMonthView(ym);
+                    break;
+                case 'n':
+                    ym = ym.plusMonths(1);
+                    cal.printMonthView(ym);
+                    break;
+                case 'g':
+                    return;
+            }
+        }
     }
 
-    public static void create() {
+    public static void create() throws FileNotFoundException, IOException {
         System.out.println("Enter Event Name");
         String name = s.nextLine();
         LocalDate date = getDate();
 
-        System.out.println("Enter a start time (24hrs i.e. 06:00 or 13:30");
+        System.out.println("Enter a start time (24hrs i.e. 06:00 or 13:30)");
         String t = s.nextLine();
-        LocalDateTime startTime = LocalDateTime.of(date.getYear(),
-                date.getMonthValue(),
-                date.getDayOfMonth(),
-                Integer.parseInt(t.substring(0, 1)),
-                Integer.parseInt(t.substring(3, 4)));
+        LocalTime startTime = parseTime(t);
+        System.out.println(startTime);
 
         System.out.println("Enter an end time (24hrs)");
         t = s.nextLine();
-        LocalDateTime endTime = LocalDateTime.of(date.getYear(),
-                date.getMonthValue(),
-                date.getDayOfMonth(),
-                Integer.parseInt(t.substring(0, 1)),
-                Integer.parseInt(t.substring(3, 4)));
+        LocalTime endTime = parseTime(t);
+        System.out.println(endTime);
 
-        cal.
+        LocalDateTime startDateTime = date.atTime(startTime);
+        LocalDateTime endDateTime = date.atTime(endTime);
+
+        cal.addEvent(new Event(name, new TimeInterval(startDateTime, endDateTime)));
     }
 
+    private static LocalTime parseTime(String t) {
+        try {
+            return LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm"));
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid time format. Please use HH:mm.");
+            return parseTime(s.nextLine());
+        }
+    }
 
-    private static void mainMenu() {
+    private static void goTo() {
+        LocalDate date = getDate();
+        cal.printDayView(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+    }
+
+    private static void deleteEvent() throws FileNotFoundException, IOException {
+        char[] valid = { 's', 'a', 'r' };
+        char input = getUserInput("[S]elected  [A]ll   [R]ecurring", valid);
+
+        LocalDate date;
+        switch (input) {
+            case 's':
+                date = getDate();
+                cal.printOneTimeEvents(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+                System.out.println("Enter the name of the event you want to delete:");
+                String name = s.nextLine();
+
+                for (Event e : cal.getDayEvents(date)) {
+                    if (e.getName().equals(name) && !e.isRecurrent()) {
+                        cal.deleteEvent(e);
+                    }
+                }
+                break;
+            case 'a':
+                date = getDate();
+                for (Event e : cal.getDayEvents(date)) {
+                    cal.deleteEvent(e);
+                }
+                break;
+            case 'r':
+                System.out.println("Enter name of recurring event:");
+                String n = s.nextLine();
+                for (Event e : cal.getRecurringEvents()) {
+                    if (e.getName().equals(n)) {
+                        cal.deleteEvent(e);
+                    }
+                }
+                break;
+        }
+    }
+
+    private static void mainMenu() throws IOException, FileNotFoundException {
         char[] valid = { 'c', 'd', 'e', 'g', 'q', 'v' };
 
         for (;;) {
@@ -127,7 +186,7 @@ public class MyCalendarTester {
                     goTo();
                     break;
                 case 'e':
-                    eventList();
+                    cal.printEvents();
                     break;
                 case 'd':
                     deleteEvent();
@@ -139,6 +198,12 @@ public class MyCalendarTester {
     }
 
     public static void main(String[] args) {
-        mainMenu();
+        try {
+            cal.load();
+            mainMenu();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
