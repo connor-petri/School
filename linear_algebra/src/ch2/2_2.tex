@@ -1,4 +1,4 @@
-\subsection*{Matrix-Vector Multiplication}
+\subsection{Matrix-Vector Multiplication}
 \hrulefill
 \subsubsection*{Vector-Matrix Multiplication}
 \paragraph*{Definition}
@@ -25,9 +25,22 @@ Let $\vec{x}$ be an $n \times 1$ column vector written as $\vec{x} = \begin{bmat
     \item $A\vec{x}$ is a linear combination of the columns of $A$ with coefficients $x_i$ in order.
 \end{itemize}
 
-\paragraph*{Example} 2.2.1
+\paragraph*{Example} Let $B = \begin{bmatrix}
+    1 & 0 & 3 \\
+    2 & -1 & 1
+\end{bmatrix}$ and $\vec{q} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}$. Find $B\vec{q}$.
+\begin{align*}
+B\vec{q} &= 1 \cdot \begin{bmatrix} 1 \\ 2 \end{bmatrix} + 2 \cdot \begin{bmatrix} 0 \\ -1 \end{bmatrix} + 3 \cdot \begin{bmatrix} 3 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} + \begin{bmatrix} 0 \\ -2 \end{bmatrix} + \begin{bmatrix} 9 \\ 3 \end{bmatrix} = \begin{bmatrix} 10 \\ 3 \end{bmatrix}
+\end{align*}
 
-\paragraph*{Example} 2.2.2
+\paragraph*{Example} Let $A = \begin{bmatrix}
+    0 & -1 & 2 \\
+    5 & 3 & -4 \\
+    1 & 0 & 1
+\end{bmatrix}$ and $\vec{p} = \begin{bmatrix} 1 \\ 0 \\ -3 \end{bmatrix}$. Find $A\vec{p}$.
+\begin{align*}
+A\vec{p} &= 1 \cdot \begin{bmatrix} 0 \\ 5 \\ 1 \end{bmatrix} + 0 \cdot \begin{bmatrix} -1 \\ 3 \\ 0 \end{bmatrix} + (-3) \cdot \begin{bmatrix} 2 \\ -4 \\ 1 \end{bmatrix} = \begin{bmatrix} 0 \\ 5 \\ 1 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} -6 \\ 12 \\ -3 \end{bmatrix} = \begin{bmatrix} -6 \\ 17 \\ -2 \end{bmatrix}
+\end{align*}
 
 \paragraph*{Theorem}
 A system of linear equations $\begin{cases}
@@ -87,7 +100,15 @@ Let $A\vec{x} = \vec{b}$ be a system of linear equations and rank($A$) = $r$. Th
 rank of the augmented matrix $[A | \vec{b}]$ is either $r$ or $r + 1$. 
 The system is consistent if and only if rank($A$) = rank($[A | \vec{b}]$).
 
-\paragraph*{Example} 2.2.3
+\paragraph*{Example} Let $A = \begin{bmatrix}
+    1 & 0 & 2 & 0 \\
+    0 & 1 & 3 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0
+\end{bmatrix}$ and $\vec{b} = \begin{bmatrix} 1 \\ 2 \\ 1 \\ 0 \end{bmatrix}$. Determine if the system $A\vec{x} = \vec{b}$ is consistent.
+\begin{align*}
+    \text{rank}(A) = 2 \text{ and rank}([A | \vec{b}]) = 3 \implies \text{the system is inconsistent}
+\end{align*}
 
 \paragraph*{Dot Product}
 Let $\vec{a} = \begin{bmatrix}
@@ -107,9 +128,26 @@ The result of the dot product is a scalar.
 Let $A$ be an $m \times n$ matrix and $\vec{x} \in \mathbb{R}^n$, then the $i$th entry of the vector $A\vec{x}$ is 
 the dot product of the $i$th row of $A$ with $\vec{x}$
 
-\paragraph*{Example} 2.2.4
+\paragraph*{Example} 2Let $A = \begin{bmatrix}
+    1 & -1 & 3 & -2 \\
+    2 & 3 & 5 & 7 \\
+    3 & 0 & 4 & 0 \\
+    4 & 5 & 2 & 0
+\end{bmatrix}$ and $\vec{x} \begin{bmatrix} 0 \\ 1 \\ -1 \\ 5 \end{bmatrix}$. Find the second entry of $A\vec{x}$ without computing the entire product.
+\[
+P_2 = [2 \ 3 \ 5 \ 7] \cdot \begin{bmatrix} 0 \\ 1 \\ -1 \\ 5 \end{bmatrix} = 2(0) + 3(1) + 5(-1) + 7(5) = 3 - 5 + 35 = 33
+\]
 
-\paragraph*{Example} 2.2.5
+\paragraph*{Example} Let $C = \begin{bmatrix}
+    2 & -1 & 3 & 5 \\
+    0 & 2 & -3 & 1  \\
+    -3 & 4 & 1 & 2 
+\end{bmatrix}$ and $\vec{q} = \begin{bmatrix} 2 \\ 1 \\ 0 \\ -1 \end{bmatrix}$. Find $C\vec{q}$.
+\begin{align*}
+C\vec{q} &= 2 \cdot \begin{bmatrix} 2 \\ 0 \\ -3 \end{bmatrix} + 1 \cdot \begin{bmatrix} -1 \\ 2 \\ 4 \end{bmatrix} + 0 \cdot \begin{bmatrix} 3 \\ -3 \\ 1 \end{bmatrix} + (-1) \cdot \begin{bmatrix} 5 \\ 1 \\ 2 \end{bmatrix} \\
+&= \begin{bmatrix} 4 \\ 0 \\ -6 \end{bmatrix} + \begin{bmatrix} -1 \\ 2 \\ 4 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} -5 \\ -1 \\ -2 \end{bmatrix} \\
+&= \begin{bmatrix} -2 \\ 1 \\ -4 \end{bmatrix}
+\end{align*}
 
 \paragraph*{Standard Basis Vectors}
 The standard basis vectors in $\mathbb{R}^n$ are the vectors $e_1, e_2, \ldots, e_n$ where $e_i$ has a 1 in the $i$-th position and 0's elsewhere. That is,
@@ -161,5 +199,58 @@ The image of a vector $\vec{x} \in \mathbb{R}^n$ under the transformation $T$ is
 \paragraph*{Matrix Transformations}
 A matrix transformation is denoted by $T_A(\vec{x}) = A\vec{x}$ for some matrix $A_{m \times n}$. If $A \in \mathbb{R}^{m \times n}$, then $T_A : \mathbb{R}^n \to \mathbb{R}^m$
 
-\paragraph*{Example} 2.2.6
+\paragraph*{Example} $\forall \vec{x} \in \mathbb{R}^2, T_A(\vec{x}) = A\vec{x}$ and let $A = \begin{bmatrix}
+    1 & -3 \\
+    3 & 5 \\
+    -1 & 7
+\end{bmatrix}$ and $\vec{u} = \begin{bmatrix} 2 \\ -1 \end{bmatrix}$. Find $T_A(\vec{u})$.
+\[
+T_A(\vec{u}) = \begin{bmatrix}
+    1 & -3 \\
+    3 & 5 \\
+    -1 & 7
+\end{bmatrix} \begin{bmatrix} 2 \\ -1 \end{bmatrix} = \begin{bmatrix} 1(2) + (-3)(-1) \\ 3(2) + 5(-1) \\ -1(2) + 7(-1) \end{bmatrix} = \begin{bmatrix} 5 \\ 1 \\ -9 \end{bmatrix}
+\]
 
+\paragraph*{Example}
+Let $\vec{b} = \begin{bmatrix}
+    3 \\ 2 \\ -5
+\end{bmatrix}$ and $\vec{c} = \begin{bmatrix}
+    3 \\ 2 \\ 5
+\end{bmatrix}$. Find $\vec{x} \in \mathbb{R}^2 \ni T_A(\vec{x}) = \vec{b}$ and $\vec{y} \in \mathbb{R}^2 \ni T_A(\vec{y}) = \vec{c}$.
+\begin{align*}
+    A\vec{x} = \vec{b} &\implies \begin{bmatrix}
+        1 & -3 \\
+        3 & 5 \\
+        -1 & 7
+    \end{bmatrix} \begin{bmatrix}
+        x_1 \\
+        x_2
+    \end{bmatrix} = \begin{bmatrix}
+        3 \\
+        2 \\
+        5
+    \end{bmatrix} \implies \begin{bmatrix}
+        1 & -3 & | & 3 \\
+        3 & 5 & | & 2 \\
+        -1 & 7 & | & -5
+    \end{bmatrix} \xmapsto{RREF} \begin{bmatrix}
+        1 & 0 & | & \frac{3}{2} \\
+        0 & 1 & | & -\frac{1}{2} \\
+        0 & 0 & | & 0
+    \end{bmatrix} \\
+    \implies & \vec{x} = \begin{bmatrix}
+        \frac{3}{2} \\
+        -\frac{1}{2}
+    \end{bmatrix} \\
+    \\
+    A\vec{y} = \vec{c} &\implies \begin{bmatrix}
+        1 & -3 | 3 \\
+        3 & 5 | 2 \\
+        -1 & 7 | 5
+    \end{bmatrix} \xmapsto{RREF} \begin{bmatrix}
+        1 & -3 & | & 3 \\
+        0 & 1 & | & -\frac{1}{2} \\
+        0 & 0 & | & 10
+    \end{bmatrix} \implies \text{the system is inconsistent}
+\end{align*}
