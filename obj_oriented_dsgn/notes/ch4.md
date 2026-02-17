@@ -166,3 +166,71 @@ public class ComparatorFactory {
 #### Swing
 - A more advanced GUI toolkit that provides a richer set of components and a more flexible architecture for building graphical user interfaces. Swing components are lightweight and can be customized more easily than AWT components.
 
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class FrameTester {
+    public static void main(String[] args) {
+        // Create and set up new JFrame
+        JFrame frame = new JFrame();
+        final int WIDTH = 300;
+        final int HEIGHT = 200;
+        frame.setSize(WIDTH, HEIGHT);
+
+        // Create components
+        JButton helloButton = new JButton("Say Hello");
+        final int FIELD_WIDTH = 20;
+        JTextField textField = new JTextField(FIELD_WIDTH);
+        textField.setText("Click a button!");
+
+        // Add components to the frame
+        frame.setLayout(new FlowLayout());
+        frame.add(helloButton);
+        frame.add(textField);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack(); // Adjusts the frame size to fit the components
+        frame.setVisible(true); // Renders the frame on the screen
+    }
+}
+```
+
+### Customization
+Using inheritance, we can create custom components by extending existing Swing components and overriding their methods to provide specific behavior. For example, we can create a custom panel that displays a message by extending `JPanel` and overriding the `paintComponent` method to draw the message on the panel.
+```java
+class HelloFrame extends JFrame {
+    public static final int DEFAULT_WIDTH = 300;
+    public static final int DEFAULT_HEIGHT = 200;
+
+    public HelloFrame() {
+        setTitle("Hello Swing");
+        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        HelloPanel panel = new HelloPanel();
+        add(panel);
+    }
+}
+
+class HelloPanel extends JPanel {
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.drawString("Hello, World!", 75, 100);
+    }
+}
+```
+
+#### PaintComponent
+- JComponent supplies the paintComponent. Each time a window needs to be redrawn, the paintComponent methods of all JComponents will be executed.
+- You should *never* call paintComponent directly. Instead, you should call the repaint method, which will schedule a call to paintComponent at the appropriate time. This allows the Swing framework to manage the painting process efficiently and ensures that your component is redrawn correctly when necessary.
+- paintComponent will be called when
+    - the window is displayed for the first time
+    - the user resizes the window
+    - The user opens another window which covers the existing window.
+
+### Shape Primitives
+- The shape primitives are contained almost entirely in the java.awt.geom package. The most commonly used shape primitives are Line2D, Rectangle2D, Ellipse2D, and Arc2D. These classes provide methods for creating and manipulating basic geometric shapes, which can be drawn on a component using the Graphics2D class. By using these shape primitives, you can create complex graphics and custom components in your Swing applications.
+
+#### Path2D
+- The Path2D class allows you to create complex shapes by defining a sequence of points and connecting them with lines or curves. You can use methods like moveTo, lineTo, quadTo, and curveTo to define the path of the shape. Once you have defined the path, you can draw it on a component using the Graphics2D class. This is useful for creating custom shapes and graphics that cannot be easily represented using the basic shape primitives.
+- Implements the PathIterator interface, which allows you to iterate over the segments of the path. This is useful for performing operations on the path, such as calculating its length or determining if a point is contained within the path.
