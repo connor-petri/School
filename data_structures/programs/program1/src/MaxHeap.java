@@ -13,6 +13,10 @@ public class MaxHeap
    public MaxHeap(Collection<Student> collection)
    {
       students = new ArrayList<Student>(collection);
+
+      for (int i = 0; i < students.size(); i++) {
+         students.get(i).setIndex(i);
+      }
       for(int i = size()/2 - 1; i >= 0; i--)
       {
          maxHeapify(i);
@@ -31,9 +35,11 @@ public class MaxHeap
    public Student extractMax()
    {
       Student value = getMax();
-      students.set(0,students.get(size()-1));
-      students.remove(size()-1);
-      maxHeapify(0);
+      swap(0, size() - 1);
+      students.remove(size() - 1);
+      if (size() > 0) {
+         maxHeapify(0);
+      }
       return value;
    }
     
@@ -49,7 +55,8 @@ public class MaxHeap
 
       // Insert @ end of array
       students.add(elt);
-      checkTowardsRoot(students.size() - 1);
+      elt.setIndex(students.size() - 1);
+      checkTowardsRoot(elt.getIndex());
    }
    
    public void addGrade(Student elt, double gradePointsPerUnit, int units)
@@ -57,10 +64,21 @@ public class MaxHeap
       //Please write me.  I should change the student's gpa (using a method
 	  //from the student class), and then adjust the heap as needed using
 	  //the changeKey algorithm from the videos.
+
+      // PART 1 CODE ------------------------------------------------------
+//      elt.addGrade(gradePointsPerUnit, units);
+//      int index = students.indexOf(elt); // INDEXOF ONLY ALLOWED ONCE
+//      checkTowardsRoot(index);
+//      maxHeapify((index));
+
+      // PART 2 CODE -------------------------------------------------------
+      double old = elt.gpa();
       elt.addGrade(gradePointsPerUnit, units);
-      int index = students.indexOf(elt); // INDEXOF ONLY ALLOWED ONCE
-      checkTowardsRoot(index);
-      maxHeapify((index));
+      if (elt.gpa() > old) {
+         checkTowardsRoot(elt.getIndex());
+      } else {
+         maxHeapify(elt.getIndex());
+      }
    }
    
    private int parent(int index)
@@ -83,10 +101,12 @@ public class MaxHeap
       Student val = students.get(from);
       students.set(from,  students.get(to));
       students.set(to,  val);
+      val.setIndex(to);
+      students.get(from).setIndex(from);
    }
 
    private void checkTowardsRoot(int index) {
-      while (students.get(parent(index)).compareTo(students.get(index)) < 0) {
+      while (index > 0 && students.get(parent(index)).compareTo(students.get(index)) < 0) {
          swap(parent(index), index);
          index = parent(index);
       }
