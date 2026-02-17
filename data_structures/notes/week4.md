@@ -10,6 +10,20 @@ Big O notation is a mathematical notation used to describe the upper bound of a 
 $f(n) = O(g(n)) \iff \forall c > 0, \exists n_0 > 0 \ni \forall n > n_0, 0 \leq f(n) \leq c \cdot g(n)$
 In other words, the function $f(n)$ has an upper bound runtime complexity of $O(g(n))$ if there exist positive constants $c$ and $n_0$ such that for all $n > n_0$, the value of $f(n)$ is at most $c$ times the value of $g(n)$. To solve this, we can choose arbitrary values for $c$ and $n_0$ and check if the inequality holds for all $n > n_0$. If we can find such constants, then we can conclude that $f(n) = O(g(n))$.
 
+In other words, $f(n)$ is $O(g(n))$ if we can find a positive constant $c$ and a positive integer $n_0$ such that $0 \leq f(n) \leq c \cdot g(n)$ for all $n > n_0$.
+
+#### Example
+Suppose $T(n) = 2n + 3$. Prove that $T(n) = O(n)$. 
+- We know than $\forall n > 0, 2n + 3 \leq 2n + 3n = 5n$. Therefore $c=5$ 
+- $\implies 2n + 3 \leq 5n$ for all $n > 0$.
+- Therefore, we can choose $c = 5$ and $n_0 = 1$ to satisfy the definition of Big O notation.
+
+#### Example
+Prove that $T(n) = 2n + 3$ is $O(n^2)$.
+- We know that $\forall n > 0, 2n + 3 \leq 2n + 3n^2 = 5n^2$.
+- $\implies 2n + 3 \leq 5n^2$ for all $n > 0$.
+- Therefore, we can choose $c = 5$ and $n_0 = 1$ to satisfy the definition of Big O notation.
+
 ### Big Omega Notation
 Big Omega notation is a mathematical notation used to describe the lower bound of a function's growth rate. It is used to analyze the best-case time complexity of algorithms. The formal definition of Big Omega notation is as follows:
 $f(n) = \Omega(g(n)) \iff \forall c > 0, \exists n_0 > 0 \ni \forall n > n_0, 0 \leq c \cdot g(n) \leq f(n)$
@@ -104,9 +118,6 @@ $$
 \end{cases}
 $$
 
-## TO ASIMMILATE LATER
-
-$n_0$ is the smallist n value such that we only care about the leading term of the function. For example, if we have $f(n) = 3n^2 + 2n + 1$, then $n_0$ would be the smallest value of $n$ such that $3n^2$ dominates the function, which is when $n > 1$. Therefore, we can say that $f(n) = O(n^2)$ for $n > 1$.
 
 $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \implies f(n) = o(g(n))$
 
