@@ -72,13 +72,9 @@ public class MaxHeap
 //      maxHeapify((index));
 
       // PART 2 CODE -------------------------------------------------------
-      double old = elt.gpa();
       elt.addGrade(gradePointsPerUnit, units);
-      if (elt.gpa() > old) {
-         checkTowardsRoot(elt.getIndex());
-      } else {
-         maxHeapify(elt.getIndex());
-      }
+      checkTowardsRoot(elt.getIndex());
+      maxHeapify(elt.getIndex());
    }
    
    private int parent(int index)

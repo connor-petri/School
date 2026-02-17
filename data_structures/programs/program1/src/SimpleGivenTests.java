@@ -143,7 +143,10 @@ public class SimpleGivenTests
 
        MaxHeap heap = new MaxHeap(l);
 
-       assertEquals(reed, heap.getMax());
+       assertEquals(reed, heap.extractMax());
+       assertEquals(susan, heap.extractMax());
+       assertEquals(ben, heap.extractMax());
+       assertEquals(johnny, heap.extractMax());
     }
 
     @Test
