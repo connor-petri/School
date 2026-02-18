@@ -1,0 +1,68 @@
+\subsection*{Title}
+\hrulefill
+
+% TODO: Copy last class' notes here
+
+$A^{-1} = \frac{1}{\text{det}(A)} \begin{bmatrix}
+d & -b \\
+-c & a
+\end{bmatrix}$
+
+\paragraph*{Theorem}
+$A\vec{x} = \vec{b}$ and $\exists A^{-1}$, then $\vec{x} = A^{-1}\vec{b}$
+
+\paragraph*{Example} % 2.4.1
+
+\subsubsection*{Matrix Invsersion Algorithm}
+If $A_{n\times n}$, then there is a sequence of elementary row operations that carry $A \rightarrow I_n$.
+The same sequence of elementary row operations carries $I_n \rightarrow A^{-1}$.
+\begin{enumerate}
+    \item Form the augmented matrix $[A | I_n]$.
+    \item Use elementary row operations to reduce the left half of the augmented matrix to $I_n$.
+    \item The right half of the augmented matrix is now $A^{-1}$.
+    \item If the left half of the augmented matrix cannot be reduced to $I_n$, then $A$ is not invertible.
+\end{enumerate}
+
+\paragraph*{Example} % 2.4.2
+
+\subsubsection*{Properties of Inverses}
+Let $A$ be invertible, then
+\begin{itemize}
+    \item $AB = AC \implies B = C$
+    \item $(A^T)^{-1} = (A^{-1})^T$(
+    \item $(A^{-1})^{-1} = A$
+    \item $(AB)^{-1} = B^{-1}A^{-1}$
+    \item $AB(AB)^{-1} = AB(B^{-1}A^{-1}) = I$
+    \item $[A_1\ A_2\ \dots\ A_k]^{-1} = [A_k^{-1}\ \dots\ A_2^{-1}\ A_1^{-1}]$
+    \item $(A^k)^{-1} = (A^{-1})^k \forall k \in \mathbb{R}, k > 0$
+    \item $(aA)^{-1} = \frac{1}{a}A^{-1} \forall a \in \mathbb{R}, a \neq 0$
+\end{itemize}
+
+\paragraph*{Example} % 2.4.3
+
+\paragraph*{Inverse Theorem}
+The following conditions are equivilent for an $n \times n$ matrix $A$:
+\begin{itemize}
+    \item $A$ is invertible
+    \item $RREF(A) = I_n$
+    \item rank($A$) = $n$
+    \item The homogeneous system $A\vec{x} = \vec{0}$ has only the trivial solution $\vec{x} = \vec{0}$
+    \item The system $A\vec{x} = \vec{b}$ has a unique solution for every $\vec{b} \in \mathbb{R}^n$
+    \item $det(A) \neq 0$
+    \item The linear transformation $T(\vec{x}) = A\vec{x}$ is one-to-one and onto.
+\end{itemize}
+
+\paragraph*{Inverses of Block Matricies}
+Let $P = \begin{bmatrix}
+    A_{m \times m} & X \\
+    0 & B_{n \times n}
+\end{bmatrix}$ and $Q = \begin{bmatrix}
+    A_{m \times m} & 0 \\
+    Y & B_{n \times n}
+\end{bmatrix}$, then $P^{-1} = \begin{bmatrix}
+    A^{-1} & -A^{-1}XB^{-1} \\
+    0 & B^{-1}
+\end{bmatrix}$ and $Q^{-1} = \begin{bmatrix}
+    A^{-1} & 0 \\
+    -B^{-1}YA^{-1} & B^{-1}
+\end{bmatrix}$
