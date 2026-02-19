@@ -234,3 +234,32 @@ class HelloPanel extends JPanel {
 #### Path2D
 - The Path2D class allows you to create complex shapes by defining a sequence of points and connecting them with lines or curves. You can use methods like moveTo, lineTo, quadTo, and curveTo to define the path of the shape. Once you have defined the path, you can draw it on a component using the Graphics2D class. This is useful for creating custom shapes and graphics that cannot be easily represented using the basic shape primitives.
 - Implements the PathIterator interface, which allows you to iterate over the segments of the path. This is useful for performing operations on the path, such as calculating its length or determining if a point is contained within the path.
+
+#### Rectangle2D
+- The Rectangle2D class is abstract and has two concrete subclasses: Rectangle2D.Float and Rectangle2D.Double. The Float subclass uses single-precision floating-point numbers for the coordinates and dimensions of the rectangle, while the Double subclass uses double-precision floating-point numbers. The choice between the two depends on the level of precision required for your application. If you need higher precision, you should use the Double subclass; if you are working with less precise data or want to save memory, you can use the Float subclass.
+
+#### Line Segments
+- The Line2D class represents a line segment defined by two endpoints. It has two concrete subclasses: Line2D.Float and Line2D.Double, which use single-precision and double-precision floating-point numbers, respectively. The Line2D class provides methods for calculating the length of the line segment, determining if a point is on the line segment, and finding the intersection of two line segments. This makes it a useful class for working with geometric shapes and performing calculations related to lines in your Swing applications.
+
+### Strings
+- The Graphics2D class provides methods for drawing strings on a component. You can use the drawString method to draw a string at a specified location on the component. The appearance of the string can be customized using the setFont and setColor methods of the Graphics2D class. You can also use the FontMetrics class to measure the dimensions of the string, which can be useful for positioning the string accurately on the component. By using these methods, you can create custom text-based graphics and components in your Swing applications.
+
+---
+
+## Event Handling
+### ActionListener Interface
+```java
+public interface ActionListener {
+    public void actionPerformed(ActionEvent event);
+}
+```
+
+### Listener objects
+A listener object is an instance of a class that implements the ActionListener interface.
+```java
+ActionListener listener = new ActionListener() {
+    public void actionPerformed(ActionEvent event) {
+        textField.setText("Hello World!");
+    }
+}
+```
