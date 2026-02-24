@@ -17,3 +17,31 @@ $\forall A \in \mathbb{R}^{m \times n}, B \in \mathbb{R}^{n\times p} \implies AB
 \end{itemize}
 
 \subsubsection*{Block Multiplication}
+\paragraph*{Definition}
+We can partition $A$ and $B$ into blocks and perform multiplication on the blocks. For example, if we partition $A$ into four blocks and $B$ into four blocks, we can write:
+\[A = \begin{bmatrix}
+    A_{11} & A_{12} \\
+    A_{21} & A_{22}
+\end{bmatrix}, \quad B = \begin{bmatrix}
+    B_{11} & B_{12} \\
+    B_{21} & B_{22}
+\end{bmatrix}\]
+Then, the product $AB$ can be computed as:
+\[AB = \begin{bmatrix}
+    A_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\
+    A_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}
+\end{bmatrix}\]
+This method is particularly useful for large matrices, as it allows us to break down the multiplication into smaller, more manageable pieces.
+
+\paragraph*{Theorem}
+If $A, B \in \mathbb{R}^{n \times n}$ are partitioned into comparable blocks, then the product $AB$ can be computed by matrix multiplication
+using blocks as entries. In other words, if $A$ and $B$ are partitioned into blocks of size $m \times m$, then the product $AB$ can be computed by multiplying the corresponding blocks and summing the results.
+
+\paragraph*{Multiplying Diagonal Matricies}
+If $A$ and $B$ are diagonal matrices, then their product is also a diagonal matrix. Specifically, if $A = \text{diag}(a_1, a_2, \ldots, a_n)$ and $B = \text{diag}(b_1, b_2, \ldots, b_n)$, then their product is given by:
+\[AB = \begin{bmatrix}
+    a_1 b_1 & 0 & \ldots & 0 \\
+    0 & a_2 b_2 & \ldots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \ldots & a_n b_n
+\end{bmatrix}\]
