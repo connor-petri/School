@@ -22,15 +22,19 @@ class Tree {
     this.root = root;
   }
 
-  private int count(Node start) {
-    if (start == null) {
-      return 0;
+    private int count(Node start) {
+      if (start == null) {
+        return 0;
+      }
+
+      int total = start.isTwo() ? 1 : 2;
+
+      total += count(start.left);
+      total += count(start.mid);
+      total += count(start.right);
+
+      return total;
     }
-    if (start.isLeaf()) {
-      return 1;
-    }
-    return count(start.left) + count(start.mid) + count(start.right);
-  }
 
   private Node find(Node node, int val) {
     if (node == null) { return null; }
