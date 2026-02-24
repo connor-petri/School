@@ -1,0 +1,42 @@
+\subsection{Elementary Matricies}
+\hrulefill
+\paragraph*{Definition}
+An $n \times n$ matrix $E$ is an elementary matrix if it can be obtained from $I_n$ by performing a single elementary row operation.
+
+\paragraph*{Types of Elementary Matricies}
+\begin{itemize}
+    \item Type 1: $E$ is obtained from $I_n$ by interchanging two rows.
+    \item Type 2: $E$ is obtained from $I_n$ by multiplying a row by a nonzero scalar.
+    \item Type 3: $E$ is obtained from $I_n$ by adding a scalar multiple of one row to another row.
+\end{itemize}
+
+\paragraph*{Example} % 2.5.1
+
+\paragraph*{Theorem}
+Let $E$ be an elementary matrix and $A$ be any matrix, then $EA$ is the matrix obtained from $A$ by performing the same elementary row operation on $A$ as was performed on $I_n$ to obtain $E$.
+Note that this only works for left multiplication, $AE$ does not have the same property. You also cannot perform multiple elementary row operations by multiplying by multiple elementary matrices, 
+you can only perform one elementary row operation by multiplying by one elementary matrix.
+
+\paragraph*{Example} % 2.5.2
+
+\paragraph*{Theorem}
+All elementary matricies are invertible and the inverse of an elementary matrix is also an elementary matrix.
+
+\paragraph*{Example} % 2.5.3
+
+Suppose $A, B \in \mathbb{R}^{m \times n}$ are matrices and $A \xmapsto{ERO} B$, then
+\begin{enumerate}
+    \item $B = UA$, where $U \in \mathbb{R}^{m \times m}$ is an invertible matrix.
+    \item $U$ can be computed by $[A | I_m] \xmapsto{ERO} [B | U]$.
+    \item $U = E_k E_{k-1} \ldots E_1$, where $E_i$ is the elementary matrix corresponding to the $i$-th elementary row operation performed on $A$ to obtain $B$.
+\end{enumerate}
+
+\paragraph*{Example} % 2.5.4
+
+\paragraph*{Theorem}
+A square matrix is invertible if and only if it is a product of elementary matricies.
+
+\paragraph*{Theorem}
+A = E_1 E_2 \ldots E_k, then $det(P_1 P_2 \ldots P_m) = det(P_1) det(P_2) \ldots det(P_m)$, where $P_i$ is an elementary matrix. 
+This is because the determinant of a product of matrices is the product of their determinants. Since each $E_i$ is an elementary matrix, 
+we can compute its determinant based on the type of elementary row operation it represents:
