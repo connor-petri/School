@@ -21,7 +21,7 @@ public class Reservation {
     private final int seatNum;
     private final char seatLetter;
 
-    public static boolean checkSeatNum(String seatNum) {
+    private boolean checkSeatNum(String seatNum) {
         if (seatNum.length() != 2) {
             return false;
         }
@@ -60,8 +60,6 @@ public class Reservation {
         return seatNum == other.seatNum && seatLetter == other.seatLetter;
     }
 
-    public User getUser() { return user; }
-    public int getPrice() { return type.getPrice(); }
     public int getSeatNum() { return seatNum; }
     public char getSeatLetter() { return seatLetter; }
 
