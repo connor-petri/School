@@ -263,3 +263,89 @@ ActionListener listener = new ActionListener() {
     }
 }
 ```
+
+### Event Source
+An event source is an object that generates events. In Swing, components such as buttons, text fields, and menu items can be event sources. When a user interacts with an event source (e.g., clicks a button), it generates an event that is sent to the registered listeners. Event listeners must be attached to the event source to receive events. 
+
+```java
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class ActionTester {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        final int FIELD_WIDTH = 20;
+        JTextField textField = new JTextField(FIELD_WIDTH);
+        textField.setText("Click a button!");
+
+        JButton helloButton = new JButton("Say Hello");
+        JButton goodbyeButton = new JButton("Say Goodbye");
+
+        helloButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                textField.setText("Hello, World!");
+            }
+        }
+
+        goodbyeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                textField.setText("Goodbye, World!");
+            }
+        }
+
+        frame.setLayout(new FlowLayout());
+        frame.add(helloButton);
+        frame.add(goodbyeButton);
+        frame.add(textField);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
+```
+
+---
+
+## Nested Classes
+Nested classes are classes that are defined within another class. They can be used to logically group classes that are only used in one place, which can help to improve the readability and maintainability of your code. There are four types of nested classes in Java: static nested classes, non-static nested classes (also known as inner classes), local classes, and anonymous classes. Each type of nested class has its own specific use case and can be used to encapsulate functionality that is closely related to the enclosing class.
+
+### Static Nested Classes
+A static nested class is a nested class that is declared static. It can be accessed without an instance of the enclosing class and can only access static members of the enclosing class.
+
+### Non-Static Nested Classes (Inner Classes)
+An inner class is a non-static nested class. It can access all members of the enclosing class, including private members, and is associated with an instance of the enclosing class. To create an instance of an inner class, you need to have an instance of the enclosing class.
+```java
+public class OuterClass {
+    private int outerField;
+
+    public class InnerClass {
+        public void accessOuter() {
+            System.out.println("Outer field: " + outerField);
+        }
+    }
+}
+```
+To create an instance of the InnerClass, you would do the following:
+```java
+OuterClass outer = new OuterClass();
+OuterClass.InnerClass inner = outer.new InnerClass();
+inner.accessOuter();
+```
+
+### Local Inner Classes
+A local inner class is a class that is defined within a method of the enclosing class. It can access the final or effectively final local variables of the method, as well as the members of the enclosing class. Local inner classes are typically used for event handling or to define a small helper class that is only needed within the scope of a method.
+```java
+public class OuterClass {
+    public void someMethod() {
+        final int localVariable = 10;   
+        LocalInnerClass localInner = new LocalInnerClass() {
+            public void accessLocal() {
+                System.out.println("Local variable: " + localVariable);
+            }
+        };
+        localInner.accessLocal();
+    }
+}
+```
