@@ -349,3 +349,127 @@ public class OuterClass {
     }
 }
 ```
+
+### Swing Timer
+The Swing Timer is a utility class that allows you to schedule a task to be executed at regular intervals. It is commonly used for animation and other time-based tasks in Swing applications. The Timer class takes two parameters: the delay in milliseconds between task executions and an ActionListener that defines the task to be performed. When the timer is started, it will call the actionPerformed method of the ActionListener at the specified intervals until it is stopped.
+
+```java
+import javax.swing.*;
+import java.awt.event.*;
+
+public class TimerExample {
+    public static void main(String[] args) {
+        Timer timer = new Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Timer ticked!");
+            }
+        });
+        timer.start();
+    }
+}
+```
+
+---
+
+## Example: Move car across window
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public interface MoveableShape {
+    void move(int dx, int dy);
+    void draw(Graphics2D g2);
+}
+
+public class MyPanel extends JPanel {
+    private MoveableShape shape;
+
+    public MyPanel(MoveableShape s) {
+        shape = s;
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        shape.draw(g2);
+    }
+}
+
+public class Car implements MoveableShape {
+    private int x;
+    private int y;
+
+    public Car(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void move(int dx, int dy) {
+        x += dx;
+        y += dy;
+    }
+
+    public void draw(Graphics2D g2) {
+        // Draw the car using rectangles and circles
+        g2.setColor(Color.BLUE);
+        g2.fillRect(x, y, 60, 30); // Body of the car
+        g2.setColor(Color.BLACK);
+        g2.fillOval(x + 10, y + 30, 20, 20); // Left wheel
+        g2.fillOval(x + 40, y + 30, 20, 20); // Right wheel
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        Car car = new Car(50, 50);
+        MyPanel panel = new MyPanel(car);
+        frame.add(panel);
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+        Timer timer = new Timer(100, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                car.move(5, 0); // Move the car to the right
+                panel.repaint(); // Repaint the panel to update the car's position
+            }
+        });
+        timer.start();
+    }
+}
+```
+
+---
+
+## Lambda Expressions
+Lambdas are annonymous functions that can be used to create instances of functional interfaces (interfaces with a single abstract method) in a more concise way. They allow you to write code that is more readable and easier to maintain by eliminating the need for boilerplate code associated with anonymous classes.
+
+```java
+ArrayList<String> names = new ArrayList<>();
+names.add("Alice");
+names.add("Bob");
+names.add("Charlie");
+
+Collections.sort(names, (String n1, String n2) -> {
+    if (n1.length() == n2.length()) {
+        return n1.compareTo(n2);
+    }
+    return n1.length() - n2.length();
+});
+```
+
+Note that lambdas in java are **objects** not functions. They are instances of functional interfaces, which means they can be assigned to variables, passed as arguments to methods, and returned from methods just like any other object. This allows for greater flexibility and reusability in your code, as you can easily create and manipulate lambda expressions as needed.  
+
+```java
+public static vvoid main(String[] args) {
+    JFrame frame = new JFRame();
+    final int FIELD_WIDTH = 20;
+    final JTextField textField = new JTextField(FIELD_WIDTH);
+    textField.setText("Click a button!");
+
+    JButton helloButton = new JButton("Say Hello");
+    helloButton.addActionListener(e -> textField.setText("Hello, World!"));
+}
+```
