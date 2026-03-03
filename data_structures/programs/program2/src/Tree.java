@@ -2,174 +2,199 @@ import java.util.*;
 
 class Tree {
 
-  private static class Node {
-    private Integer k1, k2;
-    private Node left, mid, right;
+  private class Node {
+    private Integer[] keys = new Integer[] { null, null, null };
+
+    // The wall I ran into was that I tried to make this size 3 instead of 4
+    // Once I increased the size to 4, everything fell into place in the insertion algorithm
+    private Node[] children = new Node[] { null, null, null, null };
+    int size = 0;
 
     Node(int key) {
-      k1 = key;
+      keys[0] = key;
+      size++;
     }
 
-    boolean isLeaf() { return left == null; }
-    boolean isTwo() { return k2 == null; }
+    boolean isLeaf() {
+      return children[0] == null;
+    }
+    boolean isTwo() {
+      return keys[1] == null;
+    }
+    boolean contains(int x) {
+      return keys[0] == x || (!isTwo() && keys[1] == x);
+    }
+    int numKeys() {
+      return isTwo() ? 1 : 2;
+    }
+    int getSize() {
+      return size;
+    }
+
+    public Node find(int val) {
+      // Return cases
+      if (contains(val)) {
+        return this;
+      }
+
+      if (isLeaf()) {
+        return null;
+      }
+
+      int i = 0;
+      while (i < numKeys() && keys[i] < val) {
+        i++;
+      }
+
+      return children[i].find(val);
+    }
+
+    public Node insert(int val) {
+      if (isLeaf()) {
+        return addVal(val);
+      }
+
+      int i = 0;
+      while (i < numKeys() && keys[i] < val) {
+        i++;
+      }
+
+      Node promoted = children[i].insert(val);
+
+      if (promoted == null) {
+        size++; // Propagate size increment up
+        return null; // No promotion occurs
+      }
+
+      // Promotion occurs if this point is reached
+      int position = 0; // Position from which promotion occurs
+      while (position < numKeys() &&  keys[position] < promoted.keys[0]) {
+        position++;
+      }
+
+      // Shift children to make room for promoted children in the index from which it was promoted
+      for (i = 3; i > position + 1; i--) {
+        children[i] = children[i - 1];
+      }
+      // Insert children into space left by previous loop
+      // This process overwrites the child the promotion comes from
+      children[position] = promoted.children[0];
+      children[position + 1] = promoted.children[1];
+
+      // Add the value to the current node
+      promoted = addVal(promoted.keys[0]);
+      if (promoted == null) {
+        return null;
+      } // This node does not need to split
+
+      // Set children of left and right child of promoted node
+      promoted.children[0].children = new Node[] { children[0], children[1], null, null };
+      promoted.children[1].children = new Node[] { children[2], children[3], null, null };
+      promoted.children[0].size = children[0].size + children[1].size + 1;
+      promoted.children[1].size = children[2].size + children[3].size + 1;
+      promoted.size = promoted.children[0].size + promoted.children[1].size + 1;
+
+      return promoted;
+    }
+
+    public Node addVal(int val) {
+      if (isTwo()) {
+        if (val > keys[0]) {
+          keys[1] = val;
+        } else {
+          keys[1] = keys[0];
+          keys[0] = val;
+        }
+        size++;
+        return null; // No split needed
+      }
+
+      Integer[] k = new Integer[]{keys[0], keys[1], val};
+
+      Arrays.sort(k);
+
+      Node leftNode = new Node(k[0]);
+      Node promoted = new Node(k[1]);
+      Node rightNode = new Node(k[2]);
+
+      // The word "size" doesn't look real anymore
+
+      leftNode.size = 1;
+      rightNode.size = 1;
+      promoted.size = 3;
+
+      promoted.children[0] = leftNode;
+      promoted.children[1] = rightNode;
+
+      return promoted; // After this, the current node gets collected as the promoted node replaces all references to it
+    }
+
+    public Integer get(int index) {
+      if (isLeaf()) {
+        return keys[index];
+      }
+
+      int i = 0;
+      int total = 0;
+      while (total + children[i].size <= index) {
+        total += children[i].size;
+        if (total == index) {
+          return keys[i]; // If index match found in keys of this node
+        }
+        i++;
+        total++;
+      }
+
+      return children[i].get(index - total);
+    }
   }
 
   private Node root;
 
   public Tree() {}
 
-  public Tree(Node root) {
-    this.root = root;
+
+  public int size() {
+    if (root == null) {
+      return 0;
+    }
+
+    return root.getSize();
   }
-
-    private int count(Node start) {
-      if (start == null) {
-        return 0;
-      }
-
-      int total = start.isTwo() ? 1 : 2;
-
-      total += count(start.left);
-      total += count(start.mid);
-      total += count(start.right);
-
-      return total;
-    }
-
-  private Node find(Node node, int val) {
-    if (node == null) { return null; }
-    if (node.k1 == val || node.k2 == val) {
-      return node;
-    }
-    if (node.isLeaf()) {
-      return null;
-    }
-    Node found = find(node.left, val);
-    if (found != null) {
-      return found;
-    }
-    found = find(node.mid, val);
-    if (found != null) {
-      return found;
-    }
-    found = find(node.right, val);
-    return found;
-  }
-
-  public int size() { return count(root); }
 
   public int size(int val) {
-    if (root == null) { return 0; }
-    Node target = find(root, val);
-    return (target == null) ? 0 : count(target);
+    if (root == null) {
+      return 0;
+    }
+    Node target = root.find(val);
+    return (target == null) ? 0 : target.getSize();
   }
 
   public boolean insert(int val) {
     if (root == null) {
       root = new Node(val);
       return true;
-    } else {
-      Node newRoot = insert(root, val);
-      if (newRoot != null) {
-        root = newRoot;
-        return true;
-      }
+    }
+    if (root.find(val) != null) {
       return false;
     }
+
+    Node newRoot = root.insert(val);
+    if (newRoot != null) {
+      root = newRoot;
+    }
+    return true;
   }
 
-  private Node insert(Node node, int val) {
-    if (node.isLeaf()) {
-      return addValToNode(node, val, null, null);
+  public int get(int i) throws ArrayIndexOutOfBoundsException {
+    if (root == null) {
+      throw new ArrayIndexOutOfBoundsException("Root is null");
     }
 
-    // Check for duplicates. Return null if found
-    if (node.k1 == val || node.k2 == val) {
-      return null;
+    Integer val = root.get(i);
+    if (val == null) {
+      throw new ArrayIndexOutOfBoundsException("Index " + i + " is out of bounds.");
     }
-
-    // Pick which child to recur down
-    Node child;
-    if (val < node.k1) {
-      child = node.left;
-    } else if (node.isTwo() || (node.k2 != null && val < node.k2)) {
-      child = node.mid;
-    } else {
-      child = node.right;
-    }
-
-    // Insert the value down the selected child node
-    Node split = insert(child, val);
-
-    if (split != null) {
-      return addValToNode(node, split.k1, split.left, split.right);
-    }
-
-    return null; // Insertion failure
-  }
-
-  // Adds the key in order (smaller key in k1) and handles splitting in the case of a full node
-  private Node addValToNode(Node node, int val, Node leftChild, Node rightChild) {
-    // If node is a 2 node, simply add the value and adjust the children refs
-    if (node.isTwo()) {
-      // Ensure k1 is the smallest key
-      if (val < node.k1) {
-        node.k2 = node.k1;
-        node.k1 = val;
-
-        node.right = node.mid;
-        node.left = leftChild;
-        node.right = rightChild;
-      } else {
-        node.k2 = val;
-        node.mid = leftChild;
-        node.right = rightChild;
-      }
-
-      return null; // Insertion complete without node splitting
-    }
-
-    // else split the node
-    int[] keys = new int[3];
-    keys[0] = val;
-    keys[1] = node.k1;
-    keys[2] = node.k2;
-    Arrays.sort(keys); // keys[1] will be our promoted value
-
-    // 0,1 are the new left node's left and right
-    // 2,3 are the new right node's left and right
-    Node[] children = new Node[4];
-    if (val < node.k1) {
-      children[0] = leftChild;
-      children[1] = rightChild;
-      children[2] = node.left;
-      children[3] = node.right;
-    } else if (val < node.k2) {
-      children[0] = node.left;
-      children[1] = leftChild;
-      children[2] = rightChild;
-      children[3] = node.right;
-    } else {
-      children[0] = node.left;
-      children[1] = node.mid;
-      children[2] = leftChild;
-      children[3] = rightChild;
-    }
-
-    // New left and right child of promoted node
-    Node leftNode = new Node(keys[0]);
-    Node rightNode = new Node(keys[2]);
-
-    leftNode.left = children[0];
-    leftNode.right = children[1];
-    rightNode.left = children[2];
-    rightNode.right = children[3];
-
-    // Promote middle key and assign it's left and right nodes to the previously created nodes
-    Node promoted = new Node(keys[1]);
-    promoted.left = leftNode;
-    promoted.right = rightNode;
-
-    return promoted; // Return promoted middle value/new parent node
+    return val;
   }
 }
