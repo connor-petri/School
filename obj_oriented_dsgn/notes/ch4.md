@@ -473,3 +473,5 @@ public static vvoid main(String[] args) {
     helloButton.addActionListener(e -> textField.setText("Hello, World!"));
 }
 ```
+### Scope of Lambda Expressions
+Lambda expressions can access variables from the enclosing scope, but only if those variables are final or effectively final. This means that the variable cannot be modified after it has been assigned a value. If you try to modify a variable that is accessed by a lambda expression, you will get a compile-time error. This is because lambda expressions are designed to be stateless and immutable, and allowing them to modify variables from the enclosing scope would violate this principle. Therefore, it is important to ensure that any variables accessed by a lambda expression are either final or effectively final to avoid any issues with variable scope and immutability.
