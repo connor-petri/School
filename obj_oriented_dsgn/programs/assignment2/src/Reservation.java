@@ -1,4 +1,4 @@
-public class Reservation {
+public class Reservation implements Comparable<Reservation> {
     public enum Type {
         NONE(0),
         ECON(250),
@@ -13,6 +13,15 @@ public class Reservation {
 
         public int getPrice() {
             return price;
+        }
+
+        public String toString() {
+            return switch (this) {
+                case NONE -> "NONE";
+                case ECON -> "Economy";
+                case ECON_PLUS -> "Economy Plus";
+                case FIRST_CLASS -> "First Class";
+            };
         }
     }
 
@@ -44,9 +53,8 @@ public class Reservation {
         return true;
     }
 
-    public Reservation(User user, Type type, String seatNum) throws IllegalArgumentException {
+    public Reservation(User user, String seatNum) throws IllegalArgumentException {
         this.user = user;
-        this.type = type;
 
         if (!checkSeatNum(seatNum)) {
             throw new IllegalArgumentException("Seat Number must be in format [1-50][A-J]");
@@ -54,19 +62,36 @@ public class Reservation {
 
         this.seatNum = Integer.parseInt(seatNum.substring(0, 1));
         this.seatLetter = Character.toUpperCase(seatNum.charAt(1));
+
+        if (this.seatNum < 5) {
+            this.type = Type.FIRST_CLASS;
+        } else if (this.seatNum < 16) {
+            this.type = Type.ECON_PLUS;
+        } else {
+            this.type = Type.ECON;
+        }
     }
 
-    public boolean equals(Reservation other) {
-        return seatNum == other.seatNum && seatLetter == other.seatLetter;
+    public boolean equals(String seat) {
+        return Integer.parseInt(seat.substring(0, 1)) == seatNum && seat.charAt(1) == seatLetter;
+    }
+
+    public boolean equals(int row, char letter) {
+        return seatNum == row && seatLetter == letter;
+    }
+
+    public int compareTo(Reservation r) {
+        return seatNum == r.seatNum ? Character.compare(seatLetter, r.seatLetter) : seatNum - r.seatNum;
     }
 
     public User getUser() { return user; }
     public int getPrice() { return type.getPrice(); }
     public int getSeatNum() { return seatNum; }
     public char getSeatLetter() { return seatLetter; }
+    public Type getType() { return type; }
 
-    public void printSeatAndPrice() {
-        System.out.print(seatNum + String.valueOf(seatLetter) + " $" + type.getPrice() + " ");
+    public String getSeatAndPrice() {
+        return seatNum + String.valueOf(seatLetter) + " $" + type.getPrice() + " ";
     }
 
     public void printSeatAndName() {
