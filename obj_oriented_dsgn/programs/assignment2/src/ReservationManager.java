@@ -1,17 +1,49 @@
+import java.io.*;
 import java.util.*;
 
 public class ReservationManager {
-    public static class ReservationException extends Exception {
-        ReservationException(String msg) {
-            super(msg);
+    private final TreeSet<Reservation> reservations = new TreeSet<>();
+    private static final Scanner s = new Scanner(System.in);
+    private final File file;
+
+    public ReservationManager(String fileName) throws IOException {
+        file = new File(fileName);
+        if (!file.exists()) {
+            file.createNewFile();
+            System.out.println("Reservation file " + fileName + " created.");
+            return;
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        List<String> lines = br.readAllLines();
+//        lines.removeFirst(); // Remove header row
+        String[] data;
+        for (String line : lines) {
+            data = line.split(",");
+            if (data.length < 1) { continue; }
+            User user = UserManager.getInstance().getUser(data[0]);
+
+            for (String seatNum : Arrays.copyOfRange(data, 1, data.length)) {
+                reservations.add(new Reservation(user, seatNum));
+            }
         }
     }
 
-    private final TreeSet<Reservation> reservations = new TreeSet<>();
-    private static final Scanner s = new Scanner(System.in);
+    public void save(User user) throws IOException {
+        if (!user.isAdmin()) { return; }
 
-    public ReservationManager(String fileName) {
-        // load file
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        for (User u : UserManager.getInstance().getUsers()) {
+            bw.write(u.getUsername() + ",");
+            for (Reservation r : getUserReservations(u)) {
+                bw.write(r.getSeatNum() + ",");
+            }
+        }
+
+        bw.close();
+        fw.close();
     }
 
     private TreeSet<Reservation> getReservations() { return reservations; }
@@ -139,7 +171,7 @@ public class ReservationManager {
 
     public void viewReservations(User user) {
         TreeSet<Reservation> userReservations = getUserReservations(user);
-        System.out.print("Name: " + user.getName() + " Seats: ");
+        System.out.print("Name: " + user.getUsername() + " Seats: ");
         StringBuilder output = new StringBuilder();
 
         for (Reservation r : userReservations) {

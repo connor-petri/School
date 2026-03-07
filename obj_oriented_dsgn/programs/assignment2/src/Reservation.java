@@ -26,7 +26,7 @@ public class Reservation implements Comparable<Reservation> {
     }
 
     public User user;
-    private Type type = Type.NONE;
+    private final Type type;
     private final int seatNum;
     private final char seatLetter;
 
@@ -95,6 +95,6 @@ public class Reservation implements Comparable<Reservation> {
     }
 
     public void printSeatAndName() {
-        System.out.println(seatNum + String.valueOf(seatLetter) + ": " + user.getName());
+        System.out.println(seatNum + String.valueOf(seatLetter) + ": " + user.getUsername());
     }
 }
