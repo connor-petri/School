@@ -7,8 +7,10 @@ public class UserManager {
 
     private static UserManager instance;
 
+
+
     private UserManager(String fileName) throws IOException {
-        file = new File(fileName);
+        file = new File(fileName + ".txt");
         if (!file.exists()) {
             file.createNewFile();
             System.out.println("User file " + fileName + " created.");
@@ -21,11 +23,36 @@ public class UserManager {
         for (String line : lines) {
             if (line.length() < 3) { continue; }
             data = line.split(",");
-            users.add(new User(data[0], data[1], Integer.parseInt(data[2]) == 0));
+            System.out.println(data[2]);
+            users.add(new User(data[0], data[1], Integer.parseInt(data[2]) == 1));
         }
         br.close();
         fr.close();
     }
+
+    public static UserManager getInstance() {
+        return instance;
+    }
+
+    public User getUser(String username, String password) {
+        for  (User user : users) {
+            if(user.equals(username, password)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public User getUser(String username) {
+        for  (User user : users) {
+            if(user.equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public TreeSet<User> getUsers() { return users; }
 
     public void save() throws IOException {
         if (file == null) {
@@ -42,23 +69,14 @@ public class UserManager {
         fw.close();
     }
 
-    public UserManager load(String fileName) throws IOException {
+    public static UserManager load(String fileName) throws IOException {
         if (instance == null) {
             instance = new UserManager(fileName);
         }
         return instance;
     }
 
-    public static UserManager getInstance() { return instance; }
-
-    public User getUser(String username) {
-        for  (User user : users) {
-            if(user.getUsername().equals(username)) {
-                return user;
-            }
-        }
-        return null;
+    public void addUser(String username, String password) {
+        users.add(new User(username, password, false));
     }
-
-    public TreeSet<User> getUsers() { return users; }
 }

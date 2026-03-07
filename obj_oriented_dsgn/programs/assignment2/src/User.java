@@ -12,8 +12,12 @@ public class User implements Comparable<User> {
     public String getUsername() { return username; }
     public boolean isAdmin() { return admin; }
 
-    public boolean equals(User other) {
-        return other.username.equals(username) && other.password.equals(password);
+    public boolean equals(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
+    }
+
+    public boolean equals(String username) {
+        return this.username.equals(username);
     }
 
     public int compareTo(User other) {

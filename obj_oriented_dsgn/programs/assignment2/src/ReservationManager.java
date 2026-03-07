@@ -7,7 +7,7 @@ public class ReservationManager {
     private final File file;
 
     public ReservationManager(String fileName) throws IOException {
-        file = new File(fileName);
+        file = new File(fileName + ".txt");
         if (!file.exists()) {
             file.createNewFile();
             System.out.println("Reservation file " + fileName + " created.");
@@ -38,8 +38,9 @@ public class ReservationManager {
         for (User u : UserManager.getInstance().getUsers()) {
             bw.write(u.getUsername() + ",");
             for (Reservation r : getUserReservations(u)) {
-                bw.write(r.getSeatNum() + ",");
+                bw.write(r.getSeatNum() + String.valueOf(r.getSeatLetter()) + ",");
             }
+            bw.newLine();
         }
 
         bw.close();
