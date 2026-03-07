@@ -66,10 +66,10 @@ public class Reservation {
     public char getSeatLetter() { return seatLetter; }
 
     public void printSeatAndPrice() {
-        System.out.print(Integer.toString(seatNum) + String.valueOf(seatLetter) + " $" + type.getPrice() + " ");
+        System.out.print(seatNum + String.valueOf(seatLetter) + " $" + type.getPrice() + " ");
     }
 
     public void printSeatAndName() {
-        System.out.println(Integer.toString(seatNum) + String.valueOf(seatLetter) + ": " + user.getName());
+        System.out.println(seatNum + String.valueOf(seatLetter) + ": " + user.getName());
     }
 }
