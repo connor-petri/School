@@ -1,11 +1,29 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * Manages in-memory reservation operations and file persistence.
+ *
+ * <p>Precondition: The user subsystem should be loaded before constructing this manager.
+ * Postcondition: Reservation data is available for querying, mutation, and persistence.
+ *
+ * @see Reservation
+ * @see UserManager
+ */
 public class ReservationManager {
     private final TreeSet<Reservation> reservations = new TreeSet<>();
     private static final Scanner s = new Scanner(System.in);
     private final File file;
 
+    /**
+     * Creates a reservation manager and loads existing reservations from disk.
+     *
+     * <p>Precondition: {@code fileName != null} and {@link UserManager#getInstance()} has been initialized.
+     * Postcondition: Backing file exists and {@code reservations} contains parsed records.
+     *
+     * @input fileName base filename without extension
+     * @see UserManager#getInstance()
+     */
     public ReservationManager(String fileName) throws IOException {
         file = new File(fileName + ".txt");
         if (!file.exists()) {
@@ -29,6 +47,17 @@ public class ReservationManager {
         }
     }
 
+    /**
+     * Persists all users and their seat assignments to the reservation file.
+     *
+     * <p>Precondition: Caller should be an admin user and file is writable.
+     * Postcondition: Reservation file is overwritten with current in-memory reservation state.
+     *
+     * @input user caller attempting save operation
+     * @return none
+     * @see User#isAdmin()
+     * @see UserManager#getUsers()
+     */
     public void save(User user) throws IOException {
         if (!user.isAdmin()) { return; }
 
@@ -47,8 +76,28 @@ public class ReservationManager {
         fw.close();
     }
 
+    /**
+     * Returns the internal reservation set.
+     *
+     * <p>Precondition: None.
+     * Postcondition: No state is modified.
+     *
+     * @input none
+     * @return all tracked reservations
+     * @see #getUserReservations(User)
+     */
     private TreeSet<Reservation> getReservations() { return reservations; }
 
+    /**
+     * Returns reservations that belong to a specific user.
+     *
+     * <p>Precondition: {@code user != null}.
+     * Postcondition: No state is modified.
+     *
+     * @input user target reservation owner
+     * @return sorted set of reservations owned by the user
+     * @see Reservation#compareTo(Reservation)
+     */
     private TreeSet<Reservation> getUserReservations(User user) {
         TreeSet<Reservation> list = new TreeSet<>();
         for (Reservation r : reservations) {
@@ -59,6 +108,16 @@ public class ReservationManager {
         return list;
     }
 
+    /**
+     * Prints available seats for a single row.
+     *
+     * <p>Precondition: {@code r} should be in {@code [1,50]}.
+     * Postcondition: Row availability is printed to standard output.
+     *
+     * @input r row number to inspect
+     * @return none
+     * @see #checkAvailability()
+     */
     private void printFreeSeatsInRow(int r) {
         boolean match;
         System.out.print(r + ": ");
@@ -75,6 +134,16 @@ public class ReservationManager {
         System.out.println();
     }
 
+    /**
+     * Prints seat availability grouped by seat class.
+     *
+     * <p>Precondition: None.
+     * Postcondition: Availability report is printed to standard output.
+     *
+     * @input none
+     * @return none
+     * @see Reservation.Type
+     */
     public void checkAvailability() {
         int r = 1;
 
@@ -100,6 +169,17 @@ public class ReservationManager {
         System.out.println();
     }
 
+    /**
+     * Guides a user through creating a reservation.
+     *
+     * <p>Precondition: {@code user != null}.
+     * Postcondition: A reservation may be added to the set if confirmed and available.
+     *
+     * @input user user making the reservation
+     * @return none
+     * @see Reservation#checkSeatNum(String)
+     * @see #getReservations()
+     */
     public void makeReservation(User user) {
         System.out.println("Choose a seat number [1-50][A-J]:");
         Reservation r = null;
@@ -143,6 +223,16 @@ public class ReservationManager {
         }
     }
 
+    /**
+     * Cancels one reservation selected by the user.
+     *
+     * <p>Precondition: {@code user != null} and user has at least one reservation to cancel.
+     * Postcondition: Matching reservation is removed from the set when found.
+     *
+     * @input user user requesting cancellation
+     * @return none
+     * @see #viewReservations(User)
+     */
     public void cancelReservation(User user) {
         viewReservations(user);
         TreeSet<Reservation> userRes = getUserReservations(user);
@@ -170,6 +260,16 @@ public class ReservationManager {
         System.out.println("Reservation removed successfully.");
     }
 
+    /**
+     * Displays all reservations and total amount due for a user.
+     *
+     * <p>Precondition: {@code user != null}.
+     * Postcondition: Reservation summary is printed to standard output.
+     *
+     * @input user target user for reservation summary
+     * @return none
+     * @see Reservation#getSeatAndPrice()
+     */
     public void viewReservations(User user) {
         TreeSet<Reservation> userReservations = getUserReservations(user);
         System.out.print("Name: " + user.getUsername() + " Seats: ");
@@ -191,6 +291,17 @@ public class ReservationManager {
         System.out.println("Total due: " + total);
     }
 
+    /**
+     * Prints manifest grouped by seat class for admin users.
+     *
+     * <p>Precondition: {@code user != null}; output occurs only when user is admin.
+     * Postcondition: Manifest rows are printed to standard output for existing reservations.
+     *
+     * @input user caller requesting manifest
+     * @return none
+     * @see User#isAdmin()
+     * @see Reservation#printSeatAndName()
+     */
     public void showManifestList(User user) {
         if (!user.isAdmin()) {
             return;
