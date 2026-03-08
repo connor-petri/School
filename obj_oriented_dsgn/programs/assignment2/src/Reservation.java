@@ -1,7 +1,7 @@
 /**
  * Represents a single seat reservation for a user.
  *
- * <p>Precondition: The provided seat designator must be in the format {@code [1-50][A-J]}.
+ * Precondition: The provided seat designator must be in the format [1-50][A-J].
  * Postcondition: A reservation is created with a derived seat class and price based on row.
  *
  * @see ReservationManager
@@ -11,7 +11,7 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Enumerates supported reservation seat classes and their base prices.
      *
-     * @see Reservation#getPrice()
+     * @see Reservation
      */
     public enum Type {
         NONE(0),
@@ -24,11 +24,11 @@ public class Reservation implements Comparable<Reservation> {
         /**
          * Creates a reservation type with a fixed price.
          *
-         * <p>Precondition: {@code price >= 0}.
+         * Precondition: price >= 0.
          * Postcondition: The enum constant stores the provided price.
          *
          * @input price non-negative integer seat price
-         * @see Type#getPrice()
+         * @see Type
          */
         Type(int price) {
             this.price = price;
@@ -37,12 +37,12 @@ public class Reservation implements Comparable<Reservation> {
         /**
          * Returns the configured price for this reservation type.
          *
-         * <p>Precondition: None.
+         * Precondition: None.
          * Postcondition: No state is modified.
          *
          * @input none
          * @return integer price for this seat class
-         * @see Reservation#getPrice()
+         * @see Reservation
          */
         public int getPrice() {
             return price;
@@ -51,12 +51,12 @@ public class Reservation implements Comparable<Reservation> {
         /**
          * Returns a display label for this reservation type.
          *
-         * <p>Precondition: None.
+         * Precondition: None.
          * Postcondition: No state is modified.
          *
          * @input none
          * @return human-readable seat class label
-         * @see Enum#toString()
+         * @see Enum
          */
         public String toString() {
             return switch (this) {
@@ -76,12 +76,12 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Validates whether a seat string matches the expected range and letter set.
      *
-     * <p>Precondition: {@code seatNum != null} and has 2-3 characters.
+     * Precondition: seatNum != null and has 2-3 characters.
      * Postcondition: No state is modified.
      *
-     * @input seatNum candidate seat designator in format {@code [1-50][A-J]}
-     * @return {@code true} if valid; otherwise {@code false}
-     * @see Reservation#Reservation(User, String)
+     * @input seatNum candidate seat designator in format [1-50][A-J]
+     * @return true if valid; otherwise false
+     * @see Reservation
      */
     public static boolean checkSeatNum(String seatNum) {
         if (seatNum.length() < 2 || seatNum.length() > 3) {
@@ -111,13 +111,13 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Creates a reservation for the given user and seat.
      *
-     * <p>Precondition: {@code user != null} and {@code seatNum} passes {@link #checkSeatNum(String)}.
+     * Precondition: user != null and seatNum passes Reservation.checkSeatNum(String).
      * Postcondition: A reservation is initialized with seat row, seat letter, and class type.
      *
      * @input user reservation owner
-     * @input seatNum seat designator in format {@code [1-50][A-J]}
-     * @see Reservation#checkSeatNum(String)
-     * @see Reservation.Type
+     * @input seatNum seat designator in format [1-50][A-J]
+     * @see Reservation
+     * @see Reservation
      */
     public Reservation(User user, String seatNum) throws IllegalArgumentException {
         this.user = user;
@@ -146,12 +146,12 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Compares this reservation against a seat string.
      *
-     * <p>Precondition: {@code seat} is in format {@code [1-50][A-J]}.
+     * Precondition: seat is in format [1-50][A-J].
      * Postcondition: No state is modified.
      *
      * @input seat seat designator to compare
-     * @return {@code true} if both row and seat letter match; otherwise {@code false}
-     * @see Reservation#equals(int, char)
+     * @return true if both row and seat letter match; otherwise false
+     * @see Reservation
      */
     public boolean equals(String seat) {
         return Integer.parseInt(seat.substring(0, 1)) == seatNum && seat.charAt(1) == seatLetter;
@@ -160,13 +160,13 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Compares this reservation against a row and seat letter.
      *
-     * <p>Precondition: {@code row} is expected in {@code [1,50]} and {@code letter} in {@code [A,J]}.
+     * Precondition: row is expected in [1,50] and letter in [A,J].
      * Postcondition: No state is modified.
      *
      * @input row seat row number
      * @input letter seat letter
-     * @return {@code true} if both row and seat letter match; otherwise {@code false}
-     * @see Reservation#equals(String)
+     * @return true if both row and seat letter match; otherwise false
+     * @see Reservation
      */
     public boolean equals(int row, char letter) {
         return seatNum == row && seatLetter == letter;
@@ -175,12 +175,12 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Orders reservations by row first, then seat letter.
      *
-     * <p>Precondition: {@code r != null}.
+     * Precondition: r != null.
      * Postcondition: No state is modified.
      *
      * @input r reservation to compare against
      * @return negative, zero, or positive based on seat ordering
-     * @see Comparable#compareTo(Object)
+     * @see Comparable
      */
     public int compareTo(Reservation r) {
         return seatNum == r.seatNum ? Character.compare(seatLetter, r.seatLetter) : seatNum - r.seatNum;
@@ -189,60 +189,60 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Returns the reservation price based on seat class.
      *
-     * <p>Precondition: None.
+     * Precondition: None.
      * Postcondition: No state is modified.
      *
      * @input none
      * @return reservation price
-     * @see Type#getPrice()
+     * @see Type
      */
     public int getPrice() { return type.getPrice(); }
 
     /**
      * Returns the seat row number.
      *
-     * <p>Precondition: None.
+     * Precondition: None.
      * Postcondition: No state is modified.
      *
      * @input none
      * @return seat row value
-     * @see Reservation#getSeatLetter()
+     * @see Reservation
      */
     public int getSeatNum() { return seatNum; }
 
     /**
      * Returns the seat letter.
      *
-     * <p>Precondition: None.
+     * Precondition: None.
      * Postcondition: No state is modified.
      *
      * @input none
      * @return seat letter value
-     * @see Reservation#getSeatNum()
+     * @see Reservation
      */
     public char getSeatLetter() { return seatLetter; }
 
     /**
      * Returns the reservation seat class.
      *
-     * <p>Precondition: None.
+     * Precondition: None.
      * Postcondition: No state is modified.
      *
      * @input none
      * @return reservation type enum value
-     * @see Reservation.Type
+     * @see Reservation
      */
     public Type getType() { return type; }
 
     /**
      * Builds a printable seat and price summary.
      *
-     * <p>Precondition: None.
+     * Precondition: None.
      * Postcondition: No state is modified.
      *
      * @input none
      * @return formatted string containing seat and price
-     * @see ReservationManager#viewReservations(User)
+     * @see ReservationManager
      */
     public String getSeatAndPrice() {
         return seatNum + String.valueOf(seatLetter) + " $" + type.getPrice() + " ";
@@ -251,12 +251,12 @@ public class Reservation implements Comparable<Reservation> {
     /**
      * Prints the seat and username mapping for manifest output.
      *
-     * <p>Precondition: {@code user != null}.
+     * Precondition: user != null.
      * Postcondition: A single line is written to standard output.
      *
      * @input none
      * @return none
-     * @see ReservationManager#showManifestList(User)
+     * @see ReservationManager
      */
     public void printSeatAndName() {
         System.out.println(seatNum + String.valueOf(seatLetter) + ": " + user.getUsername());
