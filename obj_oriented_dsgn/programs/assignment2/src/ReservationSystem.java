@@ -139,7 +139,7 @@ public class ReservationSystem {
         String password = s.nextLine();
 
         UserManager.getInstance().addUser(username, password);
-        System.out.print("Registration Successful");
+        System.out.println("Registration Successful");
         login();
     }
 

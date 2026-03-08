@@ -1,0 +1,81 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.2 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.2">
+  <diagram name="Page-1" id="TVS3sxSTNoeCcSTIdS2i">
+    <mxGraphModel dx="1152" dy="871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="ReservationSystem" vertex="1">
+          <mxGeometry height="490" width="120" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-14" parent="UEUSqKRDvl_DyubaVHqf-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="250" width="10" x="55" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-19" parent="UEUSqKRDvl_DyubaVHqf-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="100" width="10" x="60" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-20" edge="1" parent="UEUSqKRDvl_DyubaVHqf-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" target="UEUSqKRDvl_DyubaVHqf-19" value="mainMenu()">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="95" y="210" />
+            </Array>
+            <mxPoint x="65" y="180" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="UserManager" vertex="1">
+          <mxGeometry height="240" width="100" x="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-11" parent="UEUSqKRDvl_DyubaVHqf-2" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="80" width="10" x="45" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="ReservationManager" vertex="1">
+          <mxGeometry height="570" width="130" x="340" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-24" parent="UEUSqKRDvl_DyubaVHqf-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="260" width="10" x="60" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-30" parent="UEUSqKRDvl_DyubaVHqf-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="65" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-31" edge="1" parent="UEUSqKRDvl_DyubaVHqf-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" target="UEUSqKRDvl_DyubaVHqf-30" value="add(Reservation)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="450" />
+            </Array>
+            <mxPoint x="70" y="420" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="UEUSqKRDvl_DyubaVHqf-11" value="getUser()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="115" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-13" edge="1" parent="1" source="UEUSqKRDvl_DyubaVHqf-11" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" value="User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-25" edge="1" parent="1" source="UEUSqKRDvl_DyubaVHqf-19" style="html=1;verticalAlign=bottom;startArrow=oval;endArrow=block;startSize=8;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="UEUSqKRDvl_DyubaVHqf-24" value="makeReservation()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="315" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-26" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Reservation" vertex="1">
+          <mxGeometry height="480" width="100" x="510" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-27" parent="UEUSqKRDvl_DyubaVHqf-26" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="80" width="10" x="45" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-29" edge="1" parent="1" source="UEUSqKRDvl_DyubaVHqf-27" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" target="UEUSqKRDvl_DyubaVHqf-24" value="Reservation">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="485" y="425" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UEUSqKRDvl_DyubaVHqf-28" edge="1" parent="1" source="UEUSqKRDvl_DyubaVHqf-24" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" target="UEUSqKRDvl_DyubaVHqf-27" value="new Reservation()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="485" y="355" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

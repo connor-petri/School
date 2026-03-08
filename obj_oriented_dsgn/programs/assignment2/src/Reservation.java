@@ -154,7 +154,8 @@ public class Reservation implements Comparable<Reservation> {
      * @see Reservation
      */
     public boolean equals(String seat) {
-        return Integer.parseInt(seat.substring(0, 1)) == seatNum && seat.charAt(1) == seatLetter;
+        return (seat.length() == 2 && Integer.parseInt(seat.substring(0, 1)) == seatNum && seat.charAt(1) == seatLetter)
+                || (seat.length() == 3 && Integer.parseInt(seat.substring(0, 2)) == seatNum && seat.charAt(2) == seatLetter);
     }
 
     /**

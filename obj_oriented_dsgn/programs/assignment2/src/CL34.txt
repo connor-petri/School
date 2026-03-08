@@ -1,3 +1,2 @@
 admin,
-cpetri,3J,6A,7B,8C,10A,50J,
-new,1A,2A,7F,7G,
+cpetri,1A,1C,6A,6C,16A,16C,

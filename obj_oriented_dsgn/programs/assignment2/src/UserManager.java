@@ -41,7 +41,6 @@ public class UserManager {
         for (String line : lines) {
             if (line.length() < 3) { continue; }
             data = line.split(",");
-            System.out.println(data[2]);
             users.add(new User(data[0], data[1], Integer.parseInt(data[2]) == 1));
         }
         br.close();
