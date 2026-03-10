@@ -16,3 +16,48 @@ The Observer pattern defines a one-to-many dependency between objects, where a c
 
 ### MVC
 The Model-View-Controller (MVC) pattern is a specific implementation of the Observer pattern. It separates an application into three main components: the Model, which represents the data and business logic; the View, which is responsible for displaying the data; and the Controller, which handles user input and updates the Model and View accordingly. This separation of concerns allows for more modular and maintainable code.
+
+#### Parts of a Model
+1. Data structure to hold data
+2. Data structure to hold view
+3. Accessor
+4. Mutator
+5. attatch
+
+
+```java
+public class Invoice {
+    private ArrayList<LineItem> items;
+    private ArrayList<ChangeListener> listeners;
+
+    public void attach(ChangeLIstener listener) {
+        listener.add(listener);
+    }
+
+    public String format() { // Accessor
+        // returns string representation of invoice
+    }
+
+    public void addItem(LineItem item) { // Mutator
+        items.add(item);
+
+        for (ChangeEvent listener : listeners) {
+            listener.stateChanged(event);
+        }
+    }
+}
+```
+
+#### View Components
+1. UI Elements
+2. Listener attached to the model
+
+---
+
+## Strategey Pattern
+- A way to define a family of algorithms
+- Encapsulate each one as an object
+- Make them interchangeable usually via passing an object with relevent methods
+
+
+## Composite Pattern
