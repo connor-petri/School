@@ -1,0 +1,125 @@
+\subsection{Determinants}
+
+% TODO - Catch up on previous lecture cofactor reduction
+
+\paragraph*{Theorem}
+Let $A$ be an $n \times n$ matrix
+\begin{enumerate}
+    \item If A has a row or column of zeros, then $det(A) = 0$
+    \item If two distinct rows or columns are interchanged, the determinant changes sign
+    \item If a row is multiplied by a scalar $k$, then the determinant is multiplied by $k$
+    \item $det(kA) = k^n det(A)$ and $det(-A) = -det(A)$
+    \item If two rows or columns are identical or scalar multiples of each other, then $det(A) = 0$
+    \item If a multiple of one row or column is added to another row or column, the determinant doesn't change
+\end{enumerate}
+
+\paragraph*{Example}
+Find the determinant of \begin{vmatrix}
+    1 & 1 & 1 & 2 \\
+    2 & 2 & 0 & 1 \\
+    3 & 3 & -1 & -3 \\
+    4 & 2 & -5 & 7
+\end{vmatrix}
+
+\begin{align*}
+    \text{det} &= \begin{vmatrix}
+        1 & 1 & 1 & 2 \\
+        2 & 2 & 0 & 1 \\
+        3 & 3 & -1 & -3 \\
+        4 & 2 & -5 & 7
+    \end{vmatrix} \\
+       &= \begin{vmatrix}
+        1 & 1 & 1 & 2 \\
+        0 & 2 & 0 & 1 \\
+        0 & 3 & -1 & -3 \\
+        -2 & 2 & -5 & 7
+    \end{vmatrix}
+    &= -2 \begin{vmatrix}
+        1 & 1 & 2 \\
+        2 & 0 & 1 \\
+        3 & -1 & -3
+    \end{vmatrix}
+    &= -2 (-1) \begin{vmatrix}
+        2 & 1 \\
+        4 & -1
+    \end{vmatrix}
+    &= 2(-2-4) = -12
+\end{align*}
+
+\paragraph*{Example}
+\det\begin{bmatrix}
+    a & b & c \\
+    p & q & r \\
+    x & y & z
+\end{bmatrix} = 6. Evauluate $\det\begin{bmatrix}
+    a + x & b + y & c + z \\
+    3x & 3y & 3z \\
+    -p & -q & -r
+\end{bmatrix}$
+\begin{align*}
+    = -3 (-1) \begin{vmatrix}
+        a + x & b + y & c + z \\
+        x & y & z\\
+        p & q & r
+    \end{vmatrix}
+    = (-1)(-3) \begin{vmatrix}
+        a & b & c \\
+        p & q & r \\
+        x & y & z
+    \end{vmatrix} = 3 \cdot 6 = 18
+\end{align*}
+
+\subsubsection*{Determinants of Elementary Matricies}
+The type 1 elementary matrix $E_1$ is obtained by interchanging two rows.
+The type 2 elementary matrix $E_2$ is obtained by multiplying a row by a nonzero scalar $k$.
+The type 3 elementary matrix $E_3$ is obtained by adding a multiple of one row to another row.
+\begin{itemize}
+    \item $\det(I) = 1$
+    \item $\det(E_1) = -1$
+    \item $\det(E_2) = k$
+    \item $\det(E_3) = 1$
+\end{itemize}
+
+\subsubsection*{Determinants of Triangular Matrices}
+\paragraph*{Definition}
+\begin{itemize}
+    \item $A_{n \times n}$ is called a lower triangular matrix if all entries above the main diagonal are zeros. 
+    \item $A$ is called an upper triangular matrix if all entries below the main diagonal are zeros.
+    \item $A$ is a triangular matrix if it is either an upper or lower triangular matrix.
+    \item $A$ is a diagonal matrix if all entries above and below the main diagonal are zeros.
+    \item If $A$ is diagnonal, then it is also triangular.
+\end{itemize}
+
+\paragraph*{Theorem}
+If $A_{n \times n}$ is triangular, then $\det(A) = a_{11}a_{22} \cdots a_{nn}$.
+
+\subsubsection*{The Geometric Meaning of the Determinant}
+\paragraph*{1. $\mathbb{R}^2$}
+Let $A_{n \times n}$ and $T_A(\vec{x}) = A\vec{x}$. In $\mathbb{R}^2$, $\det(A)$ gives the area-scaling factor of $T_A$
+This means if $S$ is a region in $\mathbb{R}$, then $Area(T_A(S)) = |\det(A)| \cdot Area(S)$. The area of the parallelogram spanned by 
+vectors $\vec{u}$ and $\vec{v}$ is given by $A = |\det([\vec{u}, \vec{v}])|$
+
+\paragraph*{2. $\mathbb{R}^3$}
+If $B$ is a solid in $\mathbb{R}^3$, $vol(T_A(B)) = |\det(A)|vol(B)$
+This means that the volume of the parallelepiped spanned by $\vec{u}, \vec{v}, \vec{w}$ is given by $V = |\det([\vec{u}, \vec{v}, \vec{w}])|$
+
+\pagraph(Cross Product)
+The cross product $\vec{u} \times \vec{v}$ is the vector orthogonal to both $\vec{u}$ and $\vec{v}$ with magnitude $|\vec{u}||\vec{v}|\sin(\theta)$. 
+It is only defined on $\mathbb{R}^3$ and is given by:
+\begin{align*}
+\vec{u} \times \vec{v} = \det \begin{vmatrix}
+    \hat{i} & \hat(j) & \hat{k} \\
+    u_1 & u_2 & u_3 \\
+    v_1 & v_2 & v_3
+\end{vmatrix} = \hat{i} \begin{vmatrix}
+    a_2 & a_3 \\
+    b_2 & b_3
+\end{vmatrix} - \hat{j} \begin{vmatrix}
+    a_1 & a_3 \\
+    b_1 & b_3
+\end{vmatrix} + \hat{k} \begin{vmatrix}
+    a_1 & a_2 \\
+    b_1 & b_2
+\end{vmatrix}
+\end{align*}
+
