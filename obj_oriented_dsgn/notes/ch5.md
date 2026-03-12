@@ -61,3 +61,14 @@ public class Invoice {
 
 
 ## Composite Pattern
+The composite pattern is a recursive way to compose objects into tree structures to represent parts. It is often done to represent heirarchical data structures.
+
+### Context
+1. Primitive objects can be combined into composite objects
+2. Clients treat a composite object and primitive object in the same way (i.e. .paint())
+
+
+---
+
+## Decorator Pattern
+The decorator pattern allows us to attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to sub-class leasing for extending functionality. Decorations is the functional or visual enhancement of an object. Decorating is dynamic as opposed to inheritance which is static.
