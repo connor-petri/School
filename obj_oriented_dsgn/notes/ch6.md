@@ -23,3 +23,11 @@ public class Child extends Parent {
     }
 }
 ```
+
+---
+
+## Mouse Events
+- ```MouseListener``` listens for mouse button presses
+- ```MouseMotionListener``` listens for mouse motion
+- Attached using ```addMouseLIstener()``` and ```addMouseMotionListener()``` respectivly
+- ```MouseActionListener``` is a class the implements both 
