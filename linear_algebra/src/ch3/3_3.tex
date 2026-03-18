@@ -1,0 +1,140 @@
+\subsection*{Eigenvalues and Eigenvectors}
+\paragraph*{Definition}
+Let $A \in \mathbb{R}^{n\times n}$ and $\vec{x} \in \mathbb{R}^n$ be a nonzero vector. If $A\vec{x} = \lambda \vec{x}$ for some scalar $\lambda$, then
+\begin{itemize}
+    \item $\lambda$ is called an eigenvalue of $A$
+    \item $\vec{x}$ is called an eigenvector of $A$ corresponding to $\lambda$
+\end{itemize}
+
+\paragraph*{Characteristic Polynomial}
+The characteristic polynomial of $A$ is defined as $P_A(\lambda) = \det(A - \lambda I)$, where $I$ is the $n\times n$ identity matrix. 
+The roots of $P_A(\lambda)$ are the eigenvalues of $A$. The eigenvectors corresponding to an eigenvalue $\lambda$ are the nonzero solutions 
+to the homogeneous system $(A - \lambda I)\vec{x} = \vec{0}$. The set of all eigenvectors corresponding to $\lambda$ together with the zero 
+vector is called the eigenspace of $A$ corresponding to $\lambda$.
+
+\paragraph*{Theorem}
+Let $A \in \mathbb{R}^{n\times n}$
+\begin{enumerate}
+    \item The eigenvalues $\lambda$ of A are the roots of the characteristic olynomial $P_A(\lambda) = \det(A-\lambda I)$
+    \item The $\lambda$-eigenvectors $\vec{x}$ are the non zero solutions to the homogeneous system $(A - \lambda I)\vec{x}$
+\end{enumerate}
+
+\paragraph{Example}
+Find the eigenvector related to each eigenvalue:
+\begin{align*}
+    A = \begin{bmatrix}
+        3 & 5 \\
+        1 & -1
+    \end{bmatrix}, \lambda_1 = 4, \lambda_2 = -2\\
+       (A - \lambda_1 I) = \begin{bmatrix}
+        3 - 4 & 5 \\
+        1 & -1 - 4
+        \end{bmatrix} = \begin{bmatrix}
+            5 \\
+             1
+        \end{bmatrix}\\
+
+        (A - \lambda_2 I) = \begin{bmatrix}
+            5 & 5 \\
+            1 & 1
+        \end{bmatrix} \vec{x} = \vec{0} \\
+        = \begin{bmatrix}
+            1 & 1 \\
+            0 & 0
+        \end{bmatrix}\vec{x} \implies \vec{x} = \begin{bmatrix}
+            -t \\
+            t
+        \end{bmatrix} = t \begin{bmatrix}
+            -1 \\
+            1
+        \end{bmatrix} \\
+        \therefore \begin{bmatrix}
+            -1 \\
+            1
+        \end{bmatrix} \text{ is a basic eigenvector of A corresponding to } \lambda_2 = -2
+\end{align*}
+
+
+\subsubsection*{Transposition}
+\paragraph*{Theorem}
+$A \in \mathbb{R}^{n\times n}$ and $A^T$ have the same characteristic polynomial.
+Therefore they have the same eigenvalues. $A\vec{x} = \lambda \vec{x} \land A^T\vec{x} = \lambda \vec{x}$
+
+\paragraph*{Example}
+Find the a. characteristic polynomial b. eigenvalues c. eigenvectors for $A = \begin{bmatrix}
+    2 & 0 & 0 \\
+    1 & 2 & -1 \\
+    1 & 3 & -2
+\end{bmatrix}$
+\begin{align*}
+    P_A(\lambda) = \det(A - \lambda I) = \det\begin{vmatrix}
+        2 - \lambda & 0 & 0 \\
+        1 & 2 - \lambda & -1 \\
+        1 & 3 & -2 - \lambda
+    \end{vmatrix} = (2 - \lambda) \det\begin{vmatrix}
+        2 - \lambda & -1 \\
+        3 & -2 - \lambda
+    \end{vmatrix} = (2 - \lambda) ((2 - \lambda)(-2 - \lambda) + 3) = (2 - \lambda)(\lambda^2 + 1) = (2-\lambda)(\lambda - 1)(\lambda + 1)\\
+    \therefore \lambda_1 = 2, \lambda_2 = 1, \lambda_3 = -1\\
+    (A - 2I) = \begin{bmatrix}
+    0 & 0 & 0 \\
+    1 & 0 & -1 \\
+    1 & 3 & -4
+    \end{bmatrix} \xmapsto{RREF} = \begin{bmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & -1 \\
+    0 & 0 & 0
+\end{bmatrix} \implies \vec{x} = t \begin{bmatrix}
+    1 \\
+    1 \\
+    1
+\end{bmatrix} \text{ is a basic eigenvector corresponding to } \lambda_1 = 2 \\
+
+    (A - I) = \begin{bmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & -1 \\
+    1 & 3 & -3
+    \end{bmatrix} \xmapsto{RREF} = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 0
+\end{bmatrix} \implies \vec{x} = t \begin{bmatrix}
+    0 \\
+    1 \\
+    1
+\end{bmatrix} \text{ is a basic eigenvector corresponding to } \lambda_2 = 1 \\
+
+    (A + I) = \begin{bmatrix}
+    3 & 0 & 0 \\
+    1 & 3 & -1 \\
+    1 & 3 & -1
+    \end{bmatrix} \xmapsto{RREF} = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & -\frac{1}{3} \\
+    0 & 0 & 0
+\end{bmatrix} \implies \vec{x} = t \begin{bmatrix}
+    0 \\
+    \frac{1}{3} \\
+    1
+\end{bmatrix} \text{ is a basic eigenvector corresponding to } \lambda_3 = -1
+\end{align*}
+
+\subsubsection*{Diagonalization}
+Diagonal and triangular matricies have their eigenvalues on the main diagonal.
+\begin{equation*}
+    A = \begin{bmatrix}
+        \lambda_1 & 0 & 0 & 0\\
+        0 & \lambda_2 & 0 & 0 \\
+        0 & 0 & \ddots & \vdots \\
+        0 & 0 & \cdots & \lambda_n
+    \end{bmatrix}
+\end{equation*}
+
+\paragraph*{Theorem}
+An $n \times n$ matrix $A$ has n eigenvalues
+\begin{itemize}
+    \item Not necessarily distinct
+    \item Not necessarily real
+    \item $\det(A) = \lambda_1 \lambda_2 \cdots \lambda_n$
+    \item $\lambda = 0 \implies \det(A) = 0 \implies A$ is not invertible
+\end{itemize}
