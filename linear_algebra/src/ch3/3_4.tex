@@ -1,0 +1,176 @@
+\subsection{Diagonalization}
+\paragraph*{Definition}
+A matrix $A \in \mathbb{R}^{n \times n}$ is diagonalizable if there exists an invertible matrix $P$ and a diagonal matrix $D$ such that
+\begin{equation*}
+    A = PDP^{-1} 
+\end{equation*}
+
+Diagonal and triangular matricies have their eigenvalues on the main diagonal.
+
+\paragraph*{Theorem}
+An $n \times n$ matrix $A$ is said to be diagonalizable if and only if $P^{-1}AP = D$ whe $P$ is some invertible matrix and $D$ is a diagonal matrix. 
+In this case, the diagonal entries of $D$ are the eigenvalues of $A$ and the columns of $P$ are the corresponding eigenvectors of $A$.
+
+\paragraph*{Properties}
+\begin{itemize}
+    \item $C = $ diag$(\lambda_1, \lambda_2, \cdots, \lambda_n)$ is diagonal $\implies$ $C$ is diagonalizable
+    \item $CD = $ diag$(c_1d_1, c_2d_2, \cdots, c_nd_n) = CD$ is diagonal $\implies$ $CD$ is diagonalizable
+\end{itemize}
+
+\begin{equation*}
+    A = \begin{bmatrix}
+        \lambda_1 & 0 & 0 & 0\\
+        0 & \lambda_2 & 0 & 0 \\
+        0 & 0 & \ddots & \vdots \\
+        0 & 0 & \cdots & \lambda_n
+    \end{bmatrix}
+\end{equation*}
+
+\paragraph*{Theorem}
+An $n \times n$ matrix $A$ has n eigenvalues
+\begin{itemize}
+    \item Not necessarily distinct
+    \item Not necessarily real
+    \item $\det(A) = \lambda_1 \lambda_2 \cdots \lambda_n$
+    \item $\lambda = 0 \implies \det(A) = 0 \implies A$ is not invertible
+\end{itemize}
+
+\subsubsection*{Similarity}
+\paragraph*{Definition}
+Two $n \times n$ matrices $A$ and $B$ are similar $(A \sim B)$ if there exists an invertible matrix $P$ such that $B = P^{-1}AP$. 
+Similar matrices have the same characteristic polynomial and therefore the same eigenvalues.
+
+\paragraph*{How do we find $P$ and $D$?}
+We want to find $P$ such that $P^{-1}AP = D$ where $D$ is diagonal.
+\begin{align*}
+    P^{-1}&AP = D \implies AP = PD\\
+    P = &[\vec{v_1} \vec{v_2} \cdots \vec{v_n}] \implies A[\vec{v_1} \vec{v_2} \cdots \vec{v_n}] = [\vec{v_1} \vec{v_2} \cdots \vec{v_n}]\begin{bmatrix}
+        \lambda_1 & 0 & 0 & 0\\
+        0 & \lambda_2 & 0 & 0 \\
+        0 & 0 & \ddots & \vdots \\
+        0 & 0 & \cdots & \lambda_n
+    \end{bmatrix} \\
+    \implies &[A\vec{v_1} A\vec{v_2} \cdots A\vec{v_n}] = [\lambda_1 \vec{v_1} \lambda_2 \vec{v_2} \cdots \lambda_n \vec{v_n}]\\
+    \implies &A\vec{v_i} = \lambda_i \vec{v_i} \text{ for } i = 1, 2, \cdots, n\\
+    \therefore \quad &\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n} \text{ are eigenvectors of } A \text{ corresponding to } \lambda_1, \lambda_2, \cdots, \lambda_n
+\end{align*}
+
+\paragraph*{Theorem}
+\begin{enumerate}
+    \item $A$ is diagonalizable $\iff$ it has eigenvectors $\vec{x_1}, \vec{x_2}, \cdots, \vec{x_n}$ and $P = [\vec{x_1} \vec{x_2} \cdots \vec{x_n}]$ is invertible
+    \item When this is the case, $P^{-1}AP = $ diag$(\lambda_1, \lambda_2, \cdots, \lambda_n)$ where $\lambda_i$ is the eigenvalue corresponding to $\vec{x_i}$ for $i = 1, 2, \cdots, n$
+    \item If $A$ has n \emph{distinct} eigenvalues, then $A$ is diagonalizable. (Solve $(A - \lambda_i I)\vec{x} = \vec{0}$ for each eigenvalue $\lambda_i$ to get n linearly independent eigenvectors.)
+\end{enumerate}
+
+\paragraph*{Example}
+Let $A = \begin{bmatrix}
+    2 & 0 & 0 \\
+    1 & 2 & -1 \\
+    1 & 3 & -2
+\end{bmatrix}$ and $\lambda_1 = 2, lambda_2 = 1, \lambda_3 = -1$. Find a basic eigenvector corresponding to each eigenvalue and determine if $A$ is diagonalizable.
+\begin{align*}
+    (A - 2I) = &\begin{bmatrix}
+    0 & 0 & 0 \\
+    1 & 0 & -1 \\
+    1 & 3 & -4
+    \end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+    1 \\
+    1 \\
+    1
+    \end{bmatrix} \\
+    \therefore \quad &\begin{bmatrix}
+    1 \\
+    1 \\
+    1
+    \end{bmatrix} \text{ is a basic eigenvector corresponding to } \lambda_1 = 2 \\
+    (A - I) = &\begin{bmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & -1 \\
+    1 & 3 & -1
+    \end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+    0 \\
+    1 \\
+    1
+    \end{bmatrix} \\
+    \therefore \quad &\begin{bmatrix}
+    0 \\
+    1 \\
+    1 
+    \end{bmatrix} \text{ is a basic eigenvector corresponding to } \lambda_2 = 1 \\
+    (A + I) = &\begin{bmatrix}
+    3 & 0 & 0 \\
+    1 & 3 & -1 \\
+    1 & 3 & -1
+    \end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+    0 \\
+    1 \\
+    3
+    \end{bmatrix} \\
+    \therefore \quad &\begin{bmatrix}
+    0 \\
+    1 \\
+    3
+    \end{bmatrix} \text{ is a basic eigenvector corresponding to } \lambda_3 = -1 \\
+    \implies &P = \begin{bmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 1 \\
+    1 & 1 & 4
+    \end{bmatrix} \text{ and} D = \begin{bmatrix}
+    2 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+    \end{bmatrix} \\
+\end{align*}
+
+\paragraph*{Example}
+Diagonalize $A = \begin{bmatrix}
+    0 & 1 & 1 \\
+    1 & 0 & 1 \\
+    1 & 1 & 0
+\end{bmatrix}$
+\begin{enumerate}
+    \item Charateristic polynomial: $\det(A - \lambda I) = \det\begin{vmatrix}
+    -\lambda & 1 & 1 \\
+    1 & -\lambda & 1 \\
+    1 & 1 & -\lambda
+\end{vmatrix} = -\lambda^3 + 3\lambda + 2 = -(\lambda - 2)(\lambda + 1)^2$
+    \item Eigenvalues: $\lambda_1 = 2, \lambda_2 = -1$
+    \item Eigenvectors: \begin{align*}
+        (A - 2I) = &\begin{bmatrix}
+        -2 & 1 & 1 \\
+        1 & -2 & 1 \\
+        1 & 1 & -2
+        \end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+        1 \\
+        1 \\
+        1
+        \end{bmatrix} \\
+        (A + I) = &\begin{bmatrix}
+        1 & 1 & 1 \\
+        1 & 1 & 1 \\
+        1 & 1 & 1
+        \end{bmatrix} \vec{x} = \vec{0} \implies x_1 + x_2 + x_3 = 0 \implies \vec{x} = t_1 \begin{bmatrix}
+        1 \\
+        -1 \\
+        0
+        \end{bmatrix} + t_2 \begin{bmatrix}
+        1 \\
+        0 \\
+        -1
+        \end{bmatrix} \\
+        \therefore \quad &D = \text{diag}(-1, -1, 2) \text{ and } P = \begin{bmatrix}
+            -1 & -1 & 1 \\
+            1 & 0 & 1 \\
+            0 & 1 & 1
+        \end{bmatrix} \text{ is the diagonalized form of } A
+    \end{align*}
+\end{enumerate}
+
+\subsubsection*{Multiplicity of Eigenvalues}
+\paragraph*{Definition}
+An eighenvalue $\lambda$ of $A_{n \times n}$ has multiplicity $k$ if it occurs $k$ times as a root of the characteristic polynomial of $A$.
+For example: $P_A(\lambda) = (\lambda - 1)^2(\lambda + 2)^3$ has eigenvalues $\lambda_1 = 1$ with multiplicity 2 and $\lambda_2 = -2$ with multiplicity 3.
+
+\paragraph*{Theorem}
+An $n \times n$ matrix $A$ is diagonalizable if and only if every eigenvalue $\lambda_i$ of multiplicity $m$ yeilds \emph{exactly} $m$ basic eigenvectors.
+In particular, if $A_{n \times n}$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.
