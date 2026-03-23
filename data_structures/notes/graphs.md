@@ -15,3 +15,20 @@
 - A **path minimization** algorithm finds the shortest path between two vertices in a weighted graph.
 - **Breadth-first search (BFS)** and **depth-first search (DFS)** are traversal algorithms for graphs.
 - **Topological sorting** is an ordering of vertices in a directed acyclic graph such that for every directed edge uv, vertex u comes before v in the ordering.
+
+## Representation
+### Adjacency Matrix
+- A 2D array where the entry at row i and column j represents the edge from vertex i to vertex j.
+- Can store booleans, weights, or Edge objects.
+- $\Theta(|V|^2)$
+
+### Adjacency List
+- Maps each vertex to it's neighbors
+- In format $V \mapsto E_1, E_2, \cdots, E_n$
+- $\Theta(|V| + |E|)$
+
+Flipping either of these is called finding the **transpose** of a graph. This named after the matrix operation.
+
+## Breadth-First Search
+- Starts at a source vertex and explores all vertices at the present distance level before moving on to vertices at the next distance level.
+- 
