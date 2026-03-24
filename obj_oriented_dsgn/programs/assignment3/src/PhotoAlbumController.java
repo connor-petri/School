@@ -35,4 +35,16 @@ public class PhotoAlbumController {
         if (!it.hasPrevious()) { return null; }
         return it.previous();
     }
+
+    public void sortByName() {
+        model.sortByName();
+    }
+
+    public void sortByDate() {
+        model.sortByDate();
+    }
+
+    public void sortBySize() {
+        model.sortBySize();
+    }
 }

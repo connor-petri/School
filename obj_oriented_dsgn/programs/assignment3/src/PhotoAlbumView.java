@@ -33,7 +33,8 @@ public class PhotoAlbumView {
             setLayout(new BorderLayout());
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            add(new ListPanel(), BorderLayout.WEST);
+            ListPanel lp = new ListPanel();
+            add(lp, BorderLayout.WEST);
             add(new ImageViewPanel(), BorderLayout.CENTER);
 
             // Buttons
@@ -44,28 +45,50 @@ public class PhotoAlbumView {
                 AddPhotoDialog addPhotoDialog = new AddPhotoDialog(this);
                 addPhotoDialog.setVisible(true);
             });
-            buttonPanel.add(addButton);
 
             JButton deleteButton = new JButton("Delete Photo");
             deleteButton.addActionListener(e -> {
                 controller.deleteSelectedPhoto();
                 repaint();
             });
-            buttonPanel.add(deleteButton);
 
             JButton prevButton = new JButton("Previous");
             prevButton.addActionListener(e -> {
                 controller.prevPhoto();
                 repaint();
             });
-            buttonPanel.add(prevButton);
 
             JButton nextButton = new JButton("Next");
             nextButton.addActionListener(e -> {
                 controller.nextPhoto();
                 repaint();
             });
+
+            JButton sortNameButton = new JButton("Sort by Name");
+            sortNameButton.addActionListener(e -> {
+                controller.sortByName();
+                lp.repaint();
+            });
+
+            JButton sortDateButton = new JButton("Sort by Date");
+            sortDateButton.addActionListener(e -> {
+                controller.sortByDate();
+                lp.repaint();
+            });
+
+            JButton sortSizeButton = new JButton("Sort by Size");
+            sortSizeButton.addActionListener(e -> {
+                controller.sortBySize();
+                lp.repaint();
+            });
+
+            buttonPanel.add(addButton);
+            buttonPanel.add(deleteButton);
+            buttonPanel.add(prevButton);
             buttonPanel.add(nextButton);
+            buttonPanel.add(sortNameButton);
+            buttonPanel.add(sortDateButton);
+            buttonPanel.add(sortSizeButton);
 
             add(buttonPanel, BorderLayout.SOUTH);
         }

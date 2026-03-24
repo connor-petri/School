@@ -2,37 +2,43 @@ import java.util.*;
 
 public class PhotoAlbumModel {
     public class Iterator implements IPhotoAlbumIterator {
-        private int index = -1;
+        private Photo current;
 
         public boolean hasNext() {
-            try {
-                photos.get(index + 1);
-                return true;
-            } catch (IndexOutOfBoundsException e) {
-                return false;
-            }
+            if (photos.isEmpty()) { return false; }
+
+            if (current == null) { return true; }
+
+            int i = photos.indexOf(current);
+            return i < photos.size() - 1; // Check if i is larger than the index
         }
 
         public boolean hasPrevious() {
-            return index > 0;
+            if (current == null) { return false; }
+            return photos.indexOf(current) > 0;
         }
 
         public Photo next() {
-            return photos.get(++index);
+            if (current == null) {
+                current = photos.getFirst();
+            } else {
+                current = photos.get(photos.indexOf(current) + 1);
+            }
+            return current;
         }
 
         public Photo previous() {
-            return photos.get(--index);
+            current = photos.get(photos.indexOf(current) - 1);
+            return current;
         }
 
         public Photo current() {
-            if (photos.isEmpty()) { return null; }
-            return photos.get(index);
+            return current;
         }
     }
 
     private final ArrayList<Photo> photos = new ArrayList<>();
-    private ISortingStrategy sortingStrat = new SortBySize();
+    private ISortingStrategy sortingStrat = new SortByName();
 
     public PhotoAlbumModel() {}
 
