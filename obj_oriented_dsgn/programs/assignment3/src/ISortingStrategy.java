@@ -1,5 +1,5 @@
 import java.util.List;
 
-public interface SortingStrategy {
+public interface ISortingStrategy {
     List<Photo> sort(List<Photo> photos);
 }

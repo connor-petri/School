@@ -1,25 +1,28 @@
-import java.util.Date;
+import javax.swing.*;
+import java.awt.*;
+import java.time.LocalDateTime;
 
 public class Photo {
     private String name;
     private String path;
-    private Date dateAdded;
+    private LocalDateTime dateAdded;
     private long size;
+    private Image img;
+    private Image thumbnail;
 
-    public Photo(String name, String path, Date dateAdded, long size) {
+    public Photo(String name, String path) {
         this.name = name;
         this.path = path;
-        this.dateAdded = dateAdded;
-        this.size = size;
+        img = new ImageIcon(path).getImage();
+        thumbnail = img.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        this.dateAdded = LocalDateTime.now();
     }
 
     public String getName() { return name; }
     public String getPath() { return path; }
-    public Date getDateAdded() { return dateAdded; }
+    public LocalDateTime getDateAdded() { return dateAdded; }
     public long getSize() { return size; }
 
-    public void setName(String name) { this.name = name; }
-    public void setPath(String path) { this.path = path; }
-    public void setDateAdded(Date dateAdded) { this.dateAdded = dateAdded; }
-    public void setSize(long size) { this.size = size; }
+    public Image getImage() { return img; }
+    public Image getThumbnail() { return thumbnail; }
 }

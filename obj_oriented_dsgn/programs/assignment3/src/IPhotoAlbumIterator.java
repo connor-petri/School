@@ -1,4 +1,4 @@
-public interface PhotoAlbumIterator {
+public interface IPhotoAlbumIterator {
     boolean hasNext();
     boolean hasPrevious();
     Photo current();
