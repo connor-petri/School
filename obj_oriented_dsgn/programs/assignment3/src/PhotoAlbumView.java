@@ -33,8 +33,7 @@ public class PhotoAlbumView {
             setLayout(new BorderLayout());
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            ListPanel lp = new ListPanel();
-            add(lp, BorderLayout.WEST);
+            add(new ListPanel(), BorderLayout.WEST);
             add(new ImageViewPanel(), BorderLayout.CENTER);
 
             // Buttons
@@ -45,41 +44,35 @@ public class PhotoAlbumView {
                 AddPhotoDialog addPhotoDialog = new AddPhotoDialog(this);
                 addPhotoDialog.setVisible(true);
             });
-
             JButton deleteButton = new JButton("Delete Photo");
             deleteButton.addActionListener(e -> {
                 controller.deleteSelectedPhoto();
                 repaint();
             });
-
             JButton prevButton = new JButton("Previous");
             prevButton.addActionListener(e -> {
                 controller.prevPhoto();
                 repaint();
             });
-
             JButton nextButton = new JButton("Next");
             nextButton.addActionListener(e -> {
                 controller.nextPhoto();
                 repaint();
             });
-
             JButton sortNameButton = new JButton("Sort by Name");
             sortNameButton.addActionListener(e -> {
                 controller.sortByName();
-                lp.repaint();
+                repaint();
             });
-
             JButton sortDateButton = new JButton("Sort by Date");
             sortDateButton.addActionListener(e -> {
                 controller.sortByDate();
-                lp.repaint();
+                repaint();
             });
-
             JButton sortSizeButton = new JButton("Sort by Size");
             sortSizeButton.addActionListener(e -> {
                 controller.sortBySize();
-                lp.repaint();
+                repaint();
             });
 
             buttonPanel.add(addButton);
@@ -140,6 +133,7 @@ public class PhotoAlbumView {
                 JFileChooser fc = new JFileChooser();
                 if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                     filePathField.setText(fc.getSelectedFile().getAbsolutePath());
+                    nameField.setText(fc.getSelectedFile().getName().split("\\.")[0]);
                 }
             });
 

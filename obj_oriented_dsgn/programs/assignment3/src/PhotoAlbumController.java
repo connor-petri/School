@@ -15,15 +15,13 @@ public class PhotoAlbumController {
     }
 
     public void addPhoto(String name, String filePath) {
-        boolean empty = !it.hasNext();
         model.addPhoto(new Photo(name, filePath));
-        if (empty) {
-            it.next();
-        }
+        it = model.iterator();
     }
 
     public void deleteSelectedPhoto() {
         model.deletePhoto(it.current());
+        it = model.iterator();
     }
 
     public Photo nextPhoto() {
@@ -38,13 +36,16 @@ public class PhotoAlbumController {
 
     public void sortByName() {
         model.sortByName();
+        it =  model.iterator();
     }
 
     public void sortByDate() {
         model.sortByDate();
+        it =  model.iterator();
     }
 
     public void sortBySize() {
         model.sortBySize();
+        it =  model.iterator();
     }
 }

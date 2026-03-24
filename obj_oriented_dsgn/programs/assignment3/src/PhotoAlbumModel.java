@@ -4,6 +4,12 @@ public class PhotoAlbumModel {
     public class Iterator implements IPhotoAlbumIterator {
         private Photo current;
 
+        public Iterator() {
+            if (!photos.isEmpty()) {
+                current = photos.getFirst();
+            }
+        }
+
         public boolean hasNext() {
             if (photos.isEmpty()) { return false; }
 
@@ -19,6 +25,8 @@ public class PhotoAlbumModel {
         }
 
         public Photo next() {
+            if (!hasNext()) { return null; }
+
             if (current == null) {
                 current = photos.getFirst();
             } else {
@@ -38,15 +46,7 @@ public class PhotoAlbumModel {
     }
 
     private final ArrayList<Photo> photos = new ArrayList<>();
-    private ISortingStrategy sortingStrat = new SortByName();
-
-    public PhotoAlbumModel() {}
-
-    public Iterator iterator() { return new Iterator(); }
-
-    public ArrayList<Photo> getPhotos() {
-        return photos;
-    }
+    private ISortingStrategy sortingStrat = new SortByDate();
 
     public void addPhoto(Photo p) {
         photos.add(p);
@@ -55,6 +55,14 @@ public class PhotoAlbumModel {
 
     public boolean deletePhoto(Photo p) {
         return photos.remove(p);
+    }
+
+    public PhotoAlbumModel() {}
+
+    public Iterator iterator() { return new Iterator(); }
+
+    public ArrayList<Photo> getPhotos() {
+        return photos;
     }
 
     public ArrayList<Photo> sortByName() {
