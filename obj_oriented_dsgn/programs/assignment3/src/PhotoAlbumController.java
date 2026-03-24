@@ -21,4 +21,18 @@ public class PhotoAlbumController {
             it.next();
         }
     }
+
+    public void deleteSelectedPhoto() {
+        model.deletePhoto(it.current());
+    }
+
+    public Photo nextPhoto() {
+        if (!it.hasNext()) { return null; }
+        return it.next();
+    }
+
+    public Photo prevPhoto() {
+        if (!it.hasPrevious()) { return null; }
+        return it.previous();
+    }
 }

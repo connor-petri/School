@@ -26,25 +26,48 @@ public class PhotoAlbumView {
     private class PhotoAlbumFrame extends JFrame {
         private static final int  FRAME_WIDTH = 1400;
         private static final int FRAME_HEIGHT = 900;
+
         public PhotoAlbumFrame() {
             setTitle("Photo Album");
             setSize(FRAME_WIDTH, FRAME_HEIGHT);
             setLayout(new BorderLayout());
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            ListPanel lp = new ListPanel();
-            add(lp, BorderLayout.WEST);
-
+            add(new ListPanel(), BorderLayout.WEST);
             add(new ImageViewPanel(), BorderLayout.CENTER);
 
             // Buttons
+            JPanel buttonPanel = new JPanel();
+
             JButton addButton = new JButton("Add Photo");
             addButton.addActionListener(e -> {
-                AddPhotoDialog addPhotoDialog = new AddPhotoDialog(this, lp);
+                AddPhotoDialog addPhotoDialog = new AddPhotoDialog(this);
                 addPhotoDialog.setVisible(true);
             });
+            buttonPanel.add(addButton);
 
-            add(addButton, BorderLayout.SOUTH);
+            JButton deleteButton = new JButton("Delete Photo");
+            deleteButton.addActionListener(e -> {
+                controller.deleteSelectedPhoto();
+                repaint();
+            });
+            buttonPanel.add(deleteButton);
+
+            JButton prevButton = new JButton("Previous");
+            prevButton.addActionListener(e -> {
+                controller.prevPhoto();
+                repaint();
+            });
+            buttonPanel.add(prevButton);
+
+            JButton nextButton = new JButton("Next");
+            nextButton.addActionListener(e -> {
+                controller.nextPhoto();
+                repaint();
+            });
+            buttonPanel.add(nextButton);
+
+            add(buttonPanel, BorderLayout.SOUTH);
         }
     }
 
@@ -83,7 +106,7 @@ public class PhotoAlbumView {
         private JTextField nameField;
         private JTextField filePathField;
 
-        public AddPhotoDialog(Frame parent, ListPanel listPanel) {
+        public AddPhotoDialog(Frame parent) {
             super(parent, "Add Photo", true);
             setSize(300, 200);
             nameField = new JTextField(20);
@@ -101,9 +124,7 @@ public class PhotoAlbumView {
             okButton.addActionListener(e -> {
                 if (!nameField.getText().isEmpty() && !filePathField.getText().isEmpty()) {
                     controller.addPhoto(nameField.getText(), filePathField.getText());
-                    for (Component c : parent.getComponents()) {
-                        c.repaint();
-                    }
+                    parent.repaint();
                     dispose();
                 }
             });
