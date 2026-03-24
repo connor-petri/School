@@ -31,3 +31,24 @@ public class Child extends Parent {
 - ```MouseMotionListener``` listens for mouse motion
 - Attached using ```addMouseLIstener()``` and ```addMouseMotionListener()``` respectivly
 - ```MouseActionListener``` is a class the implements both 
+
+---
+
+## Abstract Class
+- A class that cannot be instantiated, but can be subclassed
+- Used to define a common interface for a group of subclasses
+- Can contain abstract methods (methods without a body) that must be implemented by subclasses
+- Can also contain concrete methods (methods with a body) that can be inherited by subclasses
+- Declared using the ```abstract``` keyword
+
+## Final Classes
+- A class that cannot be subclassed
+- Used to prevent inheritance and ensure that the class's behavior cannot be modified by subclasses
+- Declared using the ```final``` keyword
+- Not very common, but useful for security reasons or to prevent unintended consequences of subclassing
+
+## Template Method Pattern
+- A design pattern that defines the skeleton of an algorithm in a method, deferring some steps to subclasses
+- The template method is defined in the parent class and calls abstract methods that are implemented by subclasses
+- Allows for code reuse and flexibility while still enforcing a common structure for the algorithm
+
