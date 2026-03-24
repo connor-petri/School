@@ -5,6 +5,8 @@ import java.util.*;
 
 public class PhotoAlbumView {
     private static final int THUMB_SIZE = 30;
+    private static final int IMG_WIDTH = 1200;
+    private static final int IMG_HEIGHT = 800;
     private static final int ROW_HEIGHT = 35;
     private static final int PADDING = 5;
 
@@ -22,8 +24,8 @@ public class PhotoAlbumView {
     public PhotoAlbumView() {}
 
     private class PhotoAlbumFrame extends JFrame {
-        private static final int  FRAME_WIDTH = 300;
-        private static final int FRAME_HEIGHT = 300;
+        private static final int  FRAME_WIDTH = 1400;
+        private static final int FRAME_HEIGHT = 900;
         public PhotoAlbumFrame() {
             setTitle("Photo Album");
             setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -32,6 +34,8 @@ public class PhotoAlbumView {
 
             ListPanel lp = new ListPanel();
             add(lp, BorderLayout.WEST);
+
+            add(new ImageViewPanel(), BorderLayout.CENTER);
 
             // Buttons
             JButton addButton = new JButton("Add Photo");
@@ -97,7 +101,9 @@ public class PhotoAlbumView {
             okButton.addActionListener(e -> {
                 if (!nameField.getText().isEmpty() && !filePathField.getText().isEmpty()) {
                     controller.addPhoto(nameField.getText(), filePathField.getText());
-                    listPanel.repaint();
+                    for (Component c : parent.getComponents()) {
+                        c.repaint();
+                    }
                     dispose();
                 }
             });
@@ -120,6 +126,22 @@ public class PhotoAlbumView {
             add(buttonPanel, BorderLayout.SOUTH);
             pack();
             setLocationRelativeTo(parent);
+        }
+    }
+
+    private class ImageViewPanel extends JPanel {
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(150, 150);
+        }
+
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g;
+            Photo selectedPhoto = controller.getSelectedPhoto();
+            if (selectedPhoto == null) { return; }
+            g2d.drawImage(selectedPhoto.getImage(), PADDING, PADDING, IMG_WIDTH, IMG_HEIGHT, this);
         }
     }
 
