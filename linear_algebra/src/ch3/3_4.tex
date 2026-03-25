@@ -174,3 +174,153 @@ For example: $P_A(\lambda) = (\lambda - 1)^2(\lambda + 2)^3$ has eigenvalues $\l
 \paragraph*{Theorem}
 An $n \times n$ matrix $A$ is diagonalizable if and only if every eigenvalue $\lambda_i$ of multiplicity $m$ yeilds \emph{exactly} $m$ basic eigenvectors.
 In particular, if $A_{n \times n}$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.
+
+
+\paragraph*{Diagonalization Algorithm}
+\begin{enumerate}
+    \item Find the eigenvalues of $A$ by solving $\det(A - \lambda I) = 0$
+    \item Compute the basic eigenvectors corresponding to each eigenvalue $\lambda_i$ by solving $(A - \lambda_i I)\vec{x} = \vec{0}$
+    \item $A$ is diagonalizable $\iff$ there are $n$ basic eigenvectors total. Exactly the multiplicity amount corresponding to each eigenvalue.
+    \item In this case, the matrix $P$ is formed with these $n$ \emph{basic} eigenvectors as columns and $D = \text{diag}(\lambda_1, \lambda_2, \cdots, \lambda_n)$ where $\lambda_i$ is the eigenvalue corresponding to the $i$th column of $P$ for $i = 1, 2, \cdots, n$.
+\end{enumerate}
+
+
+\paragraph*{Example}
+Show that $A = \begin{bmatrix}
+    1 & 1 \\
+    0 & 1
+\end{bmatrix}$ is not diagonalizable.
+\begin{align*}
+    &\lambda = 1 \text{ with multiplicity } 2 \implies (A - I) = \begin{bmatrix}
+    0 & 1 \\
+    0 & 0
+\end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+    1 \\
+    0
+\end{bmatrix} \\
+\therefore \quad &\text{There is only 1 basic eigenvector corresponding to the eigenvalue } 1 \text{ with multiplicity } 2 \\
+\implies &A \text{ is not diagonalizable}
+\end{align*}
+
+\paragraph*{Example}
+Find the diagonalization of $A = \begin{bmatrix}
+    1 & 4 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 3
+\end{bmatrix}$.
+\begin{enumerate}
+    \item Find eigenvalues: 
+    \begin{align*}
+        \det(A - \lambda I) = &\det\begin{vmatrix}
+            1 - \lambda & 4 & 0 \\
+            1 & 1 - \lambda & 0 \\
+            0 & 0 & 3 - \lambda
+        \end{vmatrix} = (3 - \lambda)\det\begin{vmatrix}
+            1 - \lambda & 4 \\
+            1 & 1 - \lambda
+        \end{vmatrix} = (3 - \lambda)((1 - \lambda)^2 - 4) \\
+        = &(3 - \lambda)(\lambda^2 - 2\lambda - 3) = (3 - \lambda)(\lambda - 3)(\lambda + 1) = -(3 - \lambda)^2(\lambda + 1)
+    \end{align*}
+    \item Find basic eigenvectors: 
+    \begin{align*}
+            (A - 3I) = &\begin{bmatrix}
+            -2 & 4 & 0 \\
+            1 & -2 & 0 \\
+            0 & 0 & 0
+        \end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+            2 \\
+            1 \\
+            0
+        \end{bmatrix} \\
+        (A + I) = &\begin{bmatrix}
+            0 & 4 & 0 \\
+            1 & 0 & 0 \\
+            0 & 0 & 4
+        \end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+            0 \\
+            0 \\
+            1
+        \end{bmatrix} \\
+        \therefore \quad &D = \text{diag}(3, 3, -1) \text{ and } P = \begin{bmatrix}
+            2 & 1 & 0 \\
+            1 & 0 & 0 \\
+            0 & 0 & 1
+        \end{bmatrix} \text{ is the diagonalized form of } A
+    \end{align*}
+    \item Find $A^3$ using the diagonalization of $A$:
+    \begin{align*}
+        A^3 = &PD^3P^{-1} = P\begin{bmatrix}
+            27 & 0 & 0 \\
+            0 & 27 & 0 \\
+            0 & 0 & -1
+        \end{bmatrix}P^{-1} = \begin{bmatrix}
+            2 & 1 & 0 \\
+            1 & 0 & 0 \\
+            0 & 0 & 1
+        \end{bmatrix}\begin{bmatrix}
+            27 & 0 & 0 \\
+            0 & 27 & 0 \\
+            0 & 0 & -1
+        \end{bmatrix}\begin{bmatrix}
+            0 & 1 & 0 \\
+            \frac{1}{2} & -\frac{1}{2} & 0 \\
+            0 & 0 & 1
+        \end{bmatrix} = \begin{bmatrix}
+            54 & -54 & 0 \\
+            27 & -27 & 0 \\
+            0 & 0 & -1
+        \end{bmatrix}
+    \end{align*}
+\end{enumerate}
+
+
+\pagebreak
+
+\subsection*{Basic Intro to Jordan Cononical Form}
+\paragraph*{Definition}
+A matrix $A$ is in Jordan cononical form if it is a block diagonal matrix where each block is a Jordan block. A Jordan block is a square matrix of the form
+\begin{equation*}
+    J_k(\lambda) = \begin{bmatrix}
+        \lambda & 1 & 0 & \cdots & 0 \\
+        0 & \lambda & 1 & \cdots & 0 \\
+        0 & 0 & \lambda & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & 1 \\
+        0 & 0 & 0 & \cdots & \lambda
+    \end{bmatrix}_{k \times k}
+\end{equation*}
+
+\paragraph*{Theorem}
+$J_k(\lambda)$ is not diagonalizable for $k > 1$ because it has only one eigenvalue $\lambda$ with multiplicity $k$ but only one basic eigenvector.
+
+\paragraph*{Theorem}
+$\forall A \sim J, J = \text{diag}(J_{k_1}(\lambda_1), J_{k_2}(\lambda_2), \cdots, J_{k_m}(\lambda_m))$ where $J_{k_i}(\lambda_i)$ is a Jordan block corresponding to the eigenvalue $\lambda_i$ for $i = 1, 2, \cdots, m$.
+
+\paragraph*{Example}
+$J = \text{diag}(J_1(5), J_2(7), J_1(7), J_3(8))$, find the dimensions of $J$
+\begin{equation*}
+    J \in \mathbb{R}^{n \times n} \implies n = 1 + 2 + 1 + 3 = 7
+\end{equation*}
+
+\paragraph*{Theorem}
+$P^{-1}AP = J = \text{diag}(J_{k_1}(\lambda_1), J_{k_2}(\lambda_2), \cdots, J_{k_m}(\lambda_m))$ where $J_{k_i}(\lambda_i)$ is called a block diagonal.\\
+$A$ is diagonalizable $\iff$ every Jordan block has size 1. Otherwise, if there is a Jordan block of $P^{-1}AP$ that is larger than $1 \times 1$, then $A$ is not diagonalizable.
+
+\paragraph*{Example}
+Show $J_3(\lambda) = \begin{bmatrix}
+    \lambda & 1 & 0 \\
+    0 & \lambda & 1 \\
+    0 & 0 & \lambda
+\end{bmatrix}$ is not diagonalizable.
+\begin{enumerate}
+    \item $J_3(\lambda)$ has only one eigenvalue $\lambda$ with multiplicity 3
+    \item $A - \lambda I = \begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{bmatrix} \vec{x} = \vec{0} \implies \vec{x} = t \begin{bmatrix}
+    1 \\
+    0 \\
+    0
+\end{bmatrix}$
+    \item There is only one basic eigenvector corresponding to the eigenvalue $\lambda$ with multiplicity 3 $\implies$ $J_3(\lambda)$ is not diagonalizable
+\end{enumerate}
