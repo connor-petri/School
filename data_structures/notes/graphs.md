@@ -31,4 +31,182 @@ Flipping either of these is called finding the **transpose** of a graph. This na
 
 ## Breadth-First Search
 - Starts at a source vertex and explores all vertices at the present distance level before moving on to vertices at the next distance level.
-- 
+
+```java
+public class Graph {
+
+    private class Vertex {
+        List<Vertex> neighbors;
+        boolean discovered;
+    }
+
+    ArrayList<Vertex> graph = new ArrayList<>();
+
+    private void ResetGraph() {
+        for (Vertex v : graph) {
+            v.discovered = false;
+        }
+    }
+
+    public void BFS(Vertex start) {
+        ResetGraph(); // Set all verticies to not discovered
+        Queue<Vertex> q = new LinkedList<>();
+        q.add(start);
+        while (!q.isEmpty()) {
+            Vertex v = q.poll();
+            for (Vertex neighbor : v.neighbors) {
+                if (!neighbor.discovered) {
+                    neighbor.discovered = true;
+                    q.add(neighbor);
+                }
+            }
+        }
+    }
+```
+
+### Cormen's BFS
+- Each vertex has a color (white, gray, black) to indicate its state of discovery.
+- Each vertex also has a distance from the source ($d$) and a parent pointer ($\pi$)
+
+```java
+public class Graph {
+
+    private enum Color {
+        WHITE, GRAY, BLACK
+    }
+
+    private class Vertex {
+        List<Vertex> neighbors;
+        Color color;
+        int dist;
+        Vertex parent;
+    }
+
+    private ArrayList<Vertex> graph = new ArrayList<>();
+
+    private void ResetGraph() {
+        for (Vertex v : graph) {
+            v.color = Color.WHITE;
+            v.dist = Integer.MAX_VALUE;
+            v.parent = null;
+        }
+    }
+
+    public void BFS(Vertex start) {
+        ResetGraph(); // Set all verticies to not discovered
+        Queue<Vertex> q = new LinkedList<>();
+        start.color = Color.GRAY;
+        start.dist = 0;
+        q.add(start);
+        while (!q.isEmpty()) {
+            Vertex v = q.poll();
+            for (Vertex neighbor : v.neighbors) {
+                if (neighbor.color == Color.WHITE) {
+                    neighbor.color = Color.GRAY;
+                    neighbor.dist = v.dist + 1;
+                    neighbor.parent = v;
+                    q.add(neighbor);
+                }
+            }
+            v.color = Color.BLACK;
+        }
+    }
+```
+
+### Analysis
+- Initialization: $\Theta(|V|)$
+- Let $V'$ and $E'$ be the set of vertices and edges reachable from the source vertex. Then, the loop runs $\Theta(|V'|)$ times and the inner loop runs $\Theta(|E'|)$ times. Thus, the total time complexity is $\Theta(|V| + |E|)$.
+- Total runtime: $\Theta(|V| + |E'|)$ or $\Theta(|V| + |E|)$
+
+## Depth-First Search
+- Starts at a source vertex and explores as far as possible along each branch before backtracking.
+
+```java
+public class Graph {
+    private class Vertex {
+        List<Vertex> neighbors;
+        boolean discovered;
+    }
+
+    ArrayList<Vertex> graph = new ArrayList<>();
+
+    private void ResetGraph() {
+        for (Vertex v : graph) {
+            v.discovered = false;
+        }
+    }
+
+    public void DFS(Vertex start) {
+        ResetGraph();
+        for (Vertex v : start.neighbors) {
+            if (!v.discovered) {
+                v.discovered = true;
+                DFS(v);
+            }
+        }
+    }
+}
+```
+
+### "Timestamp" DFS
+- Each vertex has a color, pi, discovery time, and finishing time.
+
+```java
+public class Graph {
+
+    private enum Color {
+        WHITE, GRAY, BLACK
+    }
+
+    private class Vertex {
+        List<Vertex> neighbors;
+        Color color;
+        int discoveryTime;
+        int finishingTime;
+        Vertex parent;
+    }
+
+    private ArrayList<Vertex> graph = new ArrayList<>();
+    private int time = 0;
+
+    private void ResetGraph() {
+        for (Vertex v : graph) {
+            v.color = Color.WHITE;
+            v.discoveryTime = 0;
+            v.finishingTime = 0;
+            v.parent = null;
+            time = 1;
+        }
+    }
+
+    private DFSVertex(Vertex v) {
+        v.color = Color.GRAY;
+        v.discoveryTime = time++;
+        for (Vertex neighbor : v.neighbors) {
+            if (neighbor.color == Color.WHITE) {
+                neighbor.parent = v;
+                DFSVertex(neighbor);
+            }
+        }
+        v.color = Color.BLACK;
+        v.finishingTime = time++;
+    }
+
+    public void DFS(Vertex start) {
+        ResetGraph();
+        DFSVertex(start);
+    }
+}
+```
+
+#### Edge Types
+- **Tree edge**: An edge that is part of the DFS tree (a parent to a child).
+- **Back edge**: An edge that points to an ancestor in the DFS tree. Implies a cycle in the graph.
+- **Forward edge**: An edge that points to a descendant in the DFS tree (not a tree edge).
+- **Cross edge**: An edge that points to a vertex that is neither an ancestor nor a descendant in the DFS tree.
+
+### Analysis
+- Initialization: $\Theta(|V|)$
+- Let $V'$ and $E'$ be the set of vertices and edges reachable from the source vertex. Then, the loop runs $\Theta(|V'|)$ times and the inner loop runs $\Theta(|E'|)$ times. Thus, the total time complexity is $\Theta(|V| + |E|)$.
+- Total runtime: $\Theta(|V| + |E'|)$ or $\Theta(|V| + |E|)$
+- Note that deep trees can cause stack overflow with recursive DFS. In practice, an iterative implementation using a stack is often used to avoid this issue.
