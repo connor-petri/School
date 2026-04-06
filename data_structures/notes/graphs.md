@@ -279,3 +279,210 @@ public class Graph {
 ### DFS-Based Topological Sort
 - Perform a DFS on the graph, looking for verticies with no outgoing edges (sinks).
 - When a sink is found, add it to the back of the topological order.
+
+---
+
+## Disjoint Sets
+- A data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.
+- Supports two operations:
+    - **Find**: Determine which subset a particular element is in. This can be used for determining if two elements are in the same subset.
+    - **Union**: Join two subsets into a single subset.
+
+---
+
+## Single Source Shortest Paths
+- Given a graph and a source vertex, find the shortest path from the source vertex to all other vertices in the graph.
+- Can be solved using BFS for unweighted graphs, Bellman-Ford algorithm for graphs with negative edge weights, and Dijkstra's algorithm for weighted graphs with non-negative edge weights.
+
+### "Relaxation" Technique
+- A technique used in shortest path algorithms to iteratively improve the estimate of the shortest path from the source vertex to all other vertices.
+- Involves updating the shortest path estimate for a vertex by comparing it to the shortest path estimate for a neighboring vertex plus the weight of the edge connecting them
+- If the new estimate is shorter, it is updated. This process is repeated until no more updates can be made, indicating that the shortest paths have been found.
+
+### Bellman-Ford Algorithm
+- An algorithm for finding the shortest paths from a single source vertex to all other vertices in a graph, even if the graph contains edges with negative weights.
+- The algorithm works by repeatedly relaxing all edges in the graph, and it can detect negative weight cycles. When one of these cycles is found, the distance is set to negative infinity for all vertices reachable from the cycle. Do not report these as valid paths.
+
+### Dijkstra's Algorithm
+- Grow a set of "finalized" vertices known to be the closest to the start vertex.
+- Relax edges out of a vertex once it is added to finalized set.
+
+```java
+public class Graph {
+    private class Vertex {
+        int key;
+        int dist;
+        Vertex parent;
+        List<Edge> neighbors;
+
+        public Vertex(int key) {
+            this.key = key;
+            this.dist = Integer.MAX_VALUE;
+            this.parent = null;
+            this.neighbors = new ArrayList<>();
+        }
+
+        public void addNeighbor(Vertex neighbor, int weight) {
+            this.neighbors.add(new Edge(this, neighbor, weight));
+        }
+    }
+
+    private class Edge {
+        Vertex from;
+        Vertex to;
+        int weight;
+
+        public Edge(Vertex from, Vertex to, int weight) {
+            this.from = from;
+            this.to = to;
+            this.weight = weight;
+        }
+
+        public boolean relax() {
+            if (from.dist + weight < to.dist) {
+                if (!pq.contains(to)) {
+                    return false;
+                }
+                to.dist = from.dist + weight;
+                to.parent = from;
+            }
+            return true;
+        }
+    }
+
+    private ArrayList<Vertex> graph = new ArrayList<>();  
+    // v.dist is the key for the pq
+    private PriorityQueue<Vertex> pq = new PriorityQueue<>(Comparator.comparingInt(v -> v.dist)); 
+
+    public void dijkstra(Vertex start) {
+        start.dist = 0;
+        pq.clear();
+        
+        pq.add(start);
+        while (!pq.isEmpty()) {
+            Vertex current = pq.poll();
+            for (Edge e : current.neighbors) {
+                e.relax();
+            }
+        }
+    }
+}
+```
+
+### Directed Acyclic Graphs
+- Topological sort the vertices
+- Relax edges of each vertex in topological order
+
+---
+
+## Minimum Spanning Trees
+- A spanning tree of a graph is a subgraph that is a tree and connects all the vertices together. 
+- A minimum spanning tree is a spanning tree with the smallest possible total edge weight.
+
+### Cuts
+- A cut of a graph partitions the vertices into two disjoint sets: $S \subseteq V$ and $V - S$.
+- An edge crosses the cut if it connects a vertex in $S$ to a vertex in $V - S$.
+
+#### Cross Cutting Theorem
+- the edge with minimum weight crossing any cut is in the minimum spanning tree.
+- Any cycle must cross any cut at least twice, so the minimum weight edge crossing the cut cannot be part of a cycle and must be in the minimum spanning tree.
+
+#### Unique Spanning Tree Theorem
+- If all edge weights are distinct, then the minimum spanning tree is unique.
+- Removing the edge from the tree breaks it into two, defining a cut on $G$.
+- If the edge has the minimum weight crossing that cut, it is in the tree.
+- If another edge crossing the cut weighs less, that edge can reconnect the tree halves, for a lower weight spanning tree. This is a contradiction, so the edge must be in the tree.
+- This argument applies for every edge in the MST, each is required to be in the tree, so the MST is unique.
+
+#### Cycle theorem
+- The maximum weight edge in any cycle is not in the minimum spanning tree.
+
+## Kruskal's Algorithm
+- Sort edges by weight consider them in order.
+- If an edge's vertices are in different trees of the fortest, add it to the forest, combining two trees into one.
+- If an edge falls between different trees in the forest, discard it.
+- Used disjoint sets to keep track of which vertices are in which trees.
+```java
+public class Graph {
+    private ArrayList<Edge> edges = new ArrayList<>();
+    private ArrayList<Vertex> vertices = new ArrayList<>();
+
+    public List<Edge> kruskal() {
+        List<Edge> mst = new ArrayList<>();
+        DisjointSet ds = new DisjointSet(vertices);
+        edges.sort(Comparator.comparingInt(e -> e.weight));
+        for (Edge e : edges) {
+            if (ds.find(e.from) != ds.find(e.to)) {
+                mst.add(e);
+                ds.union(e.from, e.to);
+            }
+        }
+        return mst;
+    }
+}
+```
+
+## Boruvka's Algorithm
+- We start with a forest of single vertes "trees" spanning th graph.
+- The minimum weight edge incident on any vertex $v$ is in the MST
+- The minimum weight edge with one vertex in the forest tree $T_i$ is in the MST
+- One phase:
+    - Mark each $T_i$ tree of the forest
+    - Find the lightyest edge leaving each $T_i$
+    - Add all of those edges to the forest, combining trees as necessary
+- Repeat until only one tree remains, which is the MST.
+
+## Prim's Algorithm
+- Start with a "special", but arbitrary, vertes $a$. Call it's forest tree $T_a$.
+- Add minimun weight edge between $T_A$ and the rest of the graph.
+- Keep doin that until $T_a$ spans the whole graph, at which point $T_a$ is the MST.
+
+```java
+public class Graph {
+    private class Vertex {
+        int key = Integer.MAX_VALUE;
+        List<Edge> neighbors;
+        public Vertex(int key) {
+            this.key = key;
+            this.neighbors = new ArrayList<>();
+        }
+    }
+    
+    private class Edge {
+        Vertex to, from;
+        int weight;
+
+        public Edge(Vertex from, Vertex to, int weight) {
+            this.from = from;
+            this.to = to;
+            this.weight = weight;
+        }
+    }
+
+    private ArrayList<Vertex> graph = new ArrayList<>();
+    private PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
+
+    public List<Edge> prim(Vertex start) {
+        List<Edge> mst = new ArrayList<>();
+        Set<Vertex> visited = new HashSet<>();
+        pq.clear();
+        start.key = 0;
+        visited.add(start);
+        pq.addAll(start.neighbors);
+        while (!pq.isEmpty()) { 
+            Edge e = pq.poll();
+            if (visited.contains(e.to)) {
+                continue;
+            }
+            visited.add(e.to);
+            mst.add(e);
+            for (Edge neighbor : e.to.neighbors) {
+                if (!visited.contains(neighbor.to)) {
+                    pq.add(neighbor);
+                }
+            }
+        }
+        return mst;
+    }
+}
+```
