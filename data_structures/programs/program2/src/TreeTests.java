@@ -233,7 +233,7 @@ public class TreeTests
 
     @Test
     public void addToLeft() {
-        int n = 1000;
+        int n = 10000000;
         Tree t = new Tree();
         t.insert(n + 10);
         t.insert(n + 11);
