@@ -25,18 +25,24 @@ public class Schedule {
         public void requires(Job j) {
             j.outgoing.add(this);
             inDegree++;
+            stale = true;
         }
 
         public int start() {
-            computeSchedule();
+            if (stale) {
+                computeSchedule();
+            }
             return timeEst;
         }
     }
 
-    private static int nextJobNum = 0;
+    private int nextJobNum = 0;
     private final ArrayList<Job> jobs = new ArrayList<>();
+    private boolean stale = true;
+    private boolean noLoops = true;
+    private int finishTime = 0;
 
-    private boolean computeSchedule() {
+    private void computeSchedule() {
         Queue<Job> q = new LinkedList<>();
 
         // Initialize vertices
@@ -66,18 +72,22 @@ public class Schedule {
         }
 
         // Check for loops. Set that vertex's timeEst to -1;
-        boolean noLoops = true;
+        noLoops = true;
         for (Job job : jobs) {
             if (job.khanInDegree != 0) {
                 job.timeEst = -1;
                 noLoops = false;
             }
-        }
 
-        return noLoops;
+            if (job.outgoing.isEmpty() && job.timeToComplete + job.timeEst > finishTime) {
+                finishTime = job.timeEst + job.timeToComplete;
+            }
+        }
+        stale = false;
     }
 
     public Job insert(int time) {
+        stale = true;
         return new Job(time);
     }
 
@@ -87,16 +97,15 @@ public class Schedule {
 
     public int finish() {
         // If loops exist, no valid finishing time exists for the entire schedule
-        if (!computeSchedule()) {
-            return -1;
-        }
-        int time = 0;
-        for (Job job : jobs) {
-            if (job.outgoing.isEmpty() && job.timeToComplete + job.timeEst > time) {
-                time = job.timeEst + job.timeToComplete;
-            }
+
+        if (stale) {
+            computeSchedule();
         }
 
-        return time;
+        if (!noLoops) {
+            return -1;
+        }
+
+        return finishTime;
     }
 }
