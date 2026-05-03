@@ -1,0 +1,78 @@
+\subsection{Vector Projections}
+
+\paragraph*{Definition}
+The \textit{vector projection} of a vector $\vec{v}$ onto a nonzero vector $\vec{u}$ is the vector
+\[\mathrm{proj}_{\vec{u}} \vec{v} = \left( \frac{\vec{v} \cdot \vec{u}}{\vec{u} \cdot \vec{u}} \right) \vec{u}\]
+This vector is parallel to $\vec{u}$ and represents the component of $\vec{v}$ in the direction of $\vec{u}$.
+
+\paragraph*{Geometric Interpretation}
+Let $\vec{x} = \begin{bmatrix}
+x_1 \\ x_2 \\ \vdots \\ x_n
+\end{bmatrix}$. The \emph{expansion} of $\vec{x} = \sum_{i=1}^n x_i \vec{e}_i$ is the representation of $\vec{x}$ as a linear combination of the standard basis vectors $\vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n$. 
+The coefficients $x_i$ are the components of $\vec{x}$ in the direction of the corresponding basis vectors.
+
+Say we have a different basis $B = \{\vec{f}_1, \vec{f}_2, \ldots, \vec{f}_n\}$ for $\mathbb{R}^n$. 
+We can also express $\vec{x}$ as a linear combination of the vectors in $B$: $\vec{x} = t_1 \vec{f}_1 + t_2 \vec{f}_2 + \cdots + t_n \vec{f}_n$. 
+We say that all $t_i$ are the coordinates of $\vec{x}$ relative to the basis $B$.
+
+This is used in computer graphics, where we often project vectors onto different bases to perform transformations, such as rotations, scaling, and camera position.
+
+\paragraph*{Expansion Theorem}
+Let $B = \{\vec{f}_1, \vec{f}_2, \ldots, \vec{f}_n\}$ be a basis for $\mathbb{R}^n$. Then for any vector $\vec{x} \in \mathbb{R}^n$, there exist unique scalars $t_1, t_2, \ldots, t_n$ such that
+\[\vec{x} = t_1 \vec{f}_1 + t_2 \vec{f}_2 + \cdots + t_n \vec{f}_n\]
+The scalars $t_i$ are the coordinates of $\vec{x}$ relative to the basis $B$.
+
+We can find the coordinates $t_i$ by taking the vector projection of $\vec{x}$ onto each basis vector $\vec{f}_i$:
+$\vec{X} = \sum_{i=1}^n \mathrm{proj}_{\vec{f}_i} \vec{x} = \sum_{i=1}^n \left( \frac{\vec{x} \cdot \vec{f}_i}{\vec{f}_i \cdot \vec{f}_i} \right) \vec{f}_i$.
+This is called the \emph{Fourier expansion} of $\vec{x}$ relative to the basis $B$.
+
+\paragraph*{Example}
+Let $B = \{\vec{f}_1 = \begin{bmatrix}
+    1 \\ 1 \\ 1 \\ -1
+\end{bmatrix}, \vec{f}_2 = \begin{bmatrix}
+    1 \\ 0 \\ 1 \\ 2
+\end{bmatrix}, \vec{f}_3 = \begin{bmatrix}
+    -1 \\ 0 \\ 1 \\ 0
+\end{bmatrix}, \vec{f}_4 = \begin{bmatrix}
+    -1 \\ 3 \\ -1 \\ 1
+\end{bmatrix}\}$ be an orthogonal basis for $\mathbb{R}^4$ and $\vec{x} = \begin{bmatrix}
+    1 \\ 2 \\ 3 \\ 4
+\end{bmatrix} \in \mathbb{R}^4$. Find the coordinates of $\vec{x}$ relative to the basis $B$, aka $\vec{x}_B$.
+
+\begin{align*}
+t_1 &= \frac{\vec{x} \cdot \vec{f}_1}{||\vec{f}_1||^2} = \frac{1 \cdot 1 + 2 \cdot 1 + 3 \cdot 1 + 4 \cdot (-1)}{1^2 + 1^2 + 1^2 + (-1)^2} = \frac{2}{4} = \frac{1}{2} \\
+t_2 &= \frac{\vec{x} \cdot \vec{f}_2}{||\vec{f}_2||^2} = \frac{1 \cdot 1 + 2 \cdot 0 + 3 \cdot 1 + 4 \cdot 2}{1^2 + 0^2 + 1^2 + 2^2} = \frac{12}{6} = 2 \\
+t_3 &= \frac{\vec{x} \cdot \vec{f}_3}{||\vec{f}_3||^2} = \frac{1 \cdot (-1) + 2 \cdot 0 + 3 \cdot 1 + 4 \cdot 0}{(-1)^2 + 0^2 + 1^2 + 0^2} = \frac{2}{2} = 1 \\
+t_4 &= \frac{\vec{x} \cdot \vec{f}_4}{||\vec{f}_4||^2} = \frac{1 \cdot (-1) + 2 \cdot 3 + 3 \cdot (-1) + 4 \cdot 1}{(-1)^2 + 3^2 + (-1)^2 + 1^2} = \frac{6}{12} = \frac{1}{2}
+\therefore \quad & \vec{x}_B = \begin{bmatrix}
+    \frac{1}{2} \\ 2 \\ 1 \\ \frac{1}{2}
+\end{bmatrix}
+\end{align*}
+
+\paragraph*{Example}
+What is $\vec{y}$ if $\vec{y}_B = \begin{bmatrix}
+    1 \\ 0 \\ 0 \\ 3
+\end{bmatrix}$?
+\begin{align*}
+\vec{y} &= 1 \cdot \vec{f}_1 + 0 \cdot \vec{f}_2 + 0 \cdot \vec{f}_3 + 3 \cdot \vec{f}_4 \\
+&= \begin{bmatrix}
+    1 \\ 1 \\ 1 \\ -1
+\end{bmatrix} + 3 \cdot \begin{bmatrix}
+    -1 \\ 3 \\ -1 \\ 1
+\end{bmatrix} \\
+&= \begin{bmatrix}    
+    -2 \\ 10 \\ -2 \\ 2
+\end{bmatrix}
+\end{align*}
+
+\paragraph*{Theorem}
+If $A \in \mathbb{R}^{m \times n}$ has orthogonal columns, then
+\[A^T A = D = \text{diag}(||\vec{c}_1||^2, ||\vec{c}_2||^2, \ldots, ||\vec{c}_n||^2) \implies ||\vec{c}_i||^2 = d_i\]
+where $\vec{c}_i$ is the $i$-th column of $A$. Remember that matricies are not transitive, so $A^T A \neq A A^T$ in general.
+
+\paragraph*{Theorem}
+Let $Q \in \mathbb{R}^{n \times n}$. If $Q^T Q = I$, then the columns of $Q$ are orthonormal, meaning the vectors have unit length and are mutually perpendicular. Conversely, if the columns of $Q$ are orthonormal, then $Q^T Q = I$.
+
+\paragraph*{Theorem}
+If $S$ is orthogonal and $\vec{0} \notin S$, then $S$ is linearly independent. This is because the columns of $S$ are orthogonal, and therefore cannot be linear combinations of each other.
+\[\sum{i = 1}^n t_i \vec{v}_i = \vec{0} \implies \forall \vec{v}_i \in S, \vec{v}_i \text{ is linearly independent of the others} \implies t_i = 0\]

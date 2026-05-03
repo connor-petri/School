@@ -410,7 +410,7 @@ public class Graph {
     public List<Edge> kruskal() {
         List<Edge> mst = new ArrayList<>();
         DisjointSet ds = new DisjointSet(vertices);
-        edges.sort(Comparator.comparingInt(e -> e.weight));
+        edges.sort(Comparator.comparin  gInt(e -> e.weight));
         for (Edge e : edges) {
             if (ds.find(e.from) != ds.find(e.to)) {
                 mst.add(e);

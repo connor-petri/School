@@ -34,7 +34,7 @@ public class Graph {
             this.key = key;
             vEdges = new ArrayList<>();
             dist = Integer.MAX_VALUE;
-            vertecies.add(this);
+            vertices.add(this);
         }
 
         public void add(Vertex to, int weight) {
@@ -52,7 +52,7 @@ public class Graph {
         }
     }
 
-    public List<Vertex> vertecies = new ArrayList<>();
+    public List<Vertex> vertices = new ArrayList<>();
     public List<Edge> edges = new ArrayList<>();
 
     public void printShortestPath(Vertex end) {
@@ -75,7 +75,7 @@ public class Graph {
 
     public void bellmanFord(Vertex start) {
         // Initialize
-        for (Vertex v : vertecies) {
+        for (Vertex v : vertices) {
             v.dist = Integer.MAX_VALUE;
             v.parent = null;
         }
@@ -85,7 +85,7 @@ public class Graph {
         int i = 1;
 
         // First pass
-        while (changed && i <= vertecies.size() - 1) {
+        while (changed && i <= vertices.size() - 1) {
             changed = false;
             i++;
             for (Edge e : edges) {
@@ -105,7 +105,7 @@ public class Graph {
 
         // Second pass
         i = 2;
-        while (changed && i <= vertecies.size() - 1) {
+        while (changed && i <= vertices.size() - 1) {
             changed = false;
             i++;
             for (Edge e : edges) {
@@ -160,22 +160,28 @@ public class Graph {
     }
 
     public void dijkstra(Vertex start) {
-        ArrayList<Vertex> unfinished = new ArrayList<>(vertecies);
+        // ArrayList<Vertex> unfinished = new ArrayList<>(vertices);
+        PriorityQueue<Vertex> pq = new PriorityQueue<Vertex>((v1, v2) -> Integer.compare(v1.dist, v2.dist));
+        Set<Vertex> visited = new HashSet<>();
         // Initialize
-        for (Vertex v : vertecies) {
+        for (Vertex v : vertices) {
             v.dist = Integer.MAX_VALUE;
             v.parent = null;
         }
         start.dist = 0;
-        unfinished.sort((v1, v2) -> Integer.compare(v1.dist, v2.dist));
+        pq.addAll(vertices);
 
-        while (!unfinished.isEmpty()) {
-            Vertex current = unfinished.getFirst();
-            for (Edge e : current.vEdges) {
-                e.relax();
+        while (!pq.isEmpty()) {
+            Vertex current = pq.poll();
+            if (visited.contains(current)) {
+                continue;
             }
-            unfinished.remove(current);
-            unfinished.sort((v1, v2) -> Integer.compare(v1.dist, v2.dist));
+            visited.add(current);
+            for (Edge e : current.vEdges) {
+                if (e.relax()) {
+                    pq.add(e.to);
+                }
+            }
         }
     }
 
@@ -202,3 +208,4 @@ public class Graph {
         g.printShortestPath(v[4]);
     }
 }
+
