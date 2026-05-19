@@ -148,7 +148,7 @@ void floydWarshall(int i, int j, int k, int[][] W) {
 ```
 
 ### Momoized Version
-- Allocate a 2D table $D$ to store the results of subproblems
+- Allocate a 2D table $D$ to store the results of subproblems. The first index of $D$ corresponds to the source vertex, the second index corresponds to the destination vertex, and the value stored at $D[i][j]$ corresponds to the shortest path from vertex $i$ to vertex $j$ using only intermediate vertices from 1 to $k$.
 ```java
 void floydWarshall(int[][] W) {
     int n = W.length;
@@ -256,7 +256,7 @@ Given graph $G = (V,E)$ and integer $k$, does $G$ contain a clique of size $k$?
 - Given a set $S[1, \ldots, n]$ of integers and an integer $K$, does there exist a subset of $S$ that sums to $K$?
 - We can solve this problem using dynamic programming in $O(nK)$ time, which is polynomial in the size of the input (since $K$ can be at most the sum of all elements in $S$). Therefore, the subset sum problem is in P.
 - To do this we allocate an array `ans` of size `K + 1` where `ans[i]` will store the index of the last element in the subset that sums to `i`, or -1 if no such subset exists. We initialize `ans[0]` to 0 (since the empty set sums to 0) and all other entries to -1. We then iterate through each element in `S` and update the `ans` array accordingly. Finally, if `ans[K]` is greater than 0, we can reconstruct the subset by backtracking through the `ans` array.
-
+  
 ```java
 List<Integer> subsetSum(int[] S, int K) {
     int ans[] = new int[K + 1];

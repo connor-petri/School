@@ -207,5 +207,29 @@ public class Graph {
         g.dijkstra(v[0]);
         g.printShortestPath(v[4]);
     }
+
+    private int[][] dist;
+    private int[][] parents;
+    private int[][] children;
+
+    public void floydWarshal(int[][] weights) {
+        int n       = weights.length;
+        dist        = new int[n][n];
+        parents     = new int[n][n];
+        children    = new int[n][n];
+
+        // Initialize distance array with weights
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                dist[i][j] = weights[i][j];
+                if (weights[i][j] != Integer.MAX_VALUE && i != j) {
+                    parents[i][j]   = i;
+                    children[i][j]  = j;
+                }
+            }
+            // The distance from a weight to itself should be 0
+            dist[i][i] = 0;
+        }
+    }
 }
 
