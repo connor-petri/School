@@ -163,3 +163,40 @@ Example:
 - Integrety Checks
 - Access Restrictions
 - Firewalls
+
+### Packet Delay: Four Sources
+- **Nodal Processing:** Check bit errors, determine output link, typically < msec
+- $d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}$
+- **Queueing Delay:** time waiting at output link for transmission, depends on congestion level of router
+- **Transmission Delay:** $d_{trans} = \frac{L}{R}$, $L$ = packet length (bits), $R$ = link bandwidth (bps)
+- **Proccessing Delay:** - Internal processing of the packet at the router, typically < msec
+- **Propogation Delay:** $d_{prop} = \frac{d}{s}$, $d$ = length of physical link, $s$ = propagation speed in medium (~2x10^8 m/s)
+
+### Traffic Intensity
+- $a = La/R$, where $a$ = average packet arrival rate, $L$ = average packet length, $R$ = link bandwidth
+- If $a > 1$, more bits arrive than can be sent, queue grows without bound, packets will be dropped
+- If $a < 1$, average rate at which bits arrive is less than the link bandwidth,
+
+### Packet Loss
+- Packets dropped if buffer fills up
+
+#### Throughput
+- Rate (bits/sec) at which bits transferred between sender/receiver
+    - **Instantaneous throughput:** rate at given point in time
+    - **Average throughput:** rate over longer period of time
+
+---
+
+## Protocol Layers and Their Service Models
+### Layered Internet Protocol Stack
+- **Application** supporting network applications
+    - HTTP, IMAP, SMTP, DNS
+- **Transport** process-process data transfer
+    - TCP, UDP
+- **Network** routing of datagrams from source to destination
+    - IP, routing protocols
+- **Link** data transfer between neighboring network elements
+    - Ethernet, WiFi
+- **Physical** the medium through which the datagram propogates through
+    - Wire
+    - EMR
