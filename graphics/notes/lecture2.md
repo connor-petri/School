@@ -32,6 +32,8 @@ $c \in \mathbb{R}, \vec{a} \in \mathbb{R}^3$
 
 ##### Parametric Equation
 - $p(t) = O + t\hat{d}$
+Where $O$ is a point (origin of the ray), $\hat{d}$ is a direction, and $t \in \mathbb{R}$
+- Each value of $t$ gives a point on the line
 
 ##### Rays
 - Rays contain a point and a direction
@@ -59,3 +61,55 @@ $\vec{a}, \vec{b} \in \mathbb{R}^3$
 - Surface normal of a triangle (A, B, C):
     - $\vec{n} = (B-A) \times (C - A)$, then normalize
 - Normals drive lighting, shading, and backface tests
+
+#### Orthonormal Basis
+- Forming and *orthonormal basis* from one vector (used for camera)
+- Given a vector $\vec{a}$:
+    1. $\vec{w} = \frac{\vec{a}}{|\vec{a}|}$
+    2. Pick any $\vec{t}$ not parallel to $\vec{w}$, e.g. $\vec{t} = (0, 1, 0)$
+    3. $\vec{u} = \frac{\vec{t} \times \vec{w}}{|\vec{t} \times \vec{w}|}$
+    4. $\vec{v} = \vec{w} \times \vec{u}$
+
+##### Orthonormal Basis from Two Vectors
+- Given two non-parallel vectors $\vec{a}$ and $\vec{b}$:
+    1. $\vec{w} = \frac{\vec{a}}{|\vec{a}|}$
+    2. $\vec{u} = \frac{\vec{b} \times \vec{w}}{|\vec{b} \times \vec{w}|}$
+    3. $\vec{v} = \vec{w} \times \vec{u}$
+-  $\vec{w}$ points along $\vec{a}$, $\vec{v}$ ends up in the plane of $\vec{a}$ and $\vec{b}$
+- No abritrary helper needed: $\vec{b}$ pins down the orientation
+- Classic use: building a camera frame from a gaze direction and an "up" vector
+
+---
+## Rust GLAM Vectors
+```rust
+// Cargo.toml
+use glam::Vec3;
+
+let v = Vec3::new(4.0, 3.0, 0.0);
+let len = v.length();
+let unit = v.normalize();
+
+let a = Vec3::new(1.0, 2.0, 0.0);
+let b = Vec3::new(3.0, -1.0, 2.0);
+let sum = a + b;
+let diff = a - b;
+let scaled = 2.0 * a;
+let dot = a.dot(b);
+let cross = a.cross(b);
+let proj = a.project_onto(b);
+```
+
+### Glam Cross Product, basis and rays
+```rust
+let n = (b - a).cross(c - a).normalize(); // normal of triangle ABC
+let w = a.normalize()
+let (u, v) = w.any_orthonormal_pair(); // orthonormal basis from one vector
+
+// Or from 2 vectors
+let w = gaze.normalize();
+let u = up.cross(w).normalize();
+let v = w.cross(u);
+
+// Parametric line
+let p = o + 2.0 * d; // point on ray (o, d)
+```
