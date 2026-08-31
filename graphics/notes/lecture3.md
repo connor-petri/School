@@ -24,7 +24,19 @@
 #### Vector-Matrix Multiplication
 - $A\vec{v} = \vec{w}$ where $\vec{w} = (w_1, w_2, ..., w_m)$ and $w_i = \sum_{j=1}^{n} a_{ij}v_j$
 - Each entry of the resulting vector is a linear combination of the columns of $A$ weighted by the entries of $\vec{v}$
+- Results in moving the original vector to another location
 
 #### Matrix-Matrix Multiplication
 - $AB = C$ where $c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}$
 - Each entry of the resulting matrix is a linear combination of the columns of $A$ weighted by the entries of the rows of $B$
+
+#### Inverse of a Matrix
+- The **inverse** $A^{-1}$ of a matrix undoes $A$: $AA^{-1} = I$
+- A matrix with no inverse is called a **singular matrix**
+- Properties:
+    - $(AB)^{-1} = B^{-1}A^{-1}$
+
+#### Transpose
+- Swap the rows an columnss
+- A symmetric matrix (mirrors along the diagonal) satisfies $A^T = A$
+- For rotations, $A^T = A^{-1}$: Transpose is the cheap inverse
