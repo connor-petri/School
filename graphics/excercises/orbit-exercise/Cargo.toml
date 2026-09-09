@@ -1,0 +1,19 @@
+[package]
+name = "orbit-exercise"
+version = "0.1.0"
+edition = "2021"
+description = "CS116A transform exercise: spin-in-place vs. orbit (order of matrix multiplication)"
+
+[dependencies]
+# macroquad gives us a window, a 3D camera, and input for free.
+# It also RE-EXPORTS the `glam` linear-algebra types (Vec3, Mat4, ...),
+# so `use macroquad::prelude::*` gives you the exact same glam API used in the
+# lecture decks -- no separate `glam` dependency needed (that would risk a
+# version mismatch with the glam macroquad builds against).
+macroquad = "0.4"
+
+# Optimize even in debug so the demo is smooth on student laptops.
+[profile.dev]
+opt-level = 1
+[profile.dev.package."*"]
+opt-level = 3
