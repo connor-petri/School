@@ -166,3 +166,36 @@ GET /index.html HTTP/1.1\r\h
 #### HTTP Response Message
 TODO: Put screenshot from lecture
 
+---
+
+## Email, SMTP, IMAP
+### Three major components
+- User agents
+- Mail servers
+- Simple mail transfer protocol (SMTP)
+
+#### User Agent
+- Mail reader
+- e.g. Outlook, gmail, mail (Apple)
+- Outgoing, incoming messages stored on server
+
+#### Mail Servers
+- Mailbox contains incoming messages for user
+- message queue of outgoing mail messages
+
+#### SMTP RFC
+- Uses TCP to reliably transfer email message
+- Three phases of transfer:
+    - Handshake
+    - Message transfer
+    - Closure
+- Command/response interaction (like HTTP)
+
+
+---
+
+## Socket Programming with UDP
+- UDP: no "connection" between client and server:
+    - No handshake
+    - Sender attaches IP to messgae
+    
