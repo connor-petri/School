@@ -44,3 +44,9 @@ The **Camera** has the following components:
 - $u$ = (up x w) / ||up x w||
 - $v = w \times u$
 - $u,v,w$ are an orthonormal basis
+
+#### Needed to Construct a Camera
+- FOV
+- Target Point
+- Aspect Ratio
+- Position/Eye
