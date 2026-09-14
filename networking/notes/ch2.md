@@ -191,11 +191,55 @@ TODO: Put screenshot from lecture
     - Closure
 - Command/response interaction (like HTTP)
 
+---
+
+## The Domain Name System (DNS)
+- The Domain Name System maps IP addresses to names used by humans
+    - e.g. sjsu.edu
+- A **distributed database** implemented in hierarchy of many *name servers*
+- *Application-layer protocol*: hosts, DNS servers communicate to *resolve* names
+
+### Services Provided
+- Hostname to IP address translation
+- Host aliasing
+    - canonical, alias names
+- Mail server aliasing
+- Load distribution
+    - Replicated Web servers: many IP addresses correspond to one name
+
+### Why not Centralize DNS?
+- Single point of failure
+- Traffic volume
+- Distant centralized database
+- Maintenance
+
+### Optimization
+- *Many* more reads than writes
+- *Performence matters:* almost every Internet transaction interacts with DNS
+- Decentralized: Millions of different organizations responsible for their records
+
+### Architecture
+1. Root DNS server
+2. Top Level Domain Servers
+    - .com
+    - .org
+    - .edu
+    - ...
+3. Authoritative Name Servers
+    - yahoo.com
+    - amazon.com
+    - pbs.org
+    - nyu.edu
+
+#### Top-Level Domain
+
 
 ---
 
 ## Socket Programming with UDP
 - UDP: no "connection" between client and server:
     - No handshake
-    - Sender attaches IP to messgae
-    
+    - Sender attaches IP to message
+
+---
+

@@ -10,6 +10,8 @@ pub struct Camera {
     position:       Vec3,
     target:         Vec3,
     fov_deg:        f32,
-    aspect_ratio:   f32
+    aspect_ratio:   f32,
+
+    // View Plane
 }
 
