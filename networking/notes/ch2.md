@@ -232,6 +232,66 @@ TODO: Put screenshot from lecture
     - nyu.edu
 
 #### Top-Level Domain
+- Responsible for .com, .org etc.
+- Network Solutions: Authoritative registry for .com, .net TLD
+
+#### Authoritative DNS servers
+- Organizations own DNS servers, providing authoritative hostname to IP mappings for organization's named hosts
+- Can be maintained by organization or service provider
+
+#### Local DNS name servers
+- When host makes DNS query, it is sent to its *local* DNS server
+- Local DNS server returns reply, answering:
+    - from its local cache of recend name-to-address translation pairs
+    - Forwarding request into DNS hierarchy for resolution
+- Each ISP has local DNS name server
+- Local DNS server doesn't strictly belong to hierarchy
+
+#### Iterated Query
+- Client asks for a domain name
+- Server replies "I dont know, but try this server instead"
+- Caching speeds up this process
+    - Caches become stale after a time
+
+#### Caching DNS Information
+- Once any name server learns mapping, it *caches* mapping, and *immediately* returns a cached mapping in response to a query
+
+### DNS Records
+#### RRs
+- { name, value }
+#### A Type
+- name is hostname
+- value is the IP address
+
+#### NS Type
+- name is domain
+- value is hostname of authoritative name server for this domain
+
+#### CNAME Type
+- name is alias name for some "canonical" name
+- value is canonical name
+
+#### MX type
+- value is name of SMTP mail server associated with name
+
+### DNS Protocol Messages
+- DNS *query* and *reply* messages both have the same *format*
+- Header
+    - *Identification*: 16 buit # for query, reply uses same #
+    - *Flags*: Details of the query
+- Questions
+    - name, type fields for a query
+- Answers
+    - RRs in response to query
+- Authority
+    - Records of authoritative servers
+- Additional info
+
+### Getting your info into the DNS
+- Register Name at *DNS Registrar*
+    - Provide names, IP addresses of authoritative name server
+    - Registrar inserts NS, A RRs into .com TLD server
+- Create authoritative server locally with IP address
 
 
 ---
