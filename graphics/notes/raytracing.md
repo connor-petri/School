@@ -39,3 +39,39 @@
 ---
 
 ## Object Intersections
+### Questions
+- Did this ray hit an object
+- Where on the object did it hit
+- What is the surface normal at that point (later)
+
+### Paremetric Rays
+- A ray is a **starting point** and a **direction**
+    - $p(t) = e + t\vec{d}$
+- t is the parameter that extends the ray in the direction $\vec{d}$ as shot from eye $e$
+- if $\vec{d}$ is a unit vector, then $t$ is a distance
+
+### What an Intersection Test Returns
+- Miss-> nothing.
+- Hit
+    - $t$ - where along the ray the collision occurs
+    - $p$ - the hit point (can also be calculated with $t$)
+    - $\vec{n}$ - the surface normal
+- We also pass a valid range $[t_{min}, t_{max}]$ into every test
+
+```rust
+pub struct Hit {
+    pub t: f32,
+    pub p: Vec3,
+    pub n: Vec3,
+}
+
+// every shape answers the same question , the same way
+// None == Miss; Some(hit) == Hit
+fn hit (&self, e: Vec3, d: Vec3, t_min: f32, t_max: f32, t_max: f32) -> Option<Hit>;
+```
+
+#### Nearest Hit
+- A ray may cross *many* objects, we want the *first* surface it meets
+- Test every object; keep the hit with the *smallest* valid $t$
+- A neat trick: once you have a hit at $t$, pass it as the new $t_{max}$
+- This loop is the whole scene traversal
