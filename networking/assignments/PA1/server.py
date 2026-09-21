@@ -16,6 +16,8 @@ import socket
 import threading
 import os
 import time
+import traceback
+
 
 
 def _ts():
@@ -83,12 +85,12 @@ def parse_http_request(raw_data):
     """
     try:
         data = raw_data.decode("utf-8").split("\r\n")
-        status_line = data.split[0](" ")
+        status_line = data[0].split(" ")
         return {
             "method":   status_line[0],
             "path":     status_line[1],
             "version":  status_line[2],
-            "headers":  data[1:],
+            "headers":  data[1:] if len(data) > 1 else [],
         }
     except Exception:
         return None
@@ -109,14 +111,14 @@ def serve_file(path):
                content_bytes - bytes or None
                mime_type     - str or None
     """
-    full_path = os.path.join(WEBROOT, path)
+    full_path = os.path.join(WEBROOT, path.lstrip("/"))
 
     if os.path.exists(full_path) and os.path.isfile(full_path):
         with open(full_path, 'rb') as f:
             content = f.read()
         ext = os.path.splitext(full_path)[1]
         mime_type = MIME_TYPES.get(ext, 'application/octet-stream')
-        return (200, content.encode("utf-8"), mime_type)
+        return (200, content, mime_type)
     else:
         return (404, None, None)
 
@@ -193,7 +195,10 @@ def handle_connection_persistent(conn: socket):
                     return
 
                 code, content, content_type = serve_file(parsed["path"])
-                wants_close = parsed["Connection"] == "close"
+                try:
+                    wants_close = parsed["Connection"] == "close"
+                except KeyError:
+                    wants_close = False
 
                 conn.sendall(build_http_response(code, content, {
                     "Content-Type": content_type,
