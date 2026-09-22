@@ -163,6 +163,10 @@ def handle_connection_non_persistent(conn: socket):
     with conn:
         parsed = parse_http_request(conn.recv(1024))
         code, content, content_type = serve_file(parsed["path"])
+        if content is None:
+            content = b''
+        if content_type is None:
+            content_type = 'text/html'
         conn.sendall(build_http_response(code, content, {"Content-Type": content_type}))
 
 
@@ -195,6 +199,10 @@ def handle_connection_persistent(conn: socket):
                     return
 
                 code, content, content_type = serve_file(parsed["path"])
+                if content is None:
+                    content = b''
+                if content_type is None:
+                    content_type = 'text/html'
                 try:
                     wants_close = parsed["Connection"] == "close"
                 except KeyError:

@@ -129,7 +129,7 @@ def slow_client(host, port, path):
                 if not chunk:
                     break
                 total_bytes += len(chunk)
-                print(f"\r{_ts()} - Received {total_bytes} bytes", end='', flush=True)
+                print(f"{_ts()} - Received {total_bytes} bytes")
                 time.sleep(SLOW_READ_DELAY)
                 
         except Exception as e:
