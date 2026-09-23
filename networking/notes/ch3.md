@@ -92,3 +92,34 @@
 - Underlying channel may flip bits in packet
     - chekcsum to detect bit errors
     - How do we recover from bit errors?
+
+#### rdt2.0 has a fatal flaw
+- What happens if an ACK/NAK is corrupted?
+    - Sender doesn't know what happened at receiver!
+    - can't just retransmit: possible duplicate
+
+### rdt2.1 handles garbled ACK/NAKs
+- Sender includes sequence numbers in packets and ACKs
+- Receiver discards duplicate packets based on sequence numbers
+- Ensures that each packet is delivered correctly and in order
+- Handles corrupted ACKs/NAKs by retransmitting only when necessary
+- Ensures reliable data transfer even in the presence of bit errors and corrupted control messages
+
+### rdt2.2: Further Improvements, NAK-Free
+- Instead of using NAKs, the receiver only sends ACKs
+- If the sender does not receive an ACK within a certain time, it retransmits the packet
+- Simplifies the protocol by eliminating the need for NAKs
+- Still ensures reliable data transfer in the presence of bit errors and lost packets
+
+### rdt3.0: Channel with Bit Errors and Loss
+- New Channel Assumptions: underlyng channel may also lose bits
+- Sender uses a timer to detect lost packets
+- If the timer expires before an ACK is received, the sender retransmits the packet
+- Ensures reliable data transfer even in the presence of bit errors and lost packets
+
+### Summary of Reliable Data Transfer Protocols and the Problems They Address
+- rdt1.0: Perfect channel, no loss, no corruption
+- rdt2.0: Handles bit errors, uses ACKs/NAKs
+- rdt2.1: Adds sequence numbers to handle corrupted ACKs/NAKs
+- rdt2.2: NAK-free, retransmits on timeout
+- rdt3.0: Handles both bit errors and packet loss, uses timers for retransmission
