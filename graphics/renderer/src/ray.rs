@@ -4,6 +4,7 @@
 
 use glam::{Mat4, Vec3};
 use std::fmt;
+use std::f32::consts::FRAC_PI_2;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Ray {

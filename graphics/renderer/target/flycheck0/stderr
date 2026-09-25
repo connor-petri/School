@@ -1,34 +1,12 @@
-   0.022985852s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint: stale: changed "/home/cpetri/School/graphics/renderer/src/camera.rs"
-   0.023007152s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:           (vs) "/home/cpetri/School/graphics/renderer/target/debug/.fingerprint/renderer-90db1f218e15b284/dep-bin-renderer"
-   0.023015298s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1790284666, nanos: 233264276 } < FileTime { seconds: 1790296186, nanos: 209830219 }
-   0.023092623s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint: fingerprint dirty for renderer v0.1.0 (/home/cpetri/School/graphics/renderer)/Check { test: false }/TargetInner { name: "renderer", doc: true, ..: with_path("/home/cpetri/School/graphics/renderer/src/main.rs", Edition2024) }
-   0.023108242s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/home/cpetri/School/graphics/renderer/target/debug/.fingerprint/renderer-90db1f218e15b284/dep-bin-renderer", reference_mtime: FileTime { seconds: 1790284666, nanos: 233264276 }, stale: "/home/cpetri/School/graphics/renderer/src/camera.rs", stale_mtime: FileTime { seconds: 1790296186, nanos: 209830219 } }))
-   0.023842081s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint: fingerprint error for renderer v0.1.0 (/home/cpetri/School/graphics/renderer)/Check { test: true }/TargetInner { name: "renderer", doc: true, ..: with_path("/home/cpetri/School/graphics/renderer/src/main.rs", Edition2024) }
-   0.023858983s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/cpetri/School/graphics/renderer/target/debug/.fingerprint/renderer-5574b6b46781aef9/test-bin-renderer`
-
-Caused by:
-    No such file or directory (os error 2)
-
-Stack backtrace:
-   0: <unknown>
-   1: <unknown>
-   2: <unknown>
-   3: <unknown>
-   4: <unknown>
-   5: <unknown>
-   6: <unknown>
-   7: <unknown>
-   8: <unknown>
-   9: <unknown>
-  10: <unknown>
-  11: <unknown>
-  12: <unknown>
-  13: <unknown>
-  14: <unknown>
-  15: __libc_start_call_main
-  16: __libc_start_main@@GLIBC_2.34
-  17: <unknown>
+   0.011052369s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint: stale: changed "/home/cpetri/School/graphics/renderer/src/main.rs"
+   0.011060194s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:           (vs) "/home/cpetri/School/graphics/renderer/target/debug/.fingerprint/renderer-d156a4a6b752b5d8/dep-bin-renderer"
+   0.011062508s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1790377917, nanos: 265675116 } < FileTime { seconds: 1790377962, nanos: 719472879 }
+   0.011098165s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint: fingerprint dirty for renderer v0.1.0 (/home/cpetri/School/graphics/renderer)/Check { test: false }/TargetInner { name: "renderer", doc: true, ..: with_path("/home/cpetri/School/graphics/renderer/src/main.rs", Edition2024) }
+   0.011103385s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/home/cpetri/School/graphics/renderer/target/debug/.fingerprint/renderer-d156a4a6b752b5d8/dep-bin-renderer", reference_mtime: FileTime { seconds: 1790377917, nanos: 265675116 }, stale: "/home/cpetri/School/graphics/renderer/src/main.rs", stale_mtime: FileTime { seconds: 1790377962, nanos: 719472879 } }))
+   0.011926069s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint: stale: changed "/home/cpetri/School/graphics/renderer/src/main.rs"
+   0.011929886s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:           (vs) "/home/cpetri/School/graphics/renderer/target/debug/.fingerprint/renderer-7236ae4532ace4df/dep-test-bin-renderer"
+   0.011931900s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1790377917, nanos: 265675116 } < FileTime { seconds: 1790377962, nanos: 719472879 }
+   0.011950815s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint: fingerprint dirty for renderer v0.1.0 (/home/cpetri/School/graphics/renderer)/Check { test: true }/TargetInner { name: "renderer", doc: true, ..: with_path("/home/cpetri/School/graphics/renderer/src/main.rs", Edition2024) }
+   0.011954452s  INFO prepare_target{force=false package_id=renderer v0.1.0 (/home/cpetri/School/graphics/renderer) target="renderer"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/home/cpetri/School/graphics/renderer/target/debug/.fingerprint/renderer-7236ae4532ace4df/dep-test-bin-renderer", reference_mtime: FileTime { seconds: 1790377917, nanos: 265675116 }, stale: "/home/cpetri/School/graphics/renderer/src/main.rs", stale_mtime: FileTime { seconds: 1790377962, nanos: 719472879 } }))
     Checking renderer v0.1.0 (/home/cpetri/School/graphics/renderer)
-error: could not compile `renderer` (bin "renderer") due to 2 previous errors; 5 warnings emitted
-warning: build failed, waiting for other jobs to finish...
-error: could not compile `renderer` (bin "renderer" test) due to 3 previous errors; 5 warnings emitted
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s
