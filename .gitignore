@@ -8,6 +8,7 @@
 .env
 .vscode
 */.vscode
+*.mp4
 
 # LibreOffice temp files.\
 .~lock*
