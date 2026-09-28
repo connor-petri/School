@@ -123,3 +123,55 @@
 - rdt2.1: Adds sequence numbers to handle corrupted ACKs/NAKs
 - rdt2.2: NAK-free, retransmits on timeout
 - rdt3.0: Handles both bit errors and packet loss, uses timers for retransmission
+
+---
+
+## Connection-oriented transport: TCP
+
+### Overview
+- point-to-point
+    - one sender, one receiver
+- reliable, in-order byte stream
+    - no "message boundaries"
+- full duplex data
+    - bi-directional data flow in same connection
+- cumulative ACKs
+- Pipelining
+
+### TCP Segment Structure
+- Source port
+- Destination port
+- Sequence number
+- Acknowledgment number
+- Data offset
+- Flags
+- Checksum
+- Options
+- Application data
+
+#### Sequence Numbers
+- byte stream "number" of first byte in segment's data
+
+### TCP round trip time (RTT) and Timeout
+- Q: how to set TCP timeout value
+    - longer than RTT, but RTT varies
+    - too short: premature timeout, unnecessary retransmissions
+    - too long: slow reaction to lost packets, inefficient retransmissions
+- Q: How to estimate RTT?
+    - SampleRTT measured time from sefment transmission until ACK receipt
+    - ignore retransmissions when measuring SampleRTT
+    - $RTT_{est} = (1 - \alpha) \cdot RTT_{est} + \alpha \cdot SampleRTT$
+    - $Timeout = EstimatedRTT + 4*DevRTT$
+    - $DevRTT = (1 - \beta) \cdot DevRTT + \beta \cdot |SampleRTT - RTT_{est}|$
+
+#### TCP Sender
+- On data receive:
+    - create segment with dwq #
+    - seq # is byte-stream number of first data byte in segment
+    - start timer for the segment if not already running
+
+### TCP flow control
+- Q: What happens if network layer delivers data faster than application layer removes data from socket buffers
+- TCP receiver "advertises" free buffer space in rwnd field in TCP header
+- Denser imits amount of unACKed data to received rwnd
+- Guarantees receive buffer will not overflow
