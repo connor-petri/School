@@ -89,7 +89,7 @@
 
 ## Blinn-Phoong
 ### The Half Vector
-- $\vec{h}$ is the unit vector halfway betweel $\vec{l}$ and $\vec{v}$
+- $\vec{h}$ is the unit vector halfway between $\vec{l}$ and $\vec{v}$
 - Add two unit vectors and you get their **bisector**, then normalize
 - The key fact: a perfect mirror sends the light to the eye exactly when $\vec{h} = \vec{n}$
 - So the angle $\alpha$ between $\vec{n}$ and $\vec{h}$ measures how far we are from that. Small $\alpha$ means brighter
