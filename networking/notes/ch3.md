@@ -175,3 +175,23 @@
 - TCP receiver "advertises" free buffer space in rwnd field in TCP header
 - Denser imits amount of unACKed data to received rwnd
 - Guarantees receive buffer will not overflow
+
+---
+
+## QUIC: Quick UDP Internet Connections
+- Application-layer protocol, on top of UDP
+    - Increase performance of HTTP
+    - Deployed on many Google servers, apps
+- Adopts approaches we've studied in this chapter for connections establishment, error, control, congestion control
+- Multiple application-level "streams" multiplexed over single QUIC connection
+- QUIC handshake combines TCP and TLS handshake
+- Enables Parallelism and reduces blocking due to head-of-line blocking
+
+### QUIC Segment Structure
+- Source connection ID
+- Destination connection ID
+- Packet number
+- Flags
+- Payload length
+- Payload (encrypted application data)
+
