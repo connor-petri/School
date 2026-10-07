@@ -66,7 +66,8 @@
 - Snell gives the angle; we need the direction
 - Split $\vec{d}$ into tangent and normal parts, as for reflection
 - Marschner and Shirley equation:
-    - Get formula from slides
+    - $\eta = n / n_t$
+    - $\vec{t} = \eta[\vec{d} - \vec{n} (\vec{d} \cdot \vec{n})] - \vec{n} \sqrt{1 - \eta^2(1-(\vec{d} \cdot \vec{n})^2)}$
 
 #### Some of the LIght Reflects
 - Glass is not only transparent- you can see your reflection in a window
@@ -89,3 +90,25 @@
 #### Total Internal Reflection
 - TIR: light meeting a boundary into a less dense menium beyond the critical angle is not transmitted at all - 100% of it reflects
 - $\eta^2(1 - \cos^2\theta) > 1 \implies \sin \varphi > 1 \implies $ no such $\varphi$
+
+### Material Struct
+```rust
+struct Material {
+    k_d: Vec3,
+    k_s: Vec3,
+    p:   f32,
+    k_m: Vec3,
+    k_t: Vec3,
+    ior: f32,
+}
+```
+
+### Things That Can Go Wrong
+- Nudging the refracted ray along $\vec{n}$: it starts back inside the medium it just left: speckles and black holes
+- Forgetting to **flip the normal** when exiting - the ray bends the wrong way
+- Using $\eta = n_t/n$ instead of $\eta = n / n_t$
+- Check for negatives in square root
+- Depth limit too low
+- Un-normalized $\vec{d}$
+- Shadow rays stop at glass, so glass casts a solid shadow
+
