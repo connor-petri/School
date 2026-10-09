@@ -15,22 +15,22 @@ fn main() {
 
     let mut camera1 = Camera::new(1920, 
                                     1080, 
-                                    100.0, 
+                                    45.0, 
                                     Vec3::new(100.0, -5.0, -25.0),
                                     Vec3::ZERO,
                                     Vec3::new(0.0, 1.0, 0.0));
 
     let mut camera2 = Camera::new(1920, 
                                     1080, 
-                                    100.0, 
-                                    Vec3::new(0.0, 20.0, -75.0),
+                                    45.0, 
+                                    Vec3::new(50.0, 20.0, -100.0),
                                     Vec3::new(-50.0, 0.0, 0.0),
                                     Vec3::new(0.0, 1.0, 0.15));
 
     let mut camera3 = Camera::new(1920, 
                                     1080, 
-                                    100.0, 
-                                    Vec3::new(-100.0, 0.0, 0.0),
+                                    45.0, 
+                                    Vec3::new(-150.0, 0.0, 0.0),
                                     Vec3::ZERO,
                                     Vec3::new(0.0, 1.0, 0.5));
 
