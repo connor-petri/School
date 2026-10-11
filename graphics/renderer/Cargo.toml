@@ -7,3 +7,4 @@ edition = "2024"
 glam = "0.33.6"
 image = { version = "0.25", default-features = false, features = ["png"] }
 rayon = "1"
+minifb = "0.28"

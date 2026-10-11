@@ -38,4 +38,11 @@ impl Material {
     pub fn polished(k_d: RGBA) -> Self {
         Self::new(k_d, RGBA::new(0.9, 0.9, 0.9, 1.0), 256.0)
     }
+
+    pub fn mirror(k_d: RGBA, k_m: RGBA) -> Self {
+        let mut m = Self::new(k_d, RGBA::new(0.9, 0.9, 0.9, 1.0), 256.0);
+        m.k_m = k_m;
+        m
+    }
+
 }

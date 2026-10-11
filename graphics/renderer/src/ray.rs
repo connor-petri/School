@@ -30,6 +30,13 @@ impl Ray {
             direction:  matrix.transform_vector3(self.direction)
         }
     }
+
+    pub fn reflect(&self, hit_point: Vec3, normal: Vec3) -> Self {
+        Self { 
+            origin: hit_point, 
+            direction: self.direction - 2.0 * (self.direction.dot(normal)) * normal,
+        }
+    }
 }
 
 impl fmt::Display for Ray {

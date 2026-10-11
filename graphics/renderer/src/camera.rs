@@ -120,6 +120,10 @@ pub struct Camera {
     view_plane:     ViewPlane,
 }
 
+// Camera ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+const MAX_DEPTH: u32 = 4;
+
 impl Camera {
     pub fn new(width_px: u32, height_px: u32, fov_deg: f32, position: Vec3, target: Vec3, up: Vec3) -> Self {
         let w: Vec3 = (position - target).normalize();
@@ -136,6 +140,15 @@ impl Camera {
             w,
             view_plane: ViewPlane::new(width_px, height_px, fov_deg),
         }
+    }
+
+    pub fn look_at(&mut self, position: Vec3, target: Vec3) {
+        self.position = position;
+        self.target = target;
+
+        self.w = (position - target).normalize();
+        self.u = self.up.cross(self.w).normalize();
+        self.v = self.w.cross(self.u);
     }
 
     pub fn ray_for_pixel(&self, x: u32, y: u32) -> Ray {
@@ -193,6 +206,23 @@ impl Camera {
         color
     }
 
+    fn trace(&self, ray: Ray, scene: &Scene, depth: u32) -> RGBA {
+        let Some(hit) = scene.hit(&ray, 0.001, f32::MAX) else {
+            return RGBA::new(0.53, 0.80, 0.92, 1.0);
+        };
+        
+        let mut color = self.shade(ray, &hit, scene);
+
+        let k_m = hit.material.k_m;
+
+        if depth > 0 && (k_m.r > 0.0 || k_m.g > 0.0 || k_m.b > 0.0) {
+            let reflected = ray.reflect(hit.point, hit.normal);
+            color = color + k_m * self.trace(reflected, scene, depth - 1);
+        }
+
+        color
+    }
+
     pub fn render(&mut self, scene: &Scene) {
         let mut buffer = std::mem::take(&mut self.view_plane.buffer);
 
@@ -202,10 +232,7 @@ impl Camera {
         .for_each(|(y, row)| {
             for (x, px) in row.iter_mut().enumerate() {
                 let ray = self.ray_for_pixel( x as u32, y as u32);
-                *px = match scene.hit(&ray, 0.001, f32::MAX) {
-                    Some(hit) => self.shade(ray, &hit, scene),
-                    None => RGBA::new(0.53, 0.80, 0.92, 1.0)
-                }
+                *px = self.trace(ray, scene, MAX_DEPTH);
             }
         });
 
@@ -215,4 +242,11 @@ impl Camera {
     pub fn save_png(&self, path: &str) -> image::ImageResult<()> {
         self.view_plane.save_png(path)
     }
+
+    pub fn to_u32_buffer(&self) -> Vec<u32> {
+    self.view_plane.buffer.iter().map(|c| {
+        let [r, g, b, _] = c.to_bytes();
+        (r as u32) << 16 | (g as u32) << 8 | b as u32
+    }).collect()
+}
 }
