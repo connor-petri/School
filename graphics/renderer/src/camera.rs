@@ -5,7 +5,11 @@ use glam::Vec3;
 use crate::ray::Ray;
 use crate::scene::Scene;
 use image::{ImageBuffer, Rgba};
+use crate::shape::Hit;
+use crate::material::Material;
 
+
+// RGBA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #[derive(Debug, Clone, Copy, PartialEq, Default)]
 pub struct RGBA {
     pub r: f32,
@@ -24,6 +28,29 @@ impl RGBA {
         [q(self.r), q(self.g), q(self.b), q(self.a)]
     }
 }
+
+impl std::ops::Add for RGBA {
+    type Output = RGBA;
+    fn add(self, o: RGBA) -> RGBA {
+        RGBA::new(self.r + o.r, self.g + o.g, self.b + o.b, 1.0)
+    }
+}
+
+impl std::ops::Mul for RGBA {
+    type Output = RGBA;
+    fn mul(self, o: RGBA) -> RGBA {
+        RGBA::new(self.r * o.r, self.g * o.g, self.b * o.b, 1.0)
+    }
+}
+
+impl std::ops::Mul<f32> for RGBA {
+    type Output = RGBA;
+    fn mul(self, s: f32) -> RGBA {
+        RGBA::new(self.r * s, self.g * s, self.b * s, 1.0)
+    }
+}
+
+// ViewPlane ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #[derive(Debug, Clone)]
 pub struct ViewPlane {
@@ -133,14 +160,49 @@ impl Camera {
     //     RGBA::new(c.x, c.y, c.z, 1.0)
     // }
 
+    fn shade(&self, ray: Ray, hit: &Hit, scene: &Scene) -> RGBA {
+        let n = hit.normal;
+        let v = -ray.direction();
+        let mat = &hit.material;
+
+        let mut color = mat.k_d * scene.ambient;
+
+        for light in &scene.lights {
+            let to_light = light.position - hit.point;
+            let l = to_light.normalize();
+            let shadow_ray = Ray::new(hit.point, l);
+
+            if scene.hit(&shadow_ray, 0.001, to_light.length()).is_some() {
+                continue;
+            }
+
+            let n_dot_l = n.dot(l).max(0.0);
+
+            if n_dot_l <= 0.0 {
+                continue
+            }
+
+            let h = (l + v).normalize();
+            let n_dot_h = n.dot(h).max(0.0);
+
+            color = color + mat.k_d * light.intensity * n_dot_l;
+            color = color + mat.k_s * light.intensity * n_dot_h.powf(mat.p);
+        }
+
+        color
+    }
+
     pub fn render(&mut self, scene: &Scene) {
         for y in 0..self.view_plane.height_px {
             for x in 0..self.view_plane.width_px {
                 let ray = self.ray_for_pixel(x, y);
-                let color = match scene.hit(&ray, 0.001, f32::MAX) {
-                    Some(hit) => hit.color,
-                    None => RGBA::new(0.53, 0.80, 0.92, 1.0),
+                let hit = scene.hit(&ray, 0.001, f32::MAX);
+
+                let color = match hit {
+                    Some(hit) => self.shade(ray, &hit, scene),
+                    None => RGBA::new(0.53, 0.80, 0.92, 1.0)
                 };
+                
                 self.view_plane.set_pixel(x, y, color);
             }
         }

@@ -4,18 +4,26 @@
 
 use crate::ray::Ray;
 use crate::shape::{Hit, Shape};
+use crate::light::Light;
+use crate::camera::RGBA;
 
 pub struct Scene {
     pub objects: Vec<Box<dyn Shape>>,
+    pub lights: Vec<Light>,
+    pub ambient: RGBA,
 }
 
 impl Scene {
-    pub fn new() -> Self {
-        Self { objects: Vec::new() }
+    pub fn new(ambient: RGBA) -> Self {
+        Self { objects: Vec::new(), lights: Vec::new(), ambient }
     }
 
     pub fn add(&mut self, shape: impl Shape + 'static) {
         self.objects.push(Box::new(shape));
+    }
+
+    pub fn add_light(&mut self, light: Light) {
+        self.lights.push(light);
     }
 
     pub fn len(&self) -> usize {

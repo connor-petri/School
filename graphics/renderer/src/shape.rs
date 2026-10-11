@@ -3,53 +3,37 @@
 // CS-116A
 
 use glam::Vec3;
-use crate::{camera::RGBA, ray::Ray};
+use crate::{ray::Ray, material::Material};
 
 pub struct Hit {
-    pub t:      f32,
-    pub point:  Vec3,
-    pub normal: Vec3,
-    pub color:  RGBA,
+    pub t:          f32,
+    pub point:      Vec3,
+    pub normal:     Vec3,
+    pub material:   Material,
+}
+
+impl Hit {
+    pub fn new(t: f32, point: Vec3, normal: Vec3, material: Material) -> Self {
+        Self { t, point, normal, material }
+    }
 }
 
 pub trait Shape {
     fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit>;
-    fn color(&self) -> RGBA;
+    fn material(&self) -> Material;
 }
 
 
 // Plane ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 pub struct Plane {
-    pub point:  Vec3,
-    pub normal: Vec3,
-    pub color:  RGBA,
-    pub checker: Option<(RGBA, f32)>,
-    pub u:      Vec3,
-    pub v:      Vec3,
+    pub point:      Vec3,
+    pub normal:     Vec3,
+    pub material:   Material,
 }
 
 impl Plane {
-    pub fn new(point: Vec3, normal: Vec3, color: RGBA) -> Self {
-        let normal = normal.normalize();
-        let u = normal.any_orthonormal_vector();
-        let v = normal.cross(u);
-        Self { point, normal, color, checker: None, u, v }
-    }
-
-    pub fn checkered(mut self, other: RGBA, size: f32) -> Self {
-        self.checker = Some((other, size));
-        self
-    }
-
-    // Generates checkerboard pattern
-    fn color_at(&self, p: Vec3) -> RGBA {
-        let Some((other, size)) = self.checker else {
-            return self.color;
-        };
-        let d = p - self.point;
-        let i = (d.dot(self.u) / size).floor() as i64;
-        let j = (d.dot(self.v) / size).floor() as i64;
-        if (i + j).rem_euclid(2) == 0 { self.color } else { other }
+    pub fn new(point: Vec3, normal: Vec3, material: Material) -> Self {
+        Self { point, normal: normal.normalize(), material }
     }
 }
 
@@ -61,31 +45,30 @@ impl Shape for Plane {
         }
 
         let t: f32 = ((self.point - ray.origin()).dot(self.normal)) / denom;
-        
+
         if t < t_min || t > t_max {
             return None;
         }
 
-        let p = ray.point(t);
-        Some(Hit { t, point: p, normal: self.normal, color: self.color_at(p) })
+        Some(Hit::new(t, ray.point(t), self.normal, self.material))
     }
 
-    fn color(&self) -> RGBA {
-        self.color
+    fn material(&self) -> Material {
+        self.material
     }
 }
 
 
 // Sphere ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 pub struct Sphere {
-    pub center: Vec3,
-    pub radius: f32,
-    pub color:  RGBA,
+    pub center:     Vec3,
+    pub radius:     f32,
+    pub material:   Material,
 }
 
 impl Sphere {
-    pub fn new(center: Vec3, radius: f32, color: RGBA) -> Self {
-        Self { center, radius, color }
+    pub fn new(center: Vec3, radius: f32, material: Material) -> Self {
+        Self { center, radius, material }
     }
 }
 
@@ -111,28 +94,28 @@ impl Shape for Sphere {
             }
         }
         let p = ray.point(t);
-        Some(Hit { t, point: p, normal: (p - self.center) / self.radius, color: self.color })
+        Some(Hit::new(t, p, (p - self.center) / self.radius, self.material))
     }
 
-    fn color(&self) -> RGBA {
-        self.color
+    fn material(&self) -> Material {
+        self.material
     }
 }
 
 
 // Triangle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 pub struct Triangle {
-    pub a:      Vec3,
-    pub b:      Vec3,
-    pub c:      Vec3,
-    pub normal: Vec3,
-    pub color:  RGBA,
+    pub a:          Vec3,
+    pub b:          Vec3,
+    pub c:          Vec3,
+    pub normal:     Vec3,
+    pub material:   Material,
 }
 
 impl Triangle {
-    pub fn new(a: Vec3, b: Vec3, c: Vec3, color: RGBA) -> Self {
+    pub fn new(a: Vec3, b: Vec3, c: Vec3, material: Material) -> Self {
         let normal = (b - a).cross(c - a).normalize();
-        Self { a, b, c, normal, color }
+        Self { a, b, c, normal, material }
     }
 }
 
@@ -141,7 +124,7 @@ impl Shape for Triangle {
         let ab = self.a - self.b;
         let ac = self.a - self.c;
         let ao = self.a - ray.origin();
-        
+
         let det_a = det(ab, ac, ray.direction());
         if det_a.abs() < 1e-8 {
             return None; // Ray is parallel
@@ -161,12 +144,12 @@ impl Shape for Triangle {
         if beta < 0.0 || beta > 1.0 - gamma {
             return None;
         }
-        
-        Some(Hit { t, point: ray.point(t), normal: self.normal, color: self.color })
+
+        Some(Hit::new(t, ray.point(t), self.normal, self.material))
     }
 
-    fn color(&self) -> RGBA {
-        self.color
+    fn material(&self) -> Material {
+        self.material
     }
 }
 
