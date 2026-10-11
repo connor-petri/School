@@ -30,6 +30,16 @@ impl Scene {
         self.objects.len()
     }
 
+    /// Returns a reference to the object at `index`, or `None` if out of range.
+    pub fn get_object(&self, index: u32) -> Option<&(dyn Shape + Sync)> {
+        self.objects.get(index as usize).map(|obj| obj.as_ref())
+    }
+
+    /// Returns a mutable reference to the object at `index`, or `None` if out of range.
+    pub fn get_object_mut(&mut self, index: u32) -> Option<&mut (dyn Shape + Sync + 'static)> {
+        self.objects.get_mut(index as usize).map(|obj| obj.as_mut())
+    }
+
     pub fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit> {
         let mut closest: Option<Hit> = None;
         let mut closest_t: f32 = t_max;

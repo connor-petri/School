@@ -2,6 +2,7 @@
 // Author: Connor Petri
 // CS-116A
 
+use std::any::Any;
 use glam::Vec3;
 use crate::{ray::Ray, material::Material};
 
@@ -21,6 +22,9 @@ impl Hit {
 pub trait Shape {
     fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit>;
     fn material(&self) -> Material;
+    /// Allows downcasting a `dyn Shape` back to its concrete type.
+    fn as_any(&self) -> &dyn Any;
+    fn as_any_mut(&mut self) -> &mut dyn Any;
 }
 
 
@@ -56,10 +60,20 @@ impl Shape for Plane {
     fn material(&self) -> Material {
         self.material
     }
+
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
+    fn as_any_mut(&mut self) -> &mut dyn Any {
+        self
+    }
 }
 
 
 // Sphere ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#[derive(Copy, Clone)]
 pub struct Sphere {
     pub center:     Vec3,
     pub radius:     f32,
@@ -99,6 +113,14 @@ impl Shape for Sphere {
 
     fn material(&self) -> Material {
         self.material
+    }
+
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
+    fn as_any_mut(&mut self) -> &mut dyn Any {
+        self
     }
 }
 
@@ -150,6 +172,14 @@ impl Shape for Triangle {
 
     fn material(&self) -> Material {
         self.material
+    }
+
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
+    fn as_any_mut(&mut self) -> &mut dyn Any {
+        self
     }
 }
 
