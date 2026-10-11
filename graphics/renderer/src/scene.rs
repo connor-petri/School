@@ -8,7 +8,7 @@ use crate::light::Light;
 use crate::camera::RGBA;
 
 pub struct Scene {
-    pub objects: Vec<Box<dyn Shape>>,
+    pub objects: Vec<Box<dyn Shape + Sync>>,
     pub lights: Vec<Light>,
     pub ambient: RGBA,
 }
@@ -18,7 +18,7 @@ impl Scene {
         Self { objects: Vec::new(), lights: Vec::new(), ambient }
     }
 
-    pub fn add(&mut self, shape: impl Shape + 'static) {
+    pub fn add(&mut self, shape: impl Shape + Sync + 'static) {
         self.objects.push(Box::new(shape));
     }
 

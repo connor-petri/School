@@ -48,7 +48,7 @@ fn main() {
 
     let plane = Plane::new(Vec3::new(0.0, -15.0, 0.0),
                            Vec3::new(0.0, 1.0, 0.0),
-                           Material::matte(RGBA::new(0.5, 0.5, 0.5, 1.0)));
+                           Material::polished(RGBA::new(0.5, 0.5, 0.5, 1.0)));
 
     let mut scene = Scene::new(RGBA::new(0.15, 0.15, 0.15, 1.0));
 

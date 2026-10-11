@@ -8,6 +8,7 @@ use image::{ImageBuffer, Rgba};
 use crate::shape::Hit;
 use crate::material::Material;
 
+use rayon::prelude::*;
 
 // RGBA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #[derive(Debug, Clone, Copy, PartialEq, Default)]
@@ -193,19 +194,22 @@ impl Camera {
     }
 
     pub fn render(&mut self, scene: &Scene) {
-        for y in 0..self.view_plane.height_px {
-            for x in 0..self.view_plane.width_px {
-                let ray = self.ray_for_pixel(x, y);
-                let hit = scene.hit(&ray, 0.001, f32::MAX);
+        let mut buffer = std::mem::take(&mut self.view_plane.buffer);
 
-                let color = match hit {
+        buffer
+        .par_chunks_mut(self.view_plane.width_px as usize)
+        .enumerate()
+        .for_each(|(y, row)| {
+            for (x, px) in row.iter_mut().enumerate() {
+                let ray = self.ray_for_pixel( x as u32, y as u32);
+                *px = match scene.hit(&ray, 0.001, f32::MAX) {
                     Some(hit) => self.shade(ray, &hit, scene),
                     None => RGBA::new(0.53, 0.80, 0.92, 1.0)
-                };
-                
-                self.view_plane.set_pixel(x, y, color);
+                }
             }
-        }
+        });
+
+        self.view_plane.buffer = buffer;
     }
 
     pub fn save_png(&self, path: &str) -> image::ImageResult<()> {
