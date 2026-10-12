@@ -57,7 +57,7 @@ impl std::ops::Mul<f32> for RGBA {
 pub struct ViewPlane {
     width_px:          u32,
     height_px:         u32,
-    fov_deg:           f32,
+    fov:               f32,
     buffer:            Vec<RGBA>,
 }
 
@@ -67,17 +67,17 @@ impl ViewPlane {
         Self { 
             width_px, 
             height_px, 
-            fov_deg, 
+            fov: fov_deg.to_radians(), 
             buffer: vec![RGBA::default(); len],
         }
     }
 
     pub fn fov_deg(&self) -> f32 {
-        self.fov_deg
+        self.fov.to_degrees()
     }
 
     pub fn fov_rad(&self) -> f32 {
-        self.fov_deg.to_radians()
+        self.fov
     }
 
     pub fn aspect_ratio(&self) -> f32 {
@@ -99,7 +99,7 @@ impl ViewPlane {
     }
 
     pub fn save_png(&self, path: &str) -> image::ImageResult<()> {
-        let bytes: Vec<u8> = self.buffer.iter().flat_map(|c| c.to_bytes()).collect();
+        let bytes: Vec<u8> = self.buffer.par_iter().flat_map(|c| c.to_bytes()).collect();
         let img: ImageBuffer<Rgba<u8>, Vec<u8>> = 
         ImageBuffer::from_raw(self.width_px, self.height_px, bytes).expect("buffer length matches width * height * 4");
         img.save(path)
@@ -122,7 +122,7 @@ pub struct Camera {
 
 // Camera ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-const MAX_DEPTH: u32 = 4;
+const MAX_DEPTH: u32 = 3;
 
 impl Camera {
     pub fn new(width_px: u32, height_px: u32, fov_deg: f32, position: Vec3, target: Vec3, up: Vec3) -> Self {
@@ -184,7 +184,7 @@ impl Camera {
         for light in &scene.lights {
             let to_light = light.position - hit.point;
             let l = to_light.normalize();
-            let shadow_ray = Ray::new(hit.point, l);
+            let shadow_ray = Ray::new(hit.point + n * 1e-3, l);
 
             if scene.hit(&shadow_ray, 0.001, to_light.length()).is_some() {
                 continue;
@@ -216,7 +216,8 @@ impl Camera {
         let k_m = hit.material.k_m;
 
         if depth > 0 && (k_m.r > 0.0 || k_m.g > 0.0 || k_m.b > 0.0) {
-            let reflected = ray.reflect(hit.point, hit.normal);
+            let origin = hit.point + hit.normal * 1e-3;
+            let reflected = Ray::new(origin, ray.direction().reflect(hit.normal));
             color = color + k_m * self.trace(reflected, scene, depth - 1);
         }
 
@@ -244,9 +245,9 @@ impl Camera {
     }
 
     pub fn to_u32_buffer(&self) -> Vec<u32> {
-    self.view_plane.buffer.iter().map(|c| {
-        let [r, g, b, _] = c.to_bytes();
-        (r as u32) << 16 | (g as u32) << 8 | b as u32
-    }).collect()
-}
+        self.view_plane.buffer.par_iter().map(|px| {
+            let [r, g, b, _] = px.to_bytes();
+            (r as u32) << 16 | (g as u32) << 8 | (b as u32)
+        }).collect()
+    }
 }

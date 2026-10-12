@@ -16,11 +16,11 @@ pub struct Material {
 }
 
 impl Material {
-    fn new(k_d: RGBA, k_s: RGBA, p: f32) -> Self {
+    fn new(k_d: RGBA, k_s: RGBA, k_m: RGBA, p: f32) -> Self {
         Self {
             k_d,
             k_s,
-            k_m: RGBA::new(0.0, 0.0, 0.0, 1.0),
+            k_m,
             k_t: RGBA::new(0.0, 0.0, 0.0, 1.0),
             p,
             ior: 1.0,
@@ -28,21 +28,19 @@ impl Material {
     }
 
     pub fn matte(k_d: RGBA) -> Self {
-        Self::new(k_d, RGBA::new(0.0, 0.0, 0.0, 1.0), 1.0)
+        Self::new(k_d, RGBA::new(0.0, 0.0, 0.0, 1.0), RGBA::new(0.0, 0.0, 0.0, 1.0), 1.0)
     }
 
     pub fn plastic(k_d: RGBA) -> Self {
-        Self::new(k_d, RGBA::new(0.5, 0.5, 0.5, 1.0), 32.0)
+        Self::new(k_d, RGBA::new(0.5, 0.5, 0.5, 1.0), RGBA::new(0.05, 0.05, 0.05, 1.0), 32.0)
     }
 
     pub fn polished(k_d: RGBA) -> Self {
-        Self::new(k_d, RGBA::new(0.9, 0.9, 0.9, 1.0), 256.0)
+        Self::new(k_d, RGBA::new(0.9, 0.9, 0.9, 1.0), RGBA::new(0.1, 0.1, 0.1, 1.0), 256.0)
     }
 
     pub fn mirror(k_d: RGBA, k_m: RGBA) -> Self {
-        let mut m = Self::new(k_d, RGBA::new(0.9, 0.9, 0.9, 1.0), 256.0);
-        m.k_m = k_m;
-        m
+        Self::new(k_d, RGBA::new(0.9, 0.9, 0.9, 1.0), k_m, 256.0)
     }
 
 }
