@@ -93,3 +93,60 @@
 - the performance of the switching fabric can significantly impact the overall throughput and latency of the router or switch
 - efficient design and management of the switching fabric are crucial for handling high-speed network traffic and minimizing packet loss
 
+---
+
+## IP: The Internet Protocol
+
+### IP Datagram Format
+- the IP datagram consists of a header and a payload
+- Header:
+    - IP version number
+    - header length
+    - type of service (ToS)
+    - total length
+    - identification (16-bit)
+    - flags (3-bit)
+    - fragment offset (13-bit)
+    - time to live (TTL) (8-bit)
+    - protocol (8-bit)
+    - header checksum (16-bit)
+    - source IP address (32-bit)
+    - destination IP address (32-bit)
+    - options (if any) (variable length)
+
+### IP Addresses
+- IP addresses are 32-bit numerical labels assigned to each interface connected to a network that uses the Internet Protocol for communication
+- they are used to uniquely identify devices on a network and facilitate routing of packets between source and destination devices
+- IP addresses are typically written in dotted decimal notation, with four octets separated by periods (e.g., 192.168.1.1)
+- IP addresses are divided into network and host portions, which are used to determine the routing of packets within and between networks.
+
+### Subnetting
+- subnetting is the practice of dividing a larger IP network into smaller, more manageable sub-networks or subnets
+- it allows for more efficient use of IP address space and can improve network performance and security
+- each subnet has its own network address and subnet mask, which are used to determine the range of IP addresses within the subnet
+- subnetting allows network administrators to create multiple logical networks within a single physical network, improving organization and security
+
+#### Subnet Mask
+- a subnet mask is a 32-bit number that separates the network and host portions of an IP address
+- it consists of a series of consecutive 1s followed by a series of consecutive 0s, where the 1s represent the network portion and the 0s represent the host portion
+- subnet masks are typically written in dotted decimal notation, similar to IP addresses (e.g., 255.255.255.0)
+- the subnet mask works in conjunction with the IP address to determine the network and host portions of the address
+
+### How To Get an IP Address
+- Host:
+    - Hard-coded by sysadmin in config file (e.g. /etc/rc.config)
+    - DHCP: Client/Server Dynamic Host Configuration Protocol (automatically assigns IP addresses to hosts)
+    - Automatic Private IP Addressing (APIPA): Assigns an IP address automatically when DHCP is not available (e.g., 169.254.x.x)
+
+#### DHCP
+- DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network
+- Host broadcasts discover message
+- DHCP server responds with an offer message containing an available IP address
+- Host sends a request message to the DHCP server to accept the offered IP address
+- DHCP server sends an acknowledgment message to confirm the IP address assignment
+
+##### DHCP Can Do More Than IP Addresses
+- address of first-hop router (default gateway)
+- subnet mask
+- domain name server (DNS) addresses
+- lease duration for the assigned IP address
