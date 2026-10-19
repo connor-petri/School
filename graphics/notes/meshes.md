@@ -92,3 +92,12 @@ impl Mesh {
     }
 }
 ```
+
+### Vertex Normals
+- A vertex has no normal of its own: give it the average of the surrounding face normals
+- Interpolating vertex normals acreoss each triangle is what makes a coarse mesh shade smoothly
+- Use the area-weighted (un-normalized) cross products so big faces count more
+
+### Texture coordinates
+- Each vertex can also carry a $(u, v)$ pair: Where it lands on a 2d image
+
