@@ -150,3 +150,15 @@
 - subnet mask
 - domain name server (DNS) addresses
 - lease duration for the assigned IP address
+
+### Flow Tables
+- Flow tables are used in networking devices, such as switches and routers, to determine how to handle incoming packets
+- Each entry in a flow table typically contains match fields, actions, and counters
+- Match fields specify the criteria for matching packets (e.g., source/destination IP address, port number, protocol)
+- Actions define what to do with matching packets (e.g., forward, drop, modify)
+- Counters keep track of statistics related to the flow, such as the number of packets and bytes processed
+
+### Generalized Forwarding Summary
+- "Match plus action" abstraction: match bits in arriving packet headers in any layers, take action
+- This abstraction allows for flexible and programmable packet processing, enabling network devices to handle a wide range of protocols and traffic patterns efficiently
+- Simple form of "network programmability" where the behavior of network devices can be controlled through flow table entries
