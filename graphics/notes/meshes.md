@@ -101,3 +101,31 @@ impl Mesh {
 ### Texture coordinates
 - Each vertex can also carry a $(u, v)$ pair: Where it lands on a 2d image
 
+---
+
+## How to Render a Mesh
+
+### A Mesh is Just Many Triangles
+- To intersenct a ray with a mesh, test *every* triangle, keep the nearest hit
+- Each hit must report what shading is needed.
+- Cost: N triangle tests per ray * num triangles
+    - A bounding volume hierarchy cuts that to ~logN
+- Shrink $t_max$ as hits are found to cull later triangles
+
+### Flat Shading
+- Shade every hit with the face normal
+- Correct for the triangle, causes the triangles to be visible
+- Brightness jumps at every edge
+- Right for things that are flat, like a box
+- Wrong for a mesh standing in for a curved surface: most meshes
+- The geometry is flat, but nothing says the normal has to be
+
+### Interpolated Normals
+- Store a normal per vertex
+- A hit with $(\alpha, \beta, \gamma)$
+- Then shade exactly as before with this new $n$- Then shade exactly as before with this new $n$ =
+
+### Gouraud Shading
+- Shad at the three vertices, interpolate the colors
+- Cheap: 3 lighting evaluations instead of one per pixel
+- Highlights that fall between vertices are missed or smeared
