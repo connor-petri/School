@@ -97,3 +97,87 @@
     - Computes shortest paths using Dijkstra's algorithm
     - Supports hierarchical routing with areas to improve scalability
     - Provides fast convergence and loop-free routing
+
+### OSPF (Open Shortest Path First) Routing
+- "Open" standard
+    - Developed as an open standard for link-state routing within an autonomous system
+    - Widely used in enterprise and service provider networks
+- Classic link-state protocol
+    - Each router maintains a complete map of the network topology
+    - Routers exchange link-state advertisements (LSAs) to update the network map
+    - Computes shortest paths using Dijkstra's algorithm
+    - Supports hierarchical routing with areas to improve scalability
+    - Provides fast convergence and loop-free routing
+- Security:
+    - All OSPF messages authenticated to prevent malicious intrusion
+
+#### Hierarchical OSPF
+- Two-Level Hierarchy
+    - OSPF supports a two-level hierarchical structure with a backbone area (Area 0) and multiple non-backbone areas
+    - Backbone area connects all other areas and facilitates inter-area routing
+    - Non-backbone areas connect to the backbone area through area border routers (ABRs)
+    - Hierarchical design reduces routing table size and limits the scope of routing updates within each area
+
+---
+
+## Routing Among ISPs: BGP
+### BGP (Boarder Gateway Protocol)
+- The de-facto inter-domain routing protocol
+- The "glue" that holds the Internet together by enabling different autonomous systems to exchange routing information
+- Allows subnet to advertise its existence, and the destinations it can reach, to the rest of the Internet
+
+#### Path Vector Protocol
+- What BGP keeps from distance vector ogic:
+    - Routers earn from their neighbors the paths to various destinations, similar to distance vector protocols
+    - Routes spread by advertisement, one hop at a time
+- What Changes: The Path Vector
+    - Distance vector advertises a destination and the cost to reach it
+    - BGP advertises the entire path (sequence of ASes) to reach a destination, rather than just the cost
+    - A router that sees its own AS in the path drops the route, so AS-level loops are prevented
+
+### Cost-Driven vs Policy-Driven Routing
+- Cost-Driven Routing:
+    - Traditional routing protocols like OSPF and RIP focus on finding the shortest path based on metrics such as hop count or link cost
+    - The primary goal is to optimize network performance and efficiency
+- Policy-Driven Routing:
+    - BGP allows network administrators to define routing policies based on business agreements, security considerations, and other non-technical factors
+    - Routing decisions are influenced by policies rather than purely by path cost'
+
+### BGP Goals
+- Obtain Destination network reachability info from  neighboring ASes
+- Propagate this reachability information to all AS-internal routers
+- Determine routes to other networks based on reachability information and routing policies
+
+### BGP Basics
+- BGP Session: two BGP routers ("peers") exchanged BGP messages over semi-permanent TCP connection
+- BGP Message Types: BGP uses several message types to establish and maintain sessions, including OPEN, UPDATE, NOTIFICATION, and KEEPALIVE messages
+
+
+### Why Different Intra-, Inter-AS routing?
+- Policy:
+    - Inter-AS: admin wants control oer how its traffic routed, who routes through its network
+    - Intra-AS: Single admin, so policy is less of an issue
+- Scale:
+    - Hierarchical routing within an AS helps manage scale by limiting the scope of routing updates and reducing the size of routing tables
+- Performance:
+    - Intra-AS: can focus on performance
+    - Inter-AS: policy dominates over performance
+
+---
+
+## ICMP (Internet Control Message Protocol)
+- Used by hosts and routers to communicate network-level information
+    - Error reporting: Unreachable host, network, or port
+    - Echo request/reply (used by the ping utility)
+- Netowrk-layer "above" IP:
+    - ICMP messages carried in IP datagrams
+- ICMP message: type, code plus first 8 bytes of IP datagram causing error
+    - Type: indicates the kind of message (e.g., Destination Unreachable, Echo Request)
+    - Code: provides additional context for the type (e.g., network unreachable, host unreachable)
+
+### Traceroute and ICMP
+- Source sends sets of UDP segments to destination
+- Datagram in *n*th set arrives to *n*th router along the path
+- That router returns ICMP Time Exceeded message to source
+- Source uses ICMP messages to infer the route to destination-hop by hop
+- When ICMP message arrives at source: record RTTs
