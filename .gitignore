@@ -21,3 +21,5 @@ Introduction\ to\ *.pdf
 Nicholson*.pdf
 Technical-Writing-Essentials.pdf
 Business-Communication-Essentials.pdf
+# Build output (Rust cargo, Java maven)
+target/
