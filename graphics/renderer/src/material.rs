@@ -43,4 +43,17 @@ impl Material {
         Self::new(k_d, RGBA::new(0.9, 0.9, 0.9, 1.0), k_m, 256.0)
     }
 
+    pub fn carbon_fiber() -> Self {
+        Self::new(RGBA::new(0.03, 0.03, 0.035, 1.0),
+                  RGBA::new(0.85, 0.85, 0.85, 1.0),
+                  RGBA::new(0.2, 0.2, 0.22, 1.0),
+                  96.0)
+    }
+
+    pub fn ceramic() -> Self {
+        Self::new(RGBA::new(0.85, 0.82, 0.75, 1.0),
+                  RGBA::new(0.8, 0.8, 0.8, 1.0),
+                  RGBA::new(0.08, 0.08, 0.08, 1.0),
+                  128.0)
+    }
 }
