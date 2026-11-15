@@ -1,0 +1,328 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\sisetup{per-mode=symbol}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\Rp}{R_p}
+\newcommand{\Ra}{R_a}
+
+\title{Single-Scattering Atmospheric Rendering\\
+       \large Formulas for a planetary atmosphere in a ray tracer}
+\author{Connor Petri\\CS-116A}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Overview}
+
+The atmosphere is modelled as a spherical shell of gas between the planet
+surface at radius $\Rp$ and the top of the atmosphere at radius $\Ra$, both
+centred on the planet centre $\vect{c}$. Sunlight entering the shell is
+scattered by air molecules (Rayleigh scattering) and by aerosols (Mie
+scattering). The \emph{single-scattering} approximation assumes each photon
+reaching the camera has scattered exactly once; light that scatters two or
+more times is ignored.
+
+For every camera ray the renderer computes two quantities:
+\begin{enumerate}
+  \item the \textbf{in-scattered radiance} $L_{\mathrm{in}}$, sunlight redirected
+        toward the camera by the air along the ray, and
+  \item the \textbf{transmittance} $T$, the fraction of light from whatever the
+        ray hits (the planet surface or space) that survives the trip to the
+        camera.
+\end{enumerate}
+The final pixel colour is
+\begin{equation}
+  L = T \, L_{\mathrm{surface}} + L_{\mathrm{in}} .
+  \label{eq:composite}
+\end{equation}
+
+\section{Density profile}
+
+Let $h(\vect{x}) = \lVert \vect{x} - \vect{c} \rVert - \Rp$ be the altitude of a
+point above the surface. Both particle types have a density that falls
+exponentially with altitude, normalised to $1$ at sea level:
+\begin{equation}
+  \rho_R(h) = \exp\!\left(-\frac{h}{H_R}\right), \qquad
+  \rho_M(h) = \exp\!\left(-\frac{h}{H_M}\right),
+  \label{eq:density}
+\end{equation}
+where $H_R$ and $H_M$ are the Rayleigh and Mie \emph{scale heights}.
+
+\section{Scattering coefficients}
+
+The scattering coefficient $\beta$ is the fraction of light scattered per unit
+distance at sea level. For Rayleigh scattering it depends on wavelength
+$\lambda$ as
+\begin{equation}
+  \beta_R(\lambda) = \frac{8\pi^3 \left(n^2 - 1\right)^2}{3 N \lambda^4},
+  \label{eq:beta_rayleigh}
+\end{equation}
+with $n$ the refractive index of air and $N$ the molecular number density at
+sea level. The $\lambda^{-4}$ dependence is why blue light (short $\lambda$)
+scatters roughly five times more strongly than red. In practice $\beta_R$ is
+treated as a per-channel RGB constant. Mie scattering is approximately
+wavelength independent, so $\beta_M$ is a single scalar.
+
+\section{Optical depth and transmittance}
+
+The \emph{optical depth} of a path $\gamma$ is the density integrated along it:
+\begin{equation}
+  \tau_R(\gamma) = \int_\gamma \rho_R\big(h(\vect{x})\big) \dd s, \qquad
+  \tau_M(\gamma) = \int_\gamma \rho_M\big(h(\vect{x})\big) \dd s .
+  \label{eq:optical_depth}
+\end{equation}
+By the Beer--Lambert law, the fraction of light that traverses $\gamma$ without
+being scattered or absorbed is
+\begin{equation}
+  T(\gamma) = \exp\!\Big( -\big[\beta_R \, \tau_R(\gamma) + \beta_M^{e} \, \tau_M(\gamma)\big] \Big),
+  \label{eq:transmittance}
+\end{equation}
+where $\beta_M^{e} \approx 1.1\,\beta_M$ is the Mie \emph{extinction}
+coefficient, slightly larger than the scattering coefficient because aerosols
+also absorb a little light. Equation~\eqref{eq:transmittance} is evaluated per
+colour channel because $\beta_R$ is.
+
+Transmittances multiply along concatenated paths, equivalently their optical
+depths add:
+\begin{equation}
+  T(\gamma_1 \cup \gamma_2) = T(\gamma_1)\,T(\gamma_2).
+  \label{eq:multiply}
+\end{equation}
+
+\section{Phase functions}
+
+A phase function $P(\theta)$ gives the fraction of scattered light that leaves
+in a direction making angle $\theta$ with the incoming light. It is normalised
+so that $\int_{4\pi} P \dd\omega = 1$. With $\mu = \cos\theta$:
+
+\paragraph{Rayleigh.}
+\begin{equation}
+  P_R(\mu) = \frac{3}{16\pi}\left(1 + \mu^2\right).
+  \label{eq:phase_rayleigh}
+\end{equation}
+
+\paragraph{Mie (Henyey--Greenstein).}
+\begin{equation}
+  P_M(\mu) = \frac{1 - g^2}{4\pi \left(1 + g^2 - 2 g \mu\right)^{3/2}},
+  \qquad g \in (-1, 1).
+  \label{eq:phase_hg}
+\end{equation}
+The asymmetry parameter $g$ controls how forward-peaked the scattering is;
+atmospheric aerosols use $g \approx 0.76$.
+
+\paragraph{Mie (Cornette--Shanks).} A more physical alternative with the same
+$g$:
+\begin{equation}
+  P_M(\mu) = \frac{3}{8\pi}\,
+             \frac{\left(1 - g^2\right)\left(1 + \mu^2\right)}
+                  {\left(2 + g^2\right)\left(1 + g^2 - 2 g \mu\right)^{3/2}} .
+  \label{eq:phase_cs}
+\end{equation}
+
+\section{The single-scattering integral}
+
+Let the camera ray be $\vect{x}(t) = \vect{o} + t\,\vect{d}$ with
+$\lVert\vect{d}\rVert = 1$. Let $[t_a, t_b]$ be the interval over which the ray is
+inside the shell (Section~\ref{sec:shell}). Let $\vect{s}$ be the unit vector
+toward the sun and $I_{\mathrm{sun}}$ the sun's irradiance at the top of the
+atmosphere. The scattering angle is the same for every point on the ray:
+\begin{equation}
+  \mu = \vect{d} \cdot \vect{s}.
+\end{equation}
+
+Consider a point $\vect{p} = \vect{x}(t)$. Sunlight reaching $\vect{p}$ has been
+attenuated by the path $\gamma_{\mathrm{sun}}(\vect{p})$ from the top of the
+atmosphere to $\vect{p}$ along $-\vect{s}$. A fraction $\beta\,\rho(h)\,P(\mu)\dd t$
+of it is redirected toward the camera, and that light is attenuated again by
+the path $\gamma_{\mathrm{cam}}(\vect{p})$ from $\vect{p}$ back to $\vect{o}$. Summing
+over the ray, for one particle type $X \in \{R, M\}$:
+\begin{equation}
+  L_X = I_{\mathrm{sun}}\, \beta_X\, P_X(\mu)
+        \int_{t_a}^{t_b}
+          \rho_X\big(h(\vect{x}(t))\big)\,
+          T\big(\gamma_{\mathrm{sun}}(\vect{x}(t))\big)\,
+          T\big(\gamma_{\mathrm{cam}}(\vect{x}(t))\big)
+        \dd t .
+  \label{eq:single_scatter}
+\end{equation}
+Using \eqref{eq:multiply}, the product of the two transmittances is a single
+exponential of the summed optical depths, which is what the implementation
+computes. The total in-scattered radiance is
+\begin{equation}
+  L_{\mathrm{in}} = L_R + L_M ,
+  \label{eq:lin}
+\end{equation}
+and the transmittance used in \eqref{eq:composite} is that of the full view
+path,
+\begin{equation}
+  T = T\big([t_a, t_b]\big) .
+  \label{eq:tview}
+\end{equation}
+
+If $\gamma_{\mathrm{sun}}(\vect{p})$ intersects the planet, $\vect{p}$ is in the
+planet's shadow and its contribution is zero.
+
+\section{Ray--shell intersection}
+\label{sec:shell}
+
+For a sphere of radius $R$ centred at $\vect{c}$, substituting the ray into
+$\lVert \vect{x} - \vect{c} \rVert^2 = R^2$ gives a quadratic in $t$. With
+$\vect{m} = \vect{o} - \vect{c}$,
+\begin{equation}
+  t^2 + 2\,(\vect{m}\cdot\vect{d})\,t + \left(\vect{m}\cdot\vect{m} - R^2\right) = 0,
+  \qquad
+  t_{0,1} = -(\vect{m}\cdot\vect{d}) \mp
+            \sqrt{(\vect{m}\cdot\vect{d})^2 - \left(\vect{m}\cdot\vect{m} - R^2\right)} .
+  \label{eq:sphere}
+\end{equation}
+Both roots are needed, unlike a normal surface hit. The march interval is
+\begin{equation}
+  t_a = \max(t_0^{(\Ra)},\, 0), \qquad
+  t_b = \min\!\big(t_1^{(\Ra)},\, t_{\mathrm{hit}}\big),
+\end{equation}
+where $t_{\mathrm{hit}}$ is the distance to the nearest surface hit (the planet
+or any other object), or $\infty$ if the ray escapes. Clamping $t_a$ at zero
+handles a camera that is already inside the atmosphere. The same formula with
+$R = \Rp$ is used to end the light ray early when it strikes the planet.
+
+\section{Numerical evaluation}
+
+The integral in \eqref{eq:single_scatter} has no closed form, so it is
+evaluated with a nested Riemann sum (ray marching). The view ray is divided
+into $N$ segments of length $\Delta t = (t_b - t_a)/N$ with midpoints
+$\vect{p}_i$; from each $\vect{p}_i$ the light ray toward the sun is divided
+into $M$ segments of length $\Delta l_i$ with midpoints $\vect{q}_{ij}$.
+
+\begin{equation}
+  \tau^{\mathrm{cam}}_{X,i} = \sum_{k \le i} \rho_X(h(\vect{p}_k))\,\Delta t, \qquad
+  \tau^{\mathrm{sun}}_{X,i} = \sum_{j=1}^{M} \rho_X(h(\vect{q}_{ij}))\,\Delta l_i .
+\end{equation}
+\begin{equation}
+  A_i = \exp\!\Big(-\big[
+        \beta_R\,(\tau^{\mathrm{cam}}_{R,i} + \tau^{\mathrm{sun}}_{R,i}) +
+        \beta_M^{e}\,(\tau^{\mathrm{cam}}_{M,i} + \tau^{\mathrm{sun}}_{M,i})
+        \big]\Big)
+\end{equation}
+\begin{equation}
+  L_{\mathrm{in}} \approx I_{\mathrm{sun}}
+  \left[
+    \beta_R\, P_R(\mu) \sum_{i=1}^{N} A_i\, \rho_R(h(\vect{p}_i))\,\Delta t
+  + \beta_M\, P_M(\mu) \sum_{i=1}^{N} A_i\, \rho_M(h(\vect{p}_i))\,\Delta t
+  \right]
+\end{equation}
+\begin{equation}
+  T \approx \exp\!\Big(-\big[\beta_R\,\tau^{\mathrm{cam}}_{R,N} +
+                            \beta_M^{e}\,\tau^{\mathrm{cam}}_{M,N}\big]\Big)
+\end{equation}
+
+Note that the Mie \emph{extinction} coefficient $\beta_M^e$ appears inside the
+attenuation while the Mie \emph{scattering} coefficient $\beta_M$ multiplies the
+in-scatter sum.
+
+\begin{algorithm}[h]
+\caption{Single-scattering march for one camera ray}
+\begin{algorithmic}[1]
+\Require ray $(\vect{o}, \vect{d})$, interval $[t_a, t_b]$, sun direction $\vect{s}$
+\State $\tau^{\mathrm{cam}}_R, \tau^{\mathrm{cam}}_M, S_R, S_M \gets 0$
+\State $\Delta t \gets (t_b - t_a)/N$;\quad $\mu \gets \vect{d}\cdot\vect{s}$
+\For{$i = 1 \ldots N$}
+  \State $\vect{p} \gets \vect{o} + \big(t_a + (i - \tfrac12)\Delta t\big)\vect{d}$;\quad $h \gets \lVert\vect{p} - \vect{c}\rVert - \Rp$
+  \State $d_R \gets \rho_R(h)\,\Delta t$;\quad $d_M \gets \rho_M(h)\,\Delta t$
+  \State $\tau^{\mathrm{cam}}_R \mathrel{+}= d_R$;\quad $\tau^{\mathrm{cam}}_M \mathrel{+}= d_M$
+  \State find $t_{\mathrm{exit}}$ where the ray $(\vect{p}, \vect{s})$ leaves the shell of radius $\Ra$
+  \If{the ray $(\vect{p}, \vect{s})$ hits the sphere of radius $\Rp$} \textbf{continue} \Comment{in planet shadow} \EndIf
+  \State $\tau^{\mathrm{sun}}_R, \tau^{\mathrm{sun}}_M \gets 0$;\quad $\Delta l \gets t_{\mathrm{exit}}/M$
+  \For{$j = 1 \ldots M$}
+    \State $\vect{q} \gets \vect{p} + (j - \tfrac12)\Delta l\,\vect{s}$;\quad $h' \gets \lVert\vect{q} - \vect{c}\rVert - \Rp$
+    \State $\tau^{\mathrm{sun}}_R \mathrel{+}= \rho_R(h')\,\Delta l$;\quad $\tau^{\mathrm{sun}}_M \mathrel{+}= \rho_M(h')\,\Delta l$
+  \EndFor
+  \State $A \gets \exp\!\big(-[\beta_R(\tau^{\mathrm{cam}}_R + \tau^{\mathrm{sun}}_R) + \beta_M^e(\tau^{\mathrm{cam}}_M + \tau^{\mathrm{sun}}_M)]\big)$
+  \State $S_R \mathrel{+}= A\,d_R$;\quad $S_M \mathrel{+}= A\,d_M$
+\EndFor
+\State $L_{\mathrm{in}} \gets I_{\mathrm{sun}}\big(\beta_R P_R(\mu) S_R + \beta_M P_M(\mu) S_M\big)$
+\State $T \gets \exp\!\big(-[\beta_R \tau^{\mathrm{cam}}_R + \beta_M^e \tau^{\mathrm{cam}}_M]\big)$
+\State \Return $(L_{\mathrm{in}}, T)$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Tone mapping}
+
+$L_{\mathrm{in}}$ is high dynamic range and routinely exceeds $1$. Before
+quantising to 8 bits each channel is passed through an exposure curve such as
+\begin{equation}
+  L' = 1 - \exp(-E\,L),
+  \label{eq:tonemap}
+\end{equation}
+with exposure $E$ chosen per scene, followed by an optional gamma
+$L'' = (L')^{1/2.2}$.
+
+\section{Reference constants}
+
+Values for an Earth-like atmosphere, expressed in kilometres so that
+single-precision floats retain adequate precision at planetary scale.
+
+\begin{center}
+\begin{tabular}{llr}
+\toprule
+Symbol & Meaning & Value \\
+\midrule
+$\Rp$ & planet radius & \SI{6371}{\kilo\metre} \\
+$\Ra$ & atmosphere radius & \SI{6471}{\kilo\metre} \\
+$H_R$ & Rayleigh scale height & \SI{8.0}{\kilo\metre} \\
+$H_M$ & Mie scale height & \SI{1.2}{\kilo\metre} \\
+$\beta_R$ & Rayleigh scattering (R, G, B) & $(5.8,\ 13.5,\ 33.1)\times 10^{-3}\ \si{\per\kilo\metre}$ \\
+$\beta_M$ & Mie scattering & $21\times 10^{-3}\ \si{\per\kilo\metre}$ \\
+$\beta_M^e$ & Mie extinction & $1.1\,\beta_M$ \\
+$g$ & Mie asymmetry & $0.76$ \\
+$I_{\mathrm{sun}}$ & sun irradiance (before exposure) & $\approx 20$ \\
+$N$ & view-ray samples & 16 (start), 64 (final) \\
+$M$ & light-ray samples & 8 (start), 16 (final) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Qualitative predictions}
+
+The formulas above account for the familiar appearance of the sky:
+\begin{itemize}
+  \item \textbf{Blue daytime sky.} $\beta_R$ is largest in blue, so
+        \eqref{eq:single_scatter} redirects more blue light toward the viewer,
+        and the short overhead path leaves the view transmittance near $1$.
+  \item \textbf{Red sunsets and terminator.} Light reaching air near the viewer
+        has crossed a long, low, dense path along $-\vect{s}$, so
+        $T(\gamma_{\mathrm{sun}})$ in \eqref{eq:transmittance} is strongly
+        depleted in blue and green.
+  \item \textbf{Bright limb from orbit.} A view ray tangent to the surface has a
+        large $\tau^{\mathrm{cam}}$ and therefore a long column of scatterers,
+        increasing $L_{\mathrm{in}}$.
+  \item \textbf{Solar halo and horizon haze.} $P_M(\mu)$ in \eqref{eq:phase_hg}
+        grows sharply as $\mu \to 1$, and $\rho_M$ is concentrated near the
+        ground because $H_M < H_R$.
+\end{itemize}
+
+The single-scattering assumption under-estimates brightness on the night side
+of the terminator and in twilight, where most visible light has scattered more
+than once.
+
+\section*{References}
+\begin{itemize}
+  \item T.~Nishita, T.~Sirai, K.~Tadamura, E.~Nakamae.
+        \emph{Display of the Earth Taking into Account Atmospheric Scattering}.
+        SIGGRAPH 1993.
+  \item Scratchapixel, \emph{Simulating the Colors of the Sky}.
+        \url{https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/simulating-sky}
+  \item S.~O'Neil. \emph{Accurate Atmospheric Scattering}. GPU Gems 2, Chapter 16.
+\end{itemize}
+
+\end{document}
