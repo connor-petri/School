@@ -55,3 +55,29 @@
 - $R$ is the remainder obtained from dividing the data polynomial by the generator polynomial
     - $R = (D \cdot 2^r) \mod G$
         - Where $D$ is the data polynomial, $r$ is the degree of the generator polynomial $G$, and $R$ is the remainder (CRC value)
+
+## "Taking Turns" MAC Protocols
+
+### Polling
+- Centralized controller "invites" other nodes to transmit in turn
+- typically used with "dumb" devices
+- Concerns:
+    - Polling overhead
+    - Latency
+    - Single point of failure at the centralized controller
+
+### Token Passing
+- Control *token* message explicityly passed from one node to the next, sequentially
+    - Transmit only when holding the token
+- Concerns:
+    - Token overhead
+    - Latency
+    - Token loss or corruption - single point of failure
+    - Recovery mechanisms needed to regenerate or replace lost tokens
+
+### MAC Addresses
+- Each interface on LAN:
+    - Has a unique 48-bit MAC address
+    - has a locally unique 32-bit IP address
+- Used for addressing and identifying devices on the network
+- Defined at the hardware level and typically burned into the network interface card (NIC)
