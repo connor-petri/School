@@ -7,6 +7,7 @@ use crate::scene::Scene;
 use image::{ImageBuffer, Rgba};
 use crate::shape::Hit;
 use crate::material::Material;
+use crate::texture::sphere_uv;
 
 use rayon::prelude::*;
 
@@ -177,9 +178,11 @@ impl Camera {
     fn shade(&self, ray: Ray, hit: &Hit, scene: &Scene) -> RGBA {
         let n = hit.normal;
         let v = -ray.direction();
-        let mat = &hit.material;
+        let mat = hit.material;
+        // Texture map at the hit point using the UV coordinates
+        let k_d = mat.k_d.sample(hit.uv);
 
-        let mut color = mat.k_d * scene.ambient;
+        let mut color = k_d * scene.ambient;
 
         for light in &scene.lights {
             let to_light = light.position - hit.point;
@@ -199,7 +202,7 @@ impl Camera {
             let h = (l + v).normalize();
             let n_dot_h = n.dot(h).max(0.0);
 
-            color = color + mat.k_d * light.intensity * n_dot_l;
+            color = color + k_d * light.intensity * n_dot_l;
             color = color + mat.k_s * light.intensity * n_dot_h.powf(mat.p);
         }
 
@@ -208,7 +211,7 @@ impl Camera {
 
     fn trace(&self, ray: Ray, scene: &Scene, depth: u32) -> RGBA {
         let Some(hit) = scene.hit(&ray, 0.001, f32::MAX) else {
-            return RGBA::new(0.53, 0.80, 0.92, 1.0);
+            return scene.background.sample(sphere_uv(ray.direction()));
         };
         
         let mut color = self.shade(ray, &hit, scene);

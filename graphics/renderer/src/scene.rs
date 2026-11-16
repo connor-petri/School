@@ -6,16 +6,18 @@ use crate::ray::Ray;
 use crate::shape::{Hit, Shape};
 use crate::light::Light;
 use crate::camera::RGBA;
+use crate::texture::Texture;
 
 pub struct Scene {
     pub objects: Vec<Box<dyn Shape + Sync>>,
     pub lights: Vec<Light>,
     pub ambient: RGBA,
+    pub background: Texture,
 }
 
 impl Scene {
-    pub fn new(ambient: RGBA) -> Self {
-        Self { objects: Vec::new(), lights: Vec::new(), ambient }
+    pub fn new(ambient: RGBA, background: Texture) -> Self {
+        Self { objects: Vec::new(), lights: Vec::new(), ambient, background }
     }
 
     pub fn add(&mut self, shape: impl Shape + Sync + 'static) {
@@ -40,8 +42,8 @@ impl Scene {
         self.objects.get_mut(index as usize).map(|obj| obj.as_mut())
     }
 
-    pub fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit> {
-        let mut closest: Option<Hit> = None;
+    pub fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit<'_>> {
+        let mut closest: Option<Hit<'_>> = None;
         let mut closest_t: f32 = t_max;
 
         for obj in &self.objects {

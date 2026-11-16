@@ -3,19 +3,20 @@
 // CS-116A
 
 use std::any::Any;
-use glam::{Quat, Vec3};
-use crate::{ray::Ray, material::Material, transform::Transform};
+use glam::{Quat, Vec2, Vec3};
+use crate::{ray::Ray, material::Material, transform::Transform, texture::sphere_uv};
 
-pub struct Hit {
+pub struct Hit<'a> {
     pub t:          f32,
     pub point:      Vec3,
     pub normal:     Vec3,
-    pub material:   Material,
+    pub uv:         Vec2,
+    pub material:   &'a Material,
 }
 
-impl Hit {
-    pub fn new(t: f32, point: Vec3, normal: Vec3, material: Material) -> Self {
-        Self { t, point, normal, material }
+impl<'a> Hit<'a> {
+    pub fn new(t: f32, point: Vec3, normal: Vec3, uv: Vec2, material: &'a Material) -> Self {
+        Self { t, point, normal, uv, material }
     }
 }
 
@@ -30,9 +31,9 @@ pub trait Shape {
     fn transform_mut(&mut self) -> &mut Transform;
 
     /// Ray / shape test in the shape's local coordinates.
-    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit>;
+    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit<'_>>;
 
-    fn material(&self) -> Material;
+    fn material(&self) -> &Material;
 
     /// Allows downcasting a `dyn Shape` back to its concrete type.
     fn as_any(&self) -> &dyn Any;
@@ -45,7 +46,7 @@ pub trait Shape {
     /// objects directly. The world hit point is therefore just `ray.point(t)`.
     /// Normals go through the inverse transpose so they stay perpendicular
     /// under non-uniform scale.
-    fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit> {
+    fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit<'_>> {
         let xf = self.transform();
         let local_ray = ray.transform(xf.inverse());
         let mut hit = self.hit_local(&local_ray, t_min, t_max)?;
@@ -79,7 +80,7 @@ impl Shape for Plane {
     fn transform(&self) -> &Transform { &self.transform }
     fn transform_mut(&mut self) -> &mut Transform { &mut self.transform }
 
-    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit> {
+    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit<'_>> {
         let denom = ray.direction().y;
         if denom.abs() < 1e-6 {
             return None;
@@ -90,11 +91,12 @@ impl Shape for Plane {
             return None;
         }
 
-        Some(Hit::new(t, ray.point(t), Vec3::Y, self.material))
+        let p = ray.point(t);
+        Some(Hit::new(t, p, Vec3::Y, Vec2::new(p.x, p.z), &self.material))
     }
 
-    fn material(&self) -> Material {
-        self.material
+    fn material(&self) -> &Material {
+        &self.material
     }
 
     fn as_any(&self) -> &dyn Any {
@@ -110,7 +112,7 @@ impl Shape for Plane {
 // Sphere ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /// The local sphere is centered at the origin with the given radius. Its
 /// position lives in the transform; a non-uniform scale makes an ellipsoid.
-#[derive(Copy, Clone)]
+#[derive(Clone)]
 pub struct Sphere {
     pub transform:  Transform,
     pub radius:     f32,
@@ -132,7 +134,7 @@ impl Shape for Sphere {
     fn transform(&self) -> &Transform { &self.transform }
     fn transform_mut(&mut self) -> &mut Transform { &mut self.transform }
 
-    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit> {
+    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit<'_>> {
         let o = ray.origin();
         let d = ray.direction();
 
@@ -156,11 +158,12 @@ impl Shape for Sphere {
             }
         }
         let p = ray.point(t);
-        Some(Hit::new(t, p, p / self.radius, self.material))
+        let n = p / self.radius;
+        Some(Hit::new(t, p, n, sphere_uv(n), &self.material))
     }
 
-    fn material(&self) -> Material {
-        self.material
+    fn material(&self) -> &Material {
+        &self.material
     }
 
     fn as_any(&self) -> &dyn Any {

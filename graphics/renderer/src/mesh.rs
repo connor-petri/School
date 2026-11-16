@@ -394,7 +394,7 @@ impl Shape for Mesh {
     fn transform(&self) -> &Transform { &self.transform }
     fn transform_mut(&mut self) -> &mut Transform { &mut self.transform }
 
-    fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit> {
+    fn hit(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit<'_>> {
         let local_ray = ray.transform(self.transform.inverse());
         let mut hit = self.hit_local(&local_ray, t_min, t_max)?;
         hit.point = ray.point(hit.t);
@@ -402,7 +402,7 @@ impl Shape for Mesh {
         Some(hit)
     }
 
-    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit> {
+    fn hit_local(&self, ray: &Ray, t_min: f32, t_max: f32) -> Option<Hit<'_>> {
         let mut closest: Option<(usize, f32, f32, f32)> = None;
         let mut closest_t = t_max;
 
@@ -477,11 +477,19 @@ impl Shape for Mesh {
             n.normalize_or(self.face_normal(tri).normalize())
         };
 
-        Some(Hit::new(t, ray.point(t), normal, self.material))
+        // Texture coordinates interpolate with the same barycentrics as the normals.
+        let uv = if self.uvs.is_empty() {
+            Vec2::ZERO
+        } else {
+            let [i, j, k] = self.triangles[tri];
+            alpha * self.uvs[i as usize] + beta * self.uvs[j as usize] + gamma * self.uvs[k as usize]
+        };
+
+        Some(Hit::new(t, ray.point(t), normal, uv, &self.material))
     }
 
-    fn material(&self) -> Material {
-        self.material
+    fn material(&self) -> &Material {
+        &self.material
     }
 
     fn as_any(&self) -> &dyn Any {
